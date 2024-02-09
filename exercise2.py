@@ -51,7 +51,6 @@ for i in range(1,10,2):
     for i1 in range(a):
         print(" ",end="")
     for k in range(j,0,-2):
-        # if k==9: k=" "                  #remove 99
         print(k,end="")
     print("")
     a-=2
