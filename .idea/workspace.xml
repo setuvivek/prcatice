@@ -4,10 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
+    <list default="true" id="f8b0c084-6765-4c99-b4c9-43274b29cdba" name="Changes" comment="" />
+=======
     <list default="true" id="f8b0c084-6765-4c99-b4c9-43274b29cdba" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Stock_management_1.py" beforeDir="false" afterPath="$PROJECT_DIR$/Stock_management_1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ex2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1Call_2Put.py" beforeDir="false" afterPath="$PROJECT_DIR$/1Call_2Put.py" afterDir="false" />
     </list>
+>>>>>>> 5d17fc754dc7ba88fdafaa9a3cd782a728aa96ff
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -27,14 +31,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 3c6c029dc1d0795f263570195b7cd4466b0bb5e5
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+<<<<<<< HEAD
+    &quot;git-widget-placeholder&quot;: &quot;staging&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/setu51/prcatice&quot;
+=======
+    &quot;git-widget-placeholder&quot;: &quot;Merging staging&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/setu51/prcatice&quot;
+=======
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "Merging staging",
+    "git-widget-placeholder": "staging",
     "last_opened_file_path": "/home/setu51/prcatice"
+>>>>>>> 5d17fc754dc7ba88fdafaa9a3cd782a728aa96ff
+>>>>>>> 3c6c029dc1d0795f263570195b7cd4466b0bb5e5
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
