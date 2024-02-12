@@ -86,6 +86,14 @@ for i in range(len(mylist1)):
     if i % 2 == 0:
         quantity =dict_quantity* 100
     mylist1[i]["quantity"]=quantity
+    
+    
+    
+    
+    
+    
+    
+print("riken")
 
 print(mylist1)
 
