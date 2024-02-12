@@ -22,7 +22,4 @@ for key in dict1:
 
 print(e)
 
-<<<<<<< HEAD
-=======
-# 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
->>>>>>> 9e4775f9ccc90a7e86e1da8a529877cada576c4b
+# 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
