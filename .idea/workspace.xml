@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <list default="true" id="f8b0c084-6765-4c99-b4c9-43274b29cdba" name="Changes" comment="" />
 =======
     <list default="true" id="f8b0c084-6765-4c99-b4c9-43274b29cdba" name="Changes" comment="">
@@ -15,6 +16,9 @@
 >>>>>>> 54e6b61f9d4fa26b91763a71989596d5abcb4d20
     </list>
 >>>>>>> 5d17fc754dc7ba88fdafaa9a3cd782a728aa96ff
+=======
+    <list default="true" id="ad3f1813-e5b7-488e-a606-6ba5bdc29435" name="Changes" comment="" />
+>>>>>>> 6423e3b3d03dc07721e22326f137014ccab2ac98
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -23,6 +27,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+<<<<<<< HEAD
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -88,4 +93,14 @@
       </map>
     </option>
   </component>
+=======
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "git-widget-placeholder": "hd__exe14"
+  }
+}]]></component>
+  <component name="TaskManager">
+    <servers />
+  </component>
+>>>>>>> 6423e3b3d03dc07721e22326f137014ccab2ac98
 </project>
