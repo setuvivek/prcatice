@@ -89,11 +89,7 @@ for i in range(len(mylist1)):
     
     
     
-    
-    
-    
-    
-print("riken")
+
 
 print(mylist1)
 
