@@ -829,4 +829,11 @@ writer.close()
 
 
 
+<<<<<<< HEAD
 print("biren")
+=======
+
+
+
+print("This is Biren")
+>>>>>>> 58ae89daa1de1d13da8de9a2ff3302edd602dc41
