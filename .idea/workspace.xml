@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <list default="true" id="f8b0c084-6765-4c99-b4c9-43274b29cdba" name="Changes" comment="" />
 =======
     <list default="true" id="f8b0c084-6765-4c99-b4c9-43274b29cdba" name="Changes" comment="">
@@ -17,6 +18,9 @@
     </list>
 >>>>>>> 5d17fc754dc7ba88fdafaa9a3cd782a728aa96ff
 =======
+    <list default="true" id="72e0e2d5-8ca9-4348-9aad-54d3104da429" name="Changes" comment="" />
+>>>>>>> 64e4c1cf810b743c2d6d8d5d18ffa62e1947a456
+=======
     <list default="true" id="ad3f1813-e5b7-488e-a606-6ba5bdc29435" name="Changes" comment="" />
 >>>>>>> 6423e3b3d03dc07721e22326f137014ccab2ac98
     <option name="SHOW_DIALOG" value="false" />
@@ -24,6 +28,8 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+<<<<<<< HEAD
+=======
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -99,6 +105,7 @@
     "git-widget-placeholder": "hd__exe14"
   }
 }]]></component>
+>>>>>>> 6423e3b3d03dc07721e22326f137014ccab2ac98
   <component name="TaskManager">
     <servers />
   </component>
