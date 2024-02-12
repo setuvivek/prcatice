@@ -224,3 +224,14 @@ print("hemangi")
 print("heres me shivam")
 
 
+<<<<<<< HEAD
+=======
+
+
+
+
+
+
+
+print('riken')
+>>>>>>> 514412cd1c45e2921db70ceabbe8bbca17af4095
