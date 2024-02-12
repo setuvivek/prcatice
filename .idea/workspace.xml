@@ -9,7 +9,10 @@
 =======
     <list default="true" id="f8b0c084-6765-4c99-b4c9-43274b29cdba" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/1Call_2Put.py" beforeDir="false" afterPath="$PROJECT_DIR$/1Call_2Put.py" afterDir="false" />
+=======
+>>>>>>> 54e6b61f9d4fa26b91763a71989596d5abcb4d20
     </list>
 >>>>>>> 5d17fc754dc7ba88fdafaa9a3cd782a728aa96ff
     <option name="SHOW_DIALOG" value="false" />
