@@ -7,5 +7,5 @@ class Vehicle:
 x = Vehicle(300, 13)
 print(x)
 print(x.max_speed,x.mileage)
-
+print("name")
 
