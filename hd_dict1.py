@@ -22,14 +22,13 @@ for key in dict1:
 
 print(e)
 
-
-
-
-
-
+<<<<<<< HEAD
 
 
 print("kinnari")
 
 # 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
 
+=======
+# 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
+>>>>>>> 7e5232f3fc68a8c3d492372eb9b64b6a86f75978
