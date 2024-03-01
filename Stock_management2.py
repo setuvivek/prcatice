@@ -1,8 +1,8 @@
-# '/home/setu/Biren/STOCKMOVE/Cust_Master.xlsx'    DATA TO ADD
+
 import itertools
 from openpyxl import load_workbook
 
-ws = load_workbook('/home/setu/Biren/STOCKMOVE/Cust_Master.xlsx')
+ws = load_workbook('Cust_Master.xlsx')
 if "CUST_MASTER" and "PRODUCT_MASTER" and "STOCK_MASTER" not in ws.sheetnames:
     ws.create_sheet("CUST_MASTER")
     ws["CUST_MASTER"].append(("CUST_ID", "CUST_NAME", "CUST_TYPE", "CUST_PAN"))
@@ -10,7 +10,7 @@ if "CUST_MASTER" and "PRODUCT_MASTER" and "STOCK_MASTER" not in ws.sheetnames:
     ws["PRODUCT_MASTER"].append(("PROD_ID", "PROD_NAME", 'PROD_INCOMING', 'PROD_OUT_GOING', 'PROD_STOCK'))
     ws.create_sheet("STOCK_MASTER")
     ws["STOCK_MASTER"].append(("STOCK_ID", "CUST_ID", "PROD_ID", "STOCK_QUANTITY", "STOCK_TYPE_I_O"))
-    ws.save('/home/setu/Biren/STOCKMOVE/Cust_Master.xlsx')
+    ws.save('Cust_Master.xlsx')
     cut = ws["CUST_MASTER"].max_row
     pro = ws["PRODUCT_MASTER"].max_row
     sto = ws["STOCK_MASTER"].max_row
@@ -62,7 +62,7 @@ class Customer_Master:
                         self.id = -1
                         return Customer_Master().CUST_Data_Get()
                 self.sh1.append((cust_id_count, self.CUST_NAME, ",".join(self.CUST_TYPE), self.CUST_PAN))
-                ws.save('/home/setu/Biren/STOCKMOVE/Cust_Master.xlsx')
+                ws.save('Cust_Master.xlsx')
             elif choice == 2:
                 for j in self.sh1:
                     for k in j:
@@ -105,7 +105,7 @@ class Product_Master(Customer_Master):
                         return Product_Master().PRODU_GET_DATA()
                 self.sh2.append(
                     (prod_id_count, self.PROD_NAME, self.PROD_INCOMING, self.PROD_OUT_GOING, self.PROD_STOCK))
-                ws.save('/home/setu/Biren/STOCKMOVE/Cust_Master.xlsx')
+                ws.save('Cust_Master.xlsx')
             elif choice == 2:
                 for j in self.sh2:
                     for k in j:
@@ -190,7 +190,7 @@ class Stock_Master(Product_Master, Customer_Master):
                     print("Enter valid option")
                 self.sh3.append(
                     (stock_id_count, self.CUST_ID, self.PROD_ID, self.STOCK_QUANTITY, self.STOCK_TYPE_I_O))
-                ws.save('/home/setu/Biren/STOCKMOVE/Cust_Master.xlsx')
+                ws.save('Cust_Master.xlsx')
 
             elif choice == 2:
                 for k in self.sh3:
