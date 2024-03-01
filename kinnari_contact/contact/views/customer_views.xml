@@ -1,0 +1,46 @@
+<odoo>
+    <data>
+        <record id ="resa_partner_view_tree" model="ir.ui.view">
+            <field name="name">resa.partner.view.tree</field>
+            <field name="model">contact.partner</field>
+            <field name="arch" type="xml">
+                <tree string="customer">
+                        <field name="name"/>
+                        <field name="check"/>
+                        <field name="country_id"/>
+                        <field name="state_id"/>
+                        <field name="city_id"/>
+<!--                        <field name="type"/>-->
+                </tree>
+            </field>
+        </record>
+        <record id ="resa_partner_view_form" model="ir.ui.view">
+            <field name="name">resa.partner.view.form</field>
+            <field name="model">contact.partner</field>
+            <field name="arch" type="xml">
+                <form string="customer">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="check"/>
+                            <field name="country_id"/>
+                            <field name="state_id"/>
+                            <field name="city_id"/>
+<!--                            <field name="type"/>-->
+
+
+
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="resa_partner_action" model="ir.actions.act_window">
+            <field name="name">Customer</field>
+            <field name="res_model">contact.partner</field>
+            <field name="view_mode">tree,form</field>
+
+        </record>
+        <menuitem id="resa_partner_menu" name="Customer" action="resa_partner_action" parent="configuration_menu"/>
+    </data>
+</odoo>
