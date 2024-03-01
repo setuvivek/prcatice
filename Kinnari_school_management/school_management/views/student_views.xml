@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="student_view_tree" model="ir.ui.view">
+            <field name="name">student.view.tree</field>
+            <field name="model">student</field>
+            <field name="arch" type="xml">
+                <tree string="student">
+                    <field name="name"/>
+                    <field name="roll"/>
+                    <field name="gender"/>
+                    <field name="create_date"/>
+                    <field name="teach_id"/>
+
+                    <field name="teacher1_id"/>
+                    <field name="teacher2_id"/>
+                    <field name="teacher3_id"/>
+                    <field name="enter1"/>
+                    <field name="enter2"/>
+                    <field name="enter3"/>
+                    <field name="com"/>
+                    <field name="quantity"/>
+                    <field name="stock"/>
+                    <field name="country_id"/>
+                    <field name="state_id"/>
+                    <field name="city_id"/>
+
+                </tree>
+            </field>
+        </record>
+
+        <record id="student_view_form" model="ir.ui.view">
+            <field name="name">student.view.form</field>
+            <field name="model">student</field>
+            <field name="arch" type="xml">
+                <form string="student">
+                    <sheet>
+                        <group>
+                                <field name="name" widget="emoji char"/>
+                                <field name="roll"/>
+                                <field name="teach_id"/>
+                                <field name="gender" widget="radio"/>
+                                <field name="create_date"/>
+                                <field name="teach_id"/>
+                                <field name="teacher1_id"/>
+                                <field name="teacher2_id"/>
+                                <field name="teacher3_id"/>
+                                <field name="enter1"/>
+                                <field name="enter2"/>
+                                <field name="enter3"/>
+                                <field name="com"/>
+                                <field name="quantity"/>
+                                <field name="stock"/>
+
+                                <field name="country_id"/>
+                                <field name="state_id"/>
+                                <field name="city_id"/>
+
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="student_search_view" model="ir.ui.view">
+            <field name="name">student.search.view</field>
+            <field name="model">student</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="roll"/>
+                    <field name="gender"/>
+                    <field name="create_date"/>
+                    <field name="teach_id"/>
+
+                    <field name="teacher1_id"/>
+                    <field name="teacher2_id"/>
+                    <field name="teacher3_id"/>
+                    <field name="enter1"/>
+                    <field name="enter2"/>
+                    <field name="enter3"/>
+                    <field name="com"/>
+                    <filter string="f1" name="gender" domain="[('gender','=','male')]"/>
+
+                </search>
+            </field>
+
+        </record>
+        <record id="student_action" model="ir.actions.act_window">
+            <field name="name">Student</field>
+            <field name="res_model">student</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="main_menu" name="School" action="student_action"/>
+        <menuitem id="student_menu" name="School" action="student_action" parent="main_menu"/>
+        <menuitem id="student_menu1" name="Student" action="student_action" parent="student_menu"/>
+
+    </data>
+</odoo>
+
