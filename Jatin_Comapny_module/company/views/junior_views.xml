@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="company_junior_view_tree" model="ir.ui.view">
+        <field name="name">company.junior.view.tree</field>
+        <field name="model">company.junior</field>
+        <field name="arch" type="xml">
+            <tree string="Junior">
+                <field name="name"/>
+                <field name="join_date"/>
+                <field name="work_in"/>
+                <field name="senior_id"/>
+                <field name="salary"/>
+                <field name="city_id"/>
+            </tree>
+        </field>
+    </record>
+    <record id="company_junior_view_form" model="ir.ui.view">
+        <field name="name">company.junior.view.form</field>
+        <field name="model">company.junior</field>
+        <field name="arch" type="xml">
+            <form string="Junior">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="join_date"/>
+                        <field name="work_in"/>
+                        <field name="senior_id" options="{'no_open':True,'no_create':True}"/>
+                        <field name="salary"/>
+                        <field name="city_id"/>
+
+                    </group>
+<!--                    <notebook>-->
+<!--                        <page string=""></page>-->
+<!--                    </notebook>-->
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="company_junior_action" model="ir.actions.act_window">
+        <field name="name">Junior</field>
+        <field name="res_model">company.junior</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="company_junior_menu"
+              name="Junior"
+              action="company_junior_action"
+              parent="root1"
+    />
+</odoo>

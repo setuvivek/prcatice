@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="product_view_tree" model="ir.ui.view">
+<!--        <field name="name">model.teacher.view.tree.inherit.student_management</field>-->
+        <field name="name">product.view.tree</field>
+        <field name="model">product</field>
+        <field name="arch" type="xml">
+            <tree string="Product">
+                <field name="name"/>
+                <field name="number_of_product"/>
+                <field name="mfg_date"/>
+                <field name="expr_date"/>
+                <field name="order_id"/>
+<!--                <field name="order_pro_ids"/>-->
+
+            </tree>
+        </field>
+    </record>
+    <record id="product_view_form" model="ir.ui.view">
+        <field name="name">product.view.form</field>
+        <field name="model">product</field>
+        <field name="arch" type="xml">
+            <form string="Product">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="number_of_product"/>
+                            <field name="mfg_date"/>
+                        </group>
+                        <group>
+                            <field name="expr_date"/>
+                            <field name="order_id"/>
+<!--                            <field name="order_pro_ids"/>-->
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="product_action" model="ir.actions.act_window">
+        <field name="name">Product</field>
+        <field name="res_model">product</field>
+        <field name="view_mode">tree,form</field>
+
+    </record>
+    <menuitem id="product_menu"
+              name="Product"
+              parent="root1"
+              action="product_action"
+    />
+</odoo>
