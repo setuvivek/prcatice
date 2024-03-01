@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="country_view_tree" model="ir.ui.view">
+        <field name="name">country.view.tree</field>
+        <field name="model">country</field>
+        <field name="arch" type="xml">
+            <tree string="Country">
+                <field name="name"/>
+                <field name="state"/>
+                <field name="secular"/>
+                <field name="city_country_o2m_ids"/>
+                <field name="select_state_m2m_ids"/>
+                <field name="city2_country_o2m_ids"/>
+            </tree>
+        </field>
+    </record>
+    <record id="country_view_form" model="ir.ui.view">
+        <field name="name">country.view.form</field>
+        <field name="model">country</field>
+        <field name="arch" type="xml">
+            <form string="Country">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="state"/>
+                        <field name="secular"/>
+                        <field name="city_country_o2m_ids"/>
+                        <field name="select_state_m2m_ids"/>
+                    </group>
+                    <notebook name="city">
+                        <page>
+                            <group>
+                                <field name="city2_country_o2m_ids"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="country_action" model="ir.actions.act_window">
+        <field name="name">Country</field>
+        <field name="res_model">country</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="country_menu"
+              name="Country"
+              action="country_action"
+              parent="root1"
+    />
+
+</odoo>

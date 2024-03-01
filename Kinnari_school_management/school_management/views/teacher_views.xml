@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="teacher_view_tree" model="ir.ui.view">
+            <field name="name">teacher.view.tree</field>
+            <field name="model">teacher</field>
+            <field name="arch" type="xml">
+                <tree string="teacher"  delete="False" >
+                    <field name="name"/>
+                    <field name="gender"/>
+                    <field name="mobile"/>
+                    <field name="postgraduate" optional="hide"/>
+                    <field name="result" optional="hide"/>
+                    <field name="dob" optional="hide"/>
+                    <field name="student_id" optional="hide"/>
+
+                    <field name="country_id"/>
+                    <field name="state_id"/>
+                    <field name="city_id"/>
+                    <field name="priority" optional="hide"/>
+<!--                    <field name="department_id"/>-->
+                </tree>
+            </field>
+        </record>
+       <record id="teacher_view_form" model="ir.ui.view">
+         <field name="name">teacher.view.form</field>
+         <field name="model">teacher</field>
+         <field name="arch" type="xml">
+             <form string="teacher">
+                 <sheet>
+                     <group>
+                         <field name="name"/>
+                         <field name="gender" widget="radio"/>
+                         <field name="mobile"/>
+                         <field name="postgraduate" widget="boolean_toggle"/>
+                         <field name="result"/>
+                         <field name="dob"/>
+                         <field name="student_id"/>
+                         <field name="country_id"/>
+                         <field name="state_id"/>
+                         <field name="city_id"/>
+                         <field name="priority" widget="priority"/>
+
+                     </group>
+                     <notebook>
+                         <page string="Fields">
+                             <field name="student_id">
+                                <tree string="Fields Description" delete="False" create="False" editable="False">
+                                    <field name="name"/>
+                                    <field name="roll"/>
+                                    <field name="gender"/>
+                                    <field name="teacher1_id" optional="hide"/>
+                                    <field name="teacher2_id" optional="hide"/>
+                                    <field name="teacher3_id" optional="hide"/>
+
+
+                                </tree>
+                             </field>
+                         </page>
+                     </notebook>
+                 </sheet>
+             </form>
+         </field>
+       </record>
+        <record id="teacher_action" model="ir.actions.act_window">
+            <field name="name">Teacher</field>
+            <field name="res_model">teacher</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem id="teacher_menu" name="Teacher" action="teacher_action" parent="student_menu"/>
+    </data>
+</odoo>
+
+
