@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="teacher_view_tree" model="ir.ui.view">
+        <field name="name">teacher.view.tree</field>
+        <field name="model">teacher</field>
+        <field name="arch" type="xml">
+            <tree string="Teacher">
+<!--                <field name="order_id"/>-->
+                <field name="name"/>
+                <field name="age"/>
+                <field name="department"/>
+                <field name="subject"/>
+                <field name="teacher_ids"/>
+                <field name="department_ids"/>
+<!--                <field name="subjects"/>-->
+            </tree>
+        </field>
+    </record>
+    <record id="teacher_view_form" model="ir.ui.view">
+        <field name="name">Marks Form View</field>
+        <field name="model">teacher</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+<!--                            <field name="order_id"/>-->
+                            <field name="name"/>
+                            <field name="department"/>
+                            <field name="subject"/>
+                            <field name="department_ids"/>
+                        </group>
+                        <group>
+                            <field name="age"/>
+                            <field name="gender"/>
+                            <field name="teacher_ids"/>
+<!--                            <field name="subjects"/>-->
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Teacher">
+                            <field name="teacher_ids">
+                                <tree string="student" edit="false" delete="false" create="false">
+                                    <field name="name"/>
+                                    <field name="age" optional="hide"/>
+                                    <field name="department" optional="hide"/>
+                                    <field name="gender"/>
+                                    <field name="hobby" optional="hide"/>
+                                    <field name="dob"/>
+                                    <field name="teacher_id"/>
+                                    <field name="teacher_ids" optional="hide"/>
+                                    <field name="sci_teacher" optional="hide"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="teacher_action" model="ir.actions.act_window">
+        <field name="name">Teacher</field>
+        <field name="res_model">teacher</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>
+

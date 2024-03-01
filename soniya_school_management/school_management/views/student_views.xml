@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="student_view_tree" model="ir.ui.view">
+        <field name="name">student.view.tree</field>
+        <field name="model">student</field>
+        <field name="arch" type="xml">
+            <tree string="Student">
+                <field name="name"/>
+                <field name="age" optional="show"/>
+                <field name="department" optional="hide"/>
+                <field name="roll_no"/>
+                <field name="gender"/>
+                <field name="hobby"/>
+                <field name="dob"/>
+                <field name="teacher_id"/>
+                <field name="teacher_ids"/>
+                <field name="sci_teacher"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="student_view_form" model="ir.ui.view">
+        <field name="name">Marks Form View</field>
+        <field name="model">student</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" widget="char_emojis"/>
+                            <field name="age"/>
+                            <field name="department"/>
+                            <field name="roll_no" />
+                            <field name="teacher_id" options="{'no_edit': True, 'no_create': True, 'no_open': True}"/>
+<!--                            <field name="teacher_id" widget="badge"/>-->
+                        </group>
+                        <group>
+                            <field name="gender"/>
+                            <field name="hobby"/>
+                            <field name="dob"/>
+                            <field name="teacher_ids"/>
+                            <field name="sci_teacher"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Student">
+                            <tree string="student" edit="false" delete="false">
+                                <field name="name"/>
+                                <field name="age" optional="hide"/>
+                                <field name="department" optional="hide"/>
+                                <field name="gender"/>
+                                <field name="hobby" optional="hide"/>
+                                <field name="dob"/>
+                                <field name="teacher_id" optional="hide" options="{'no_edit': True, 'no_create': True, 'no_open': True}"/>
+                                <field name="teacher_ids" optional="hide"/>
+                                <field name="sci_teacher" optional="hide"/>
+                            </tree>
+                        </page>
+                        <page string="Teacher">
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="student_action" model="ir.actions.act_window">
+        <field name="name">Student</field>
+        <field name="res_model">student</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="root" name="School"/>
+    <menuitem id="root1"
+              name="School"
+              parent="root"/>
+    <menuitem id="student_menu"
+              name="Student"
+              action="student_action"
+              parent="root1"/>
+    <menuitem id="teacher_menu"
+              name="Teacher"
+              action="teacher_action"
+              parent="root1"/>
+    <menuitem id="department_menu"
+              name="Department"
+              action="department_action"
+              parent="root1"/>
+
+</odoo>
