@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="product_tree" model="ir.ui.view">
+            <field name="name">product.tree</field>
+            <field name="model">product</field>
+            <field name="arch" type="xml">
+                <tree string="product">
+                    <field name="name"/>
+                    <field name="type"/>
+                    <field name="incoming"/>
+                    <field name="date1"/>
+                    <field name="outgoing"/>
+                    <field name="date2"/>
+                    <field name="order_id"/>
+                    <field name="name1"/>
+<!--                    <field name="com"/>-->
+
+                </tree>
+            </field>
+        </record>
+
+        <record id="product_form" model="ir.ui.view">
+            <field name="name">product.form</field>
+            <field name="model">product</field>
+            <field name="arch" type="xml">
+                <form string="product">
+                    <header>
+                        <button name="action_do_something" type="object" string="Do Something"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="type"/>
+                            </group>
+                            <group>
+                                <field name="incoming" attrs="{'invisible': [('type','!=','purchase')]}"/>
+                                <field name="outgoing" attrs="{'invisible': [('type','!=','sell')]}"/>
+                                <field name="date1" attrs="{'invisible': [('type','!=','purchase')]}"/>
+                                <field name="date2" attrs="{'invisible': [('type','!=','sell')]}"/>
+                                <field name="order_id"/>
+                                <field name="name1"/>
+
+<!--                              <field name="com"/>-->
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Order Data">
+                                <field name = "order_id">
+                                    <tree string="Order details" create="False" delete="False" editable="False">
+                                        <field name="name"/>
+                                        <field name="quantity"/>
+                                        <field name="stock"/>
+                                        <field name="dos" optional="hide"/>
+                                        <field name="product_id" optional="hide"/>
+
+
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Product sub data">
+                                <sheet>
+                                    <group>
+                                        <field name="name1"/>
+
+                                    </group>
+                                </sheet>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="product_action" model="ir.actions.act_window">
+            <field name="name">Product</field>
+            <field name="res_model">product</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="main_menu" name="Order" action="product_action" sequence="2"/>
+        <menuitem id="product_menu" name="Order" action="product_action" parent="main_menu"/>
+        <menuitem id="products_menu" name="Product" action="product_action" parent="product_menu"/>
+
+    </data>
+</odoo>
+
