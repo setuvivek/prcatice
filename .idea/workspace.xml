@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+    <list default="true" id="f8b0c084-6765-4c99-b4c9-43274b29cdba" name="Changes" comment="" />
+=======
+    <list default="true" id="f8b0c084-6765-4c99-b4c9-43274b29cdba" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
+      <change beforePath="$PROJECT_DIR$/1Call_2Put.py" beforeDir="false" afterPath="$PROJECT_DIR$/1Call_2Put.py" afterDir="false" />
+=======
+>>>>>>> 54e6b61f9d4fa26b91763a71989596d5abcb4d20
+    </list>
+>>>>>>> 5d17fc754dc7ba88fdafaa9a3cd782a728aa96ff
+=======
+    <list default="true" id="72e0e2d5-8ca9-4348-9aad-54d3104da429" name="Changes" comment="" />
+>>>>>>> 64e4c1cf810b743c2d6d8d5d18ffa62e1947a456
+=======
+    <list default="true" id="ad3f1813-e5b7-488e-a606-6ba5bdc29435" name="Changes" comment="" />
+>>>>>>> 6423e3b3d03dc07721e22326f137014ccab2ac98
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+<<<<<<< HEAD
+=======
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+<<<<<<< HEAD
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="2c85RstDU8k9gjFyG1z1v8o24H4" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 3c6c029dc1d0795f263570195b7cd4466b0bb5e5
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+<<<<<<< HEAD
+    &quot;git-widget-placeholder&quot;: &quot;staging&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/setu51/prcatice&quot;
+=======
+    &quot;git-widget-placeholder&quot;: &quot;Merging staging&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/setu51/prcatice&quot;
+=======
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "staging",
+    "last_opened_file_path": "/home/setu51/prcatice"
+>>>>>>> 5d17fc754dc7ba88fdafaa9a3cd782a728aa96ff
+>>>>>>> 3c6c029dc1d0795f263570195b7cd4466b0bb5e5
+  }
+}</component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-5a2391486177-d3b881c8e49f-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-233.13763.11" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f8b0c084-6765-4c99-b4c9-43274b29cdba" name="Changes" comment="" />
+      <created>1707480359467</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1707480359467</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+=======
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "git-widget-placeholder": "hd__exe14"
+  }
+}]]></component>
+>>>>>>> 6423e3b3d03dc07721e22326f137014ccab2ac98
+  <component name="TaskManager">
+    <servers />
+  </component>
+>>>>>>> 6423e3b3d03dc07721e22326f137014ccab2ac98
+</project>
