@@ -1,3 +1,13 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+<<<<<<< HEAD
 access_order_data,access.order,model_order,,1,1,1,1
 access_product_data,access.product,model_product,,1,1,1,1
+=======
+<<<<<<< HEAD
+product_access,product.access,order_management.model_product,,1,1,1,1
+order1_access,order1.access,order_management.model_order1,,1,1,1,1
+=======
+access_product,access.product,order_management.model_product,,1,1,1,1
+access_order,access.order,order_management.model_order,,1,1,1,1
+>>>>>>> 25fd018ac57293e82e63327c861418ace2f89b56
+>>>>>>> adaac1a1aae6a787e125f2b12070b0ae7a95b81c

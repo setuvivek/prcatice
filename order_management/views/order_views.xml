@@ -1,13 +1,20 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
 
 
+=======
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+>>>>>>> adaac1a1aae6a787e125f2b12070b0ae7a95b81c
         <record id="order_view_tree" model="ir.ui.view">
             <field name="name">order.view.tree</field>
             <field name="model">order</field>
             <field name="type">tree</field>
             <field name="arch" type="xml">
+<<<<<<< HEAD
                 <tree string="Order">
                     <field name="owner_name"/>
                     <field name="address"/>
@@ -15,17 +22,34 @@
                     <field name="payment"/>
                     <field name="order_id"/>
                     <field name="order_ids"/>
+=======
+                <tree>
+                    <field name="customer_name"/>
+                    <field name="product_id"/>
+                    <field name="product_ids"/>
+                    <field name="quantity"/>
+                    <field name="order_date"/>
+                    <field name="price"/>
+                    <field name="discount"/>
+                    <field name="payment"/>
+                    <field name="current_Date_Time"/>
+
+>>>>>>> adaac1a1aae6a787e125f2b12070b0ae7a95b81c
                 </tree>
             </field>
         </record>
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> adaac1a1aae6a787e125f2b12070b0ae7a95b81c
         <record id="order_view_form" model="ir.ui.view">
             <field name="name">order.view.form</field>
             <field name="model">order</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
+<<<<<<< HEAD
                 <form>
                     <sheet>
                         <group string="order_data">
@@ -40,21 +64,53 @@
                                 <field name="order_ids"/>
                             </group>
                         </group>
+=======
+                <form string="order">
+                    <sheet>
+
+                            <group>
+                                <field name="customer_name"/>
+                                <field name="product_id" options="{'no_open':True, 'no_create':True}"/>
+                                <field name="product_ids" widget="many2many_tags" options="{'no_create':True}"/>
+                                <field name="quantity"/>
+
+                                <field name="order_date"/>
+                                <field name="price"/>
+
+                                <field name="discount"/>
+                                <field name="free_delivery"/>
+
+                                <field name="current_Date_Time"/>
+                                <field name="payment"/>
+
+                            </group>
+
+>>>>>>> adaac1a1aae6a787e125f2b12070b0ae7a95b81c
                     </sheet>
                 </form>
             </field>
         </record>
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> adaac1a1aae6a787e125f2b12070b0ae7a95b81c
         <record id="order_action" model="ir.actions.act_window">
             <field name="name">Order</field>
             <field name="res_model">order</field>
             <field name="view_mode">tree,form</field>
         </record>
 
+<<<<<<< HEAD
         <menuitem id="root" name="Order"/>
         <menuitem id ="root1" name="Order" action = "order_action" parent="root"/>
         <menuitem id ="order_management" name="Order" action="order_action" sequence="1" parent = "root1"/>
     </data>
 </odoo>
+=======
+        <menuitem id="order_menu" action="order_action" parent="root1"/>
+    </data>
+</odoo>
+
+>>>>>>> adaac1a1aae6a787e125f2b12070b0ae7a95b81c

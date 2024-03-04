@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="teacher_view_tree" model="ir.ui.view">
+<!--        <field name="name">model.teacher.view.tree.inherit.student_management</field>-->
+        <field name="name">teacher.view.tree</field>
+        <field name="model">teacher</field>
+        <field name="arch" type="xml">
+            <tree string="Teacher">
+                <field name="name"/>
+                <field name="age"/>
+                <field name="standard"/>
+                <field name="gender"/>
+                <field name="subject"/>
+                <field name="student_ids"/>
+                <field name="department_id"/>
+            </tree>
+        </field>
+    </record>
+    <record id="teacher_view_form" model="ir.ui.view">
+        <field name="name">teacher.view.form</field>
+        <field name="model">teacher</field>
+        <field name="arch" type="xml">
+            <form string="Teacher">
+                <sheet>
+                    <group>
+                            <field name="name"/>
+                        <field name="age"/>
+                        <field name="standard"/>
+                        <field name="gender"/>
+                        <field name="subject"/>
+                        <field name="student_ids"/>
+                        <field name="department_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="teacher_action" model="ir.actions.act_window">
+        <field name="name">Teacher</field>
+        <field name="res_model">teacher</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="root"
+              name="School"
+    />
+    <menuitem id="root1"
+              name="School"
+              parent="root"
+    />
+    <menuitem id="teacher_menu"
+              name="Teacher"
+              parent="root1"
+              action="teacher_action"
+    />
+</odoo>

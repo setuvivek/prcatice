@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="company_senior_view_tree" model="ir.ui.view">
+        <field name="name">company.senior.view.tree</field>
+        <field name="model">company.senior</field>
+        <field name="arch" type="xml">
+            <tree string="Senior">
+                <field name="name"/>
+                <field name="work_in"/>
+                <field name="junior_ids"/>
+                <field name="salary"/>
+            </tree>
+        </field>
+    </record>
+    <record id="company_senior_view_form" model="ir.ui.view">
+        <field name="name">company.senior.view.form</field>
+        <field name="model">company.senior</field>
+        <field name="arch" type="xml">
+            <form string="Senior">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="work_in"/>
+                        <field name="salary"/>
+                    </group>
+                    <notebook>
+                        <page string="Junior">
+                            <field name="junior_ids">
+                                <tree string="JuniorId1" editable="bottom" delete="False">
+                                    <!--edit="False" and editable="bottom" both are not use together if use then editable="bottom" are not worked
+                                        create="False" and editable="bottom" to bottom ma add line no option jai pn existing reacord ma click karine changes kari sakie
+                                        edit="False" create="False" editable="bottom" sathe use kari to click karvathi edit nai karva dye pn e edit nu page open thay jase ne edit kari sakase
+                                    -->
+                                    <field name="name" optional="show"/>
+                                    <field name="work_in" optional="hide"/>
+                                    <field name="salary" optional="show"/>
+                                    <field name="join_date" optional="hide"/>
+                                    <field name="senior_id" optional="hide" options="{'no_open':True}"/>
+                                    <field name="city_id" optional="hide" options="{'no_open':True,'no_create':True}"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="company_senior_action" model="ir.actions.act_window">
+        <field name="name">Senior</field>
+        <field name="res_model">company.senior</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="root"
+              name="Company"
+    />
+    <menuitem id="root1"
+              name="Staff"
+              parent="root"
+    />
+    <menuitem id="company_senior_menu"
+              name="Senior"
+              action="company_senior_action"
+              parent="root1"
+    />
+</odoo>

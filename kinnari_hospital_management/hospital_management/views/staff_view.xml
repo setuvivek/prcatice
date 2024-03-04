@@ -1,0 +1,72 @@
+<odoo>
+    <data>
+        <record id="staff_view_tree" model="ir.ui.view">
+            <field name="name">staff.view.tree</field>
+            <field name="model">staff</field>
+            <field name="arch" type="xml">
+                <tree string="staff">
+                    <field name="name" widget='handle'/>
+                    <field name="gender"/>
+                    <field name="mobile"/>
+                    <field name="address"/>
+                    <field name="age"/>
+                    <field name="type"/>
+                    <field name="a" type="checkbox"/>
+                    <field name="country_id"/>
+                    <field name="state_id"/>
+                    <field name="city_id"/>
+
+                </tree>
+            </field>
+        </record>
+        <record id = "staff_view_form" model="ir.ui.view">
+            <field name="name">staff.view.form</field>
+            <field name="model">staff</field>
+            <field name="arch" type="xml">
+                <form string="staff">
+                    <header>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,in_progress,done"/>
+                        <field name="gender" widget="statusbar"/>
+                        <field name="name" widget="statusbar"/>
+                        <field name="age" widget='percentpie'/>
+                        <field name="age" widget='guage' style="width:120px;height:90px;cursor:pointer;">
+                            EntryProgress
+                        </field>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+
+                                <field name="name"/>
+                                <field name="gender" widget="radio"/>
+                                <field name="mobile"/>
+
+                            </group>
+                            <group>
+                                <field name="address"/>
+                                <field name="age"/>
+                                <field name="type"/>
+                                <field name="a" type="checkbox"/>
+                                <field name="country_id"/>
+                                <field name="state_id"/>
+                                <field name="city_id"/>
+
+
+
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="staff_action" model="ir.actions.act_window">
+            <field name="name">Staff</field>
+            <field name="res_model">staff</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem id="staff_menu" name="Staff" action="staff_action" parent="patient_menu"/>
+
+
+
+    </data>
+</odoo>

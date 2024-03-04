@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
+<<<<<<< HEAD
 
+=======
+>>>>>>> adaac1a1aae6a787e125f2b12070b0ae7a95b81c
         <record id="student_view_tree" model="ir.ui.view">
             <field name="name">student.view.tree</field>
             <field name="model">student</field>
@@ -9,6 +12,7 @@
             <field name="arch" type="xml">
                 <tree string="Student">
                     <field name="name"/>
+<<<<<<< HEAD
                     <field name="std"/>
                     <field name="cls"/>
                     <field name="gender"/>
@@ -18,16 +22,29 @@
                     <field name="city_id"/>
                     <field name="teacher_ids"/>
                     <field name="math_teacher_ids"/>
+=======
+                    <field name="rollno"/>
+                    <field name="std"/>
+                    <field name="gender"/>
+                    <field name="birthdate"/>
+                    <field name="result"/>
+                    <field name="city_id" />
+                    <field name="nationality"/>
+>>>>>>> adaac1a1aae6a787e125f2b12070b0ae7a95b81c
                 </tree>
             </field>
         </record>
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> adaac1a1aae6a787e125f2b12070b0ae7a95b81c
         <record id="student_view_form" model="ir.ui.view">
             <field name="name">student.view.form</field>
             <field name="model">student</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
+<<<<<<< HEAD
                 <form>
                     <sheet>
                         <group string="student_data">
@@ -47,19 +64,61 @@
                             </group>
                         </group>
                     </sheet>
+=======
+
+                <form>
+                    <sheet>
+
+                            <group>
+                            <field name="name" widget="CopyClipboardChar"/>
+                            <field name="rollno"/>
+                            <field name="std"/>
+                            <field name="phone" widget="phone"/>
+                            <field name="email" widget="email"/>
+                            <field name="gender" widget="radio"/>
+                            <field name="birthdate" widget="date"/>
+                            <field name="result" widget="percentage" />
+                            <field name="nationality" widget="radio"/>
+                            <field name="city_id" options="{'no_open':True, 'no_create': True, 'no_create_edit': True}"/>
+                            <field name="state_id" options="{'no_open':True, 'no_create': True, 'no_create_edit': True}"/>
+                            <field name="country_id" options="{'no_open':True, 'no_create': True, 'no_create_edit': True}"/>
+                            <field name="classteacher_id" options="{'no_open':True, 'no_create': True, 'no_create_edit': True}"/>
+                            <field name="mathteacher_ids" widget="many2many_tags" options="{'no_open':True, 'no_create': True, 'no_create_edit': True}"/>
+
+                        </group>
+
+                    </sheet>
+
+
+
+>>>>>>> adaac1a1aae6a787e125f2b12070b0ae7a95b81c
                 </form>
             </field>
         </record>
 
+<<<<<<< HEAD
         <record id="student_action" model="ir.actions.act_window">
             <field name="name">Student</field>
+=======
+        <record id="student_form" model="ir.actions.act_window">
+            <field name="name">student form</field>
+>>>>>>> adaac1a1aae6a787e125f2b12070b0ae7a95b81c
             <field name="res_model">student</field>
             <field name="view_mode">tree,form</field>
         </record>
 
+<<<<<<< HEAD
 
         <menuitem id="root" name="School"/>
         <menuitem id ="root1" name="School" action = "student_action" parent="root"/>
         <menuitem id ="riken_personal" name="Student" action="student_action" sequence="1" parent = "root1"/>
+=======
+        <menuitem id="root" name="School"/>
+        <menuitem id="submenu" name="School" parent="root"/>
+        <menuitem id="student_menu" action="student_form" parent="submenu" />
+
+        <menuitem id="student_formDirect" name="Student form" action="student_form" parent="root"/>
+
+>>>>>>> adaac1a1aae6a787e125f2b12070b0ae7a95b81c
     </data>
 </odoo>

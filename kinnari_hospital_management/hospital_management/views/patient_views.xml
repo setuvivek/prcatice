@@ -1,0 +1,147 @@
+<odoo>
+    <data>
+        <record id="patient_view_tree" model="ir.ui.view">
+            <field name="name">patient.view.tree</field>
+            <field name="model">patient</field>
+            <field name="arch" type="xml">
+                <tree string="patient">
+                    <field name="name"/>
+                    <field name="age"/>
+                    <field name="gender"/>
+                    <field name="mobile"/>
+                    <field name="address"/>
+                    <field name="diseases"/>
+                    <field name="doctor_ids"/>
+                    <field name="doa"/>
+                    <field name="country_id"/>
+                    <field name="state_id"/>
+                    <field name="city_id"/>
+                </tree>
+            </field>
+        </record>
+        <record id="patient_view_form" model="ir.ui.view">
+            <field name="name">patient.view.form</field>
+            <field name="model">patient</field>
+            <field name="arch" type="xml">
+                <form string="patient">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="age"/>
+                                <field name="gender" widget="radio"/>
+                                <field name="mobile"/>
+                                <field name="address"/>
+
+                            </group>
+                            <group>
+
+                                <field name="diseases"/>
+                                <field name="doctor_ids"/>
+                                <field name="doa"/>
+                                <field name="country_id"/>
+                                <field name="state_id"/>
+                                <field name="city_id"/>
+
+
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="patient_action" model="ir.actions.act_window">
+            <field name="name">Patient</field>
+            <field name="res_model">patient</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <menuitem id="main_menu" name="Hospital Record" action="patient_action" sequence="1" />
+        <menuitem id="patient_menu" name="Hospital Record" action="patient_action" parent="main_menu"/>
+        <menuitem id="patient_menu1" name="Patient" action="patient_action" parent="patient_menu"/>
+<!--        web_icon="Hospital Management,static/description/13.png"-->
+
+
+
+
+
+
+
+
+    </data>
+</odoo>
+
+
+<!--        <record id="patient_pivot_view" model="ir.ui.view">-->
+<!--            <field name="name">patient.pivot.view</field>-->
+<!--            <field name="model">patient</field>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <pivot string="patient">-->
+<!--                    <field name="name"/>-->
+<!--                    <field name="age"/>-->
+<!--                    <field name="mobile"/>-->
+<!--                    <field name="doctor_ids"/>-->
+<!--                </pivot>-->
+<!--            </field>-->
+<!--        </record>-->
+
+
+<!--        <record id="patient_graph_view" model="ir.ui.view">-->
+<!--            <field name="name">patient.graph.view</field>-->
+<!--            <field name="model">patient</field>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <graph string="patient">-->
+<!--                    <field name="name"/>-->
+<!--                    <field name="age"/>-->
+<!--                    <field name="mobile"/>-->
+<!--                    <field name="doctor_ids"/>-->
+
+
+<!--                </graph>-->
+<!--            </field>-->
+<!--        </record>-->
+
+<!--        <record id="patient_activity_view" model="ir.ui.view">-->
+<!--            <field name="name">patient.activity.view</field>-->
+<!--            <field name="model">patient</field>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <activity string="patient">-->
+<!--                    <templates>-->
+<!--                        <div t-name="activity-box">-->
+<!--                            <div>-->
+<!--                                <field name="name"/>-->
+<!--                               -->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </templates>-->
+<!--                </activity>-->
+<!--            </field>-->
+<!--        </record>-->
+
+<!--        <record id="patient_view_cal" model="ir.ui.view">-->
+<!--            <field name="name">patient.view.cal</field>-->
+<!--            <field name="model">patient</field>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <calendar string="patient" date_start="a" date_stop="admn_date" event_open_popup="true"-->
+<!--                          mode="month" color="name" quick_add="False">-->
+<!--                    <field name="name"/>-->
+<!--                    <field name="admn_code"/>-->
+<!--                </calendar>-->
+<!--            </field>-->
+<!--        </record>-->
+<!--        <record id="patient_action" model="ir.actions.act_window">-->
+<!--            <field name="name">Patient</field>-->
+<!--            <field name="res_model">patient</field>-->
+<!--            <field name="view_mode">tree,form,pivot,graph</field>-->
+<!--        </record>-->
+
+
+
+
+<!--        <menuitem id="main_menu" name="Hospital Record" action="patient_action" sequence="1"/>-->
+<!--        <menuitem id="patient_menu" name="Hospital Record" action="patient_action" parent="main_menu"/>-->
+<!--        <menuitem id="patient_menu1" name="Patient" action="patient_action" parent="patient_menu"/>-->
+
+<!--    </data>-->
+<!--</odoo>-->
