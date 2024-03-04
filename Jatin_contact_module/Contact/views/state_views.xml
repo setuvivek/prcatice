@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="state_view_tree" model="ir.ui.view">
+        <field name="name">state.view.tree</field>
+        <field name="model">state</field>
+        <field name="arch" type="xml">
+            <tree string="State">
+                <field name="name"/>
+                <field name="city"/>
+                <field name="scountry_id"/>
+                <field name="city_o2m_ids"/>
+                <field name="select_city_m2m_ids"/>
+            </tree>
+        </field>
+    </record>
+    <record id="state_view_form" model="ir.ui.view">
+        <field name="name">state.view.form</field>
+        <field name="model">state</field>
+        <field name="arch" type="xml">
+            <form string="State">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="city"/>
+                        <field name="scountry_id"/>
+                        <field name="city_o2m_ids"/>
+                        <field name="select_city_m2m_ids"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="state_action" model="ir.actions.act_window">
+        <field name="name">State</field>
+        <field name="res_model">state</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="state_menu"
+              name="State"
+              action="state_action"
+              parent="root1"
+    />
+</odoo>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_partner_view_tree" model="ir.ui.view">
+        <field name="name">res.partner.view.tree</field>
+        <field name="model">setu.partner</field>
+        <field name="arch" type="xml">
+            <tree string="Res Partner">
+                <field name="name"/>
+                <field name="part_is_cust"/>
+                <field name="city_m2o_id"/>
+            </tree>
+        </field>
+    </record>
+    <record id="res_partner_view_form" model="ir.ui.view">
+        <field name="name">res.partner.view.form</field>
+        <field name="model">setu.partner</field>
+        <field name="arch" type="xml">
+            <form string="Res Partner">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="part_is_cust"/>
+                        <field name="city_m2o_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="res_partner_action" model="ir.actions.act_window">
+        <field name="name">Res Partner</field>
+        <field name="res_model">setu.partner</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="res_partner_menu"
+              name="Customer"
+              action="res_partner_action"
+              parent="root1"
+    />
+</odoo>
