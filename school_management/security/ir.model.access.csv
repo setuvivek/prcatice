@@ -1,5 +1,6 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 <<<<<<< HEAD
+<<<<<<< HEAD
 access_student_data,access.student,model_student,,1,1,1,1
 access_teacher_data,access.teacher,model_teacher,,1,1,1,1
 access_department_data,access.department,model_department,,1,1,1,1
@@ -8,3 +9,13 @@ access_student,access.student,school_management.model_student,,1,1,1,1
 access_teacher,access.teacher,school_management.model_teacher,,1,1,1,1
 access_department,access.department,school_management.model_department,,1,1,1,1
 >>>>>>> adaac1a1aae6a787e125f2b12070b0ae7a95b81c
+=======
+access_student,access.student,school_management.model_student,,1,1,1,1
+access_teacher,access.teacher,school_management.model_teacher,,1,1,1,1
+access_department,access.department,school_management.model_department,,1,1,1,1
+=======
+access_student_data,access.student,model_student,,1,1,1,1
+access_teacher_data,access.teacher,model_teacher,,1,1,1,1
+access_department_data,access.department,model_department,,1,1,1,1
+>>>>>>> 5efbb733230cc2acc5cbaf6822589e04c4cda100
+>>>>>>> f9de3ec1e5c93553d23e5630558029df4c2060cf

@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 from odoo import models, fields
 
 class Order(models.Model):
@@ -13,6 +14,8 @@ class Order(models.Model):
     order_id = fields.Many2one("product", string="order")
     order_ids = fields.Many2many("product", string="other product")
 =======
+=======
+>>>>>>> f9de3ec1e5c93553d23e5630558029df4c2060cf
 # -*- coding: utf-8 -*-
 from odoo import models, fields
 
@@ -42,4 +45,22 @@ class Order(models.Model):
 
 
 
+<<<<<<< HEAD
 >>>>>>> adaac1a1aae6a787e125f2b12070b0ae7a95b81c
+=======
+=======
+from odoo import models, fields
+
+class Order(models.Model):
+    _name = "order"
+    _description = "Order"
+    # _rec_name = "date"
+
+    owner_name = fields.Char(string="owner name", required=True)
+    address = fields.Char(string="address")
+    date = fields.Datetime(string="date")
+    payment= fields.Selection(selection=[('cash','CASH'),('online','ONLINE')],string='payment', default="cash")
+    order_id = fields.Many2one("product", string="order")
+    order_ids = fields.Many2many("product", string="other product")
+>>>>>>> 5efbb733230cc2acc5cbaf6822589e04c4cda100
+>>>>>>> f9de3ec1e5c93553d23e5630558029df4c2060cf
