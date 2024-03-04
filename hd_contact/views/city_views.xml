@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
     <data>
         <record id="city_view_tree" model="ir.ui.view">
@@ -5,11 +6,12 @@
             <field name="model">city</field>
             <field name="type">tree</field>
             <field name="arch" type="xml">
-                <tree string="City">
+                <tree>
                     <field name="name"/>
+                    <field name="code"/>
+                    <field name="contact_partner_ids"/>
                     <field name="state_id"/>
-                    <field name="country_city_id"/>
-                    <field name="capital"/>
+                    <field name="country_id"/>
                 </tree>
             </field>
         </record>
@@ -19,28 +21,31 @@
             <field name="model">city</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
-                <form>
+                <form string="city">
                     <sheet>
                         <group>
                             <field name="name"/>
-                            <field name="state_id" options="{'no_open':True, 'no_create': True, 'no_create_edit': True}"/>
-                            <field name="country_city_id" options="{'no_open':True, 'no_create': True, 'no_create_edit': True}"/>
-                            <field name="capital"/>
+                            <field name="code"/>
+                            <field name="contact_partner_ids"/>
+                            <field name="state_id"/>
+                            <field name="country_id"/>
                         </group>
                     </sheet>
                 </form>
             </field>
         </record>
 
-        <record id="city_form" model="ir.actions.act_window">
-            <field name="name">city form</field>
+
+        <record id="city_action" model="ir.actions.act_window">
+            <field name="name">City</field>
             <field name="res_model">city</field>
             <field name="view_mode">tree,form</field>
         </record>
 
-
         <menuitem id="root" name="Contact"/>
-        <menuitem id="submenu" name="Configuration" parent="root"/>
-        <menuitem id="city_menu" name="City" parent="submenu" action="city_form"/>
+<!--        <menuitem id="root1" name="Contact" parent="root"/>-->
+        <menuitem id="root2" name="Configuration"  parent="root"/>
+        <menuitem id="city_menu" action="city_action" parent="root2"/>
+
     </data>
 </odoo>
