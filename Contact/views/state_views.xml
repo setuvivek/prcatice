@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="state_view_tree" model="ir.ui.view">
+            <field name="name">state.view.tree</field>
+            <field name="model">state</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="state">
+                    <field name="name"/>
+                    <field name="sid"/>
+                    <field name="direction"/>
+                    <field name="country_id"/>
+                    <field name="c_id"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="state_view_form" model="ir.ui.view">
+            <field name="name">state.view.form</field>
+            <field name="model">state</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="state data">
+                            <field name="name"/>
+                            <field name="sid"/>
+                            <field name="direction"/>
+                            <field name="country_id"/>
+                            <field name="c_id"/>
+                        </group>
+                        <notebook>
+                            <page string="Customer">
+                                <field name="c_id">
+                                    <tree editable="bottom">
+                                        <field name="first_name" optional="show"/>
+                                        <field name="last_name" optional="show"/>
+                                        <field name="customer" optional="show"/>
+                                        <field name="city_id" optional="show"/>
+                                        <field name="country_id" optional="hide"/>
+                                        <field name="state_id" optional="hide"/>
+                                        <field name="ci_id" optional="hide"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="state_action" model="ir.actions.act_window">
+            <field name="name">state</field>
+            <field name="res_model">state</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="state_management" action="state_action" name="State" sequence="1" parent = "root1"/>
+    </data>
+</odoo>
