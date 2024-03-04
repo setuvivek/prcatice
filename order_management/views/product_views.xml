@@ -1,11 +1,19 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
     <data>
+=======
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+>>>>>>> 5efbb733230cc2acc5cbaf6822589e04c4cda100
         <record id="product_view_tree" model="ir.ui.view">
             <field name="name">product.view.tree</field>
             <field name="model">product</field>
             <field name="type">tree</field>
             <field name="arch" type="xml">
+<<<<<<< HEAD
                 <tree>
                     <field name="category"/>
                     <field name="name"/>
@@ -14,15 +22,30 @@
                     <field name="price"/>
                     <field name="available"/>
                     <field name="order_ids"/>
+=======
+                <tree string="Product">
+                    <field name="product_name"/>
+                    <field name="total_quantity"/>
+                    <field name="date"/>
+                    <field name="amt"/>
+                    <field name="p_id"/>
+>>>>>>> 5efbb733230cc2acc5cbaf6822589e04c4cda100
                 </tree>
             </field>
         </record>
 
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> 5efbb733230cc2acc5cbaf6822589e04c4cda100
         <record id="product_view_form" model="ir.ui.view">
             <field name="name">product.view.form</field>
             <field name="model">product</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
+<<<<<<< HEAD
                 <form string="product">
                     <sheet>
                         <group string="Product Record">
@@ -53,17 +76,50 @@
                                 </field>
                             </page>
                         </notebook>
+=======
+                <form>
+                    <sheet>
+                        <group string="product_data">
+                            <group>
+                                <field name="product_name"/>
+                                <field name="total_quantity"/>
+                            </group>
+                            <group>
+                                <field name="date"/>
+                                <field name="amt"/>
+<!--                                <field name="p_id"/>-->
+                            </group>
+                            <notebook>
+                                <page string="Order">
+                                    <field name = "p_id">
+<!--                                        <tree edit="false" create="false" delete="false">-->
+                                        <tree editable="bottom">
+                                            <field name="owner_name"/>
+                                            <field name="address"/>
+                                            <field name="date"/>
+                                            <field name="payment"/>
+                                        </tree>
+                                    </field>
+                                </page>
+                            </notebook>
+                        </group>
+>>>>>>> 5efbb733230cc2acc5cbaf6822589e04c4cda100
                     </sheet>
                 </form>
             </field>
         </record>
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5efbb733230cc2acc5cbaf6822589e04c4cda100
         <record id="product_action" model="ir.actions.act_window">
             <field name="name">Product</field>
             <field name="res_model">product</field>
             <field name="view_mode">tree,form</field>
         </record>
 
+<<<<<<< HEAD
         <menuitem id="root" name="Order"/>
         <menuitem id="root1" name="Order" parent="root"/>
 
@@ -74,3 +130,8 @@
 
 
 
+=======
+        <menuitem id="product_management" action="product_action" name="Product" sequence="1" parent = "root1"/>
+    </data>
+</odoo>
+>>>>>>> 5efbb733230cc2acc5cbaf6822589e04c4cda100

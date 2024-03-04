@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <odoo>
     <data>
         <record id="department_view" model="ir.ui.view">
@@ -9,10 +10,30 @@
                     <field name="name"/>
                     <field name="hod_id"/>
                     <field name="members_ids"/>
+=======
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+
+        <record id="department_view_tree" model="ir.ui.view">
+            <field name="name">department.view.tree</field>
+            <field name="model">department</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Teacher">
+                    <field name="department"/>
+                    <field name="teacher_id"/>
+                    <field name="city_id"/>
+>>>>>>> 5efbb733230cc2acc5cbaf6822589e04c4cda100
                 </tree>
             </field>
         </record>
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5efbb733230cc2acc5cbaf6822589e04c4cda100
         <record id="department_view_form" model="ir.ui.view">
             <field name="name">department.view.form</field>
             <field name="model">department</field>
@@ -20,6 +41,7 @@
             <field name="arch" type="xml">
                 <form>
                     <sheet>
+<<<<<<< HEAD
                         <group>
                             <field name="name"/>
                             <field name="hod_id" domain="[('hod','=','True')]"/>
@@ -37,18 +59,34 @@
                                 </field>
                             </page>
                         </notebook>
+=======
+                        <group string="department_data">
+                                <field name="department"/>
+                                <field name="teacher_id"/>
+                                <field name="city_id"/>
+                        </group>
+>>>>>>> 5efbb733230cc2acc5cbaf6822589e04c4cda100
                     </sheet>
                 </form>
             </field>
         </record>
 
+<<<<<<< HEAD
         <record id="department_form" model="ir.actions.act_window">
             <field name="name">department form</field>
+=======
+        <record id="department_action" model="ir.actions.act_window">
+            <field name="name">department</field>
+>>>>>>> 5efbb733230cc2acc5cbaf6822589e04c4cda100
             <field name="res_model">department</field>
             <field name="view_mode">tree,form</field>
         </record>
 
+<<<<<<< HEAD
         <menuitem id="department_menu" name="Department" action="department_form" parent="submenu"/>
 
+=======
+        <menuitem id="department_management" action="department_action" name="Department" sequence="1" parent = "root1"/>
+>>>>>>> 5efbb733230cc2acc5cbaf6822589e04c4cda100
     </data>
 </odoo>

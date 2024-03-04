@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 from odoo import fields, models
 
 class Product(models.Model):
@@ -50,3 +51,17 @@ class Product(models.Model):
 
 
 >>>>>>> 25fd018ac57293e82e63327c861418ace2f89b56
+=======
+from odoo import models, fields
+
+class ProductData(models.Model):
+    _name = "product"
+    _description = "Product"
+
+
+    product_name = fields.Char(string="product name", copy=False)
+    total_quantity = fields.Integer(string="total quantity")
+    date = fields.Date(string="date")
+    amt = fields.Char(string="amount")
+    p_id = fields.One2many("order", "order_id", string="Product")
+>>>>>>> 5efbb733230cc2acc5cbaf6822589e04c4cda100
