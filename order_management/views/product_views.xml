@@ -1,19 +1,40 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
     <data>
 =======
+=======
+>>>>>>> 25b60103571f440d3c9b82ad0c68ebc9af80f0d0
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
 
+<<<<<<< HEAD
 >>>>>>> 5efbb733230cc2acc5cbaf6822589e04c4cda100
+=======
+=======
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+>>>>>>> adaac1a1aae6a787e125f2b12070b0ae7a95b81c
+>>>>>>> 25b60103571f440d3c9b82ad0c68ebc9af80f0d0
         <record id="product_view_tree" model="ir.ui.view">
             <field name="name">product.view.tree</field>
             <field name="model">product</field>
             <field name="type">tree</field>
             <field name="arch" type="xml">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+                <tree string="Product">
+                    <field name="product_name"/>
+                    <field name="total_quantity"/>
+                    <field name="date"/>
+                    <field name="amt"/>
+                    <field name="p_id"/>
+=======
+>>>>>>> 25b60103571f440d3c9b82ad0c68ebc9af80f0d0
                 <tree>
                     <field name="category"/>
                     <field name="name"/>
@@ -22,6 +43,7 @@
                     <field name="price"/>
                     <field name="available"/>
                     <field name="order_ids"/>
+<<<<<<< HEAD
 =======
                 <tree string="Product">
                     <field name="product_name"/>
@@ -30,22 +52,63 @@
                     <field name="amt"/>
                     <field name="p_id"/>
 >>>>>>> 5efbb733230cc2acc5cbaf6822589e04c4cda100
+=======
+>>>>>>> adaac1a1aae6a787e125f2b12070b0ae7a95b81c
+>>>>>>> 25b60103571f440d3c9b82ad0c68ebc9af80f0d0
                 </tree>
             </field>
         </record>
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 
 
 
 >>>>>>> 5efbb733230cc2acc5cbaf6822589e04c4cda100
+=======
+
+
+
+=======
+>>>>>>> adaac1a1aae6a787e125f2b12070b0ae7a95b81c
+>>>>>>> 25b60103571f440d3c9b82ad0c68ebc9af80f0d0
         <record id="product_view_form" model="ir.ui.view">
             <field name="name">product.view.form</field>
             <field name="model">product</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+                <form>
+                    <sheet>
+                        <group string="product_data">
+                            <group>
+                                <field name="product_name"/>
+                                <field name="total_quantity"/>
+                            </group>
+                            <group>
+                                <field name="date"/>
+                                <field name="amt"/>
+<!--                                <field name="p_id"/>-->
+                            </group>
+                            <notebook>
+                                <page string="Order">
+                                    <field name = "p_id">
+<!--                                        <tree edit="false" create="false" delete="false">-->
+                                        <tree editable="bottom">
+                                            <field name="owner_name"/>
+                                            <field name="address"/>
+                                            <field name="date"/>
+                                            <field name="payment"/>
+                                        </tree>
+                                    </field>
+                                </page>
+                            </notebook>
+                        </group>
+=======
+>>>>>>> 25b60103571f440d3c9b82ad0c68ebc9af80f0d0
                 <form string="product">
                     <sheet>
                         <group string="Product Record">
@@ -76,6 +139,7 @@
                                 </field>
                             </page>
                         </notebook>
+<<<<<<< HEAD
 =======
                 <form>
                     <sheet>
@@ -104,15 +168,24 @@
                             </notebook>
                         </group>
 >>>>>>> 5efbb733230cc2acc5cbaf6822589e04c4cda100
+=======
+>>>>>>> adaac1a1aae6a787e125f2b12070b0ae7a95b81c
+>>>>>>> 25b60103571f440d3c9b82ad0c68ebc9af80f0d0
                     </sheet>
                 </form>
             </field>
         </record>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> 5efbb733230cc2acc5cbaf6822589e04c4cda100
+=======
+
+=======
+>>>>>>> adaac1a1aae6a787e125f2b12070b0ae7a95b81c
+>>>>>>> 25b60103571f440d3c9b82ad0c68ebc9af80f0d0
         <record id="product_action" model="ir.actions.act_window">
             <field name="name">Product</field>
             <field name="res_model">product</field>
@@ -120,6 +193,13 @@
         </record>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+        <menuitem id="product_management" action="product_action" name="Product" sequence="1" parent = "root1"/>
+    </data>
+</odoo>
+=======
+>>>>>>> 25b60103571f440d3c9b82ad0c68ebc9af80f0d0
         <menuitem id="root" name="Order"/>
         <menuitem id="root1" name="Order" parent="root"/>
 
@@ -130,8 +210,12 @@
 
 
 
+<<<<<<< HEAD
 =======
         <menuitem id="product_management" action="product_action" name="Product" sequence="1" parent = "root1"/>
     </data>
 </odoo>
 >>>>>>> 5efbb733230cc2acc5cbaf6822589e04c4cda100
+=======
+>>>>>>> adaac1a1aae6a787e125f2b12070b0ae7a95b81c
+>>>>>>> 25b60103571f440d3c9b82ad0c68ebc9af80f0d0

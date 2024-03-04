@@ -2,9 +2,15 @@
 <odoo>
     <data>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> 5efbb733230cc2acc5cbaf6822589e04c4cda100
+=======
+
+=======
+>>>>>>> adaac1a1aae6a787e125f2b12070b0ae7a95b81c
+>>>>>>> 25b60103571f440d3c9b82ad0c68ebc9af80f0d0
         <record id="student_view_tree" model="ir.ui.view">
             <field name="name">student.view.tree</field>
             <field name="model">student</field>
@@ -12,6 +18,7 @@
             <field name="arch" type="xml">
                 <tree string="Student">
                     <field name="name"/>
+<<<<<<< HEAD
 <<<<<<< HEAD
                     <field name="rollno"/>
                     <field name="std"/>
@@ -21,6 +28,8 @@
                     <field name="city_id" />
                     <field name="nationality"/>
 =======
+=======
+>>>>>>> 25b60103571f440d3c9b82ad0c68ebc9af80f0d0
                     <field name="std"/>
                     <field name="cls"/>
                     <field name="gender"/>
@@ -30,21 +39,62 @@
                     <field name="city_id"/>
                     <field name="teacher_ids"/>
                     <field name="math_teacher_ids"/>
+<<<<<<< HEAD
 >>>>>>> 5efbb733230cc2acc5cbaf6822589e04c4cda100
+=======
+=======
+                    <field name="rollno"/>
+                    <field name="std"/>
+                    <field name="gender"/>
+                    <field name="birthdate"/>
+                    <field name="result"/>
+                    <field name="city_id" />
+                    <field name="nationality"/>
+>>>>>>> adaac1a1aae6a787e125f2b12070b0ae7a95b81c
+>>>>>>> 25b60103571f440d3c9b82ad0c68ebc9af80f0d0
                 </tree>
             </field>
         </record>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> 5efbb733230cc2acc5cbaf6822589e04c4cda100
+=======
+
+=======
+>>>>>>> adaac1a1aae6a787e125f2b12070b0ae7a95b81c
+>>>>>>> 25b60103571f440d3c9b82ad0c68ebc9af80f0d0
         <record id="student_view_form" model="ir.ui.view">
             <field name="name">student.view.form</field>
             <field name="model">student</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+                <form>
+                    <sheet>
+                        <group string="student_data">
+                            <group>
+                                <field name="name"/>
+                                <field name="std"/>
+                                <field name="cls"/>
+                                <field name="teacher_ids"/>
+                            </group>
+                            <group>
+                                <field name="gender"/>
+                                <field name="age"/>
+                                <field name="birth_date"/>
+                                <field name="teacher_id"/>
+                                <field name="city_id"/>
+                                <field name="math_teacher_ids"/>
+                            </group>
+                        </group>
+                    </sheet>
+=======
+>>>>>>> 25b60103571f440d3c9b82ad0c68ebc9af80f0d0
 
                 <form>
                     <sheet>
@@ -71,6 +121,7 @@
 
 
 
+<<<<<<< HEAD
 =======
                 <form>
                     <sheet>
@@ -92,10 +143,14 @@
                         </group>
                     </sheet>
 >>>>>>> 5efbb733230cc2acc5cbaf6822589e04c4cda100
+=======
+>>>>>>> adaac1a1aae6a787e125f2b12070b0ae7a95b81c
+>>>>>>> 25b60103571f440d3c9b82ad0c68ebc9af80f0d0
                 </form>
             </field>
         </record>
 
+<<<<<<< HEAD
 <<<<<<< HEAD
         <record id="student_form" model="ir.actions.act_window">
             <field name="name">student form</field>
@@ -103,22 +158,42 @@
         <record id="student_action" model="ir.actions.act_window">
             <field name="name">Student</field>
 >>>>>>> 5efbb733230cc2acc5cbaf6822589e04c4cda100
+=======
+        <record id="student_action" model="ir.actions.act_window">
+            <field name="name">Student</field>
+=======
+        <record id="student_form" model="ir.actions.act_window">
+            <field name="name">student form</field>
+>>>>>>> adaac1a1aae6a787e125f2b12070b0ae7a95b81c
+>>>>>>> 25b60103571f440d3c9b82ad0c68ebc9af80f0d0
             <field name="res_model">student</field>
             <field name="view_mode">tree,form</field>
         </record>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+        <menuitem id="root" name="School"/>
+        <menuitem id ="root1" name="School" action = "student_action" parent="root"/>
+        <menuitem id ="riken_personal" name="Student" action="student_action" sequence="1" parent = "root1"/>
+=======
+>>>>>>> 25b60103571f440d3c9b82ad0c68ebc9af80f0d0
         <menuitem id="root" name="School"/>
         <menuitem id="submenu" name="School" parent="root"/>
         <menuitem id="student_menu" action="student_form" parent="submenu" />
 
         <menuitem id="student_formDirect" name="Student form" action="student_form" parent="root"/>
 
+<<<<<<< HEAD
 =======
 
         <menuitem id="root" name="School"/>
         <menuitem id ="root1" name="School" action = "student_action" parent="root"/>
         <menuitem id ="riken_personal" name="Student" action="student_action" sequence="1" parent = "root1"/>
 >>>>>>> 5efbb733230cc2acc5cbaf6822589e04c4cda100
+=======
+>>>>>>> adaac1a1aae6a787e125f2b12070b0ae7a95b81c
+>>>>>>> 25b60103571f440d3c9b82ad0c68ebc9af80f0d0
     </data>
 </odoo>

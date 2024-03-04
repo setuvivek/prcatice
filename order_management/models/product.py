@@ -1,5 +1,21 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+from odoo import models, fields
+
+class ProductData(models.Model):
+    _name = "product"
+    _description = "Product"
+
+
+    product_name = fields.Char(string="product name", copy=False)
+    total_quantity = fields.Integer(string="total quantity")
+    date = fields.Date(string="date")
+    amt = fields.Char(string="amount")
+    p_id = fields.One2many("order", "order_id", string="Product")
+=======
+>>>>>>> 25b60103571f440d3c9b82ad0c68ebc9af80f0d0
+<<<<<<< HEAD
 from odoo import fields, models
 
 class Product(models.Model):
@@ -51,6 +67,7 @@ class Product(models.Model):
 
 
 >>>>>>> 25fd018ac57293e82e63327c861418ace2f89b56
+<<<<<<< HEAD
 =======
 from odoo import models, fields
 
@@ -65,3 +82,6 @@ class ProductData(models.Model):
     amt = fields.Char(string="amount")
     p_id = fields.One2many("order", "order_id", string="Product")
 >>>>>>> 5efbb733230cc2acc5cbaf6822589e04c4cda100
+=======
+>>>>>>> adaac1a1aae6a787e125f2b12070b0ae7a95b81c
+>>>>>>> 25b60103571f440d3c9b82ad0c68ebc9af80f0d0

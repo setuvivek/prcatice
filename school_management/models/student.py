@@ -1,15 +1,37 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # -*- coding: utf-8 -*-
 from odoo import fields, models
 =======
 from odoo import models, fields
 >>>>>>> 5efbb733230cc2acc5cbaf6822589e04c4cda100
+=======
+from odoo import models, fields
+=======
+# -*- coding: utf-8 -*-
+from odoo import fields, models
+>>>>>>> adaac1a1aae6a787e125f2b12070b0ae7a95b81c
+>>>>>>> 25b60103571f440d3c9b82ad0c68ebc9af80f0d0
 
 class Student(models.Model):
     _name = 'student'
     _description = 'Student'
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+    name = fields.Char(string='Name', required=True, help="validation")
+    std = fields.Integer(string='Std')
+    cls = fields.Selection(selection=[('a','A'),('b','B')],string='Cls')
+    gender = fields.Selection(selection=[('male','MALE'),('female','FEMALE')],string='Gender', default="male")
+    age = fields.Integer(string='Age')
+    birth_date = fields.Date(string="birth_date")
+    teacher_id = fields.Many2one("teacher", string="Teacher")
+    teacher_ids = fields.Many2many("teacher", "science_teacher", "student", "teacher", string="science_teacher")
+    math_teacher_ids = fields.Many2many("teacher", "math_teacher", "student", "teacher", string="math_teacher")
+    city_id = fields.Many2one("city", string="City")
+=======
+>>>>>>> 25b60103571f440d3c9b82ad0c68ebc9af80f0d0
 
     name = fields.Char(string='Name', required=True,copy=False,help='validated field')
     rollno= fields.Integer(string='Roll No', required=True)
@@ -29,6 +51,7 @@ class Student(models.Model):
 
 
 
+<<<<<<< HEAD
 =======
     name = fields.Char(string='Name', required=True, help="validation")
     std = fields.Integer(string='Std')
@@ -41,3 +64,6 @@ class Student(models.Model):
     math_teacher_ids = fields.Many2many("teacher", "math_teacher", "student", "teacher", string="math_teacher")
     city_id = fields.Many2one("city", string="City")
 >>>>>>> 5efbb733230cc2acc5cbaf6822589e04c4cda100
+=======
+>>>>>>> adaac1a1aae6a787e125f2b12070b0ae7a95b81c
+>>>>>>> 25b60103571f440d3c9b82ad0c68ebc9af80f0d0

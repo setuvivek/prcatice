@@ -1,4 +1,27 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+from odoo import models, fields
+
+class Teacher(models.Model):
+
+    _name = "teacher"
+    _description = "Teacher"
+    _rec_name = "name"
+    _order = "age desc"
+
+    name = fields.Char(string='Name', required=True)
+    gender = fields.Selection(selection=[('male', 'MALE'), ('female', 'FEMALE')], string='Gender',default="male")
+    age = fields.Integer(string='Age')
+    phn_no = fields.Integer(string='Phn_No')
+    city = fields.Char(string='City')
+    joining_date = fields.Datetime(string="joining_date")
+    student_ids = fields.One2many("student", "teacher_id", string="Student")
+    department_ids = fields.One2many("department", "teacher_id", string="department")
+
+    #department_id = fields.Many2one("department", string="department")
+=======
+>>>>>>> 25b60103571f440d3c9b82ad0c68ebc9af80f0d0
 # -*- coding: utf-8 -*-
 from odoo import fields, models
 
@@ -21,6 +44,7 @@ class Teacher(models.Model):
     hod=fields.Boolean(string='Hod')
     student_ids = fields.One2many('student', 'classteacher_id', string='Class Students')
 
+<<<<<<< HEAD
 =======
 from odoo import models, fields
 
@@ -42,3 +66,6 @@ class Teacher(models.Model):
 
     #department_id = fields.Many2one("department", string="department")
 >>>>>>> 5efbb733230cc2acc5cbaf6822589e04c4cda100
+=======
+>>>>>>> adaac1a1aae6a787e125f2b12070b0ae7a95b81c
+>>>>>>> 25b60103571f440d3c9b82ad0c68ebc9af80f0d0
