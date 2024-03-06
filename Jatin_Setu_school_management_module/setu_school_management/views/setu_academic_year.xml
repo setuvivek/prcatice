@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="setu_academic_year_view_tree" model="ir.ui.view">
+        <field name="name">setu.academic.year.view.tree</field>
+        <field name="model">setu.academic.year</field>
+        <field name="arch" type="xml">
+            <tree string="Setu Admission Form">
+                <field name="sequence"/>
+                <field name="name"/>
+                <field name="code"/>
+                <field name="date_start"/>
+                <field name="date_stop"/>
+                <field name="month_ids"/>
+                <field name="current"/>
+            </tree>
+        </field>
+    </record>
+    <!--    action-->
+    <record id="setu_academic_year_action" model="ir.actions.act_window">
+        <field name="name">Academic Year</field>
+        <field name="res_model">setu.academic.year</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <!--    action end-->
+    <record id="setu_academic_year_view_form" model="ir.ui.view">
+        <field name="name">setu.academic.year.view.form</field>
+        <field name="model">setu.academic.year</field>
+        <field name="arch" type="xml">
+            <form string="Setu Academic Year">
+                <header>
+                    <!--                                        <button name="%(setu_school_action)d" string="Action Button" type="action"/>-->
+                    <button name="action_done" string="On Male" type="object"/>
+                    <!--                    <button name="Object_buttt" string="On Female" type="object"/>-->
+                    <!--                    <field name="status" widget="statusbar"/>-->
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="sequence"/>
+                            <field name="name"/>
+                            <field name="code"/>
+                        </group>
+                        <group>
+                            <field name="date_start"/>
+                            <field name="date_stop"/>
+                            <field name="current"/>
+
+
+                        </group>
+                        <notebook>
+                            <page string="Monthh">
+                                <field name="month_ids">
+                                    <tree>
+                                        <field name="name"/>
+                                        <field name="code"/>
+                                        <field name="date_start"/>
+                                        <field name="date_stop"/>
+                                        <field name="academic_year_id" optional="hide"/>
+                                    </tree>
+
+                                </field>
+
+                            </page>
+                        </notebook>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <menuitem id="root2"
+              name="Academic"
+              parent="root1"
+    />
+    <menuitem id="setu_academic_year_menu"
+              name="Academic Year"
+              action="setu_academic_year_action"
+              parent="root2"
+    />
+</odoo>
