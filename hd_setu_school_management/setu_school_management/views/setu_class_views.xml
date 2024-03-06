@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="setu_class_view_tree" model="ir.ui.view">
+            <field name="name">setu.class.view.tree</field>
+            <field name="model">setu.class</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Class">
+                    <field name="name"/>
+                    <field name="class_teacher_id"/>
+                    <field name="teacher_ids"/>
+                    <field name="student_ids"/>
+                    <field name="school_ids"/>
+                    <field name="subject_ids"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="setu_class_view_form" model="ir.ui.view">
+            <field name="name">setu.class.view.form</field>
+            <field name="model">setu.class</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Class">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                            <group>
+                                <field name="class_teacher_id"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Teacher">
+                                <field name="teacher_ids">
+                                </field>
+                            </page>
+                            <page string="Student">
+                                <field name="student_ids">
+                                    <tree editable="bottom">
+                                        <field name="name"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="School">
+                                <field name="school_ids"/>
+                            </page>
+                            <page string="Subject">
+                                <field name="subject_ids"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="setu_class_action" model="ir.actions.act_window">
+            <field name="name">Class</field>
+            <field name="res_model">setu.class</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <menuitem id="setu_class_menu" action="setu_class_action" parent="root1"/>
+
+    </data>
+</odoo>
