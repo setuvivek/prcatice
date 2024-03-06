@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="setu_academic_year_view_tree" model="ir.ui.view">
+            <field name="name">setu.academic.year.view.tree</field>
+            <field name="model">setu.academic.year</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="academic year">
+                    <field name="sequence"/>
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="date_start"/>
+                    <field name="date_stop"/>
+                    <field name="month_ids"/>
+                    <field name="current"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="setu_academic_year_form" model="ir.ui.view">
+            <field name="name">setu.academic.year.view.form</field>
+            <field name="model">setu.academic.year</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="academic year">
+                    <header>
+                        <button name="action_done" string="Action Done" type="object"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <field name="sequence"/>
+                            <field name="name"/>
+                            <field name="code"/>
+                            <field name="date_start"/>
+                            <field name="date_stop"/>
+                            <field name="current"/>
+                        </group>
+                        <notebook>
+                            <page string="Month">
+                                <field name="month_ids"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="setu_academic_year_action" model="ir.actions.act_window">
+            <field name="name">Academic Year</field>
+            <field name="res_model">setu.academic.year</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <menuitem id="setu_academic_year_menu" action="setu_academic_year_action" parent="root1"/>
+
+    </data>
+</odoo>

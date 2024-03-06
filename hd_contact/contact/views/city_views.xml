@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="city_view_tree" model="ir.ui.view">
+            <field name="name">city.view.tree</field>
+            <field name="model">city</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="contact_partner_ids"/>
+                    <field name="state_id"/>
+                    <field name="country_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="city_view_form" model="ir.ui.view">
+            <field name="name">city.view.form</field>
+            <field name="model">city</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="city">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="code"/>
+                            <field name="contact_partner_ids"/>
+                            <field name="state_id"/>
+                            <field name="country_id"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="city_action" model="ir.actions.act_window">
+            <field name="name">City</field>
+            <field name="res_model">city</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="root" name="Contact"/>
+<!--        <menuitem id="root1" name="Contact" parent="root"/>-->
+        <menuitem id="root2" name="Configuration"  parent="root"/>
+        <menuitem id="city_menu" action="city_action" parent="root2"/>
+
+    </data>
+</odoo>
