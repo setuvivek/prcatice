@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="admission_view_tree" model="ir.ui.view">
+        <field name="name">setu.admission.view.tree</field>
+        <field name="model">setu.admission</field>
+        <field name="arch" type="xml">
+            <tree string="admission">
+                <field name="name" placeholder="e.g.Soniya"/>
+                <field name="address"/>
+                <field name="email"/>
+                <field name="phone"/>
+                <field name="dob"/>
+                <field name="state"/>
+                <field name="class_id"/>
+            </tree>
+        </field>
+    </record>
+    <record id="admission_view_form" model="ir.ui.view">
+        <field name="name">setu.admission.form</field>
+        <field name="model">setu.admission</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_done" string="Done" type="object"/>
+                    <button name="action_draft" string="Draft" type="object"/>
+                    <field name="status" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" placeholder="e.g. Soniya"/>
+                            <field name="address"/>
+                            <field name="state"/>
+                        </group>
+                        <group>
+                            <field name="phone"/>
+                            <field name="dob"/>
+                            <field name="email" placeholder="e.g.abc@gmail.com"/>
+                            <field name="class_id"/>
+                        </group>
+                    </group>
+<!--                    <notebook>-->
+<!--                        <page string="Class"/>-->
+<!--                        <field name="class_id"/>-->
+<!--                    </notebook>-->
+<!--                    <notebook>-->
+<!--                        <page string="Admission">-->
+<!--                            <tree string="school"/>-->
+<!--                            <field name="name"/>-->
+<!--                            <field name="addres"/>-->
+<!--                            <field name="phone"/>-->
+<!--                            <field name="email"/>-->
+<!--                            <field name="mobile"/>-->
+<!--                        </page>-->
+<!--                    </notebook>-->
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="setu_admission_form_action" model="ir.actions.act_window">
+        <field name="name">setu.admission</field>
+        <field name="res_model">setu.admission</field>
+        <field name="view_mode">tree,form,kanban</field>
+    </record>
+
+    <menuitem id="root" name="Setu"/>
+    <menuitem id="root1"
+              name="Setu"
+              parent="root"/>
+    <menuitem id="setu_admission_form"
+              name="Admission"
+              action="setu_admission_form_action"
+              parent="root1"/>
+<!--    <menuitem id="setu_class"-->
+<!--              name="class"-->
+<!--              action="class_form_action"-->
+<!--              parent="root1"/>-->
+    <menuitem id="setu_class_menu"
+              name="Class"
+              action="class_action"
+              parent="root1"/>
+    <menuitem id="setu_school_menu"
+              name="School"
+              action="setu_school_action"
+              parent="root1"/>
+    <menuitem id="setu_student_menu"
+              name="Student"
+              action="setu_student_action"
+              parent="root1"/>
+    <menuitem id="setu_subject_menu"
+              name="Subject"
+              action="subject_action"
+              parent="root1"/>
+    <menuitem id="setu_teacher_menu"
+              name="Teacher"
+              action="teacher_action"
+              parent="root1"/>
+    <menuitem id="setu_academic_year_menu"
+              name="Academic Year"
+              action="setu_academic_year_action"
+              parent="root1"/>
+    <menuitem id="setu_academic_month_menu"
+              name="Academic month"
+              action="setu_academic_month_action"
+              parent="root1"/>
+<!--    <menuitem id="setu_class_room_action"-->
+<!--              name="Class Room"-->
+<!--              action="setu_class_room_action"-->
+<!--              parent="root1"/>-->
+<!--    <menuitem id="setu_academic_month_menu"-->
+<!--              name="Academic Month"-->
+<!--              action="setu_academic_month_action"-->
+<!--              paent="root1"/>-->
+
+</odoo>
+
