@@ -8,19 +8,29 @@ class SetuTeacher(models.Model):
 
     #Char
     name = fields.Char(string='Name')
-    address = fields.Char(string='Address')
+    work_address = fields.Char(string='Work Address')
+    home_address = fields.Char(string='Home Address')
     phone = fields.Char(string='Phone')
     email = fields.Char(string='Email')
     mobile = fields.Char(string='Mobile')
+    street = fields.Char(string='Street')
+    zip = fields.Char(string='Zip')
+    street2 = fields.Char(string='Street')
+    zip2 = fields.Char(string='Zip')
 
     #m2o
+    school_id = fields.Many2one('setu.school', string='School')
+    standard_id = fields.Many2one('setu.class', string='Responsibility of Academic Class')
     city_id = fields.Many2one('city', string='City')
     state_id = fields.Many2one('state', string='State')
     country_id = fields.Many2one('country', string='Country')
-    school_id = fields.Many2one('setu.school', string='School')
-    subject_id = fields.Many2one('setu.subject', string='Subject')
+    city2_id = fields.Many2one('city', string='City')
+    state2_id = fields.Many2one('state', string='State')
+    country2_id = fields.Many2one('country', string='Country')
+
 
     #o2m
     student_ids = fields.One2many('setu.student','class_teacher_id', string='Student')
-    class_ids = fields.Many2many('setu.class','class_teacher_id', string='Class')
+    subject_ids = fields.One2many('setu.subject', 'subject_teacher_id', string='Subject')
+
 

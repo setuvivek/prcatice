@@ -7,24 +7,43 @@ class SetuStudent(models.Model):
 
 
     #Char
-    name = fields.Char(string='Name')
+    first_name = fields.Char(string='First Name')
+    middle_name = fields.Char(string='Middle Name')
+    last_name = fields.Char(string='Last Name')
     address = fields.Char(string='Address')
     email = fields.Char(string='Email')
     phone = fields.Char(string='Phone')
+    blood_group = fields.Char(string='Blood Group')
+    terminate_reason = fields.Char(string='Terminate Reason')
 
     #Integer
     roll_no = fields.Integer(string='Roll No')
+    weight = fields.Integer(string='Weight')
+    height = fields.Integer(string='Height')
+
+    #Boolean
+    active = fields.Boolean(string='Active')
+
+    #Selection
+    gender = fields.Selection(selection=[('male', 'Male'), ('female', 'Female')])
 
     #Date
-    dob = fields.Date(string='DOB')
+    date_of_birth = fields.Date(string='DOB')
+
+    #Datetime
+    admission_date = fields.Datetime(string='Admission Date')
 
     #m2o
     city_id = fields.Many2one('city', string='City')
     state_id = fields.Many2one('state', string='State')
     country_id = fields.Many2one('country', string='Country')
-    class_id = fields.Many2one('setu.class', string='Class')
     class_teacher_id = fields.Many2one('setu.teacher', string='Class Teacher')
     school_id = fields.Many2one('setu.school', string='School')
+    standard_id = fields.Many2one('setu.class', string='Class')
+    division_id = fields.Many2one('setu.standard.division', string='Division')
+    medium_id = fields.Many2one('setu.standard.medium', string='Medium')
+    academic_year_id = fields.Many2one('setu.academic.year', string='Year')
+    mother_tongue_id = fields.Many2one('setu.mother.tongue', string='Mother Tongue')
 
     #m2m
     teacher_ids = fields.Many2many('setu.teacher','student_teacher', 'student', 'teacher', string='Teacher')

@@ -14,6 +14,7 @@
                     <field name="date_stop"/>
                     <field name="month_ids"/>
                     <field name="current"/>
+                    <field name="student_ids"/>
                 </tree>
             </field>
         </record>
@@ -39,6 +40,9 @@
                         <notebook>
                             <page string="Month">
                                 <field name="month_ids"/>
+                            </page>
+                            <page string="Student">
+                                <field name="student_ids"/>
                             </page>
                         </notebook>
                     </sheet>

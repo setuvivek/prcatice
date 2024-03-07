@@ -11,6 +11,10 @@ class SetuAdmissionForm(models.Model):
     email = fields.Char(string='Email')
     phone = fields.Char(string='Phone')
     address = fields.Char(string='Address')
+    street = fields.Char(string='Street')
+    street2 = fields.Char(string='Street 2')
+    zip = fields.Char(string='Zip')
+
 
     # date
     dob = fields.Date(string='DOB')
@@ -23,3 +27,4 @@ class SetuAdmissionForm(models.Model):
     city_id = fields.Many2one('city', string='City')
     state_id = fields.Many2one('state', string='State')
     country_id = fields.Many2one('country', string='Country')
+    school_id = fields.Many2one('setu.school', string='School')

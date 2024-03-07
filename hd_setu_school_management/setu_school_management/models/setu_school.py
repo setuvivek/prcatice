@@ -10,6 +10,12 @@ class SetuSchool(models.Model):
     address = fields.Char(string='Address')
     phone = fields.Char(string='Phone')
     email = fields.Char(string='Email')
+    street = fields.Char(string='Street')
+    zip = fields.Char(string='Zip')
+
+    #Integer
+    code = fields.Integer(string='Code')
+    required_age = fields.Integer(string='Minimum Age')
 
     #m2o
     city_id = fields.Many2one('city', string='City')
@@ -19,6 +25,7 @@ class SetuSchool(models.Model):
     #o2m
     student_ids = fields.One2many('setu.student', 'school_id', string='Student')
     teacher_ids = fields.One2many('setu.teacher', 'school_id', string='Teacher')
+    school_standard_ids= fields.One2many('setu.standard.standard', 'school_id', string='Standards')
 
 
     @api.model_create_multi
