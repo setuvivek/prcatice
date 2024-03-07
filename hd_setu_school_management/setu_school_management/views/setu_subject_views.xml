@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="setu_subject_view_tree" model="ir.ui.view">
+            <field name="name">setu.subject.view.tree</field>
+            <field name="model">setu.subject</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Subject">
+                    <field name="name"/>
+                    <field name="subject_teacher_id"/>
+                    <field name="student_ids"/>
+                    <field name="teacher_ids"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="setu_subject_view_form" model="ir.ui.view">
+            <field name="name">setu.subject.view.form</field>
+            <field name="model">setu.subject</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Subject">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                            <group>
+                                <field name="subject_teacher_id"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Student">
+                                <field name="student_ids"/>
+                            </page>
+                            <page string="Teacher">
+                                <field name="teacher_ids"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="setu_subject_action" model="ir.actions.act_window">
+            <field name="name">Subject</field>
+            <field name="res_model">setu.subject</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <menuitem id="setu_subject_menu" action="setu_subject_action" parent="root1"/>
+
+    </data>
+</odoo>
