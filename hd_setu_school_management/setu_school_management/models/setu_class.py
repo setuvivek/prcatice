@@ -14,9 +14,10 @@ class SetuClass(models.Model):
     class_teacher_id = fields.Many2one('setu.teacher', string='Class Teacher')
 
     #o2m
-    student_ids = fields.One2many('setu.student', 'class_id', string='Student')
+    student_ids = fields.One2many('setu.student', 'standard_id', string='Student')
+    subject_ids = fields.One2many('setu.subject','standard_id' ,string='Subject')
+    admission_form_ids = fields.One2many('setu.admission.form', 'class_id', string='Total Admission')
 
     #m2m
     teacher_ids = fields.Many2many('setu.teacher','class_teacher', 'class', 'teacher', string='Teacher')
     school_ids = fields.Many2many('setu.school','class_school', 'class', 'school' ,string='School')
-    subject_ids = fields.Many2many('setu.subject', 'class_subject', 'class', 'subject',string='Subject')

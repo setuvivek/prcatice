@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="setu_standard_division_view_tree" model="ir.ui.view">
+            <field name="name">setu.standard.division.view.tree</field>
+            <field name="model">setu.standard.division</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Standard Division">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="student_ids"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="setu_standard_division_view_form" model="ir.ui.view">
+            <field name="name">setu.standard.division.view.form</field>
+            <field name="model">setu.standard.division</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Standard Division">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                            <group>
+                                <field name="code"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Student">
+                                <field name="student_ids"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="setu_standard_division_action" model="ir.actions.act_window">
+            <field name="name">Standard Division</field>
+            <field name="res_model">setu.standard.division</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="root3" name="Standards" parent="root"/>
+        <menuitem id="setu_standard_division_menu" action="setu_standard_division_action" parent="root3"/>
+
+    </data>
+</odoo>

@@ -7,3 +7,11 @@ access_setu_student,access.setu.student,setu_school_management.model_setu_studen
 access_setu_admission_form,access.setu.admission.form,setu_school_management.model_setu_admission_form,,1,1,1,1
 access_setu_academic_year,access.setu.academic.year,setu_school_management.model_setu_academic_year,,1,1,1,1
 access_setu_academic_month,access.setu.academic.month,setu_school_management.model_setu_academic_month,,1,1,1,1
+access_setu_class_room,access.setu.class.room,setu_school_management.model_setu_class_room,,1,1,1,1
+access_setu_standard_medium,access.setu.standard.medium,setu_school_management.model_setu_standard_medium,,1,1,1,1
+access_setu_standard_division,access.setu.standard.division,setu_school_management.model_setu_standard_division,,1,1,1,1
+access_setu_standard_standard,access.setu.standard.standard,setu_school_management.model_setu_standard_standard,,1,1,1,1
+access_setu_student_cast,access.setu.student.cast,setu_school_management.model_setu_student_cast,,1,1,1,1
+access_setu_grade,access.setu.grade,setu_school_management.model_setu_grade,,1,1,1,1
+access_setu_grade_line,access.setu.grade.line,setu_school_management.model_setu_grade_line,,1,1,1,1
+access_setu_mother_tongue,access.setu.mother.tongue,setu_school_management.model_setu_mother_tongue,,1,1,1,1
