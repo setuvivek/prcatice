@@ -7,20 +7,33 @@
             <field name="type">tree</field>
             <field name="arch" type="xml">
                 <tree string="Student">
-                    <field name="name"/>
+                    <field name="first_name"/>
+                    <field name="middle_name"/>
+                    <field name="last_name"/>
+                    <field name="gender"/>
                     <field name="address"/>
                     <field name="city_id"/>
                     <field name="state_id"/>
                     <field name="country_id"/>
+                    <field name="date_of_birth"/>
+                    <field name="blood_group"/>
+                    <field name="weight"/>
+                    <field name="height"/>
+                    <field name="terminate_reason"/>
+                    <field name="active"/>
+                    <field name="standard_id"/>
+                    <field name="division_id"/>
+                    <field name="medium_id"/>
                     <field name="email"/>
                     <field name="phone"/>
+                    <field name="school_id"/>
+                    <field name="admission_date"/>
+                    <field name="academic_year_id"/>
                     <field name="roll_no"/>
-                    <field name="dob"/>
-                    <field name="class_id"/>
+                    <field name="mother_tongue_id"/>
                     <field name="teacher_ids"/>
                     <field name="class_teacher_id"/>
                     <field name="subject_ids"/>
-                    <field name="school_id"/>
                 </tree>
             </field>
         </record>
@@ -37,19 +50,32 @@
                     <sheet>
                         <group>
                             <group>
-                                <field name="name"/>
-                                <field name="class_id"/>
+                                <field name="first_name"/>
+                                <field name="middle_name"/>
+                                <field name="last_name"/>
                                 <field name="address"/>
+                                <field name="blood_group"/>
                                 <field name="email"/>
                                 <field name="phone"/>
+                                <field name="active"/>
                                 <field name="school_id"/>
+                                <field name="standard_id"/>
+                                <field name="division_id"/>
+                                <field name="medium_id"/>
+                                <field name="mother_tongue_id"/>
                             </group>
                             <group>
                                 <field name="city_id"/>
                                 <field name="state_id"/>
                                 <field name="country_id"/>
+                                <field name="gender"/>
+                                <field name="weight"/>
+                                <field name="height"/>
                                 <field name="roll_no"/>
-                                <field name="dob"/>
+                                <field name="terminate_reason"/>
+                                <field name="date_of_birth"/>
+                                <field name="admission_date"/>
+                                <field name="academic_year_id"/>
                                 <field name="class_teacher_id"/>
                             </group>
                         </group>
@@ -72,7 +98,8 @@
             <field name="view_mode">tree,form</field>
         </record>
 
-        <menuitem id="setu_student_menu" action="setu_student_action" parent="root1"/>
+        <menuitem id="root2" name="Student" parent="root"/>
+        <menuitem id="setu_student_menu" action="setu_student_action" parent="root2"/>
 
     </data>
 </odoo>

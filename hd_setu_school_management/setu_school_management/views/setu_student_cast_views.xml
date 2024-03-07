@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="setu_student_cast_view_tree" model="ir.ui.view">
+            <field name="name">setu.student.cast.view.tree</field>
+            <field name="model">setu.student.cast</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Student Cast">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="setu_student_cast_view_form" model="ir.ui.view">
+            <field name="name">setu.student.cast.view.form</field>
+            <field name="model">setu.student.cast</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Student Cast">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="setu_student_cast_action" model="ir.actions.act_window">
+            <field name="name">Student Cast</field>
+            <field name="res_model">setu.student.cast</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <menuitem id="setu_student_cast_menu" action="setu_student_cast_action" parent="root2"/>
+
+    </data>
+</odoo>
