@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="setu_grade_view_tree" model="ir.ui.view">
+        <field name="name">setu.grade.view.tree</field>
+        <field name="model">setu.grade</field>
+        <field name="arch" type="xml">
+            <tree string="grade">
+                <field name="name"/>
+                <field name="grade_line_ids"/>
+            </tree>
+        </field>
+    </record>
+    <record id="setu_grade_view_form" model="ir.ui.view">
+        <field name="name">setu.grade</field>
+        <field name="model">setu.grade</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Grade Lines">
+                            <field name="grade_line_ids"/>
+                        </page>
+
+                    </notebook>
+<!--                    <notebook>-->
+<!--                        <page string="School">-->
+<!--                            <tree string="school"/>-->
+<!--                            <field name="name"/>-->
+<!--                            <field name="address"/>-->
+<!--                            <field name="phone"/>-->
+<!--                            <field name="email"/>-->
+<!--                        </page>-->
+<!--                    </notebook>-->
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="setu_grade_action" model="ir.actions.act_window">
+        <field name="name">grade</field>
+        <field name="res_model">setu.grade</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+<!--    <menuitem id="grade" name="Grade"/>-->
+<!--    <menuitem id="setu_grade_menu"-->
+<!--              name="Grade"-->
+<!--              parent="setu_grade_menu"/>-->
+<!--    <menuitem id="setu_grade_line_menu"-->
+<!--              name="Grade Line"-->
+<!--              parent="setu_grade_menu"/>-->
+    <menuitem id="setu_grade_menu"
+              name="Grade"
+              action="setu_grade_action"
+              parent="grade"/>
+</odoo>
+

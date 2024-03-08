@@ -1,6 +1,7 @@
 from odoo import api, models, fields
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
+from odoo.exceptions import ValidationError
 
 class AcademicYear(models.Model):
 
@@ -18,6 +19,7 @@ class AcademicYear(models.Model):
 
 
     def action_done(self):
+        self.month_ids.unlink()
         date_star = self.date_start
         date_end = self.date_stop
         # vals=[]
@@ -39,6 +41,17 @@ class AcademicYear(models.Model):
                          'academic_year_id': self.id})
 
             self.env['setu.academic.month'].create(vals)
+
+    def unlink(self):
+        self.month_ids.unlink()
+        # for record_ids in self:
+        #     if record_ids.date_start:
+        #         raise ValidationError("can't be deleted")
+        res = super(AcademicYear, self).unlink()
+        return res
+
+
+
 
         # while date_star <= date_end:
         #     date_star += relativedelta(months=+1)

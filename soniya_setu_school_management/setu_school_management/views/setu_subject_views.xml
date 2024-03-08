@@ -7,8 +7,18 @@
         <field name="arch" type="xml">
             <tree string="subject">
                 <field name="name"/>
-                <field name="subject_teacher_id"/>
+                <field name="code"/>
+                <field name="maximum_marks"/>
+                <field name="minimum_marks"/>
+                <field name="weightage"/>
+                <field name="teacher_ids"/>
+                <field name="standard_ids"/>
+                <field name="standard_id"/>
                 <field name="student_ids"/>
+
+<!--                <field name="subject_teacher_id"/>-->
+<!--                <field name="student_ids"/>-->
+<!--                <field name="subject_ids"/>-->
             </tree>
         </field>
     </record>
@@ -21,10 +31,35 @@
                     <group>
                         <group>
                             <field name="name"/>
-                            <field name="subject_teacher_id"/>
-                            <field name="student_ids"/>
+                            <field name="code"/>
+                            <field name="maximum_marks"/>
+                            <field name="minimum_marks"/>
+<!--                            <field name="weightage"/>-->
+<!--                            <field name="subject_teacher_id"/>-->
+<!--                            <field name="student_ids"/>-->
+                        </group>
+                        <group>
+                            <field name="weightage"/>
+<!--                            <field name="weightage"/>-->
+<!--                            <field name="teacher_ids"/>-->
+<!--                            <field name="standard_ids"/>-->
+                            <field name="standard_id"/>
+<!--                            <field name="student_ids"/>-->
+<!--                            <field name="student_ids"/>-->
+<!--                            <field name="subject_ids"/>-->
                         </group>
                     </group>
+                    <notebook>
+                        <page string="Teacher">
+                            <field name="teacher_ids"/>
+                        </page>
+                        <page string="Standard">
+                            <field name="standard_ids"/>
+                        </page>
+                        <page string="Student">
+                            <field name="student_ids"/>
+                        </page>
+                    </notebook>
 <!--                    <notebook>-->
 <!--                        <page string="Subject">-->
 <!--                            <tree string="class"/>-->

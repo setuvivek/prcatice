@@ -7,9 +7,16 @@
         <field name="arch" type="xml">
             <tree string="school">
                 <field name="name"/>
-                <field name="address"/>
-                <field name="phone"/>
-                <field name="email"/>
+                <field name="code"/>
+<!--                <field name="work address"/>-->
+<!--                <field name="home address"/>-->
+                <field name="street"/>
+                <field name="city"/>
+                <field name="state_id"/>
+                <field name="zip"/>
+                <field name="country_id"/>
+                <field name="required_age"/>
+                <field name="school_standard_ids"/>
             </tree>
         </field>
     </record>
@@ -22,22 +29,54 @@
                     <group>
                         <group>
                             <field name="name"/>
-                            <field name="address"/>
+                            <field name="code"/>
+                            <field name="street"/>
+                            <field name="city"/>
                         </group>
                         <group>
-                            <field name="phone"/>
-                            <field name="email"/>
+<!--                            <field name="work address" placeholder="Street"/>-->
+<!--                            <span/>-->
+<!--                            <div>-->
+<!--                                <field name="City" placeholder="City"/>-->
+<!--                                <field name="State" placeholder="State"/>-->
+<!--                                <field name="Country" placeholder="Country"/>-->
+<!--                                <field name="Zip" placeholder="Zip"/>-->
+<!--                                <field name="Phone" placeholder="Phone"/>-->
+<!--                                <field name="Email" placeholder="Email"/>-->
+<!--                            </div>-->
+<!--                            <field name="home address" placeholder="Street"/>-->
+<!--                            <span/>-->
+<!--                            <div>-->
+<!--                                <field name="City" placeholder="City"/>-->
+<!--                                <field name="State" placeholder="State"/>-->
+<!--                                <field name="Country" placeholder="Country"/>-->
+<!--                                <field name="Zip" placeholder="Zip"/>-->
+<!--                                <field name="Phone" placeholder="Phone"/>-->
+<!--                                <field name="Email" placeholder="Email"/>-->
+<!--                            </div>-->
+
+                            <field name="state_id"/>
+                            <field name="zip"/>
+                            <field name="country_id"/>
+                            <field name="required_age"/>
+<!--                            <field name="school_standard_ids"/>-->
                         </group>
                     </group>
-<!--                    <notebook>-->
-<!--                        <page string="School">-->
-<!--                            <tree string="school"/>-->
-<!--                            <field name="name"/>-->
-<!--                            <field name="address"/>-->
-<!--                            <field name="phone"/>-->
-<!--                            <field name="email"/>-->
-<!--                        </page>-->
-<!--                    </notebook>-->
+                    <notebook>
+                        <page string="School Standard">
+                            <field name="school_standard_ids"/>
+                        </page>
+<!--                            <field name="school_standard_ids"/>-->
+                    </notebook>
+                    <!--                    <notebook>-->
+                    <!--                        <page string="School">-->
+                    <!--                            <tree string="school"/>-->
+                    <!--                            <field name="name"/>-->
+                    <!--                            <field name="address"/>-->
+                    <!--                            <field name="phone"/>-->
+                    <!--                            <field name="email"/>-->
+                    <!--                        </page>-->
+                    <!--                    </notebook>-->
                 </sheet>
             </form>
         </field>

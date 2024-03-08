@@ -62,5 +62,12 @@
         <field name="res_model">setu.academic.year</field>
         <field name="view_mode">tree,form</field>
     </record>
+    <menuitem id="academic" name="Academic" parent="root"/>
+    <menuitem id="setu_academic_year_menu"
+              name="Academic Year"
+              action="setu_academic_year_action"
+              parent="academic"/>
+
+
 </odoo>
 

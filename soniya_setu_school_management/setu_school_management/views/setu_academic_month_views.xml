@@ -54,4 +54,8 @@
         <field name="res_model">setu.academic.month</field>
         <field name="view_mode">tree,form</field>
     </record>
+    <menuitem id="setu_academic_month_menu"
+              name="Academic month"
+              action="setu_academic_month_action"
+              parent="academic"/>
 </odoo>

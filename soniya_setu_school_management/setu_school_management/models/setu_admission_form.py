@@ -5,13 +5,15 @@ class Admission(models.Model):
     _name = "setu.admission"
     _description = "Setu_Admission"
 
-    name = fields.Char(string='Name')
-    address = fields.Selection(selection=[('rajkot', 'Rajkot'), ('ahemdabad', 'Ahemdabad')], string='Address')
+    student_name = fields.Char(string='Name')
+    class_id = fields.Many2one('setu.school', string='School')
+    address = fields.Char(string='Address')
+
     email = fields.Char(string='email')
     phone = fields.Char(string='Phone')
     dob = fields.Date(string='Date')
     state = fields.Selection(selection=[('gujarat', 'Gujarat'), ('madhypradesh', 'MP'), ('bihar', 'Bihar'), ('punjab','Punjab'), ('rajasthan', 'Rajsthan')], string='State')
-    class_id = fields.Many2one('setu.school', string='School')
+    # class_id = fields.Many2one('setu.school', string='School')
 
     status = fields.Selection(selection=[('draft', 'Draft'), ('done', 'Done')])
 

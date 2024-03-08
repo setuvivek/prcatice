@@ -1,21 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-
     <record id="student_view_tree" model="ir.ui.view">
         <field name="name">setu.student.view.tree</field>
         <field name="model">setu.student</field>
         <field name="arch" type="xml">
             <tree string="student">
-                <field name="name"/>
-                <field name="address"/>
-                <field name="email"/>
-                <field name="phone"/>
-                <field name="roll_no"/>
-                <field name="dob"/>
-                <field name="teacher_ids"/>
-                <field name="class_teacher_id"/>
-                <field name="subject_ids"/>
+                <field name="first_name"/>
+                <field name="middle_name"/>
+                <field name="last_name"/>
+                <field name="gender"/>
+                <field name="date_of_birth"/>
+                <field name="blood_group"/>
+                <field name="weight"/>
+                <field name="height"/>
+                <field name="state"/>
+                <field name="terminate_reason"/>
+                <field name="active"/>
+                <field name="standard_id"/>
+                <field name="division_id"/>
+                <field name="medium_id"/>
                 <field name="school_id"/>
+                <field name="admission_date"/>
+                <field name="academic_year_id"/>
+                <field name="roll_no"/>
+                <field name="cast_id"/>
+                <field name="mother_toungue_id"/>
             </tree>
         </field>
     </record>
@@ -27,36 +36,44 @@
                 <sheet>
                     <group>
                         <group>
-                            <field name="name"/>
-                            <field name="roll_no"/>
-                            <field name="email"/>
-                            <field name="phone"/>
-                            <field name="address"/>
+                            <field name="first_name"/>
+                            <field name="middle_name"/>
+                            <field name="last_name"/>
+                            <field name="gender"/>
+                            <field name="date_of_birth"/>
+                            <field name="blood_group"/>
+                            <field name="weight"/>
+                            <field name="height"/>
+                            <field name="state"/>
+                            <field name="terminate_reason"/>
                         </group>
                         <group>
-                            <field name="phone"/>
-                            <field name="address"/>
-                             <field name="dob"/>
-<!--                            <field name="teacher_ids"/>-->
-                            <field name="class_teacher_id"/>
-<!--                            <field name="subject_ids"/>-->
-<!--                            <field name="school_id"/>-->
+                             <field name="active"/>
+                            <field name="standard_id"/>
+                            <field name="division_id"/>
+                            <field name="medium_id"/>
+                            <field name="school_id"/>
+                            <field name="admission_date"/>
+                            <field name="academic_year_id"/>
+                            <field name="roll_no"/>
+                            <field name="cast_id"/>
+                            <field name="mother_toungue_id"/>
                         </group>
                     </group>
-                    <notebook>
-                        <page string="Teacher">
-                            <field name="teacher_ids"/>
-                        </page>
+<!--                    <notebook>-->
+<!--                        <page string="Teacher">-->
+<!--                            <field name="teacher_ids"/>-->
+<!--                        </page>-->
 <!--                        <page string="Class_Teacher">-->
 <!--                            <field name="class_teacher_id"/>-->
 <!--                        </page>-->
-                        <page string="Subject">
-                            <field name="subject_ids"/>
-                        </page>
-                        <page string="School">
-                            <field name="school_id"/>
-                        </page>
-                    </notebook>
+<!--                        <page string="Subject">-->
+<!--                            <field name="subject_ids"/>-->
+<!--                        </page>-->
+<!--                        <page string="School">-->
+<!--                            <field name="school_id"/>-->
+<!--                        </page>-->
+<!--                    </notebook>-->
 <!--                    <notebook>-->
 <!--                        <page string="Student">-->
 <!--                            <tree string="class"/>-->
@@ -74,5 +91,6 @@
         <field name="res_model">setu.student</field>
         <field name="view_mode">tree,form,kanban</field>
     </record>
+
 </odoo>
 

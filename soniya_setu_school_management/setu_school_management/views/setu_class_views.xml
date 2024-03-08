@@ -26,12 +26,12 @@
                             <field name="name"/>
                             <field name="class_teacher_id"/>
                         </group>
-<!--                        <group>-->
+                        <group>
 <!--                            <field name="student_ids"/>-->
 <!--                            <field name="school_ids"/>-->
 <!--                            <field name="subject_ids"/>-->
 <!--                            <field name="teacher_ids"/>-->
-<!--                        </group>-->
+                        </group>
                     </group>
                     <notebook>
                         <page string="Student">

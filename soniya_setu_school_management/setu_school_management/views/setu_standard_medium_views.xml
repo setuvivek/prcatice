@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="setu_standard_medium_view_tree" model="ir.ui.view">
+        <field name="name">setu.standard.medium.view.tree</field>
+        <field name="model">setu.standard.medium</field>
+        <field name="arch" type="xml">
+            <tree string="medium">
+                <field name="name"/>
+                <field name="code"/>
+            </tree>
+        </field>
+    </record>
+    <record id="setu_standard_medium_view_form" model="ir.ui.view">
+        <field name="name">setu.standard.medium.form</field>
+        <field name="model">setu.standard.medium</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <group>
+                            <field name="code"/>
+                        </group>
+                    </group>
+<!--                    <notebook>-->
+<!--                        <page string="School">-->
+<!--                            <tree string="school"/>-->
+<!--                            <field name="name"/>-->
+<!--                            <field name="address"/>-->
+<!--                            <field name="phone"/>-->
+<!--                            <field name="email"/>-->
+<!--                        </page>-->
+<!--                    </notebook>-->
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="setu_standard_medium_action" model="ir.actions.act_window">
+        <field name="name">medium</field>
+        <field name="res_model">setu.standard.medium</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="setu_standard_medium_menu"
+              name="Standard Medium"
+              action="setu_standard_medium_action"
+              parent="root1"/>
+</odoo>
+
