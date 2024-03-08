@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="school_view_tree" model="ir.ui.view">
+            <field name="name">school.view.tree</field>
+            <field name="model">setu.school</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="School">
+                    <field name="name"/>
+<!--                    <field name="city"/>-->
+                    <field name="state"/>
+                    <field name="phone"/>
+                    <field name="email"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="school_view_form" model="ir.ui.view">
+            <field name="name">school.view.form</field>
+            <field name="model">setu.school</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="setu_school_data">
+                            <group>
+                                <field name="name"/>
+<!--                                <field name="city"/>-->
+                            </group>
+                            <group>
+                                <field name="state"/>
+                                <field name="phone"/>
+                                <field name="email"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="school_action" model="ir.actions.act_window">
+            <field name="name">School</field>
+            <field name="res_model">setu.school</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <menuitem id="root" name="Setu School Management"/>
+        <menuitem id ="root1" name="Setu School Management" action = "school_action" parent="root"/>
+        <menuitem id ="setu_school_management" name="School" action="school_action" sequence="1" parent = "root1"/>
+    </data>
+</odoo>
