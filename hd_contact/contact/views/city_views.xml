@@ -24,12 +24,20 @@
                 <form string="city">
                     <sheet>
                         <group>
-                            <field name="name"/>
-                            <field name="code"/>
-                            <field name="contact_partner_ids"/>
-                            <field name="state_id"/>
-                            <field name="country_id"/>
+                            <group>
+                                <field name="name"/>
+                                <field name="code"/>
+                            </group>
+                            <group>
+                                <field name="state_id"/>
+                                <field name="country_id"/>
+                            </group>
                         </group>
+                        <notebook>
+                            <page string="Contact Partner">
+                                <field name="contact_partner_ids"/>
+                            </page>
+                        </notebook>
                     </sheet>
                 </form>
             </field>
@@ -43,8 +51,8 @@
         </record>
 
         <menuitem id="root" name="Contact"/>
-<!--        <menuitem id="root1" name="Contact" parent="root"/>-->
-        <menuitem id="root2" name="Configuration"  parent="root"/>
+        <!--        <menuitem id="root1" name="Contact" parent="root"/>-->
+        <menuitem id="root2" name="Configuration" parent="root"/>
         <menuitem id="city_menu" action="city_action" parent="root2"/>
 
     </data>
