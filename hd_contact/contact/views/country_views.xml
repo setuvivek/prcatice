@@ -24,6 +24,7 @@
                     <sheet>
                         <group>
                             <field name="name"/>
+<<<<<<< HEAD
                             <field name="contact_partner_ids"/>
                             <field name="state_ids"/>
                             <field name="city_ids"/>
@@ -42,6 +43,27 @@
 <!--                                </group>-->
 <!--                            </page>-->
 <!--                        </notebook>-->
+=======
+
+                        </group>
+                        <notebook>
+                            <page string="Contact Partner">
+                                <field name="contact_partner_ids"/>
+                            </page>
+                            <page string="City">
+                                <field name="city_ids"/>
+                            </page>
+                            <page string="State">
+                                <field name="state_ids"/>
+                            </page>
+                            <page string="Territories State">
+                                <field name="territories_state" widget='many2many_tags' />
+                            </page>
+                            <page string="Ocean State">
+                                <field name="ocean_state" widget='many2many_tags'/>
+                            </page>
+                        </notebook>
+>>>>>>> 945b13fa718338460b57f8074d07236193c31556
                     </sheet>
                 </form>
             </field>

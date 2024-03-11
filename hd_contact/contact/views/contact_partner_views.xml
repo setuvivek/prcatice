@@ -24,11 +24,23 @@
                 <form string="city">
                     <sheet>
                         <group>
+<<<<<<< HEAD
                             <field name="name"/>
                             <field name="customer"/>
                             <field name="city_id"/>
                             <field name="state_id"/>
                             <field name="country_id"/>
+=======
+                            <group>
+                                <field name="name"/>
+                                <field name="city_id"/>
+                                <field name="country_id"/>
+                            </group>
+                            <group>
+                                <field name="customer"/>
+                                <field name="state_id"/>
+                            </group>
+>>>>>>> 945b13fa718338460b57f8074d07236193c31556
                         </group>
                     </sheet>
                 </form>
