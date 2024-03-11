@@ -24,12 +24,29 @@
                 <form string="city">
                     <sheet>
                         <group>
+<<<<<<< HEAD
                             <field name="name"/>
                             <field name="code"/>
                             <field name="contact_partner_ids"/>
                             <field name="state_id"/>
                             <field name="country_id"/>
                         </group>
+=======
+                            <group>
+                                <field name="name"/>
+                                <field name="code"/>
+                            </group>
+                            <group>
+                                <field name="state_id"/>
+                                <field name="country_id"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Contact Partner">
+                                <field name="contact_partner_ids"/>
+                            </page>
+                        </notebook>
+>>>>>>> 945b13fa718338460b57f8074d07236193c31556
                     </sheet>
                 </form>
             </field>
@@ -43,8 +60,13 @@
         </record>
 
         <menuitem id="root" name="Contact"/>
+<<<<<<< HEAD
 <!--        <menuitem id="root1" name="Contact" parent="root"/>-->
         <menuitem id="root2" name="Configuration"  parent="root"/>
+=======
+        <!--        <menuitem id="root1" name="Contact" parent="root"/>-->
+        <menuitem id="root2" name="Configuration" parent="root"/>
+>>>>>>> 945b13fa718338460b57f8074d07236193c31556
         <menuitem id="city_menu" action="city_action" parent="root2"/>
 
     </data>
