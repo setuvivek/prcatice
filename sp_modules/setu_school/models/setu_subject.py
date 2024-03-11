@@ -11,7 +11,7 @@ class SetuSubject(models.Model):
     weightage=fields.Integer(string='Weightage')
     teacher_ids=fields.Many2many('setu.teacher','teacher_ids',string='Teachers')
     standard_ids=fields.Many2many('setu.standard.standard','standard_ids',string='Standards')
-    standard_id=fields.Many2one('setu.standard.standard',string='Standard')
+    standard_id=fields.Many2one('setu.class',string='Standard(class)')
     # student_ids=fields.One2many('setu.student','subject_student_ids',string='Student IDs')
 
 

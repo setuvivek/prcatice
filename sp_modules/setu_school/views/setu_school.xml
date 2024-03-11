@@ -28,19 +28,19 @@
                 <form string="setu_school">
                     <sheet>
                         <group>
-                        <group>
-                      <field name="name"/>
-                    <field name="code"/>
-                    <field name="street"/>
-                    <field name="city_id"/>
-                    <field name="state_id"/>
-                    <field name="zip"/>
-                    <field name="country_id"/>
-                    <field name="phone"/>
-                    <field name="email"/>
-                            <field name="required_age"/>
-                            <field name="school_standard_ids" widget="many2many_tags"/>
-                        </group>
+                            <group>
+                                <field name="name"/>
+                                <field name="code"/>
+                                <field name="street"/>
+                                <field name="city_id" options="{'no_open':True, 'no_create': True}"/>
+                                <field name="state_id" options="{'no_open':True, 'no_create': True}"/>
+                                <field name="country_id" options="{'no_open':True, 'no_create': True}"/>
+                                <field name="zip"/>
+                                <field name="phone" widget="phone"/>
+                                <field name="email" widget="email"/>
+                                <field name="required_age"/>
+                                <field name="school_standard_ids" widget="many2many_tags" options="{'no_create': True}"/>
+                            </group>
                         </group>
                     </sheet>
                 </form>
@@ -53,7 +53,7 @@
             <field name="view_mode">tree,form</field>
         </record>
 
-        <menuitem id="setu_school_menu" name="School" action="setu_school_action" parent="submenu"/>
+<!--        <menuitem id="setu_school_menu" name="School" action="setu_school_action" parent="submenu"/>-->
 
 
     </data>

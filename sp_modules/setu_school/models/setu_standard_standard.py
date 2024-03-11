@@ -6,3 +6,5 @@ class SetuStandardStandard(models.Model):
 
     name = fields.Char(string='Name', required=True)
     code=fields.Char(string='Code')
+    
+    _sql_constraints = [('name_unique', 'UNIQUE(name)', 'Standard Already Exists')]

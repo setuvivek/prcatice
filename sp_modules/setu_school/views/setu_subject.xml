@@ -28,10 +28,10 @@
                                 <field name="maximum_marks"/>
                                 <field name="minimum_marks"/>
                                 <field name="weightage"/>
-                                <field name="teacher_ids" widget="many2many_tags"/>
-                                <field name="standard_ids" widget="many2many_tags"/>
-                                <field name="standard_id" />
-<!--                            <field name="subject_teacher_id" widget="many2many_tags" options="{'no_create': True, 'no_create_edit': True}"/>-->
+                                <field name="teacher_ids" widget="many2many_tags" options="{'no_create': True}"/>
+                                <field name="standard_ids" widget="many2many_tags" options="{'no_create': True}"/>
+                                <field name="standard_id" options="{'no_open':True, 'no_create': True}"/>
+<!--                            <field name="subject_teacher_id" widget="many2many_tags" options="{'no_create': True}"/>-->
                             <!--                            <field name="student_ids" widget="many2many_tags"/>-->
                         </group>
                         </group>
@@ -46,6 +46,6 @@
             <field name="view_mode">tree,form</field>
         </record>
 
-        <menuitem id="setu_subject_menu" name="Subject" action="setu_subject_action" parent="submenu"/>
+<!--        <menuitem id="setu_subject_menu" name="Subject" action="setu_subject_action" parent="submenu"/>-->
     </data>
 </odoo>
