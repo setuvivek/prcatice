@@ -46,6 +46,11 @@ class SetuAcademicYear(models.Model):
             current_date = next_date
 
         self.env['setu.academic.month'].create(list)
+        # record = self.env['setu.academic.month'].search([('academic_year_id', '=', self.id)])
+        # if record:
+        #     record.write({'date_start':'2026-05-01'})
+        # else:
+        #     raise ValidationError("this date does not exists...")
 
     def unlink(self):
         for record in self.month_ids:
@@ -53,12 +58,18 @@ class SetuAcademicYear(models.Model):
                 raise ValidationError("Not Delete")
             record.unlink()
 
-        res = super('setu.academic.year').unlink()
+    def write(self,vals_list):
+        # vals_list = {'name':'hemangi'}
+        vals_list = {}
+        res = super(SetuAcademicYear, self).write(vals_list)
+        return res
+
+        # res = super('setu.academic.year').unlink()
         # for record in self.month_ids:
         #     if record.date_start:
         #         raise ValidationError("Not Delete")
         #     record.unlink()
-        return res
+        # return res
 
 
 

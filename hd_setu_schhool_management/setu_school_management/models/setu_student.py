@@ -15,6 +15,8 @@ class SetuStudent(models.Model):
     phone = fields.Char(string='Phone')
     blood_group = fields.Char(string='Blood Group')
     terminate_reason = fields.Char(string='Terminate Reason')
+    street = fields.Char(string='Street')
+    zip = fields.Char(string='Zip')
 
     #Integer
     roll_no = fields.Integer(string='Roll No')
