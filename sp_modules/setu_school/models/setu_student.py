@@ -9,13 +9,15 @@ class SetuStudent(models.Model):
     middle_name = fields.Char(string='Middle Name')
     last_name = fields.Char(string='Last Name')
     gender = fields.Selection(selection=[('male', 'Male'), ('female', 'Female')], string='Gender')
-    dob = fields.Datetime(string='Birthdate')
+    dob = fields.Date(string='Birthdate')
     phone = fields.Char(string='Phone')
     email = fields.Text(string='Email')
     mobile = fields.Char(string='Mobile')
     bloodgroup=fields.Selection(selection=[('A+','A+'),('A-','A-'),('B+','B+'),('B-','B-'),('AB+','AB+'),('AB-','AB-'),('O+','O+'),('O-','O-')], string='Blood Group')
     weight=fields.Integer(string='Weight')
     height = fields.Integer(string='Height')
+    caste_id=fields.Many2one('setu.student.caste',string='Caste')
+    mother_tongue=fields.Many2one('setu.mother.tongue',string='Mothertongue')
     address = fields.Text(string='Address')
     city_id = fields.Many2one('city',string='City')
     state_id = fields.Many2one('city',string='State')
@@ -25,12 +27,20 @@ class SetuStudent(models.Model):
     division_id = fields.Many2one('setu.standard.division', string='Division')
     medium_id=fields.Many2one('setu.standard.medium',string='Medium')
     school_id = fields.Many2one('setu.school', string='School ID')
-    admission_date=fields.Datetime(string='Admission Date')
+    admission_date=fields.Date(string='Admission Date')
     academic_year_id=fields.Many2one('setu.academic.year',string='Academic Year')
-    caste_id=fields.Many2one('setu.student.caste',string='Caste')
-    mother_tongue=fields.Many2one('setu.mother.tongue',string='Mothertongue')
     roll_no = fields.Integer(string='Roll No.')
     class_id = fields.Many2one('setu.class', string='Class')
-    class_teacher_id = fields.Many2one('setu.teacher', string='Class Teacher ID')
-    teacher_ids = fields.Many2many('setu.teacher', 'student_teacher_ids', string='Teacher IDs')
-    subject_ids = fields.Many2many('setu.subject', 'student_subjects', string='Subject IDs')
+    # class_teacher_id = fields.Many2one('setu.teacher', string='Class Teacher')
+    class_teacher_id = fields.Many2one('setu.teacher', string='Class Teacher')
+    teacher_ids = fields.Many2many('setu.teacher', 'student_teacher_ids', string='Teachers')
+    subject_ids = fields.Many2many('setu.subject', 'student_subjects', string='Subjects')
+
+
+
+
+    def assign(self):
+        rec =self.env['setu.teacher'].search([('class_teacher','=','True'),('standard_id','=',self.id)])
+        self.class_teacher_id=rec
+
+

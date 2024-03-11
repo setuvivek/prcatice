@@ -6,8 +6,8 @@ class HospitalDoctor(models.Model):
     _description = 'All Doctor'
     _order = 'name'  # type
 
-    name = fields.Char(string='Name', required=True, help='Name of Doctors')
-    code = fields.Char(string='Code',help='unique Code',copy=False)
+    name = fields.Char(string='Name', help='Name of Doctors')
+    code = fields.Char(string='Code',help='unique Code')
     dept=fields.Many2one('hospital.dept',string='Department',help='Department of Doctor')
     gender = fields.Selection(selection=[('male', 'Male'), ('female', 'Female')], string='Gender')
     phone = fields.Char(string='Phone', unaccent=False)
@@ -19,4 +19,8 @@ class HospitalDoctor(models.Model):
     country_id = fields.Many2one('country', string='Country')
     surgeon=fields.Boolean(string='Surgeon')
     avl = fields.Boolean(string='Availability')
+
+    _sql_constraints = [('code_unique', 'unique(code)', 'Use different Code'),('name_check', 'CHECK(name IS NOT NULL and code IS NOT NULL)', 'Name and Code field cant be Empty')]
+    # _sql_constraints = []
+
 

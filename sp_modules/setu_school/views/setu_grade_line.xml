@@ -28,9 +28,9 @@
                         <group>
                     <field name="from_mark"/>
                     <field name="to_mark"/>
-<!--                    <field name="grade_name"/>-->
-<!--                    <field name="fail"/>-->
-                    <field name="grade_id"/>
+                    <field name="grade_name"/>
+                    <field name="fail"/>
+                    <field name="grade_id" options="{'no_open':True, 'no_create': True}"/>
 
                         </group>
                         </group>
@@ -47,7 +47,7 @@
             <field name="view_mode">tree,form</field>
         </record>
 
-        <menuitem id="setu_grade_line_menu" name="Grade Line" action="setu_grade_line_action" parent="submenu"/>
+<!--        <menuitem id="setu_grade_line_menu" name="Grade Line" action="setu_grade_line_action" parent="submenu"/>-->
 
 
     </data>

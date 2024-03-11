@@ -39,7 +39,7 @@
             <field name="view_mode">tree,form</field>
         </record>
 
-        <menuitem id="setu_class_room_menu" name="Class Room" action="setu_class_room_action" parent="submenu"/>
+<!--        <menuitem id="setu_class_room_menu" name="Class Room" action="setu_class_room_action" parent="submenu"/>-->
 
 
     </data>

@@ -9,7 +9,7 @@
                     <field name="name"/>
                     <field name="code"/>
                     <field name="dept"/>
-                    <field name="gender"/>
+                    <field name="gender" />
                     <field name="shift"/>
                     <field name="type"/>
                     <field name="city_id" />
@@ -30,7 +30,7 @@
                             <field name="name"/>
                             <field name="code"/>
                             <field name="dept" options="{'no_open':True, 'no_create': True}"/>
-                            <field name="gender" widget="radio"/>
+                            <field name="gender" widget="radio" options="{'horizontal': true}"/>
                             <field name="phone" widget="phone"/>
                             <field name="email" widget="email"/>
                             <field name="shift"/>
