@@ -3,7 +3,7 @@ from datetime import *
 from dateutil.relativedelta import *
 
 import calendar
-
+from odoo.exceptions import MissingError, ValidationError, AccessError
 
 class Academic_year(models.Model):
     _name = "setu.academic.year"
@@ -18,6 +18,8 @@ class Academic_year(models.Model):
     current = fields.Date(string="Active Academic")
 
     def action_done(self):
+
+        self.month_ids.unlink() #new record add thay juno delete thay
         # NOW = datetime(2003, 9, 17, 20, 54, 47, 282310)
         # NOW = datetime.now()
 
@@ -53,3 +55,11 @@ class Academic_year(models.Model):
         # else:
         #     print("ended")
 
+    def unlink(self):
+        for record_id in self:
+            # record_id.unlink()
+            if record_id.date_start:
+                raise ValidationError(("Not Delete."))
+        print("RECORD%s" % self)
+        res = super(Academic_year, self).unlink()
+        return res

@@ -56,6 +56,6 @@
     <menuitem id="setu_academic_month_menu"
               name="Academic Month"
               action="setu_academic_month_action"
-              parent="root2"
+              parent="academic"
     />
 </odoo>

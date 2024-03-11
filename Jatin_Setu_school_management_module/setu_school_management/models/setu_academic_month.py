@@ -15,3 +15,7 @@ class Academic_month(models.Model):
     date_start = fields.Date(string="Date Start")
     date_stop = fields.Date(string="Date Stop")
     academic_year_id = fields.Many2one("setu.academic.year",string="Year")
+
+    # def unlink(self):
+    #     res = super(Academic_month, self).unlink()
+    #     return res

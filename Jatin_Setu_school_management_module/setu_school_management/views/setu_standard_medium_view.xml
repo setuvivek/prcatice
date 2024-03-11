@@ -35,6 +35,6 @@
     <menuitem id="setu_standard_medium_menu"
               name="Standard Medium"
               action="setu_standard_medium_action"
-              parent="root1"
+              parent="classroom1"
     />
 </odoo>

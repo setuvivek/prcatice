@@ -35,6 +35,6 @@
     <menuitem id="setu_standard_division_menu"
               name="Standard Division"
               action="setu_standard_division_action"
-              parent="root1"
+              parent="classroom1"
     />
 </odoo>

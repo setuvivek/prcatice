@@ -5,11 +5,14 @@ class School(models.Model):
     _description = "setu_school"
 
     name = fields.Char(string="School Name" , required=True)
-    address = fields.Char(string="Address")
-    street = fields.Char(string="Street")
-    street2 = fields.Char(string="Street2")
+    code = fields.Char(string="Code")
+    street = fields.Char(string="Address")
     city = fields.Char(string="City")
-    phone = fields.Char(string="Phone")
-    email = fields.Char(string="Email")
+    state_id = fields.Many2one("state",string="State")
+    zip = fields.Char(string="Zip")
+    country_id = fields.Many2one("country", string="Country")
+    required_age = fields.Integer(string="Minimum Age")
+    school_standard_ids = fields.Many2many("setu.standard.standard",string="Standards")
+
 
 

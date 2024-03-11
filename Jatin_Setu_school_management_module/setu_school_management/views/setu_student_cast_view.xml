@@ -30,9 +30,13 @@
         <field name="view_mode">tree,form</field>
     </record>
 
+    <menuitem id="cast"
+              name="Cast"
+              parent="root"
+    />
     <menuitem id="setu_student_cast_menu"
               name="Student Cast"
               action="setu_student_cast_action"
-              parent="root1"
+              parent="cast"
     />
 </odoo>

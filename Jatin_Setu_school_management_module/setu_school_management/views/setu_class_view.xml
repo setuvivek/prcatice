@@ -35,29 +35,35 @@
                         <page string="Teacher">
                             <field name="teacher_ids">
                                 <tree>
-                                    <field name="name"/>
-                                    <field name="address"/>
-                                    <field name="phone"/>
-                                    <field name="email"/>
-                                    <field name="mobile"/>
+                                    <field name="standard_id"/>
                                     <field name="school_id"/>
-                                    <field name="subject_id"/>
+                                    <field name="name"/>
+                                    <field name="work_address_street"/>
+                                    <field name="home_address_street"/>
                                 </tree>
                             </field>
                         </page>
                         <page string="Student">
                             <field name="student_ids">
                                 <tree>
-                                    <field name="name"/>
+                                    <field name="first_name"/>
                                     <field name="address"/>
-                                    <field name="phone"/>
-                                    <field name="email"/>
-                                    <field name="roll_no"/>
+                                    <field name="gender"/>
                                     <field name="dob"/>
-                                    <!--                                    <field name="teacher_ids"/>-->
-                                    <field name="class_teacher_id"/>
-                                    <!--                                    <field name="subject_ids"/>-->
+                                    <field name="blood_group"/>
+                                    <field name="weight"/>
+                                    <field name="height"/>
+                                    <field name="state"/>
+                                    <field name="terminate_reason"/>
+                                    <field name="active"/>
+                                    <field name="standard_id"/>
+                                    <field name="division_id"/>
+                                    <field name="medium_id"/>
                                     <field name="school_id"/>
+                                    <field name="admission_date"/>
+                                    <field name="roll_no"/>
+                                    <field name="cast_id"/>
+                                    <field name="mother_tongue_id"/>
                                 </tree>
                             </field>
                         </page>
@@ -65,9 +71,8 @@
                             <field name="school_ids">
                                 <tree>
                                     <field name="name"/>
-                                    <field name="address"/>
-                                    <field name="phone"/>
-                                    <field name="email"/>
+                                    <field name="street"/>
+                                    <field name="required_age"/>
                                 </tree>
                             </field>
                         </page>
@@ -75,8 +80,11 @@
                             <field name="subject_ids">
                                 <tree>
                                     <field name="name"/>
-                                    <field name="subject_teacher_id"/>
-                                    <field name="student_ids" optional="show"/>
+                                    <field name="code"/>
+                                    <field name="maximum_marks"/>
+                                    <field name="minimum_marks"/>
+                                    <field name="weightage"/>
+                                    <field name="standard_id"/>
                                 </tree>
                             </field>
                         </page>

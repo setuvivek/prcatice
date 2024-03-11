@@ -29,7 +29,8 @@
             <form string="Setu Academic Year">
                 <header>
                     <!--                                        <button name="%(setu_school_action)d" string="Action Button" type="action"/>-->
-                    <button name="action_done" string="On Male" type="object"/>
+                    <button name="action_done" string="Month Record" type="object"/>
+<!--                    <button name="unlink" string="Month Record delete" type="object"/>-->
                     <!--                    <button name="Object_buttt" string="On Female" type="object"/>-->
                     <!--                    <field name="status" widget="statusbar"/>-->
                 </header>
@@ -44,8 +45,6 @@
                             <field name="date_start"/>
                             <field name="date_stop"/>
                             <field name="current"/>
-
-
                         </group>
                         <notebook>
                             <page string="Monthh">
@@ -57,9 +56,7 @@
                                         <field name="date_stop"/>
                                         <field name="academic_year_id" optional="hide"/>
                                     </tree>
-
                                 </field>
-
                             </page>
                         </notebook>
                     </group>
@@ -67,13 +64,13 @@
             </form>
         </field>
     </record>
-    <menuitem id="root2"
+    <menuitem id="academic"
               name="Academic"
-              parent="root1"
+              parent="root"
     />
     <menuitem id="setu_academic_year_menu"
               name="Academic Year"
               action="setu_academic_year_action"
-              parent="root2"
+              parent="academic"
     />
 </odoo>

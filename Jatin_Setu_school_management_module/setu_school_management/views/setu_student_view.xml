@@ -5,16 +5,25 @@
         <field name="model">setu.student</field>
         <field name="arch" type="xml">
             <tree string="Setu Student">
-                <field name="name"/>
+                <field name="first_name"/>
                 <field name="address"/>
-                <field name="phone"/>
-                <field name="email"/>
-                <field name="roll_no"/>
+                <field name="gender"/>
                 <field name="dob"/>
-                <field name="teacher_ids"/>
-                <field name="class_teacher_id"/>
-                <field name="subject_ids"/>
+                <field name="blood_group"/>
+                <field name="weight"/>
+                <field name="height"/>
+                <field name="state"/>
+                <field name="terminate_reason"/>
+                <field name="active"/>
+                <field name="standard_id"/>
+                <field name="division_id"/>
+                <field name="medium_id"/>
                 <field name="school_id"/>
+                <field name="admission_date"/>
+                <field name="roll_no"/>
+                <field name="cast_id"/>
+                <field name="mother_tongue_id"/>
+
             </tree>
         </field>
     </record>
@@ -26,43 +35,34 @@
                 <sheet>
                     <group>
                         <group>
-                            <field name="name"/>
+                            <field name="first_name" placeholder="First Name..."/>
+                            <span/>
+                            <div>
+                                <field name="middle_name" placeholder="Middle Name"/>
+                                <field name="last_name" placeholder="Last Name"/>
+                            </div>
+
                             <field name="address"/>
-                            <field name="phone"/>
-                            <field name="email"/>
-                            <field name="roll_no"/>
+                            <field name="gender"/>
+                            <field name="dob"/>
+                            <field name="blood_group"/>
+                            <field name="weight"/>
+                            <field name="height"/>
+                            <field name="state"/>
                         </group>
                         <group>
-                            <field name="dob"/>
-                            <!--                            <field name="teacher_ids"/>-->
-                            <field name="class_teacher_id"/>
-                            <!--                            <field name="subject_ids"/>-->
+                            <field name="terminate_reason"/>
+                            <field name="active"/>
+                            <field name="standard_id"/>
+                            <field name="division_id"/>
+                            <field name="medium_id"/>
                             <field name="school_id"/>
+                            <field name="admission_date"/>
+                            <field name="roll_no"/>
+                            <field name="cast_id"/>
+                            <field name="mother_tongue_id"/>
                         </group>
-                        <notebook>
-                            <page string="Teacher">
-                                <field name="teacher_ids">
-                                    <tree>
-                                        <field name="name"/>
-                                        <field name="address"/>
-                                        <field name="phone"/>
-                                        <field name="email"/>
-                                        <field name="mobile"/>
-                                        <field name="school_id"/>
-                                        <field name="subject_id"/>
-                                    </tree>
-                                </field>
-                            </page>
-                            <page string="Subject">
-                                <field name="subject_ids">
-                                    <tree>
-                                        <field name="name"/>
-                                        <field name="subject_teacher_id"/>
-                                        <field name="student_ids"/>
-                                    </tree>
-                                </field>
-                            </page>
-                        </notebook>
+
                     </group>
                 </sheet>
             </form>

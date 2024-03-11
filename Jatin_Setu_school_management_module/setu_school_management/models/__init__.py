@@ -11,3 +11,6 @@ from . import setu_standard_medium
 from . import setu_standard_division
 from . import setu_standard_standard
 from . import setu_student_cast
+from . import setu_grade
+from . import setu_grade_line
+from . import setu_mother_tongue

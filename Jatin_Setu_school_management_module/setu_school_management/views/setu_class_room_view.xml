@@ -32,9 +32,14 @@
         <field name="view_mode">tree,form</field>
     </record>
 
+
+    <menuitem id="classroom1"
+              name="Class Room"
+              parent="root"
+    />
     <menuitem id="setu_class_room_menu"
               name="Class Room"
               action="setu_class_room_action"
-              parent="root1"
+              parent="classroom1"
     />
 </odoo>

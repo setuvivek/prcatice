@@ -12,5 +12,8 @@ access_setu_standard_medium,access.setu_standard_medium,setu_school_management.m
 access_setu_standard_division,access.setu_standard_division,setu_school_management.model_setu_standard_division,,1,1,1,1
 access_setu_standard_standard,access.setu_standard_standard,setu_school_management.model_setu_standard_standard,,1,1,1,1
 access_setu_student_cast,access.setu_student_cast,setu_school_management.model_setu_student_cast,,1,1,1,1
+access_setu_grade,access.setu_grade,setu_school_management.model_setu_grade,,1,1,1,1
+access_setu_grade_line,access.setu_grade_line,setu_school_management.model_setu_grade_line,,1,1,1,1
+access_setu_mother_tongue,access.setu_mother_tongue,setu_school_management.model_setu_mother_tongue,,1,1,1,1
 
 

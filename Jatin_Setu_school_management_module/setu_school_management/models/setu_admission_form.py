@@ -1,5 +1,5 @@
 from odoo import api,fields, models
-
+from odoo.exceptions import MissingError, ValidationError, AccessError
 class Admisssion_form(models.Model):
     _name = "setu.admission.form"
     _description = "setu_admission_form"
@@ -23,11 +23,15 @@ class Admisssion_form(models.Model):
     @api.model
     def create(self, vals_list):
         if not vals_list.get('phone'):
-            vals_list.update({'phone':'985632147'})
+            vals_list.update({'phone':'98512345'})
 
         # vals_list.update({'gender': 'female'})
         res = super(Admisssion_form, self).create(vals_list)
-        # res.gender = 'female'
+        res.address = 'Rajkot'
 
         return res
-
+    @api.constrains('dob')
+    def unique_name(self):
+        for db in self:
+            if len(db.phone) < 4:
+                raise ValidationError("Address length is less then 4")
