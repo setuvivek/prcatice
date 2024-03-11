@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="setu_class_view_tree" model="ir.ui.view">
+        <field name="name">setu.class.view.tree</field>
+        <field name="model">setu.class</field>
+        <field name="arch" type="xml">
+            <tree string="Setu Class">
+                <field name="name"/>
+                <field name="class_teacher_id"/>
+                <!--                <field name="teacher_ids"/>-->
+                <!--                <field name="student_ids"/>-->
+                <!--                <field name="school_ids"/>-->
+                <!--                <field name="subject_ids"/>-->
+            </tree>
+        </field>
+    </record>
+    <record id="setu_class_view_form" model="ir.ui.view">
+        <field name="name">setu.class.view.form</field>
+        <field name="model">setu.class</field>
+        <field name="arch" type="xml">
+            <form string="Setu Class">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="class_teacher_id"/>
+                            <!--                            <field name="teacher_ids"/>-->
+
+                            <!--                            <field name="student_ids"/>-->
+                            <!--                            <field name="school_ids"/>-->
+                            <!--                            <field name="subject_ids"/>-->
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Teacher">
+                            <field name="teacher_ids">
+                                <tree>
+                                    <field name="standard_id"/>
+                                    <field name="school_id"/>
+                                    <field name="name"/>
+                                    <field name="work_address_street"/>
+                                    <field name="home_address_street"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Student">
+                            <field name="student_ids">
+                                <tree>
+                                    <field name="first_name"/>
+                                    <field name="address"/>
+                                    <field name="gender"/>
+                                    <field name="dob"/>
+                                    <field name="blood_group"/>
+                                    <field name="weight"/>
+                                    <field name="height"/>
+                                    <field name="state"/>
+                                    <field name="terminate_reason"/>
+                                    <field name="active"/>
+                                    <field name="standard_id"/>
+                                    <field name="division_id"/>
+                                    <field name="medium_id"/>
+                                    <field name="school_id"/>
+                                    <field name="admission_date"/>
+                                    <field name="roll_no"/>
+                                    <field name="cast_id"/>
+                                    <field name="mother_tongue_id"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="School">
+                            <field name="school_ids">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="street"/>
+                                    <field name="required_age"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Subject">
+                            <field name="subject_ids">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="code"/>
+                                    <field name="maximum_marks"/>
+                                    <field name="minimum_marks"/>
+                                    <field name="weightage"/>
+                                    <field name="standard_id"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="setu_class_action" model="ir.actions.act_window">
+        <field name="name">Class</field>
+        <field name="res_model">setu.class</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="setu_class_menu"
+              name="Class"
+              action="setu_class_action"
+              parent="root1"
+    />
+</odoo>
