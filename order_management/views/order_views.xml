@@ -1,0 +1,190 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+=======
+=======
+>>>>>>> 25b60103571f440d3c9b82ad0c68ebc9af80f0d0
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+
+<<<<<<< HEAD
+>>>>>>> 5efbb733230cc2acc5cbaf6822589e04c4cda100
+=======
+=======
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+>>>>>>> adaac1a1aae6a787e125f2b12070b0ae7a95b81c
+>>>>>>> 25b60103571f440d3c9b82ad0c68ebc9af80f0d0
+        <record id="order_view_tree" model="ir.ui.view">
+            <field name="name">order.view.tree</field>
+            <field name="model">order</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+                <tree string="Order">
+                    <field name="owner_name"/>
+                    <field name="address"/>
+                    <field name="date"/>
+                    <field name="payment"/>
+                    <field name="order_id"/>
+                    <field name="order_ids"/>
+=======
+>>>>>>> 25b60103571f440d3c9b82ad0c68ebc9af80f0d0
+                <tree>
+                    <field name="customer_name"/>
+                    <field name="product_id"/>
+                    <field name="product_ids"/>
+                    <field name="quantity"/>
+                    <field name="order_date"/>
+                    <field name="price"/>
+                    <field name="discount"/>
+                    <field name="payment"/>
+                    <field name="current_Date_Time"/>
+
+<<<<<<< HEAD
+=======
+                <tree string="Order">
+                    <field name="owner_name"/>
+                    <field name="address"/>
+                    <field name="date"/>
+                    <field name="payment"/>
+                    <field name="order_id"/>
+                    <field name="order_ids"/>
+>>>>>>> 5efbb733230cc2acc5cbaf6822589e04c4cda100
+=======
+>>>>>>> adaac1a1aae6a787e125f2b12070b0ae7a95b81c
+>>>>>>> 25b60103571f440d3c9b82ad0c68ebc9af80f0d0
+                </tree>
+            </field>
+        </record>
+
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 5efbb733230cc2acc5cbaf6822589e04c4cda100
+=======
+
+
+=======
+>>>>>>> adaac1a1aae6a787e125f2b12070b0ae7a95b81c
+>>>>>>> 25b60103571f440d3c9b82ad0c68ebc9af80f0d0
+        <record id="order_view_form" model="ir.ui.view">
+            <field name="name">order.view.form</field>
+            <field name="model">order</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+                <form>
+                    <sheet>
+                        <group string="order_data">
+                            <group>
+                                <field name="owner_name"/>
+                                <field name="address"/>
+                            </group>
+                            <group>
+                                <field name="date"/>
+                                <field name="payment"/>
+                                <field name="order_id"/>
+                                <field name="order_ids"/>
+                            </group>
+                        </group>
+=======
+>>>>>>> 25b60103571f440d3c9b82ad0c68ebc9af80f0d0
+                <form string="order">
+                    <sheet>
+
+                            <group>
+                                <field name="customer_name"/>
+                                <field name="product_id" options="{'no_open':True, 'no_create':True}"/>
+                                <field name="product_ids" widget="many2many_tags" options="{'no_create':True}"/>
+                                <field name="quantity"/>
+
+                                <field name="order_date"/>
+                                <field name="price"/>
+
+                                <field name="discount"/>
+                                <field name="free_delivery"/>
+
+                                <field name="current_Date_Time"/>
+                                <field name="payment"/>
+
+                            </group>
+
+<<<<<<< HEAD
+=======
+                <form>
+                    <sheet>
+                        <group string="order_data">
+                            <group>
+                                <field name="owner_name"/>
+                                <field name="address"/>
+                            </group>
+                            <group>
+                                <field name="date"/>
+                                <field name="payment"/>
+                                <field name="order_id"/>
+                                <field name="order_ids"/>
+                            </group>
+                        </group>
+>>>>>>> 5efbb733230cc2acc5cbaf6822589e04c4cda100
+=======
+>>>>>>> adaac1a1aae6a787e125f2b12070b0ae7a95b81c
+>>>>>>> 25b60103571f440d3c9b82ad0c68ebc9af80f0d0
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 5efbb733230cc2acc5cbaf6822589e04c4cda100
+=======
+
+
+=======
+>>>>>>> adaac1a1aae6a787e125f2b12070b0ae7a95b81c
+>>>>>>> 25b60103571f440d3c9b82ad0c68ebc9af80f0d0
+        <record id="order_action" model="ir.actions.act_window">
+            <field name="name">Order</field>
+            <field name="res_model">order</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+<<<<<<< HEAD
+<<<<<<< HEAD
+        <menuitem id="order_menu" action="order_action" parent="root1"/>
+    </data>
+</odoo>
+
+=======
+=======
+>>>>>>> 25b60103571f440d3c9b82ad0c68ebc9af80f0d0
+        <menuitem id="root" name="Order"/>
+        <menuitem id ="root1" name="Order" action = "order_action" parent="root"/>
+        <menuitem id ="order_management" name="Order" action="order_action" sequence="1" parent = "root1"/>
+    </data>
+</odoo>
+<<<<<<< HEAD
+>>>>>>> 5efbb733230cc2acc5cbaf6822589e04c4cda100
+=======
+=======
+        <menuitem id="order_menu" action="order_action" parent="root1"/>
+    </data>
+</odoo>
+
+>>>>>>> adaac1a1aae6a787e125f2b12070b0ae7a95b81c
+>>>>>>> 25b60103571f440d3c9b82ad0c68ebc9af80f0d0

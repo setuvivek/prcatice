@@ -41,7 +41,7 @@
                     <sheet>
                         <group>
                             <field name="student_name"/>
-                            <field name="class_id"/>
+                            <field name="class_id" options="{'no_open':True, 'no_create': True}"/>
                             <field name="address"/>
                             <field name="email" widget="email"/>
                             <field name="phone" widget="phone"/>
@@ -60,8 +60,8 @@
             <field name="view_mode">tree,form</field>
         </record>
 
-        <menuitem id="setu_admission_form_menu" name="Admission Form" action="setu_admission_form_action"
-                  parent="submenu"/>
+<!--        <menuitem id="setu_admission_form_menu" name="Admission Form" action="setu_admission_form_action"-->
+<!--                  parent="submenu"/>-->
 
 
     </data>

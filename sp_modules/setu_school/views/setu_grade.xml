@@ -48,7 +48,7 @@
             <field name="view_mode">tree,form</field>
         </record>
 
-        <menuitem id="setu_grade_menu" name="Grade" action="setu_grade_action" parent="submenu"/>
+<!--        <menuitem id="setu_grade_menu" name="Grade" action="setu_grade_action" parent="submenu"/>-->
 
 
     </data>

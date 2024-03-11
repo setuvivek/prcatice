@@ -18,6 +18,7 @@
         'views/setu_student_caste.xml',
         'views/setu_mother_tongue.xml',
         'views/setu_grade.xml',
-        'views/setu_grade_line.xml'
+        'views/setu_grade_line.xml',
+        'views/menus.xml'
     ]
 }
