@@ -16,4 +16,7 @@ class HospitalStaff(models.Model):
     city_id = fields.Many2one('city', string='City')
     state_id = fields.Many2one('state', string='State')
     country_id = fields.Many2one('country', string='Country')
-    salary=fields.Integer(string='Salary',help='Salary per Month')
+    salary=fields.Integer(string='Salary',help='Salary per Month(10k-30k)')
+
+    _sql_constraints = [('salary_check','check(salary >= 10000 and salary <= 30000)','should be In between 10k to 30k')]
+

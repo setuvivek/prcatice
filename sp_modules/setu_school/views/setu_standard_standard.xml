@@ -38,7 +38,7 @@
             <field name="view_mode">tree,form</field>
         </record>
 
-        <menuitem id="setu_standard_standard_menu" name="Standard Standard" action="setu_standard_standard_action" parent="submenu"/>
+<!--        <menuitem id="setu_standard_standard_menu" name="Standard Standard" action="setu_standard_standard_action" parent="submenu"/>-->
 
 
     </data>

@@ -10,10 +10,10 @@ class SetuSchool(models.Model):
     street = fields.Text(string='Street')
     city_id = fields.Many2one('city',string='City')
     state_id = fields.Many2one('state',string='State')
-    zip=fields.Integer(string='Zip')
     country_id = fields.Many2one('country', string='Country')
+    zip=fields.Integer(string='Zip')
     phone = fields.Char(string='Phone', unaccent=False)
     email = fields.Char(string='Email')
-    required_age=fields.Integer(string='Reuired Age')
+    required_age=fields.Integer(string='Required Age')
     school_standard_ids=fields.Many2many('setu.standard.standard','school_standard_ids',string='School Standards')
 
