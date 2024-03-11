@@ -1,0 +1,83 @@
+<odoo>
+    <data>
+        <record id="setu_subject_views_tree" model="ir.ui.view">
+            <field name="name">setu.subject.view.tree</field>
+            <field name="model">setu.subject</field>
+            <field name="arch" type="xml">
+                <tree string="subject">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="maximum_marks"/>
+                    <field name="minimum_marks"/>
+                    <field name="weightage"/>
+                    <field name="standard_id"/>
+                    <field name="student_ids"/>
+                    <field name="standard_ids"/>
+                    <field name="teacher_ids"/>
+                </tree>
+            </field>
+
+
+        </record>
+        <record id = "setu_subject_view_form" model="ir.ui.view">
+            <field name="name">setu.subject.view.form</field>
+            <field name="model">setu.subject</field>
+            <field name="arch" type="xml">
+                <form string="subject">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="code"/>
+                            <field name="maximum_marks"/>
+                            <field name="minimum_marks"/>
+                            <field name="weightage"/>
+                            <field name="standard_id"/>
+                            <field name="student_ids"/>
+                            <field name="standard_ids"/>
+                            <field name="teacher_ids"/>
+
+                        </group>
+                        <notebook>
+                            <page string="Students">
+                                <field name="student_ids">
+                                    <tree string="student">
+                                        <field name="first_name"/>
+                                        <field name="middle_name"/>
+                                        <field name="last_name"/>
+                                        <field name="gender"/>
+                                        <field name="date_of_birth"/>
+                                        <field name="blood_group"/>
+                                        <field name="weight"/>
+                                        <field name="height"/>
+                                        <field name="state"/>
+                                        <field name="terminate_reason"/>
+                                        <field name="active"/>
+                                        <field name="standard_id"/>
+                                        <field name="division_id"/>
+                                        <field name="medium_id"/>
+                                        <field name="school_id"/>
+                                        <field name="admission_date"/>
+                                        <field name="academic_year_id"/>
+                                        <field name="roll_no"/>
+                                        <field name="cast_id"/>
+                                        <field name="mother_tongue_id"/>
+
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="setu_subject_action" model="ir.actions.act_window">
+            <field name="name">Setu Subject</field>
+            <field name="res_model">setu.subject</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="setu_subject_menu" name="Setu Subject" action="setu_subject_action" parent="sub_student_main"/>
+
+
+    </data>
+</odoo>

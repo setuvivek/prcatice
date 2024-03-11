@@ -50,6 +50,7 @@
                                         <field name="name"/>
                                         <field name="date_start" widget="date"/>
                                         <field name="date_stop" widget="date"/>
+<!--                                        <field name="working_days" />-->
 <!--                                        <field name=""/>-->
 <!--                                        <field name=""/>-->
                                     </tree>
@@ -68,7 +69,7 @@
         <!--            <field name="view_mode">tree,form</field>-->
         <!--        </record>-->
 
-        <menuitem id="setu_academic_year_menu" name="Academic Year" action="setu_academic_year_action" parent="submenu"/>
+<!--        <menuitem id="setu_academic_year_menu" name="Academic Year" action="setu_academic_year_action" parent="submenu"/>-->
 
 
     </data>
