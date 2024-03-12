@@ -41,9 +41,12 @@
                             <field name="mobile"/>
                             <field name="phone"/>
                             <field name="standard_id"/>
-                            <field name="subject_ids"/>
+                            <field name="division_id"/>
+                            <field name="medium_id"/>
                             <field name="school_id"/>
+                            <field name="subject_ids"/>
                             <field name="student_ids"/>
+                            <field name="is_teacher"/>
 
                             <field name="home_address" placeholder="Add Address"/>
                             <span/>
