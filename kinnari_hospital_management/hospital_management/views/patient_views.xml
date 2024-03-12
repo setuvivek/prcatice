@@ -26,6 +26,7 @@
                 <form string="patient">
                     <sheet>
                         <group>
+
                             <group>
                                 <field name="name"/>
                                 <field name="age"/>
@@ -39,13 +40,26 @@
                                 <field name="diseases"/>
                                 <field name="doctor_ids"/>
                                 <field name="doa"/>
-                                <field name="country_id"/>
-                                <field name="state_id"/>
-                                <field name="city_id"/>
 
 
                             </group>
                         </group>
+                        <notebook>
+                            <page string="Resident data">
+                                <form string="data">
+                                    <sheet>
+                                        <group>
+                                            <field name="country_id"/>
+                                            <field name="state_id"/>
+                                            <field name="city_id"/>
+
+
+
+                                        </group>
+                                    </sheet>
+                                </form>
+                            </page>
+                        </notebook>
                     </sheet>
                 </form>
             </field>
@@ -60,12 +74,6 @@
         <menuitem id="main_menu" name="Hospital Record" action="patient_action" sequence="1" />
         <menuitem id="patient_menu" name="Hospital Record" action="patient_action" parent="main_menu"/>
         <menuitem id="patient_menu1" name="Patient" action="patient_action" parent="patient_menu"/>
-<!--        web_icon="Hospital Management,static/description/13.png"-->
-
-
-
-
-
 
 
 
@@ -93,6 +101,13 @@
 <!--            <field name="arch" type="xml">-->
 <!--                <graph string="patient">-->
 <!--                    <field name="name"/>-->
+
+
+
+
+
+
+
 <!--                    <field name="age"/>-->
 <!--                    <field name="mobile"/>-->
 <!--                    <field name="doctor_ids"/>-->

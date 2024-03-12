@@ -47,14 +47,26 @@
                                 <field name="age"/>
                                 <field name="type"/>
                                 <field name="a" type="checkbox"/>
-                                <field name="country_id"/>
-                                <field name="state_id"/>
-                                <field name="city_id"/>
+
 
 
 
                             </group>
                         </group>
+                        <notebook>
+                            <page string="Resident data">
+                                <from string="data">
+                                    <sheet>
+                                        <group>
+                                            <field name="country_id"/>
+                                            <field name="state_id"/>
+                                            <field name="city_id"/>
+
+                                        </group>
+                                    </sheet>
+                                </from>
+                            </page>
+                        </notebook>
                     </sheet>
                 </form>
             </field>
