@@ -1,4 +1,4 @@
-from odoo import fields, models
+from odoo import fields, models,api
 
 
 class Teacher(models.Model):
@@ -9,36 +9,141 @@ class Teacher(models.Model):
 
     # _date_name = 'date'
 
-    name = fields.Char(string="Name", required=True)
+    name = fields.Char(string="Name")
     gender = fields.Selection(selection=[('male', 'Male'), ('female', 'Female')], string="Gender")
     mobile = fields.Char(string="Mobileno", help="Enter Mobile Number", size=10)
-    postgraduate = fields.Boolean(string="Postgraduate", default=False)
+    postgraduate = fields.Boolean(string="Postgraduate")
     result = fields.Float(string="Result", help="Enter result of Postgraduate", digit=(3,2))
-    dob = fields.Date(string="Date of Birth", copy=False)
+    dob = fields.Date(string="Date of Birth")
+
     student_id = fields.One2many('student','teach_id',string="Students")
     country_id = fields.Many2one('country', string="Country Name")
     state_id = fields.Many2one('state', string="State Name")
     city_id = fields.Many2one('city', string="City Name")
-    priority = fields.Selection([
-
-        ('clear', 'Clear'),
-
-        ('urgent', 'Urgent'),
-
-        ('normal', 'Normal'),
-
-        ('lowand', 'Lowand'),
-
-        ('high', 'High')],
-
-        copy=False, default='normal', required=True)
+    priority = fields.Selection([('clear', 'Clear'), ('urgent', 'Urgent'),('normal', 'Normal'),('lower', 'Lower'),('high', 'High')])
 
     # department_id = fields.Many2many('department','dept1','name','name1',string="Department")
 
 
+    @api.model
+    def create(self, vals_list):
+        if not vals_list.get('priority'):
+            vals_list.update({'priority':'clear'})
+        res = super(Teacher,self).create(vals_list)
+        res.gender = 'female'
+        return res
+
+    def create_new_data(self):
+        self.student_id = self.env['student'].create({'name':self.name, 'dobs':self.dob})
+
+    _sql_constraints = [('mobile_length', 'CHECK(LENGTH(mobile) = 10)', "Mobile must have 10 digit"),
+                        ('name_compulsory' , 'CHECK(name IS NOT NULL)','name should required'),]
 
 
 
 
-    # cunt = fields.Datetime.now()
-    # cur = fields.Datetime(string="Current Date", default=lambda self: fields.Datetime.now())
+
+
+
+
+
+
+
+
+
+                # def _check_name(self, mobile, context=None):
+    #     for val in self.read(mobile, ['mobile'], context=context):
+    #         if val['mobile']:
+    #             if len(val['mobile']) < 10:
+    #                 return False
+    #     return True
+    #
+    # _sql_constraints = [
+    #     (_check_name, 'Mobile must have at least 10 digit', ['mobile'])
+    # ]
+
+    # def create_new_data(self, valuees):
+    #     if valuees.get('name') == ('kinu'):
+    #         self.student_id = self.env['student'].create({'name': 'lp', 'create_date': 'dob'})
+    #     else:
+    #         valuees['name'] = 'k'
+    #     return super(Teacher, self).create(valuees)
+    # @api.constrains('identification_id')
+    # def check_identification_id(self):
+    #     for rec in self:
+    #         if len(rec.identification_id) != 11:
+    #             raise ValidationError(_('Must be 11 Characters'))
+
+       
+
+
+    def create_data(self):
+        self.priority = 'high'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        # vals = [{'name': 'test 1'}]
+        # self.env['model.teacher'].create(vals)
+        # @api.model
+        # def create(self, vals):
+        # res1 = super(Teacher, self).create(vals_list)
+        # for i in range(vals_list["result"]):
+        #     super( self.env['result']).create({
+        #         'result' : 50.00
+        #         # 'model_id': res.id,
+        #         # 'car_ref': "%s_%s" % (res.ref, i + 1),
+        #         # 'name': "%s #%s" % (res.name, i + 1)
+        #     })
+        # return res1
+
+        #
+        # def create(self, vals):
+        #     if vals.get('reference_no', _('New')) == _('New'):
+        # vals_list['result'] = self.env['50']
+        #     # 'hospital.patient') or _('New')
+        # res1 = super(Teacher, self).create(vals_list)
+        # return res1,res
+
+
+    #
+    #     self.create_otherModule_data()
+    #     res1 = super(Teacher, self).create(vals_list)
+    #     return res1
+    #
+    # def create_otherModule_data(self):
+    #     line_dic = {
+    #         'result':'50.00',
+    #         # 'complete_name': self.complete_name,
+    #         # 'code': code,
+    #         # 'active': True,
+    #     }
+    #     self.env['module.teacher'].create(line_dic)
+
+
+
+
+    # def reload_page(self):
+    #     return self.env['teacher'].create({
+    #                     'result': '33.3'
+    #                 })
+
+    #
+    # def create_data(self):
+    #     self.priority='high'
+
+
