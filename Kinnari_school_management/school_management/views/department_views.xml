@@ -8,7 +8,6 @@
                         <field name="name1"/>
                         <field name="quantity"/>
                         <field name="stock"/>
-
                 </tree>
             </field>
         </record>
@@ -21,11 +20,22 @@
                         <group>
 
                             <field name="name1"/>
-                            <field name="quantity"/>
-                            <field name="stock"/>
 
 
                         </group>
+                        <notebook>
+                            <page string="stock data">
+                                <form string="data">
+                                    <sheet>
+                                        <group>
+                                            <field name="quantity"/>
+                                            <field name="stock"/>
+
+                                        </group>
+                                    </sheet>
+                                </form>
+                            </page>
+                        </notebook>
                     </sheet>
                 </form>
             </field>
