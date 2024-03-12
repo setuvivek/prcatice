@@ -9,9 +9,8 @@
                     <field name="name"/>
                     <field name="roll"/>
                     <field name="gender"/>
-                    <field name="create_date"/>
+                    <field name="dobs"/>
                     <field name="teach_id"/>
-
                     <field name="teacher1_id"/>
                     <field name="teacher2_id"/>
                     <field name="teacher3_id"/>
@@ -24,7 +23,6 @@
                     <field name="country_id"/>
                     <field name="state_id"/>
                     <field name="city_id"/>
-
                 </tree>
             </field>
         </record>
@@ -40,7 +38,7 @@
                                 <field name="roll"/>
                                 <field name="teach_id"/>
                                 <field name="gender" widget="radio"/>
-                                <field name="create_date"/>
+                                <field name="dobs"/>
                                 <field name="teach_id"/>
                                 <field name="teacher1_id"/>
                                 <field name="teacher2_id"/>
@@ -52,11 +50,23 @@
                                 <field name="quantity"/>
                                 <field name="stock"/>
 
-                                <field name="country_id"/>
-                                <field name="state_id"/>
-                                <field name="city_id"/>
+
 
                         </group>
+                        <notebook>
+                            <page string="Resident data">
+                                <form string="data">
+                                    <sheet>
+                                        <group>
+                                            <field name="country_id"/>
+                                            <field name="state_id"/>
+                                            <field name="city_id"/>
+
+                                        </group>
+                                    </sheet>
+                                </form>
+                            </page>
+                        </notebook>
                     </sheet>
                 </form>
             </field>
@@ -69,7 +79,7 @@
                     <field name="name"/>
                     <field name="roll"/>
                     <field name="gender"/>
-                    <field name="create_date"/>
+                    <field name="dobs"/>
                     <field name="teach_id"/>
 
                     <field name="teacher1_id"/>

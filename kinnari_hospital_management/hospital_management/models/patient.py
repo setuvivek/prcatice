@@ -26,6 +26,8 @@ class Patient(models.Model):
 
 
 
+
+
     # _sql_constraints = [
     #     ('name', 'UNIQUE(name)', 'Name Must Be Unique.'),
     #     ('age', 'CHECK(age > 0)', 'age must be greater than 0.')

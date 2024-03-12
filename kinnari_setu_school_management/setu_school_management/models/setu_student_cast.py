@@ -10,4 +10,5 @@ class SetuStudentCast(models.Model):
         # useful to keep because it provides a proper error message when a
         # violation occurs, as it shares the same prefix as the unique index.
         ('name_compulsory', 'CHECK(name IS NOT NULL)', 'Name should required'),
+        ('name_unique', 'unique(name)', "Name Must Be Unique."),
     ]
