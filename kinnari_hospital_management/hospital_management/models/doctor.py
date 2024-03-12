@@ -30,3 +30,6 @@ class Doctor(models.Model):
 
 
 
+# unaccent
+# # field name="working_hours" widget='float_time'
+# field name="code" widget="CopyClipboardChar"
