@@ -18,6 +18,9 @@ class SetuTeacher(models.Model):
     street2 = fields.Char(string='Street')
     zip2 = fields.Char(string='Zip')
 
+    #Boolean
+    is_teacher = fields.Boolean(string='Is Teacher')
+
     #m2o
     school_id = fields.Many2one('setu.school', string='School')
     standard_id = fields.Many2one('setu.class', string='Responsibility of Academic Class')
@@ -27,6 +30,9 @@ class SetuTeacher(models.Model):
     city2_id = fields.Many2one('city', string='City')
     state2_id = fields.Many2one('state', string='State')
     country2_id = fields.Many2one('country', string='Country')
+    medium_id = fields.Many2one('setu.standard.medium', string='Medium')
+    division_id = fields.Many2one('setu.standard.division', string='Division')
+
 
 
     #o2m

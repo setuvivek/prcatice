@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_company_employee,access.company.employee,company.model_company_employee,,1,1,1,1
+access_company_manager,access.company.manager,company.model_company_manager,,1,1,1,1
+access_company_project,access.company.project,company.model_company_project,,1,1,1,1
+access_company_customer,access.company.customer,company.model_company_customer,,1,1,1,1
+access_company_department,access.company.department,company.model_company_department,,1,1,1,1
+
