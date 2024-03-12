@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="department_view_tree" model="ir.ui.view">
+            <field name="name">department.view.tree</field>
+            <field name="model">department</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="course_id"/>
+                    <field name="name"/>
+                    <field name="hod_id"/>
+                    <field name="student_ids"/>
+                    <field name="teacher_ids"/>
+                    <field name="vision_mission"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="department_view_form" model="ir.ui.view">
+            <field name="name">department.view.form</field>
+            <field name="model">department</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="School">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="course_id"/>
+                                <field name="name" required="1"/>
+                            </group>
+                            <group>
+                                <field name="hod_id"/>
+                                <field name="vision_mission"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Student">
+                                <field name="student_ids">
+                                    <tree editable="bottom">
+                                        <field name="name"/>
+                                        <field name="roll_no"/>
+                                        <field name="gender"/>
+                                        <field name="is_present"/>
+                                        <field name="dept_id"/>
+                                        <field name="student_dob"/>
+                                        <field name="teacher_id"/>
+                                        <field name="dbms_teacher_ids"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Teacher">
+                                <field name="teacher_ids">
+                                    <tree editable="top">
+                                        <field name="name" optional="show"/>
+                                        <field name="code"/>
+                                        <field name="subject"/>
+                                        <field name="gender"/>
+                                        <field name="phone"/>
+                                        <field name="datetime"/>
+                                        <field name="salary"/>
+                                        <field name="student_ids"/>
+                                        <field name="dept_id"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="department_action" model="ir.actions.act_window">
+            <field name="name">Department</field>
+            <field name="res_model">department</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="department_menu" action="department_action" parent="root1"/>
+    </data>
+</odoo>
+
+

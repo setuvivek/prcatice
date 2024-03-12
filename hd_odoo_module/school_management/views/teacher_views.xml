@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="teacher_view_tree" model="ir.ui.view">
+            <field name="name">teacher.view.tree</field>
+            <field name="model">teacher</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Teacher">
+                    <field name="name" optional="show"/>
+                    <field name="code" optional="hide"/>
+                    <field name="subject" optional="show"/>
+                    <field name="gender" optional="hide"/>
+                    <field name="phone" optional="hide"/>
+                    <field name="datetime" optional="show"/>
+                    <field name="salary" optional="hide"/>
+                    <field name="student_ids" optional="show"/>
+                    <field name="dept_id" optional="show"/>
+                    <field name="city_id"/>
+                    <field name="state_id"/>
+                    <field name="country_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="teacher_view_form" model="ir.ui.view">
+            <field name="name">teacher.view.form</field>
+            <field name="model">teacher</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="School">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="code"/>
+                                <field name="gender"/>
+                                <field name="subject"/>
+                                <field name="phone"/>
+                                <field name="datetime"/>
+                            </group>
+                            <group>
+                                <field name="salary"/>
+                                <field name="course_id"/>
+                                <field name="dept_id"/>
+                                <field name="city_id"/>
+                                <field name="state_id"/>
+                                <field name="country_id"/>
+                            </group>
+
+                        </group>
+                        <notebook>
+                            <page string="Student">
+                                <field name="student_ids">
+                                    <tree create="false" edit="false">
+                                        <field name="name" optional="show"/>
+                                        <field name="roll_no" optional="show"/>
+                                        <field name="gender" optional="hide"/>
+                                        <field name="is_present" optional="show"/>
+                                        <field name="dept_id" optional="show"/>
+                                        <field name="student_dob" optional="hide"/>
+                                        <field name="teacher_id" optional="show"/>
+                                        <field name="dbms_teacher_ids" optional="hide"/>
+                                        <field name="oop_teacher" optional="hide"/>
+                                        <field name="city_id"/>
+                                        <field name="state_id"/>
+                                        <field name="country_id"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Other Information">
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="teacher_action" model="ir.actions.act_window">
+            <field name="name">Teacher</field>
+            <field name="res_model">teacher</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <menuitem id="teacher_menu" action="teacher_action" parent="root1"/>
+
+    </data>
+</odoo>

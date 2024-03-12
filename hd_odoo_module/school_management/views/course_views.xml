@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="course_view_tree" model="ir.ui.view">
+            <field name="name">course.view.tree</field>
+            <field name="model">course</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="description"/>
+                    <field name="department_ids"/>
+                    <field name="teacher_ids"/>
+                    <field name="student_ids"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="course_view_form" model="ir.ui.view">
+            <field name="name">course.view.form</field>
+            <field name="model">course</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="School">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                            <group>
+                                <field name="description"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Department">
+                                <field name="department_ids"/>
+                            </page>
+                            <page string="Teacher">
+                                <field name="teacher_ids"/>
+                            </page>
+                            <page string="Student">
+                                <field name="student_ids"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="course_action" model="ir.actions.act_window">
+            <field name="name">Course</field>
+            <field name="res_model">course</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="course_menu" action="course_action" parent="root1"/>
+
+    </data>
+</odoo>
+
+
+

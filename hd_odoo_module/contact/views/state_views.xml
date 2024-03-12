@@ -24,13 +24,6 @@
                 <form string="state">
                     <sheet>
                         <group>
-<<<<<<< HEAD
-                            <field name="name"/>
-                            <field name="contact_partner_ids"/>
-                            <field name="country_id"/>
-                            <field name="city_ids"/>
-                        </group>
-=======
                             <group>
                                 <field name="name"/>
                             </group>
@@ -46,7 +39,6 @@
                                 <field name="city_ids"/>
                             </page>
                         </notebook>
->>>>>>> 945b13fa718338460b57f8074d07236193c31556
                     </sheet>
                 </form>
             </field>

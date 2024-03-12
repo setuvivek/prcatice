@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="order_view_tree" model="ir.ui.view">
+            <field name="name">order.view.tree</field>
+            <field name="model">order</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="customer_name"/>
+                    <field name="product_id"/>
+                    <field name="product_ids"/>
+                    <field name="quantity"/>
+                    <field name="order_date"/>
+                    <field name="price"/>
+                    <field name="discount"/>
+                    <field name="payment"/>
+                    <field name="current_Date_Time"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="order_view_form" model="ir.ui.view">
+            <field name="name">order.view.form</field>
+            <field name="model">order</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="order">
+                    <sheet>
+                        <group string="Order Record">
+                            <group>
+                                <field name="customer_name"/>
+                                <field name="product_id" options="{'no_open':True, 'no_create':True}"/>
+                                <field name="quantity"/>
+                                <field name="order_date"/>
+                                <field name="price"/>
+                            </group>
+                            <group>
+                                <field name="discount"/>
+                                <field name="free_delivery"/>
+                                <field name="current_Date_Time"/>
+                                <field name="payment"/>
+                                <field name="address"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Other Products">
+                                <field name="product_ids" widget="many2many_tags" options="{'no_create':True}"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="order_action" model="ir.actions.act_window">
+            <field name="name">Order</field>
+            <field name="res_model">order</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="order_menu" action="order_action" parent="root1"/>
+    </data>
+</odoo>
+
