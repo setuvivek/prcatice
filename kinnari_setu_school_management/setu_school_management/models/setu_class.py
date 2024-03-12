@@ -1,4 +1,5 @@
-from odoo import fields, models
+from odoo import fields, models , api , _
+from odoo.exceptions import ValidationError
 
 
 class SetuClass(models.Model):
@@ -12,16 +13,19 @@ class SetuClass(models.Model):
     subject_ids = fields.One2many('setu.subject', 'standard_id', string="Subjects")
 
     _sql_constraints = [
-        # Partial constraint, complemented by unique index (see below). Still
-        # useful to keep because it provides a proper error message when a
-        # violation occurs, as it shares the same prefix as the unique index.
         ('name_unique', 'unique(name)', 'Names must be unique'),
         ('name_compulsory', 'CHECK(name IS NOT NULL)', 'Name should required'),
         ("uniq", "UNIQUE(class_teacher_id1)", "Models inherits from another only once"),
         ('name_nospaces', "CHECK(name NOT LIKE '% %')","Name cannot contain spaces"),
-
-        # ('size_gt_zero', 'CHECK (size>=0)', 'Size of the field cannot be negative.')
     ]
+
+    def write(self,vals):
+        if vals.get('name'):
+            vals.update({'name':'Patel'})
+        rec = super(SetuClass, self).write(vals)
+        return rec
+
+
 
 
 

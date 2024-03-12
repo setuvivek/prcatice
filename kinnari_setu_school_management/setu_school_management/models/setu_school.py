@@ -27,5 +27,7 @@ class SetuSchool(models.Model):
         # useful to keep because it provides a proper error message when a
         # violation occurs, as it shares the same prefix as the unique index.
         ('name_compulsory', 'CHECK(name IS NOT NULL)', 'Name should required'),
+        ('name_unique', 'unique(name)', "Name Must Be Unique."),
+        ('phone_no_length', 'CHECK(LENGTH(phone) = 10)', "Phone must have 10 digit")
     ]
 
