@@ -24,7 +24,7 @@ class SetuAcademicYear(models.Model):
 
     def month_list(self):
         if self.date_start and self.date_stop:
-            # self.month_ids.unlink()
+            self.month_ids.unlink()
             list = []
 
             for dt in rrule.rrule(rrule.MONTHLY, dtstart=self.date_start, until=self.date_stop):

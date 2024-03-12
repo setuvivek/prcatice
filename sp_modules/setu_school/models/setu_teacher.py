@@ -8,6 +8,8 @@ class SetuTeacher(models.Model):
     name = fields.Char(string='Name')
 
     standard_id=fields.Many2one('setu.standard.standard',string='Standard',help='Responsibility of Academic Class')
+    medium_id=fields.Many2one('setu.standard.medium',string='Medium')
+    division_id=fields.Many2one('setu.standard.division',string='Division')
     subject_ids=fields.Many2many('setu.subject',string='Subject ID')
     school_id=fields.Many2one('setu.school',string='School ID')
     student_ids=fields.One2many('setu.student','class_teacher_id',string='Student IDs')
