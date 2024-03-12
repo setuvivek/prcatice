@@ -66,6 +66,7 @@
                                         <field name="roll_no"/>
                                         <field name="cast_id"/>
                                         <field name="mother_tongue_id"/>
+                                        <field name="teacher_id"/>
                                     </tree>
                                 </field>
                             </page>
