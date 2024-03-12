@@ -15,4 +15,6 @@ class Section(models.Model):
                                        (' Laboratory Department',' Laboratory Department')] , string="Section Name")
 
     doctor_id = fields.Many2many('doctor','section1',string="Doctor")
+
+    
     patient_id = fields.Many2many('patient','section2',string="Patient")
