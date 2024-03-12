@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+
+        <record id="company_employee_view_tree" model="ir.ui.view">
+            <field name="name">company.employee.view.tree</field>
+            <field name="model">company.employee</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="address"/>
+                    <field name="gender"/>
+                    <field name="dob"/>
+                    <field name="join_date"/>
+                    <field name="is_present"/>
+                    <field name="salary"/>
+                    <field name="manager_id"/>
+                    <field name="project_id"/>
+                    <field name="city_id"/>
+                    <field name="state_id"/>
+                    <field name="country_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="company_employee_view_form" model="ir.ui.view">
+            <field name="name">company.employee.view.form</field>
+            <field name="model">company.employee</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Employee">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="code"/>
+                                <field name="address"/>
+                                <field name="gender"/>
+                                <field name="dob"/>
+                                <field name="join_date"/>
+                                <field name="is_present"/>
+                            </group>
+                            <group>
+                                <field name="salary"/>
+                                <field name="department_id" options="{'no_open': True}"/>
+                                <field name="manager_id" options="{'no_open': True}"/>
+                                <field name="project_id" options="{'no_open': True}"/>
+                                <field name="city_id"/>
+                                <field name="state_id"/>
+                                <field name="country_id"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="company_employee_action" model="ir.actions.act_window">
+            <field name="name">Employee</field>
+            <field name="res_model">company.employee</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="root" name="Company"/>
+        <menuitem id="root1" name="Company" parent="root"/>
+
+        <menuitem id="company_employee_menu" action="company_employee_action" parent="root1"/>
+    </data>
+</odoo>
