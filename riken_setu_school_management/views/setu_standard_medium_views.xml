@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+
+        <record id="standard_medium_view_tree" model="ir.ui.view">
+            <field name="name">standard.medium.view.tree</field>
+            <field name="model">setu.standard.medium</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Standard_medium">
+                    <field name="name"/>
+                    <field name="code"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="standard_medium_view_form" model="ir.ui.view">
+            <field name="name">standard.medium.view.form</field>
+            <field name="model">setu.standard.medium</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="standard_medium_data">
+                                <field name="name"/>
+                                <field name="code"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="standard_medium_action" model="ir.actions.act_window">
+            <field name="name">Standard Medium</field>
+            <field name="res_model">setu.standard.medium</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="standard_medium_management" action="standard_medium_action" name="Standard Medium" sequence="1" parent = "root1"/>
+    </data>
+</odoo>

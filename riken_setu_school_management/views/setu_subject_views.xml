@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+
+        <record id="subject_view_tree" model="ir.ui.view">
+            <field name="name">subject.view.tree</field>
+            <field name="model">setu.subject</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Subject">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="maximum_marks"/>
+                    <field name="minimum_marks"/>
+                    <field name="weightage"/>
+                    <field name="teacher_ids"/>
+                    <field name="standard_ids"/>
+                    <field name="standard_id"/>
+                    <field name="student_ids"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="subject_view_form" model="ir.ui.view">
+            <field name="name">subject.view.form</field>
+            <field name="model">setu.subject</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="subject_data">
+                            <field name="name"/>
+                            <field name="code"/>
+                            <field name="maximum_marks"/>
+                            <field name="minimum_marks"/>
+                            <field name="weightage"/>
+                            <field name="teacher_ids"/>
+                            <field name="standard_ids"/>
+                            <field name="standard_id"/>
+                            <field name="student_ids"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="subject_action" model="ir.actions.act_window">
+            <field name="name">Subject</field>
+            <field name="res_model">setu.subject</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="subject_management" action="subject_action" name="Subject" sequence="1" parent = "root1"/>
+    </data>
+</odoo>
