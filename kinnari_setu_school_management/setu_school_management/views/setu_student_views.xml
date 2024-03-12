@@ -25,6 +25,7 @@
                     <field name="roll_no"/>
                     <field name="cast_id"/>
                     <field name="mother_tongue_id"/>
+                    <field name="teacher_id"/>
                 </tree>
             </field>
 
@@ -35,6 +36,9 @@
             <field name="model">setu.student</field>
             <field name="arch" type="xml">
                 <form string="student">
+<!--                    <header>-->
+<!--                        <button name="action_create" string="New" type="object"/>-->
+<!--                    </header>-->
                     <sheet>
                         <group>
                             <group>
@@ -47,6 +51,7 @@
                                 <field name="weight"/>
                                 <field name="height"/>
                                 <field name="roll_no"/>
+                                <field name="teacher_id"/>
 
 
                             </group>

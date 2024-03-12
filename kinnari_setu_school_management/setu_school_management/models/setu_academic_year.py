@@ -4,10 +4,9 @@ from datetime import datetime, date
 from datetime import datetime
 from dateutil.relativedelta import relativedelta, MO
 
-from odoo.exceptions import ValidationError
 
 
-from odoo import fields,models, _
+from odoo import fields,models
 
 class SetuAcademicYear(models.Model):
     _name = "setu.academic.year"
@@ -19,10 +18,7 @@ class SetuAcademicYear(models.Model):
     date_stop = fields.Date(string="Stop Date")
     month_ids = fields.One2many('setu.academic.month','academic_year_id' , string="Academic Month")
 
-    # j = date_start
-    # k = j + relativedelta(months=-1)
-    # l = k.strftime('%Y')
-    # current = fields.Integer(k)
+
 
 
 
@@ -42,15 +38,13 @@ class SetuAcademicYear(models.Model):
                                                         "date_start": x,
                                                         "date_stop": y,
                                                         "academic_year_id": self.id})
+                # rec_id = self.env['setu.academic.year'].search([('date_start', '=', '2024-04-04')])
+                # if rec_id:
+                #     rec_id.write({'date_start': '2024-04-15'})
 
-    # def unlink(self):
-    #     for record in self:
-    #         if record.start_date:
-    #             raise ValidationError(_('Eroor'))
-    #     res = super(SetuAcademicYear , self).unlink()
-    #     return res
-
-
+            rec = self.env['setu.academic.month'].search([('academic_year_id','=',self.id)])
+            if rec:
+                rec.write({'date_start':'2024-03-03'})
 
 
 
@@ -71,12 +65,34 @@ class SetuAcademicYear(models.Model):
 
 
 
-  #
-  # record[("x_studio_month")] = datetime.record.x_studio_from.strftime("%B")
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                # record = self.env['setu.academic.year'].search([])
+                # print(record)
+
+                #
+                # record_id = self.env['setu.academic.month'].search([('date_stop', '=', '2024-08-08')])
+                # if record_id:
+                #     record_id.write({'date_stop': '2024-08-08'})
 
 
 
