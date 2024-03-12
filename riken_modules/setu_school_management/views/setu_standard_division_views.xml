@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+
+        <record id="standard_division_view_tree" model="ir.ui.view">
+            <field name="name">standard.division.view.tree</field>
+            <field name="model">setu.standard.division</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Standard_division">
+                    <field name="name"/>
+                    <field name="code"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="standard_division_view_form" model="ir.ui.view">
+            <field name="name">standard.division.view.form</field>
+            <field name="model">setu.standard.division</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="standard_division_data">
+                                <field name="name"/>
+                                <field name="code"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="standard_division_action" model="ir.actions.act_window">
+            <field name="name">Standard Division</field>
+            <field name="res_model">setu.standard.division</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="standard_division_management" action="standard_division_action" name="Standard Division" sequence="1" parent = "root1"/>
+    </data>
+</odoo>
