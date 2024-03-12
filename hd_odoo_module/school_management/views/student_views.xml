@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="student_view_tree" model="ir.ui.view">
+            <field name="name">student.view.tree</field>
+            <field name="model">student</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="roll_no"/>
+                    <field name="gender"/>
+                    <field name="is_present"/>
+                    <field name="course_id"/>
+                    <field name="dept_id"/>
+                    <field name="student_dob"/>
+                    <field name="teacher_id"/>
+                    <field name="dbms_teacher_ids"/>
+                    <field name="city_id"/>
+                    <field name="state_id"/>
+                    <field name="country_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="student_view_form" model="ir.ui.view">
+            <field name="name">student.view.form</field>
+            <field name="model">student</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="School">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="roll_no"/>
+                                <field name="gender"/>
+                                <field name="is_present"/>
+                                <field name="course_id"/>
+                                <field name="dept_id"/>
+                            </group>
+                            <group>
+                                <field name="sem"/>
+                                <field name="student_dob"/>
+                                <field name="teacher_id" options="{'no_open':True}"/>
+                                <!--                            <field name="teacher_ids" widget="many2many_tags" options="{'no_create':True}"/>-->
+
+                                <field name="city_id"/>
+                                <field name="state_id"/>
+                                <field name="country_id"/>
+                            </group>
+
+                        </group>
+                        <notebook>
+                            <page string="Teacher">
+                                <field name="teacher_ids"/>
+                            </page>
+                            <page string="OOP Teacher">
+                                <field name="oop_teacher"/>
+                            </page>
+                            <page string="DBMS Teacher">
+                                <field name="dbms_teacher_ids"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="student_view_search" model="ir.ui.view">
+            <field name="name">student.view.search</field>
+            <field name="model">student</field>
+
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="roll_no"/>
+                    <field name="gender"/>
+                    <field name="is_present"/>
+                    <field name="dept_id"/>
+                    <field name="student_dob"/>
+                    <field name="teacher_id"/>
+                    <field name="dbms_teacher_ids"/>
+                    <!--                    <filter string="Archived" name="active" domain="[('active', '=', False)]"/>-->
+                </search>
+            </field>
+        </record>
+
+        <!--        <record id="student_view_kanban" model="ir.ui.view">-->
+        <!--            <field name="name">school.view.kanban</field>-->
+        <!--            <field name="model">student</field>-->
+        <!--            <field name="arch" type="xml">-->
+        <!--                <kanban class="student_view" string="Student Details" sample="1">-->
+        <!--                    <templates>-->
+        <!--                        <t t-name="kanban-box">-->
+        <!--                            <div t-attf-class="oe_kanban_card oe_kanban_global_click">-->
+        <!--                                <div class="o_kanban_content">-->
+        <!--                                    <strong>-->
+        <!--                                        <div class="oe_kanban_project_list o_kanban_record_subtitle">-->
+        <!--                                            <field name="roll_no"/>-->
+        <!--                                        </div>-->
+        <!--                                    </strong>-->
+        <!--                                    <div>-->
+        <!--                                        Student :-->
+        <!--                                        <field name="name"/>-->
+        <!--                                    </div>-->
+        <!--&lt;!&ndash;                                    <div>&ndash;&gt;-->
+        <!--&lt;!&ndash;                                        Teacher:&ndash;&gt;-->
+        <!--&lt;!&ndash;                                        <field name="name"/>&ndash;&gt;-->
+        <!--&lt;!&ndash;                                    </div>&ndash;&gt;-->
+        <!--                                </div>-->
+        <!--                            </div>-->
+        <!--                        </t>-->
+        <!--                    </templates>-->
+        <!--                </kanban>-->
+        <!--            </field>-->
+        <!--        </record>-->
+
+
+        <record id="student_action" model="ir.actions.act_window">
+            <field name="name">Student</field>
+            <field name="res_model">student</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="root" name="School"/>
+        <menuitem id="root1" name="School" parent="root"/>
+        <menuitem id="student_menu" action="student_action" parent="root1"/>
+
+    </data>
+</odoo>
+
+
+
