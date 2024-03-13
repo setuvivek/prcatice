@@ -3,7 +3,6 @@ from odoo import models, fields, api
 from odoo.exceptions import AccessError, MissingError, ValidationError, UserError
 
 
-
 class SetuStudent(models.Model):
     _name = 'setu.student'
     _description = 'Setu Student'
@@ -26,7 +25,7 @@ class SetuStudent(models.Model):
     height = fields.Integer(string='Height')
 
     # Boolean------------
-    active = fields.Boolean(string='Active')
+    active = fields.Boolean(string='Active', default=True)
 
     # Selection-----------
     gender = fields.Selection(selection=[('male', 'Male'), ('female', 'Female')])
@@ -53,6 +52,7 @@ class SetuStudent(models.Model):
     teacher_ids = fields.Many2many('setu.teacher', 'student_teacher', 'student', 'teacher', string='Teacher')
     subject_ids = fields.Many2many('setu.subject', 'student_subject', 'student', 'subject', string='Subject')
 
+    #object button----------
     def action_done(self):
         record = self.env['setu.teacher'].search([('is_teacher', '=', 'True'), ('medium_id', '=', self.medium_id.id),
                                                   ('division_id', '=', self.division_id.id), ('standard_id', '=', self.standard_id.id)],limit=1)
@@ -62,7 +62,7 @@ class SetuStudent(models.Model):
 
         # self.env['setu.student'].create({"name":"Hemangi"})
 
-
+    #create method-----------
     @api.model_create_multi
     def create(self,vals_list):
         for vals in vals_list:
@@ -73,19 +73,30 @@ class SetuStudent(models.Model):
             if record_id:
                 vals.update({"class_teacher_id": record_id.id})
 
+            if not vals.get('name'):
+                vals['middle_name'] = 'student'
+
         res = super(SetuStudent, self).create(vals_list)
         # record = self.env['setu.teacher'].search([('is_teacher', '=', 'True'), ('medium_id', '=', res.medium_id.id),
         #                                           ('division_id', '=', res.division_id.id),
         #                                           ('standard_id', '=', res.standard_id.id)], limit=1)
         # if not res.class_teacher_id:
         #     res.class_teacher_id = record.id
-        # return res
 
+        return res
+
+    #python constrains----------
     @api.constrains('roll_no')
     def check_duplicate_roll_no(self):
         for rec in self:
             existing_roll_no = self.search([('roll_no', '=', rec.roll_no), ('id', '!=', rec.id)])
             if existing_roll_no:
                 raise ValidationError("Roll NO {} already exist".format(rec.roll_no))
+
+    @api.constrains('first_name', 'last_name')
+    def check_required(self):
+        for name in self:
+            if not(name.first_name and name.last_name):
+                raise ValidationError("Please enter first name and last name...")
 
 
