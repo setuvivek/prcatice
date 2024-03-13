@@ -6,8 +6,10 @@ class CompanyProject(models.Model):
     _description = 'company.project'
 
     name = fields.Char(string='Name')
-    # definition = fields.Text(string='Project Definition')
+    definition = fields.Char(string='Project Definition')
+
+    customer_id = fields.Many2one('company.customer',string='Customer')
 
     manager_ids = fields.One2many('company.manager', 'project_id', string='Manager')
-
     employee_ids = fields.One2many('company.employee', 'project_id', string='Employee')
+

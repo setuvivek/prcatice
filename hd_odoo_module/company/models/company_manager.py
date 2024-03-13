@@ -6,6 +6,8 @@ class Manager(models.Model):
     _description = 'company.manager'
 
     name = fields.Char(string='Name', required=True)
+    street = fields.Char(string='Street')
+    zip = fields.Char(string='Zip')
     code = fields.Integer(string='Code', copy=False)
     address = fields.Text(string='Address')
     gender = fields.Selection(selection=[('male', 'Male'), ('female', 'Female')], string='Gender', default='female')
@@ -24,5 +26,7 @@ class Manager(models.Model):
     city_id = fields.Many2one('city', string='City')
     state_id = fields.Many2one('state', string='State')
     country_id = fields.Many2one('country', string='Country')
+
+
 
 

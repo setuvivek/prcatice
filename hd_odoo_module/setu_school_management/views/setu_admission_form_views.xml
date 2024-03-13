@@ -34,6 +34,7 @@
                     <header>
                         <field name="status" widget="statusbar"/>
                         <button name="%(setu_admission_form_action)d" string="Create" type="action"/>
+                        <button name="action_clear" string="Clear" type="object"/>
                     </header>
                     <sheet>
                         <group>
