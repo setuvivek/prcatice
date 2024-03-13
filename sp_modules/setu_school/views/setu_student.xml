@@ -30,7 +30,8 @@
             <field name="arch" type="xml">
                 <form string="setu_student">
                     <header>
-                        <button name="assign" string="AssignCT" class="btn-primary" type="object"/>
+                        <button name="assign" string="Assign Class Teacher" class="btn-primary" type="object"/>
+<!--                        <button name="clr_rec" string="Clear Rec" class="btn-primary" type="object"/>-->
                     </header>
 
                     <sheet>
@@ -73,6 +74,8 @@
                                 <field name="class_id"
                                        options="{'no_open':True, 'no_create': True}"/>
                                 <field name="class_teacher_id"
+                                       options="{'no_open':True, 'no_create': True}"/>
+                                <field name="alternate_id"
                                        options="{'no_open':True, 'no_create': True}"/>
                                 <field name="teacher_ids" widget="many2many_tags"
                                        options="{'no_create': True}"/>
