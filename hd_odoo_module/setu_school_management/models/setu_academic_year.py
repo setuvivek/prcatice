@@ -46,11 +46,42 @@ class SetuAcademicYear(models.Model):
             current_date = next_date
 
         self.env['setu.academic.month'].create(list)
-        record = self.env['setu.academic.month'].search([('academic_year_id', '=', self.id)])
-        if record:
-            record.write({'date_start':'2026-05-01'})
-        else:
-            raise ValidationError("this date does not exists...")
+
+        # @api.constrains('date_start', 'date_stop')
+        # def _check_closing_date(self):
+        #     for event in self:
+        #         if event.date_stop < event.date_start:
+        #             raise ValidationError('The closing date cannot be earlier than the beginning date.')
+
+        # current_date = self.date_start
+        # while current_date < self.date_stop:
+        #     next_date = current_date + relativedelta(months=1)
+        #     month_name = current_date.strftime('%B %Y')
+        #     if current_date.year == next_date.year and current_date.month == next_date.month:
+        #         self.env['setu.academic.month'].create({
+        #             'name': month_name,
+        #             'start_date': current_date,
+        #             'end_date': next_date - relativedelta(days=1),
+        #             'academic_year_id': self.id,
+        #         })
+        #
+        #     else:
+        #         self.env['setu.academic.month'].create({
+        #             'name': f"{current_date.strftime('%B %Y')} ({current_date.strftime('%d-%m-%y')})",
+        #             'code': month_name[:3],
+        #             'date_start': current_date,
+        #             'date_stop': next_date - relativedelta(days=1),
+        #             'academic_year_id': self.id,
+        #         })
+        #         current_date = next_date
+
+
+
+        # record = self.env['setu.academic.month'].search([('academic_year_id', '=', self.id)])
+        # if record:
+        #     record.write({'date_start':'2026-05-01'})
+        # else:
+        #     raise ValidationError("this date does not exists...")
 
     def unlink(self):
         for record in self.month_ids:
