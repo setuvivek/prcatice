@@ -40,7 +40,7 @@ class SetuStudent(models.Model):
     teacher_ids = fields.Many2many('setu.teacher', 'student_teacher_ids', string='Teachers')
     subject_ids = fields.Many2many('setu.subject', 'student_subjects', string='Subjects')
 
-    # ------------------------------------------------
+    # ---------------------------------------------------------------------
     @api.model
     def create(self, vals):
         rec = self.env['setu.teacher'].search(
