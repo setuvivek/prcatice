@@ -9,7 +9,8 @@
             <field name="arch" type="xml">
                 <tree>
                     <field name="name"/>
-                    <!--                    <field name="definition"/>-->
+                    <field name="definition"/>
+                    <field name="customer_id"/>
                     <field name="manager_ids"/>
                     <field name="employee_ids"/>
                 </tree>
@@ -25,9 +26,8 @@
                     <sheet>
                         <group>
                             <field name="name"/>
-                            <!--                            <field name="definition"/>-->
-                            <!--                            <field name="manager_ids"/>-->
-                            <!--                            <field name="employee_ids"/>-->
+                            <field name="definition"/>
+                            <field name="customer_id"/>
                         </group>
 
                         <notebook>

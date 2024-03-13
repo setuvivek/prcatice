@@ -6,7 +6,7 @@ class SetuAdmissionForm(models.Model):
     _name = 'setu.admission.form'
     _description = 'Setu Admission Form'
 
-    # Char
+    # Char----------------
     student_name = fields.Char(string='Student Name')
     email = fields.Char(string='Email')
     phone = fields.Char(string='Phone')
@@ -15,16 +15,21 @@ class SetuAdmissionForm(models.Model):
     street2 = fields.Char(string='Street 2')
     zip = fields.Char(string='Zip')
 
-
-    # date
+    # date----------------
     dob = fields.Date(string='DOB')
 
-    #selection
+    #selection------------
     status = fields.Selection(selection=[('draft', 'Draft'), ('confirm', 'Confirm')], default='draft')
 
-    # m2o
+    # m2o-----------------
     class_id = fields.Many2one('setu.class', string='Class')
     city_id = fields.Many2one('city', string='City')
     state_id = fields.Many2one('state', string='State')
     country_id = fields.Many2one('country', string='Country')
     school_id = fields.Many2one('setu.school', string='School')
+
+
+    def action_clear(self):
+        for rec in self:
+            rec.update({'student_name':''})
+
