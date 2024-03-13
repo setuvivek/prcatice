@@ -23,6 +23,8 @@
                             <group>
                                 <field name="name"/>
                                 <field name="standard_id" options="{'no_open':True, 'no_create': True}"/>
+                                <field name="medium_id" options="{'no_open':True, 'no_create': True}"/>
+                                <field name="division_id" options="{'no_open':True, 'no_create': True}"/>
                                 <field name="subject_ids" widget="many2many_tags"
                                        options="{'no_create': True}"/>
                                 <field name="school_id"
