@@ -35,7 +35,7 @@
                                 <field name="mobile"/>
                                 <label for="street" string="Home Address"/>
                                 <div class="o_address_format">
-                                <field name="street" placeholder="Street 2..." class="o_address_street"/>
+                                <field name="street" placeholder="Street..." class="o_address_street"/>
                                 <field name="city_id" placeholder="City" class="o_address_city" options='{"no_open": True}'/>
                                 <field name="state_id" class="o_address_state" placeholder="State"
                                        options='{"no_open": True}'/>

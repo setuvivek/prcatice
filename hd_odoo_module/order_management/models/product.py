@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from odoo import models, fields
+from odoo import models, fields, api
 
 
 class Product(models.Model):
@@ -8,20 +8,20 @@ class Product(models.Model):
     # _rec_name = 'category'
     # _order = 'price asc'
 
-    # Char
+    # Char---------------
     name = fields.Char(string='Name', required=True, copy=False, help='Product Name')
     description = fields.Char(string='Product_description', help='About Product')
-    type = fields.Char(string='Type')
 
-    # Integer
+
+    # Integer------------
     code = fields.Integer(string='Code')
 
-    # Float
+    # Float--------------
     incoming = fields.Float(string='Incoming Quantity')
     outgoing = fields.Float(string='Outgoing Quantity')
     price = fields.Float(string='Price', help='Product Price')
 
-    # Selection
+    # Selection----------
     category = fields.Selection(
         selection=[('clothing', 'Clothing'), ('personal care products', 'Personal Care Products'),
                    ('household', 'Household'), ('books', 'Books'), ('phone', 'Phones'), ('toys', 'Toys'),
@@ -34,10 +34,14 @@ class Product(models.Model):
         selection=[('no discount', 'No Discount'), ('10 to 30%', '10 To 30%'), ('30 to 50%', '30 To 50%'),
                    ('above 50%', 'Above 50%')], string='Discount', default='no discount', help='About product discount')
 
-    # Boolean
+    #Boolean------------
     available = fields.Boolean(string='product_is_available', help='product is available or not')
 
+    #O2m-----------------
     order_ids = fields.One2many('order', 'product_id', string='Order')
+
+
+    #SQL_Constaints------
 
     _sql_constraints = [('Product_unique', 'unique(name)', 'product already exits....'),
                         ('name_no_spaces', "CHECK(name NOT LIKE '% %')",
@@ -45,10 +49,24 @@ class Product(models.Model):
                         ('code_unique', 'unique(code)',
                          'Different products have different code. \n This code already exists.... \n Please use another code!'),
                         ('check_price', 'CHECK(price > 0)', 'price should not be zero!'),
-                        ('check_product_type',
-                         "CHECK(type IN ('incoming', 'outgoing') AND type IS NOT NULL)",
-                         'Please Enter valid customer type...'),
+                        # ('check_product_type',
+                        #  "CHECK(type IN ('incoming', 'outgoing') AND type IS NOT NULL)",
+                        #  'Please Enter valid customer type...'),
                         ('check_product_quantity', 'CHECK(incoming >= outgoing)',
                          'Outgoing quantity does not greater than incoming quantity! \n outgoing does not exixts stock....'),
                         ]
+    
+    #Create and Search-----
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in self:
+            record = self.env['stock'].search([('product_id', '=', vals.get('product_id')),
+                                               ('type' '=', vals.get('type')),
+                                               ('incoming', '=', vals.get('incoming'))], limit=1)
+            if record:
+                vals.update({'incoming':record.id})
+
+        res = super(Product,self).create(vals_list)
+        return res
+    
 
