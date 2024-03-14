@@ -47,36 +47,6 @@ class SetuAcademicYear(models.Model):
 
         self.env['setu.academic.month'].create(list)
 
-        # @api.constrains('date_start', 'date_stop')
-        # def _check_closing_date(self):
-        #     for event in self:
-        #         if event.date_stop < event.date_start:
-        #             raise ValidationError('The closing date cannot be earlier than the beginning date.')
-
-        # current_date = self.date_start
-        # while current_date < self.date_stop:
-        #     next_date = current_date + relativedelta(months=1)
-        #     month_name = current_date.strftime('%B %Y')
-        #     if current_date.year == next_date.year and current_date.month == next_date.month:
-        #         self.env['setu.academic.month'].create({
-        #             'name': month_name,
-        #             'start_date': current_date,
-        #             'end_date': next_date - relativedelta(days=1),
-        #             'academic_year_id': self.id,
-        #         })
-        #
-        #     else:
-        #         self.env['setu.academic.month'].create({
-        #             'name': f"{current_date.strftime('%B %Y')} ({current_date.strftime('%d-%m-%y')})",
-        #             'code': month_name[:3],
-        #             'date_start': current_date,
-        #             'date_stop': next_date - relativedelta(days=1),
-        #             'academic_year_id': self.id,
-        #         })
-        #         current_date = next_date
-
-
-
         # record = self.env['setu.academic.month'].search([('academic_year_id', '=', self.id)])
         # if record:
         #     record.write({'date_start':'2026-05-01'})
@@ -89,18 +59,34 @@ class SetuAcademicYear(models.Model):
                 raise ValidationError("Not Delete")
             record.unlink()
 
+    @api.model_create_multi
+    def create(self, vals_list):
+        res = super(SetuAcademicYear, self).create(vals_list)
+        return res
+
     def write(self,vals_list):
-        # vals_list = {'name':'hemangi'}
+        # record = {'code': self.code}
+        # if record:
+        #     raise ValidationError("can't update code!")
+
+        vals_list = {'code':self.code}
         # vals_list = {}
         res = super(SetuAcademicYear, self).write(vals_list)
         return res
 
-        # res = super('setu.academic.year').unlink()
-        # for record in self.month_ids:
-        #     if record.date_start:
-        #         raise ValidationError("Not Delete")
-        #     record.unlink()
-        # return res
+    # #python constrains---------
+    # @api.constrains('code')
+    # def check_unique_code(self):
+    #     for rec in self:
+    #         existing_code = self.search([('code', '=', rec.code), ('id', '!=', rec.id)])
+    #         if existing_code:
+    #             raise ValidationError("code ust be uniqueee..................")
+
+
+
+
+
+
 
 
 

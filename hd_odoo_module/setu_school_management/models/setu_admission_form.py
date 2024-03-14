@@ -30,6 +30,7 @@ class SetuAdmissionForm(models.Model):
 
 
     def action_clear(self):
+        self.unlink()
         for rec in self:
             rec.update({'student_name':''})
 

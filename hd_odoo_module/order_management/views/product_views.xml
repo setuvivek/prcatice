@@ -36,7 +36,6 @@
                             <group>
                                 <field name="price"/>
                                 <field name="available"/>
-                                <field name="type"/>
                                 <field name="incoming"/>
                                 <field name="outgoing"/>
                             </group>
