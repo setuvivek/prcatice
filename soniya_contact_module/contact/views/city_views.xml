@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="city_view_tree" model="ir.ui.view">
+        <field name="name">city.view.tree</field>
+        <field name="model">city</field>
+        <field name="arch" type="xml">
+            <tree string="City">
+                <field name="city_id"/>
+                <field name="name"/>
+<!--                <field name="partner_id"/>-->
+<!--                <field name="district"/>-->
+<!--                <field name="country"/>-->
+                <field name="population"/>
+                <field name="pincode"/>
+                <field name="state_id"/>
+                <field name="city_ids"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="city_view_form" model="ir.ui.view">
+        <field name="name">Marks Form View</field>
+        <field name="model">city</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="city_id"/>
+                            <field name="name"/>
+                            <field name="state_id"/>
+<!--                            <field name="district"/>-->
+                            <field name="city_ids" options="{'no_edit':True, 'no_create':True}"/>
+                        </group>
+                        <group>
+<!--                            <field name="country"/>-->
+                            <field name="population"/>
+                            <field name="pincode"/>
+<!--                            <field name="partner_id"/>-->
+                        </group>
+                    </group>
+<!--                     <notebook>-->
+<!--                        <page string="City">-->
+<!--                            <group>-->
+<!--                                <group>-->
+<!--                                    <field name="city_id"/>-->
+<!--                                    <field name="name"/>-->
+<!--                                    <field name="city_ids" options="{'no_edit': True, 'no_create': True}"/>-->
+<!--                                    <field name="population"/>-->
+<!--                                    <field name="pincode"/>-->
+<!--                                </group>-->
+<!--                            </group>-->
+<!--                        </page>-->
+
+<!--                    </notebook>-->
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="city_action" model="ir.actions.act_window">
+        <field name="name">City</field>
+        <field name="res_model">city</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="root" name="Contact"/>
+    <menuitem id="root1"
+              name="Contact"
+              parent="root"/>
+    <menuitem id="city_menu"
+              name="City"
+              action="city_action"
+              parent="root1"/>
+    <menuitem id="partner_menu"
+              name="Partner"
+              action="partner_action"
+              parent="root1"/>
+<!--    <menuitem id="country_menu"-->
+<!--              name="Country"-->
+<!--              action="country_action"-->
+<!--              parent="root1"/>-->
+<!--    <menuitem id="state_menu"-->
+<!--              name="State"-->
+<!--              action="state_action"-->
+<!--              parent="root1"/>-->
+<!--    <menuitem id="partner_menu"-->
+<!--              name="Customer"-->
+<!--              action="partner_action"-->
+<!--              parent="root1"/>-->
+<!--    <menuitem id="customer_menu"-->
+<!--              name="Customer"-->
+<!--              action="customer_action"-->
+<!--              parent="root1"/>-->
+<!--    <menuitem id="customer_menu"-->
+<!--              name="Customer"-->
+<!--              action="customer_action"-->
+<!--              parent="root1"/>-->
+</odoo>

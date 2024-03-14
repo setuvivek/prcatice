@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="partner_view_tree" model="ir.ui.view">
+        <field name="name">partner.view.tree</field>
+        <field name="model">partner</field>
+        <field name="arch" type="xml">
+            <tree string="Partner">
+<!--                <field name="order_id"/>-->
+<!--                <field name="state_id"/>-->
+                <field name="name"/>
+                <field name="check"/>
+                <field name="partner_id"/>
+                <field name="country_ids"/>
+                <field name="state_ids"/>
+                <field name="country_id"/>
+<!--                <field name="city"/>-->
+<!--                <field name="village"/>-->
+            </tree>
+        </field>
+    </record>
+    <record id="partner_view_form" model="ir.ui.view">
+        <field name="name">Marks Form View</field>
+        <field name="model">partner</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="check"/>
+                        <field name="partner_id"/>
+                        <field name="country_ids"/>
+                        <field name="state_ids"/>
+                        <field name="country_id"/>
+<!--                            <field name="city"/>-->
+<!--                            <field name="village"/>-->
+                    </group>
+                    <notebook>
+                        <page string="Partner">
+                            <tree string="Partner" delete="false"/>
+                                <field name="name" optional="show"/>
+                                <field name="check"/>
+                                <field name="partner_id" optional="show"/>
+                                <field name="country_ids" options="{'no_create': True}" optional="hidden"/>
+                                <field name="state_ids"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="partner_view_search" model="ir.ui.view">
+        <field name="name">partner.view.search</field>
+        <field name="model">partner</field>
+        <field name="arch" type="xml">
+            <search string="search student">
+                <field name="name"/>
+                <field name="check"/>
+                <field name="partner_id"/>
+                <field name="country_ids"/>
+                <field name="state_ids"/>
+                <group expand="0" string="Group By">
+                    <filter string="Name" name="name" context="{'group_by': 'name'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    <record id="partner_action" model="ir.actions.act_window">
+        <field name="name">Partner</field>
+        <field name="res_model">partner</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+<!--    <menuitem id="customer_menu"-->
+<!--              name="Partner"-->
+<!--              action="customer_action"-->
+<!--              parent="root1"/>-->
+
+<!--    <menuitem id="order_root_main_menu" name="Order"/>-->
+<!--    <menuitem id="order_root_child_menu" name="Order Details" parent="order_root_main_menu" action="order_action"/>-->
+</odoo>
+
