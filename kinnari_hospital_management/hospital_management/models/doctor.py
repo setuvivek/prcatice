@@ -9,8 +9,8 @@ class Doctor(models.Model):
     gender = fields.Selection(selection=[('male', 'Male'), ('female', 'Female')], string="Gender")
     mobile = fields.Char(string="Mobile")
     address = fields.Char(string="Resident Location")
-    degree = fields.Char(string="Doctor Degree" , required=True )
-    type = fields.Boolean(string="MD", default=False)
+    degree = fields.Char(string="Doctor Degree")
+    type = fields.Boolean(string="MD")
     Specialize = fields.Selection(selection=[('Cardiologists','Cardiologists'),
                                              ('Neurologist','Neurologist'),
                                              ('Dentist','Dentist'),

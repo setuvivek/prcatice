@@ -8,7 +8,7 @@ class Staff(models.Model):
     name=fields.Char(string="Staff Name" , required=True)
     gender = fields.Selection(selection=[('male', 'Male'), ('female', 'Female')], string="Gender")
     mobile = fields.Char(string="Mobile")
-    address = fields.Char(string="Resident Location")
+    address = fields.Boolean(string="You want to add Resident Location")
     age = fields.Integer(string="Age")
     type = fields.Selection(selection=[('nurse','nurse'),('worker','worker'),('a','a'),('b','b')] ,string="Staff Position")
     a = fields.Boolean(string="Boolean")
