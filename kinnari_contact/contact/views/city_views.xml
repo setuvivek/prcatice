@@ -20,15 +20,18 @@
             <field name="model">city</field>
             <field name="arch" type="xml">
                 <form string="city">
+                    <header>
+                        <field name="type" widget="statusbar"/>
+                    </header>
                     <sheet>
                         <group>
                             <field name="name"/>
-                            <field name="type"/>
                             <field name="smartcity"/>
+                            <field name="type" attrs="{'invisible':[('smartcity','!=',True)],'required': [('smartcity', '=', True)]}"/>
+
                             <field name="state_id"/>
                             <field name="customer_ids"/>
-
-
+                            
                         </group>
                         <notebook>
                             <page string="customer data">

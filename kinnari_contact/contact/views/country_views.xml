@@ -40,7 +40,7 @@
                         <notebook>
                             <page string="customer data">
                                 <field name="customer_ids">
-                                    <tree string-="customer data" editable="False" create="False" delete="False">
+                                    <tree string-="customer data" editable="bottom" delete="False">
                                         <field name="name"/>
                                         <field name="check"/>
                                         <field name="city_id" optional="hide"/>
