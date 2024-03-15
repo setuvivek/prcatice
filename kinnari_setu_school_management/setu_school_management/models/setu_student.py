@@ -26,11 +26,14 @@ class SetuStudent(models.Model):
     cast_id =  fields.Many2one('setu.student.cast',string="Cast")
     mother_tongue_id = fields.Many2one('setu.mother.tongue',string="Mother Tongue")
     teacher_id = fields.Many2one('setu.teacher',string="Class Teacher")
+    address = fields.Boolean(string="You want to add Address?")
+    city_id = fields.Many2one('city', string="City Name")
+    state_id = fields.Many2one('state', string="State Name")
+    country_id = fields.Many2one('country', string="Country Name")
 
     def write(self, vals):
         if not vals.get('teacher_id'):
-            record = self.env['setu.teacher'].search('|',
-                [('city', 'ilike', 'rajkot'),
+            record = self.env['setu.teacher'].search([
                  ('is_teacher', '=', True),
                  ('standard_id', '=', self.standard_id.id),
                  ('school_id','=',self.school_id.id),
@@ -39,6 +42,7 @@ class SetuStudent(models.Model):
             vals.update({'teacher_id': record.id})
         rec = super(SetuStudent, self).write(vals)
         return rec
+
 
 
 

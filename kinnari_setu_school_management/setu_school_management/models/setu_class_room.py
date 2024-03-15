@@ -13,6 +13,14 @@ class SetuClassRoom(models.Model):
         ('name_unique', 'unique(name)', "Name Must Be Unique."),
         ('size_number', 'CHECK(number>=0)', 'Number field cannot be negative.')
     ]
+    @api.model
+    def create(self,vals):
+        if not vals.get('number'):
+            vals.update({'number':100})
+        rec = super(SetuClassRoom,self).create(vals)
+        return rec
+
+
 
     # @api.constrains('number')
     # def write(self, vals):
