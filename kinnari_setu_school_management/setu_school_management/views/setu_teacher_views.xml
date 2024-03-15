@@ -6,9 +6,6 @@
             <field name="arch" type="xml">
                 <tree string="teacher">
                     <field name="name"/>
-                    <field name="address"/>
-                    <field name="city"/>
-                    <field name="state"/>
                     <field name="email" />
                     <field name="mobile"/>
                     <field name="phone"/>
@@ -16,10 +13,6 @@
                     <field name="subject_ids"/>
                     <field name="school_id"/>
                     <field name="student_ids"/>
-                    <field name="home_address"/>
-                    <field name="street"/>
-                    <field name="country"/>
-                    <field name="zip"/>
                 </tree>
             </field>
 
@@ -34,9 +27,6 @@
                         <group>
 
                             <field name="name"/>
-                            <field name="address"/>
-                            <field name="city"/>
-                            <field name="state"/>
                             <field name="email"/>
                             <field name="mobile"/>
                             <field name="phone"/>
@@ -47,16 +37,27 @@
                             <field name="subject_ids"/>
                             <field name="student_ids"/>
                             <field name="is_teacher"/>
-
-                            <field name="home_address" placeholder="Add Address"/>
+                            <field name="address"/>
                             <span/>
                             <div>
-                                <field name="street" placeholder="Street"/>
-                                <field name="country" placeholder="Country"/>
-                                <field name="city" placeholder="City"/>
-                                <field name="state" placeholder="state"/>
-                                <field name="zip" placeholder="zip"/>
+                                <field name="country_id" placeholder="Country"
+                                       attrs="{'invisible':[('address','!=',True)],'required': [('address', '=', True)]}"/>
+                                <field name="city_id" placeholder="City"
+                                       attrs="{'invisible':[('address','!=',True)],'required': [('address', '=', True)]}"/>
+                                <field name="state_id" placeholder="state"
+                                       attrs="{'invisible':[('address','!=',True)],'required': [('address', '=', True)]}"/>
+                                <field name="zip" placeholder="zip"
+                                       attrs="{'invisible':[('address','!=',True)],'required': [('address', '=', True)]}"/>
                             </div>
+<!--                            <field name="home_address" placeholder="Add Address"/>-->
+<!--                            <span/>-->
+<!--                            <div>-->
+<!--                                <field name="street" placeholder="Street"/>-->
+<!--                                <field name="country" placeholder="Country"/>-->
+<!--                                <field name="city" placeholder="City"/>-->
+<!--                                <field name="state" placeholder="state"/>-->
+<!--                                <field name="zip" placeholder="zip"/>-->
+<!--                            </div>-->
 
 
                         </group>

@@ -13,6 +13,8 @@ class SetuAcademicMonth(models.Model):
 
 
 
+
+
     # _sql_constraints = [
     #     # Partial constraint, complemented by unique index (see below). Still
     #     # useful to keep because it provides a proper error message when a

@@ -18,7 +18,7 @@
                     <sheet>
                         <group>
                             <field name="name"/>
-                            <field name="grade_line_ids"/>
+                            <field name="grade_line_ids" domain="[('name','=',name)]"/>
 
                         </group>
                     </sheet>

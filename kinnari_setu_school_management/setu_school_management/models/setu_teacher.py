@@ -5,9 +5,6 @@ class SetuTeacher(models.Model):
     _name = "setu.teacher"
 
     name = fields.Char(string="Name")
-    address = fields.Char(string="Address")
-    city = fields.Char(string="City")
-    state = fields.Char(string="State")
     email = fields.Char(string="Email")
     mobile = fields.Char(string="mobile" , help="Enter mobile Number" , size=10)
     phone = fields.Char(string="Phone", help="Enter Phone Number" , size=10)
@@ -17,15 +14,13 @@ class SetuTeacher(models.Model):
     school_id = fields.Many2one('setu.school', string="Campus")
     subject_ids = fields.Many2many('setu.subject', 'setu_teachers_subjects', string="Subject")
     student_ids = fields.One2many('setu.student','teacher_id', string="Students")
-    home_address = fields.Char(string="Home Address")
-    street = fields.Char(string="Street")
-    country = fields.Char(string="Country")
-    zip = fields.Char(string="ZIP")
     is_teacher = fields.Boolean(string="Is teacher")
+    address = fields.Boolean(string="You want to add  Home Address?")
+    city_id = fields.Many2one('city', string="City Name")
+    state_id = fields.Many2one('state', string="State Name")
+    country_id = fields.Many2one('country', string="Country Name")
+    zip = fields.Char(string="zip")
 
-
-
-    # Stree, City, State, Country, zip, phone, email
 
     @api.model
     def create(self, vals_list):
@@ -45,3 +40,18 @@ class SetuTeacher(models.Model):
         for rec in self:
             if rec.zip and not rec.zip.isdigit():
                 raise ValidationError(_("The zip must be a sequence of digits."))
+
+
+
+
+
+
+    # def write(self,vals):
+    #     res = super(SetuTeacher).write(vals)
+    #     if 'teacher_fall' in vals:
+    #         teacher_fall = vals.get('is_teacher')
+    #         if not teacher_fall:
+    #             for rec in self:
+    #                 rec.student_ids.write({'state':'rajkot'})
+    #     return res
+

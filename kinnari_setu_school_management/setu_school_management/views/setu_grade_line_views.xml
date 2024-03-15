@@ -24,12 +24,13 @@
                                 <field name="from_mark"/>
                                 <field name="to_mark"/>
                                 <field name="name"/>
-                                <field name="grade_id"/>
+
 
                             </group>
                             <group>
-                                <field name="grade_id"/>
                                 <field name="fail" widget="boolean_toggle"/>
+                                <field name="grade_id" domain="[('name','=',name)]"
+                                       attrs="{'invisible':[('fail','!=',True)]}"/>
                             </group>
 
                         </group>
