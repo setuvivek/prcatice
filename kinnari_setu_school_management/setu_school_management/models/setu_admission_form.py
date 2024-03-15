@@ -5,27 +5,105 @@ class SetuAdmissionForm(models.Model):
     _name = "setu.admission.form"
 
     name = fields.Char(string="Name" )
-    address = fields.Char(string="Address")
-    city=fields.Char(string="City")
-    state=fields.Char(string="State")
+    address = fields.Boolean(string="You want to add Address?")
+    city_id = fields.Many2one('city', string="City Name")
+    state_id = fields.Many2one('state', string="State Name")
+    country_id = fields.Many2one('country', string="Country Name")
+
     email = fields.Char(string="Email")
     phone = fields.Char(string="Phone")
     dob = fields.Date(string="Date of Birth")
+    cname = fields.Char(string="Enter Class name")
     class_id = fields.Many2one('setu.class', string="class")
 
-    @api.model
+
+    @api.model_create_multi
     def create(self, vals_list):
-        if not vals_list.get('phone'):
-            vals_list.update({'phone': '281'})
+        for vals in vals_list:
+            if not vals.get('address'):
+                vals['address'] = 'abc'
+                # vals_list.update({'address':'abc'})
+            if not vals.get('state'):
+                rec = self.env['setu.admission.form'].search([('city', '=', 'rajkot')])
+                if rec:
+                    vals.update({'state': 'Gujarat'})
         res = super(SetuAdmissionForm, self).create(vals_list)
         return res
 
 
-    _sql_constraints = [
-        # Partial constraint, complemented by unique index (see below). Still
-        # useful to keep because it provides a proper error message when a
-        # violation occurs, as it shares the same prefix as the unique index.
-        ('name_compulsory', 'CHECK(name IS NOT NULL)', 'Name should required'),
-        ('name_unique', 'unique(name)', "Name Must Be Unique."),
-        ('phone_length', 'CHECK(LENGTH(phone) = 10)', "Phone must have 10 digit")
-    ]
+
+    # def reset_data(self,vals):
+    #     if vals.get():
+    #         vals.update({})
+    #     self.env['setu.admission.form'].write(vals)
+
+    # def write(self, vals):
+    #     if vals.get('email'):
+    #         vals['email'] = self.env['setu.admission.form']._clean_email(vals['email'])
+
+    # def write(self,vals):
+    #     if vals:
+    #         vals.update({'name':'','address':'','city':'','state':''})
+    #     rec = super(SetuAdmissionForm,self).write(vals)
+    #     return rec
+
+
+
+        # self.unlink()
+        # self.name = ''
+        # self.address = ''
+        # self.city = ''
+        # self.state = ''
+        # self.email = ''
+        # self.dob = ''
+        # self.class_id = ''
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    # @api.constrains('date_start', 'date_stop')
+    # def _constrains_dates_(self):
+    #     for rec in self:
+    #         if rec.date_start and rec.date_stop and rec.date_start > rec.date_stop:
+    #             raise ValidationError(_('The stop date cannot be earlier than the start date. ',))
+
+
+
+    # @api.model_create_multi
+    # def create(self, vals_list):
+    #     for vals in vals_list:
+    #         if 'code_prefix_start' in vals and not vals.get('code_prefix_end'):
+    #             vals['code_prefix_end'] = vals['code_prefix_start']
+    #     res_ids = super(AccountGroup, self).create(vals_list)
+    #     res_ids._adapt_accounts_for_account_groups()
+    #     res_ids._adapt_parent_account_group()
+    #     return res_ids
+
+
+
+    #
+    # _sql_constraints = [
+    #     # Partial constraint, complemented by unique index (see below). Still
+    #     # useful to keep because it provides a proper error message when a
+    #     # violation occurs, as it shares the same prefix as the unique index.
+    #     ('name_compulsory', 'CHECK(name IS NOT NULL)', 'Name should required'),
+    #     ('name_unique', 'unique(name)', "Name Must Be Unique."),
+    # ]

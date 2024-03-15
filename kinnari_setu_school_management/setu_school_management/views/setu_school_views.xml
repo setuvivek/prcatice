@@ -7,8 +7,8 @@
                 <tree string="school">
                     <field name="name"/>
                     <field name="code"/>
-                    <field name="street"/>
-                    <field name="city"/>
+                    <field name="address"/>
+                    <field name="city_id"/>
                     <field name="state_id"/>
                     <field name="zip"/>
                     <field name="country_id"/>
@@ -30,11 +30,11 @@
                         <group>
                             <group>
                                 <field name="name"/>
-                                <field name="street"/>
-                                <field name="city"/>
-                                <field name="state_id"/>
-                                <field name="zip"/>
-                                <field name="country_id"/>
+                                <field name="address"/>
+                                <field name="country_id" attrs="{'invisible':[('address','!=',True)],'required': [('address', '=', True)]}"/>
+                                <field name="state_id" attrs="{'invisible':[('address','!=',True)],'required': [('address', '=', True)]}"/>
+                                <field name="city_id" attrs="{'invisible':[('address','!=',True)],'required': [('address', '=', True)]}"/>
+                                <field name="zip" attrs="{'invisible':[('address','!=',True)],'required': [('address', '=', True)]}"/>
                                 <field name="school_standard_ids"/>
                             </group>
                             <group>
@@ -42,6 +42,8 @@
                                 <field name="required_age"/>
                                 <field name="email"/>
                                 <field name="phone"/>
+                                <field name="cname"/>
+                                <field name="is_school"/>
                             </group>
                         </group>
                     </sheet>

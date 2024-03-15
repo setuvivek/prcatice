@@ -7,8 +7,9 @@
                 <tree string="admission_form">
                     <field name="name"/>
                     <field name="address"/>
-                    <field name="city"/>
-                    <field name="state"/>
+                    <field name="country_id"/>
+                    <field name="city_id"/>
+                    <field name="state_id"/>
                     <field name="email" />
                     <field name="phone"/>
                     <field name="dob"/>
@@ -23,19 +24,25 @@
             <field name="model">setu.admission.form</field>
             <field name="arch" type="xml">
                 <form string="admission_form">
+<!--                    <header>-->
+<!--                        <button name="reset_data" string="reset" type="object"/>-->
+<!--                    </header>-->
                     <sheet>
                         <group>
                               <group>
                                   <field name="name"/>
                                   <field name="address"/>
-                                  <field name="city"/>
-                                  <field name="state"/>
+                                  <field name="country_id" attrs="{'invisible':[('address','!=',True)],'required': [('address', '=', True)]}"/>
+                                  <field name="city_id" attrs="{'invisible':[('address','!=',True)],'required': [('address', '=', True)]}"/>
+                                  <field name="state_id" attrs="{'invisible':[('address','!=',True)],'required': [('address', '=', True)]}"/>
                               </group>
                             <group>
                                 <field name="email"/>
                                 <field name="phone"/>
                                 <field name="dob"/>
-                                <field name="class_id" options="{'no_create':True}"/>
+                                <field name="cname"/>
+                                <field name="class_id" options="{'no_create':True}" domain="[('name','=',cname)]"/>
+<!--                                <button name="reset_data" string="reset" type="object"/>-->
                             </group>
                         </group>
                     </sheet>
