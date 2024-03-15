@@ -15,8 +15,8 @@ class Teacher(models.Model):
     postgraduate = fields.Boolean(string="Postgraduate")
     result = fields.Float(string="Result", help="Enter result of Postgraduate", digit=(3,2))
     dob = fields.Date(string="Date of Birth")
-
     student_id = fields.One2many('student','teach_id',string="Students")
+    address = fields.Boolean(string="You want to add Resident Location")
     country_id = fields.Many2one('country', string="Country Name")
     state_id = fields.Many2one('state', string="State Name")
     city_id = fields.Many2one('city', string="City Name")
@@ -38,6 +38,9 @@ class Teacher(models.Model):
 
     _sql_constraints = [('mobile_length', 'CHECK(LENGTH(mobile) = 10)', "Mobile must have 10 digit"),
                         ('name_compulsory' , 'CHECK(name IS NOT NULL)','name should required'),]
+
+
+
 
 
 
