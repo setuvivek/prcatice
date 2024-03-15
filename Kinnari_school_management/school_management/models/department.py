@@ -14,6 +14,7 @@ class Department(models.Model):
         vals_list = [{}]
         return super(Department, self).create(vals_list)
 
+
     # teacher_ids = fields.Many2many('teacher','teacher1','name1','name', string="Teacher")
 
 

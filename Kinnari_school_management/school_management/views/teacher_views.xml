@@ -47,7 +47,7 @@
                          <field name="postgraduate" widget="boolean_toggle"/>
                          <field name="result"/>
                          <field name="dob"/>
-                         <field name="student_id"/>
+                         <field name="student_id" attrs="{'invisible':[('postgraduate','!=',True)]}"/>
                          <field name="priority" widget="priority"/>
 
                      </group>
@@ -70,9 +70,10 @@
                              <form string="data">
                                  <sheet>
                                      <group>
-                                         <field name="country_id"/>
-                                         <field name="state_id"/>
-                                         <field name="city_id"/>
+                                         <field name="address"/>
+                                         <field name="country_id" attrs="{'invisible':[('address','!=',True)],'required': [('address', '=', True)]}"/>
+                                         <field name="state_id" attrs="{'invisible':[('address','!=',True)],'required': [('address', '=', True)]}"/>
+                                         <field name="city_id" attrs="{'invisible':[('address','!=',True)],'required': [('address', '=', True)]}"/>
 
                                      </group>
                                  </sheet>
