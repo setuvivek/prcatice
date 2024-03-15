@@ -2,18 +2,23 @@
 <odoo>
 
     <record id="teacher_view_tree" model="ir.ui.view">
-<!--        <field name="name">model.teacher.view.tree.inherit.student_management</field>-->
+        <!--        <field name="name">model.teacher.view.tree.inherit.student_management</field>-->
         <field name="name">teacher.view.tree</field>
         <field name="model">teacher</field>
         <field name="arch" type="xml">
             <tree string="Teacher">
                 <field name="name"/>
                 <field name="age"/>
-                <field name="standard"/>
+                <field name="active"/>
+
                 <field name="gender"/>
                 <field name="subject"/>
                 <field name="student_ids"/>
                 <field name="department_id"/>
+                <field name="standard"/>
+                <field name="city_id"/>
+
+
             </tree>
         </field>
     </record>
@@ -22,16 +27,44 @@
         <field name="model">teacher</field>
         <field name="arch" type="xml">
             <form string="Teacher">
+                <header>
+                    <field name="gender" widget="statusbar"/>
+                </header>
                 <sheet>
                     <group>
-                            <field name="name"/>
+                        <field name="name"/>
                         <field name="age"/>
-                        <field name="standard"/>
+                        <field name="active"/>
+
                         <field name="gender"/>
                         <field name="subject"/>
-                        <field name="student_ids"/>
+                        <!--                        <field name="student_ids"/>-->
                         <field name="department_id"/>
+                        <field name="standard"/>
+                        <field name="city_id"/>
+
+
                     </group>
+                    <notebook>
+                        <page string="Student">
+                            <field name="student_ids">
+                                <tree>
+                                    <field name="name" optional="show"/>
+                                    <field name="age" optional="show"/>
+                                    <field name="address" optional="show"/>
+                                    <field name="gender" optional="show"/>
+                                    <field name="family_member" optional="show"/>
+                                    <field name="studying_hour" optional="show"/>
+                                    <field name="graduation" optional="hide"/>
+                                    <field name="date" optional="hide"/>
+                                    <field name="DateTime" optional="hide"/>
+                                    <field name="teacher_id" optional="hide"/>
+                                    <field name="teacher_ids" optional="hide"/>
+                                    <field name="teacher_science_ids" optional="hide"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
                 </sheet>
             </form>
         </field>
