@@ -65,11 +65,19 @@ class SetuAcademicYear(models.Model):
         return res
 
     def write(self,vals_list):
+<<<<<<< HEAD
         record = vals_list.update({'code':self.code})
         if record:
             raise ValidationError('Code does not change!')
 
         # vals_list = {'code':self.code}
+=======
+        # record = {'code': self.code}
+        # if record:
+        #     raise ValidationError("can't update code!")
+
+        vals_list = {'code':self.code}
+>>>>>>> 2e7ffae992b53b29da788fe18a998d29dbb3c299
         # vals_list = {}
         res = super(SetuAcademicYear, self).write(vals_list)
         return res
@@ -81,6 +89,7 @@ class SetuAcademicYear(models.Model):
     #         existing_code = self.search([('code', '=', rec.code), ('id', '!=', rec.id)])
     #         if existing_code:
     #             raise ValidationError("code ust be uniqueee..................")
+<<<<<<< HEAD
 
 
 
@@ -94,4 +103,6 @@ class SetuAcademicYear(models.Model):
 
 
 
+=======
+>>>>>>> 2e7ffae992b53b29da788fe18a998d29dbb3c299
 

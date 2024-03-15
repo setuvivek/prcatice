@@ -30,7 +30,11 @@
                             </group>
                             <group>
                                 <field name="state_id" domain="[('city_ids', '=', state_id)]"/>
+<<<<<<< HEAD
                                 <field name="country_id" domain="[('city_ids', '=', country_id)]"/>
+=======
+                                <field name="country_id"/>
+>>>>>>> 2e7ffae992b53b29da788fe18a998d29dbb3c299
                             </group>
                         </group>
                         <notebook>
