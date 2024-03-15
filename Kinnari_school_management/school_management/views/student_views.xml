@@ -20,6 +20,7 @@
                     <field name="com"/>
                     <field name="quantity"/>
                     <field name="stock"/>
+                    <field name="address"/>
                     <field name="country_id"/>
                     <field name="state_id"/>
                     <field name="city_id"/>
@@ -34,12 +35,11 @@
                 <form string="student">
                     <sheet>
                         <group>
-                                <field name="name" widget="emoji char"/>
+                                <field name="name"/>
                                 <field name="roll"/>
-                                <field name="teach_id"/>
+                                <field name="teach_id" domain="['|',('country_id','=',country_id),('state_id','=',state_id)]"/>
                                 <field name="gender" widget="radio"/>
                                 <field name="dobs"/>
-                                <field name="teach_id"/>
                                 <field name="teacher1_id"/>
                                 <field name="teacher2_id"/>
                                 <field name="teacher3_id"/>
@@ -58,9 +58,10 @@
                                 <form string="data">
                                     <sheet>
                                         <group>
-                                            <field name="country_id"/>
-                                            <field name="state_id"/>
-                                            <field name="city_id"/>
+                                            <field name="address"/>
+                                            <field name="country_id" attrs="{'invisible':[('address','!=',True)],'required': [('address', '=', True)]}"/>
+                                            <field name="state_id" attrs="{'invisible':[('address','!=',True)],'required': [('address', '=', True)]}"/>
+                                            <field name="city_id" attrs="{'invisible':[('address','!=',True)],'required': [('address', '=', True)]}"/>
 
                                         </group>
                                     </sheet>

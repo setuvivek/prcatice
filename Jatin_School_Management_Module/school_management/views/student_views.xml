@@ -9,14 +9,14 @@
                 <field name="age"/>
                 <field name="gender"/>
                 <field name="address"/>
+                <field name="city_id"/>
                 <field name="family_member"/>
                 <field name="studying_hour"/>
                 <field name="graduation"/>
                 <field name="date"/>
                 <field name="DateTime"/>
                 <field name="teacher_id"/>
-                <field name="teacher_ids"/>
-                <field name="teacher_science_ids"/>
+                <field name="standard"/>
             </tree>
         </field>
     </record>
@@ -31,39 +31,65 @@
                             <field name="name"/>
                             <field name="age"/>
                             <field name="gender"/>
-                            <field name="address"/>
+                            <field name="address" required="1"/>
+                            <field name="city_id"/>
+                            <field name="degree"/>
+                            <field name="other_degree"
+                                   attrs="{'invisible': [('degree','!=','other')], 'required': [('age','=', 30)]}"/>
                         </group>
                         <group>
-                              <field name="family_member"/>
+                            <field name="family_member"/>
                             <field name="studying_hour"/>
                             <field name="graduation"/>
                             <field name="date"/>
                             <field name="DateTime"/>
-                            <field name="teacher_id"/>
-                            <field name="teacher_ids"/>
-                            <field name="teacher_science_ids"/>
+                            <field name="teacher_id" domain="[('city_id', '=', city_id), ('standard', '=', standard)]"/>
+                            <field name="standard"/>
                         </group>
                     </group>
+                    <notebook>
+                        <page string="Math Teacher">
+                            <field name="teacher_ids">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="age"/>
+                                    <field name="active"/>
+                                    <field name="standard"/>
+                                    <field name="gender"/>
+                                    <field name="subject"/>
+                                    <!--                        <field name="student_ids"/>-->
+                                    <field name="department_id"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Science Teacher">
+                            <field name="teacher_science_ids">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="age"/>
+                                    <field name="active"/>
+                                    <field name="standard"/>
+                                    <field name="gender"/>
+                                    <field name="subject"/>
+                                    <!--                        <field name="student_ids"/>-->
+                                    <field name="department_id"/>
+                                </tree>
+                            </field>
+
+                        </page>
+                    </notebook>
                 </sheet>
             </form>
         </field>
     </record>
-     <record id="student_action" model="ir.actions.act_window">
-            <field name="name">Student</field>
-            <field name="res_model">student</field>
-            <field name="view_mode">tree,form</field>
-     </record>
+    <record id="student_action" model="ir.actions.act_window">
+        <field name="name">Student</field>
+        <field name="res_model">student</field>
+        <field name="view_mode">tree,form</field>
+    </record>
     <menuitem id="student_menu"
               name="Student"
               parent="root1"
               action="student_action"
     />
-<!--    <menuitem id="root"-->
-<!--              name="school_management"-->
-
-<!--              />-->
-<!--    <menuitem id="student_menu"-->
-<!--              name="student_action"-->
-<!--              action="student_action"-->
-<!--                parent="root"/>-->
 </odoo>

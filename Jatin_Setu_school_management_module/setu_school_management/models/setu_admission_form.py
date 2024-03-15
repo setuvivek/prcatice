@@ -20,17 +20,30 @@ class Admisssion_form(models.Model):
     #     self.status = "female"
 
 
-    @api.model
+    # @api.model
+    # def create(self, vals_list):
+    #     if not vals_list.get('phone'):
+    #         vals_list.update({'phone':'98512345'})
+    #
+    #     # vals_list.update({'gender': 'female'})
+    #     res = super(Admisssion_form, self).create(vals_list)
+    #     res.address = 'Rajkot'
+    #
+    #     return res
+
+    @api.model_create_multi
     def create(self, vals_list):
-        if not vals_list.get('phone'):
-            vals_list.update({'phone':'98512345'})
+        for vals in vals_list:
+            if not vals.get('phone'):
+                vals.update({'phone': '98512345'})
 
         # vals_list.update({'gender': 'female'})
         res = super(Admisssion_form, self).create(vals_list)
         res.address = 'Rajkot'
 
         return res
-    @api.constrains('dob')
+
+    @api.constrains
     def unique_name(self):
         for db in self:
             if len(db.phone) < 4:

@@ -46,24 +46,24 @@
                         <page string="Student">
                             <field name="student_ids">
                                 <tree>
-                                    <field name="first_name"/>
-                                    <field name="address"/>
-                                    <field name="gender"/>
-                                    <field name="dob"/>
-                                    <field name="blood_group"/>
-                                    <field name="weight"/>
-                                    <field name="height"/>
-                                    <field name="state"/>
-                                    <field name="terminate_reason"/>
-                                    <field name="active"/>
-                                    <field name="standard_id"/>
-                                    <field name="division_id"/>
-                                    <field name="medium_id"/>
-                                    <field name="school_id"/>
-                                    <field name="admission_date"/>
-                                    <field name="roll_no"/>
-                                    <field name="cast_id"/>
-                                    <field name="mother_tongue_id"/>
+                                    <field name="first_name" optional="show"/>
+                                    <field name="address" optional="show"/>
+                                    <field name="gender" optional="show"/>
+                                    <field name="dob" optional="show"/>
+                                    <field name="blood_group" optional="show"/>
+                                    <field name="weight" optional="hide"/>
+                                    <field name="height" optional="hide"/>
+                                    <field name="state" optional="hide"/>
+                                    <field name="terminate_reason" optional="show"/>
+                                    <field name="active" optional="show"/>
+                                    <field name="standard_id" optional="show"/>
+                                    <field name="division_id" optional="show"/>
+                                    <field name="medium_id" optional="show"/>
+                                    <field name="school_id" optional="show"/>
+                                    <field name="admission_date" optional="hide"/>
+                                    <field name="roll_no" optional="show"/>
+                                    <field name="cast_id" optional="hide"/>
+                                    <field name="mother_tongue_id" optional="hide"/>
                                 </tree>
                             </field>
                         </page>

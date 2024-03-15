@@ -41,14 +41,13 @@
                                 <field name="date2" attrs="{'invisible': [('type','!=','sell')]}"/>
                                 <field name="order_id"/>
                                 <field name="name1"/>
-
 <!--                              <field name="com"/>-->
                             </group>
                         </group>
                         <notebook>
                             <page string="Order Data">
                                 <field name = "order_id">
-                                    <tree string="Order details" create="False" delete="False" editable="False">
+                                    <tree string="Order details"  delete="False" editable="Bottom">
                                         <field name="name"/>
                                         <field name="quantity"/>
                                         <field name="stock"/>
@@ -71,6 +70,7 @@
                     </sheet>
                 </form>
             </field>
+
         </record>
         <record id="product_action" model="ir.actions.act_window">
             <field name="name">Product</field>

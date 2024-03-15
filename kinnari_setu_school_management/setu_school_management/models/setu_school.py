@@ -5,21 +5,32 @@ class SetuSchool(models.Model):
 
     name = fields.Char(string="Name")
     code = fields.Char(string="Code")
-    street = fields.Char(string="State")
-    city = fields.Char(string="City")
+    address = fields.Boolean(string="You want to add address?")
+    city_id = fields.Many2one('city', string="City Name")
     state_id = fields.Many2one('state', string="State Name")
-    zip = fields.Integer(string="Zip")
     country_id = fields.Many2one('country', string="Country Name")
+    zip = fields.Integer(string="Zip")
     required_age = fields.Integer(name="Minimum Age")
     school_standard_ids = fields.Many2many('setu.standard.standard' , string="Standards")
     email = fields.Char(string="Email")
     phone = fields.Char(string="Phone" , help="Enter Mobile Number", size=10)
+    cname= fields.Char(string="Class name")
+    is_school = fields.Boolean(string="Is_school")
 
     @api.model
     def create(self, vals_list):
-        if not vals_list.get('phone'):
-            vals_list.update({'phone':'281'})
+        if not vals_list.get('zip'):
+            vals_list.update({'zip':360005})
         res = super(SetuSchool,self).create(vals_list)
+        return res
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            if not vals.get('email'):
+                vals['email'] = 'abc@gmail.com'
+                # vals_list.update({'address':'abc'})
+        res = super(SetuSchool, self).create(vals_list)
         return res
 
     _sql_constraints = [

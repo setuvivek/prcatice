@@ -5,6 +5,7 @@ class SetuStandardDivision(models.Model):
 
     name = fields.Char(string="Name")
     code = fields.Char(string="Code")
+    is_div = fields.Boolean(string="Is Division?")
 
     _sql_constraints = [
         # Partial constraint, complemented by unique index (see below). Still

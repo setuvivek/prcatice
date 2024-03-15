@@ -17,30 +17,16 @@ class Academic_year(models.Model):
     month_ids = fields.One2many("setu.academic.month","academic_year_id",string="Academic Month")
     current = fields.Date(string="Active Academic")
 
+
     def action_done(self):
-
         self.month_ids.unlink() #new record add thay juno delete thay
-        # NOW = datetime(2003, 9, 17, 20, 54, 47, 282310)
-        # NOW = datetime.now()
-
-        # TODAY = date.today()
-        # vals = [{"name": NOW.month, "date_start": "2024-01-12", "date_stop": "2024-01-12", "academic_year_id": self.id}]
         start = self.date_start
         stop = self.date_stop
-
-        # for i in range(start+relativedelta(months=+1),stop+relativedelta(months=+0)):
-        #  i = [{"name": i,"code":self.code, "date_start": start, "date_stop": stop+relativedelta(months=-1), "academic_year_id": self.id}]
-        #  self.env['setu.academic.month'].create(i)
-        #
-        # list = [start]
         j=[]
         while start <= stop:
             start += relativedelta(months=1)
             sta = start+relativedelta(months=-1)
-            # list.append(start)
-        # for i in range(start.month,stop.month):
-        #     for j in i:
-        #     if i == start.month+relativedelta(months=+1):
+
             j.append({"name": sta.strftime("%B"),
                   "code": sta.strftime("%b"),
                   "date_start": start + relativedelta(months=-1),
@@ -51,15 +37,29 @@ class Academic_year(models.Model):
             #       "date_stop": start + relativedelta(months=0, days=-1),
             #       "academic_year_id": self.id}]
         self.env['setu.academic.month'].create(j)
-        # pass
-        # else:
-        #     print("ended")
 
-    def unlink(self):
-        for record_id in self:
-            # record_id.unlink()
-            if record_id.date_start:
-                raise ValidationError(("Not Delete."))
-        print("RECORD%s" % self)
-        res = super(Academic_year, self).unlink()
+    def write(self, vals):
+        # self.env['setu.academic.month'].search([('date_start','>','2023-12-01'),('date_stop', '<', '2024-06-30'),('code','=','123')])
+        rec = self.env['setu.academic.month'].search([('date_start', '=', '2024-04-01')])
+        print(rec)
+        # if rec:
+        #     raise ValidationError("found")
+
+        if not vals.get('code'):
+            vals.update({'code': '111'})
+        res = super(Academic_year, self).write(vals)
         return res
+
+
+    # def unlink(self):
+
+
+        # for record_id in self:
+
+            # record_id.unlink()
+            # if record_id.date_start:
+            #     raise ValidationError(("Not Delete."))
+        # print("RECORD%s" % self)
+        # res = super(Academic_year, self).unlink()
+        # return res
+
