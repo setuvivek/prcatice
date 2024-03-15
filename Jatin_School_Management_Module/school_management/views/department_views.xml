@@ -6,9 +6,9 @@
         <field name="arch" type="xml">
             <tree string="Department">
                 <field name="name"/>
-                <field name="hod"/>
+                <field name="hod_id"/>
                 <field name="teacher_ids"/>
-                <field name="select_teacher_add_ids"/>
+<!--                <field name="select_teacher_add_ids"/>-->
             </tree>
         </field>
     </record>
@@ -20,16 +20,31 @@
                 <sheet>
                     <group>
                         <field name="name"/>
-                        <field name="hod"/>
-                         <field name="teacher_ids"/>
-                         <field name="select_teacher_add_ids"/>
+                        <field name="hod_id"/>
+<!--                         <field name="teacher_ids"/>-->
+<!--                         <field name="select_teacher_add_ids"/>-->
                     </group>
+                    <notebook>
+                        <page string="Teacher">
+                            <field name="teacher_ids">
+                                <tree>
+                                    <field name="name" optional="show"/>
+                                    <field name="age" optional="show"/>
+                                    <field name="standard" optional="show"/>
+                                    <field name="gender" optional="show"/>
+                                    <field name="subject" optional="hide"/>
+                                    <field name="student_ids" optional="show" />
+                                    <field name="department_id" optional="hide"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
                 </sheet>
             </form>
         </field>
     </record>
      <record id="department_action" model="ir.actions.act_window">
-            <field name="name">department</field>
+            <field name="name">Department</field>
             <field name="res_model">department</field>
             <field name="view_mode">tree,form</field>
      </record>
@@ -38,12 +53,4 @@
               parent="root1"
               action="department_action"
     />
-<!--    <menuitem id="root"-->
-<!--              name="school_management"-->
-
-<!--              />-->
-<!--    <menuitem id="student_menu"-->
-<!--              name="student_action"-->
-<!--              action="student_action"-->
-<!--                parent="root"/>-->
 </odoo>
