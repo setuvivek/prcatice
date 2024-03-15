@@ -2,7 +2,6 @@
 from odoo import models, fields, api
 from odoo.exceptions import AccessError, MissingError, ValidationError, UserError
 
-
 class SetuStudent(models.Model):
     _name = 'setu.student'
     _description = 'Setu Student'

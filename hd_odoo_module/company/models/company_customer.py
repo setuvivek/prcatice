@@ -6,19 +6,29 @@ class Customer(models.Model):
     _name = 'company.customer'
     _description = 'company.customer'
 
+
+    #Char-----------------
     name = fields.Char(string='Name')
     street = fields.Char(string='Street')
     zip = fields.Char(string='Zip')
-    address = fields.Text(string='Address')
+    address = fields.Char(string='Address')
+
+    #Selection-------------
     gender = fields.Selection(selection=[('male', 'Male'), ('female', 'Female')], string='Gender', default='female')
+
+    #Date------------------
     dob = fields.Date(string="Birth Date", help='Customer BirthDate')
 
+    #O2m-------------------
     project_ids = fields.One2many('company.project', 'customer_id', string='Project')
 
+
+    #M2o-------------------
     city_id = fields.Many2one('city', string='City')
     state_id = fields.Many2one('state', string='State')
     country_id = fields.Many2one('country', string='Country')
 
+    #Contrains-------------
     @api.constrains('name')
     def name_required(self):
         for record in self:

@@ -6,5 +6,6 @@
         'security/ir.model.access.csv',
         'views/product_views.xml',
         'views/order_views.xml',
+        'views/stock_views.xml',
     ],
 }

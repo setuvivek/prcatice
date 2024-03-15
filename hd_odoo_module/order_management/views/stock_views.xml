@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="stock_view_tree" model="ir.ui.view">
+            <field name="name">stock.view.tree</field>
+            <field name="model">stock</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="product_id"/>
+                    <field name="type"/>
+                    <field name="incoming"/>
+                    <field name="outgoing"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="stock_view_form" model="ir.ui.view">
+            <field name="name">stock.view.form</field>
+            <field name="model">stock</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Stock">
+                    <sheet>
+                        <group string="stock Record">
+                            <group>
+                                <field name="product_id"/>
+                                <field name="type"/>
+                            </group>
+                            <group>
+                                <field name="incoming"/>
+                                <field name="outgoing"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="stock_action" model="ir.actions.act_window">
+            <field name="name">Stock</field>
+            <field name="res_model">stock</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="root" name="Order"/>
+        <menuitem id="root1" name="Order" parent="root"/>
+
+        <menuitem id="stock_menu" action="stock_action" parent="root1"/>
+        <!--        <menuitem id="product_menu" action="product_action" parent="root1" sequence="1"/>-->
+    </data>
+</odoo>
+
+
+
