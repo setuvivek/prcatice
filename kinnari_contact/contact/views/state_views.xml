@@ -40,11 +40,9 @@
                                     </tree>
                                 </field>
                             </page>
-                        </notebook>
-                        <notebook>
-                            <page string="customer data">
+                             <page string="customer data">
                                 <field name="customer_ids">
-                                    <tree name="customer data" editable="False" create="False" delete="False">
+                                    <tree name="customer data" editable="Bottom" create="False" delete="False">
                                         <field name="name"/>
                                         <field name="check"/>
                                         <field name="country_id"/>
@@ -59,6 +57,7 @@
             </field>
         </record>
 
+
          <record id="state_action" model="ir.actions.act_window">
             <field name="name">State</field>
             <field name="res_model">state</field>
@@ -68,3 +67,4 @@
         <menuitem id="state_menu" name="State" action="state_action" parent="configuration_menu"/>
     </data>
 </odoo>
+
