@@ -32,7 +32,7 @@
                     <button name="action_done" string="Month Record" type="object"/>
 <!--                    <button name="unlink" string="Month Record delete" type="object"/>-->
                     <!--                    <button name="Object_buttt" string="On Female" type="object"/>-->
-                    <!--                    <field name="status" widget="statusbar"/>-->
+<!--                                        <field name="status" widget="statusbar"/>-->
                 </header>
                 <sheet>
                     <group>

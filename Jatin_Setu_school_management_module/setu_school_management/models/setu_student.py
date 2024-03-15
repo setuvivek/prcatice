@@ -25,4 +25,6 @@ class Student(models.Model):
     academic_year_id = fields.Many2one("setu.academic.year",string="Year")
     roll_no = fields.Integer(string="Roll No.")
     cast_id = fields.Many2one("setu.student.cast",string="Cast")
+    other_cast = fields.Char(string="Other Cast")
     mother_tongue_id = fields.Many2one("setu.mother.tongue",string="Mother Tongue")
+    teacher_id = fields.Many2one("setu.teacher",string='Class Teacher')

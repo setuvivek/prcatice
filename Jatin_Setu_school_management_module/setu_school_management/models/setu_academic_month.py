@@ -19,3 +19,5 @@ class Academic_month(models.Model):
     # def unlink(self):
     #     res = super(Academic_month, self).unlink()
     #     return res
+    # def search(self):
+    #     self.env['setu.academic.month'].search([('academic_year_id', '=', 1)])
