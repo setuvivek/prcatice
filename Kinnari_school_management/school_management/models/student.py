@@ -22,6 +22,8 @@ class Student(models.Model):
     com = fields.Float(string="Total", compute="_abc",store=True)
     quantity = fields.Float(string="Quantity for order", copy=False)
     stock = fields.Boolean(string="Stock available or not", default=True)
+
+    address = fields.Boolean(string="You want to add Resident Location")
     country_id = fields.Many2one('country', string="Country Name")
     state_id = fields.Many2one('state', string="State Name")
     city_id = fields.Many2one('city', string="City Name")
@@ -36,18 +38,30 @@ class Student(models.Model):
         ('name_compulsory', 'CHECK(name IS NOT NULL)', 'Name should required'),
         ('roll_unique' ,'unique(roll)', 'Roll Must Be Unique.' ),
         ('roll', 'CHECK(roll > 0)', 'roll no must be greater than 0.'),
-        # ('check_name', "CHECK( (type='male' AND name IS NOT NULL)  )", 'require a name'),
         ('check_mark', 'CHECK(enter1 >= 0 AND enter1 <= 100)','mark should be between 0 and 100'),
 
     ]
 
-
     def write(self,vals):
-        record = self.env['teacher'].search([('postgraduate','=',True),('gender','=','female'),('result','>=',60.0)])
-        if record:
-            vals.update({'teach_id':record.id})
-        rec = super(Student,self).write(vals)
-        return rec
+        if not vals.get('teach_id'):
+            rec = self.env['teacher'].search([('postgraduate','=',True)])
+            if rec:
+                vals.update({'teach_id':rec.id})
+            res = super(Student,self).write(vals)
+            return res
+
+
+
+    # def write(self,vals):
+    #     record = self.env['teacher'].search([('postgraduate','=',True),('gender','=','female'),('result','>=',60.0)])
+    #     if record:
+    #         vals.update({'teach_id':record.id})
+    #     rec = super(Student,self).write(vals)
+    #     return rec
+
+
+    
+   
 
     # @api.constrains('dobs')
     # def _check_dob(self):

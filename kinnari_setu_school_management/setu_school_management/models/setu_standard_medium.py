@@ -5,6 +5,7 @@ class SetuStandardMedium(models.Model):
 
     name = fields.Char(string="Name")
     code = fields.Char(string="Code")
+    is_mid = fields.Boolean(string="is medium?")
 
     _sql_constraints = [
         # Partial constraint, complemented by unique index (see below). Still

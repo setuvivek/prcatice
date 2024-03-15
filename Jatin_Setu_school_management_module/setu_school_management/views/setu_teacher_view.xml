@@ -8,6 +8,7 @@
                 <field name="standard_id"/>
                 <field name="school_id"/>
                 <field name="name"/>
+                <field name="active"/>
                 <field name="work_address_street"/>
                 <field name="home_address_street"/>
             </tree>
@@ -24,6 +25,7 @@
                             <field name="standard_id"/>
                             <field name="school_id"/>
                             <field name="name"/>
+                            <field name="active"/>
                         </group>
                         <group>
                         </group>
@@ -42,7 +44,7 @@
                                         <field name="zip" placeholder="Zip" class="o_address_zip"/>
                                     </span>
                                 </div>
-                                <field name="country" placeholder="Country"/>
+                                <field name="country_id" placeholder="Country"/>
                                 <field name="phone" placeholder="Phone"/>
                                 <field name="email" placeholder="Email"/>
                             </div>

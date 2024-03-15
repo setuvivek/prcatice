@@ -22,18 +22,22 @@
                     <sheet>
                         <group>
                             <field name="name"/>
-                            <field name="class_teacher_id1"/>
+                            <field name="is_teacher"/>
+                            <field name="class_teacher_id1" domain="[('is_teacher','=',is_teacher)]"
+                                   attrs="{'invisible':[('is_teacher','!=',True)]}"/>
                             <field name="teacher_ids"/>
-                            <field name="student_ids"/>
-                            <field name="school_ids"/>
-                            <field name="subject_ids"/>
+                            <field name="is_stu"/>
+                            <field name="student_ids" attrs="{'invisible':[('is_stu','!=',True)]}"/>
+                            <field name="is_school"/>
+                            <field name="school_ids" attrs="{'invisible':[('is_school','!=',True)]}"/>
+                            <field name="is_sub"/>
+                            <field name="subject_ids" attrs="{'invisible':[('is_sub','!=',True)]}"/>
                         </group>
                         <notebook>
                             <page string="Teachers">
                                 <field name="teacher_ids">
                                     <tree string="teachers">
                                         <field name="name"/>
-                                        <field name="address"/>
                                         <field name="email"/>
                                         <field name="mobile" optional="hide"/>
                                         <field name="phone" optional="hide"/>
@@ -75,8 +79,8 @@
                                     <tree string="school">
                                         <field name="name"/>
                                         <field name="code"/>
-                                        <field name="street"/>
-                                        <field name="city"/>
+                                        <field name="address"/>
+                                        <field name="city_id"/>
                                         <field name="state_id"/>
                                         <field name="zip"/>
                                         <field name="country_id"/>

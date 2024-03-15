@@ -19,11 +19,20 @@
                 </tree>
             </field>
         </record>
+         <record id="doctor_data" model="ir.actions.act_window">
+            <field name="name">Doctor</field>
+            <field name="res_model">doctor</field>
+            <field name="view_mode">tree,form</field>
+        </record>
         <record id="patient_view_form" model="ir.ui.view">
             <field name="name">patient.view.form</field>
             <field name="model">patient</field>
             <field name="arch" type="xml">
                 <form string="patient">
+                    <header>
+                        <field name="gender" widget="statusbar"/>
+                        <button name="%(doctor_data)d" string="Doctor Record" type="action"/>
+                    </header>
                     <sheet>
                         <group>
 
@@ -32,13 +41,12 @@
                                 <field name="age"/>
                                 <field name="gender" widget="radio"/>
                                 <field name="mobile"/>
-                                <field name="address"/>
 
                             </group>
                             <group>
 
                                 <field name="diseases"/>
-                                <field name="doctor_ids"/>
+                                <field name="doctor_ids" domain="[('type','=',True)]"/>
                                 <field name="doa"/>
 
 
@@ -49,10 +57,10 @@
                                 <form string="data">
                                     <sheet>
                                         <group>
-                                            <field name="country_id"/>
-                                            <field name="state_id"/>
-                                            <field name="city_id"/>
-
+                                            <field name="address"/>
+                                            <field name="country_id" attrs="{'invisible':[('address','!=',True)],'required': [('address', '=', True)]}"/>
+                                            <field name="state_id" attrs="{'invisible':[('address','!=',True)],'required': [('address', '=', True)]}"/>
+                                            <field name="city_id" attrs="{'invisible':[('address','!=',True)],'required': [('address', '=', True)]}"/>
 
 
                                         </group>

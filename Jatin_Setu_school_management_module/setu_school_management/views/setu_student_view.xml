@@ -5,6 +5,7 @@
         <field name="model">setu.student</field>
         <field name="arch" type="xml">
             <tree string="Setu Student">
+                <field name="teacher_id"/>
                 <field name="first_name"/>
                 <field name="address"/>
                 <field name="gender"/>
@@ -22,7 +23,9 @@
                 <field name="admission_date"/>
                 <field name="roll_no"/>
                 <field name="cast_id"/>
+                <field name="other_cast"/>
                 <field name="mother_tongue_id"/>
+
 
             </tree>
         </field>
@@ -35,6 +38,7 @@
                 <sheet>
                     <group>
                         <group>
+                            <field name="teacher_id"/>
                             <field name="first_name" placeholder="First Name..."/>
                             <span/>
                             <div>
@@ -60,7 +64,9 @@
                             <field name="admission_date"/>
                             <field name="roll_no"/>
                             <field name="cast_id"/>
+                            <field name="other_cast" attrs="{'invisible': [('cast_id','!=', False)]}"/>
                             <field name="mother_tongue_id"/>
+
                         </group>
 
                     </group>
