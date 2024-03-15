@@ -65,11 +65,11 @@ class SetuAcademicYear(models.Model):
         return res
 
     def write(self,vals_list):
-        # record = {'code': self.code}
-        # if record:
-        #     raise ValidationError("can't update code!")
+        record = vals_list.update({'code':self.code})
+        if record:
+            raise ValidationError('Code does not change!')
 
-        vals_list = {'code':self.code}
+        # vals_list = {'code':self.code}
         # vals_list = {}
         res = super(SetuAcademicYear, self).write(vals_list)
         return res

@@ -60,7 +60,6 @@ class SetuStudent(models.Model):
             self.write({'class_teacher_id': record})
 
         # self.env['setu.student'].create({"name":"Hemangi"})
-
     #create method-----------
     @api.model_create_multi
     def create(self,vals_list):

@@ -11,7 +11,6 @@
                     <field name="class_teacher_id"/>
                     <field name="teacher_ids"/>
                     <field name="student_ids"/>
-                    <field name="school_ids"/>
                     <field name="subject_ids"/>
                     <field name="admission_form_ids"/>
                 </tree>
@@ -41,9 +40,6 @@
                             <page string="Student">
                                 <field name="student_ids">
                                 </field>
-                            </page>
-                            <page string="School">
-                                <field name="school_ids"/>
                             </page>
                             <page string="Subject">
                                 <field name="subject_ids"/>
