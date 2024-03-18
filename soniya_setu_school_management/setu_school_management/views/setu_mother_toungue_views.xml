@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="setu_mother_toungue_view_tree" model="ir.ui.view">
+        <field name="name">setu.mother.toungue.view.tree</field>
+        <field name="model">setu.mother.toungue</field>
+        <field name="arch" type="xml">
+            <tree string="mother toungue">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+    <record id="setu_mother_toungue_view_form" model="ir.ui.view">
+        <field name="name">setu.mother.toungue.form</field>
+        <field name="model">setu.mother.toungue</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                    </group>
+<!--                    <notebook>-->
+<!--                        <page string="School">-->
+<!--                            <tree string="school"/>-->
+<!--                            <field name="name"/>-->
+<!--                            <field name="address"/>-->
+<!--                            <field name="phone"/>-->
+<!--                            <field name="email"/>-->
+<!--                        </page>-->
+<!--                    </notebook>-->
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="setu_mother_toungue_action" model="ir.actions.act_window">
+        <field name="name">mother toungue</field>
+        <field name="res_model">setu.mother.toungue</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="setu_mother_toungue_menu"
+              name="Mother Toungue"
+              action="setu_mother_toungue_action"
+              parent="root1"/>
+</odoo>
+

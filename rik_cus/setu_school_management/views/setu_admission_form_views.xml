@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="admission_view_tree" model="ir.ui.view">
+            <field name="name">admission.view.tree</field>
+            <field name="model">setu.admission.form</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="setu_admission_form_data">
+                    <field name="student_name"/>
+                    <field name="class_id"/>
+                    <field name="address"/>
+                    <field name="email"/>
+                    <field name="phone"/>
+                    <field name="dob"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="admission_action" model="ir.actions.act_window">
+            <field name="name">Admission Form</field>
+            <field name="res_model">setu.admission.form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="admission_view_form" model="ir.ui.view">
+            <field name="name">admission.view.form</field>
+            <field name="model">setu.admission.form</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header attrs="{'invisible': [('state', '=', False)]}">
+                        <button name="%(admission_action)d" string="Action Done" type="action"/>
+                        <field name="status" widget="statusbar" statusbar_visible="draft,done"/>
+<!--                        <button name="action_done" string="Action Done" type="object"/>-->
+                    </header>
+
+                    <sheet>
+                        <group string="setu_admission_form_data">
+                            <group>
+                                <field name="student_name"/>
+                                <field name="class_id"/>
+                                <field name="address"/>
+                                <field name="email"/>
+                            </group>
+                            <group>
+                                <field name="phone"/>
+                                <field name="dob"/>
+                                <field name="state"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+<!--        <record id="admission_action" model="ir.actions.act_window">-->
+<!--            <field name="name">Admission Form</field>-->
+<!--            <field name="res_model">setu.admission.form</field>-->
+<!--            <field name="view_mode">tree,form</field>-->
+<!--        </record>-->
+
+
+        <menuitem id="admission_form_management" action="admission_action" name="Admission Form" sequence="1" parent = "root1"/>
+    </data>
+</odoo>

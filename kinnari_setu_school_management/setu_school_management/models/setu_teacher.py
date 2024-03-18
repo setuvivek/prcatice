@@ -5,6 +5,11 @@ class SetuTeacher(models.Model):
     _name = "setu.teacher"
 
     name = fields.Char(string="Name")
+    gender = fields.Selection(selection=[('male', 'Male'), ('female', 'Female')], string="Gender")
+    postgraduate = fields.Boolean(string="Have Master Degree?")
+    master = fields.Selection(selection=[('maths','maths'),('physics','physics'),('chemistry','chemistry'),('biology','biology'),('other','other')],string="Master In")
+    add = fields.Char(string="Write about it")
+    sure = fields.Boolean(string="Are you want to add Personal details?")
     email = fields.Char(string="Email")
     mobile = fields.Char(string="mobile" , help="Enter mobile Number" , size=10)
     phone = fields.Char(string="Phone", help="Enter Phone Number" , size=10)
@@ -15,7 +20,7 @@ class SetuTeacher(models.Model):
     subject_ids = fields.Many2many('setu.subject', 'setu_teachers_subjects', string="Subject")
     student_ids = fields.One2many('setu.student','teacher_id', string="Students")
     is_teacher = fields.Boolean(string="Is teacher")
-    address = fields.Boolean(string="You want to add  Home Address?")
+    address = fields.Boolean(string="Are You want to add  Home Address?")
     city_id = fields.Many2one('city', string="City Name")
     state_id = fields.Many2one('state', string="State Name")
     country_id = fields.Many2one('country', string="Country Name")
@@ -34,6 +39,7 @@ class SetuTeacher(models.Model):
         ('name_compulsory', 'CHECK(name IS NOT NULL)', 'Name should required'),
         ('name_unique', 'unique(name)', "Name Must Be Unique."),
     ]
+
 
     @api.constrains('zip')
     def _verify_zip(self):

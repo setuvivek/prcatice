@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="product_view_tree" model="ir.ui.view">
+            <field name="name">product.view.tree</field>
+            <field name="model">product</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Product">
+                    <field name="name"/>
+                    <field name="total_quantity"/>
+                    <field name="date"/>
+                    <field name="amt"/>
+                    <field name="p_id"/>
+                </tree>
+            </field>
+        </record>
+
+
+
+
+        <record id="product_view_form" model="ir.ui.view">
+            <field name="name">product.view.form</field>
+            <field name="model">product</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="product_data">
+                            <group>
+                                <field name="name"/>
+                                <field name="total_quantity"/>
+                            </group>
+                            <group>
+                                <field name="date"/>
+                                <field name="amt"/>
+<!--                                <field name="p_id"/>-->
+                            </group>
+                            <notebook>
+                                <page string="Order" attrs="{'invisible': [('date', '=', False)]}">
+                                    <field name = "p_id">
+
+<!--                                        <tree edit="false" create="false" delete="false">-->
+                                        <tree editable="bottom">
+                                            <field name="owner_name"/>
+                                            <field name="address"/>
+                                            <field name="date"/>
+                                            <field name="payment"/>
+                                        </tree>
+                                    </field>
+                                </page>
+                            </notebook>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="product_action" model="ir.actions.act_window">
+            <field name="name">Product</field>
+            <field name="res_model">product</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="product_management" action="product_action" name="Product" sequence="1" parent = "root1"/>
+    </data>
+</odoo>

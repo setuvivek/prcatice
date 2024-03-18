@@ -8,12 +8,12 @@ class SetuStudent(models.Model):
     first_name = fields.Char(string="First Name")
     middle_name = fields.Char(string="Middle Name")
     last_name = fields.Char(string="Last Name")
+    sure= fields.Boolean(string="Are You Want to add personal details?")
     gender = fields.Selection(selection=[('male', 'Male'), ('female', 'Female')], string="Gender")
     date_of_birth = fields.Date(string='DOB')
     blood_group = fields.Char(string="Blood Group")
     weight = fields.Float(string="Weight")
     height = fields.Float(string="Height")
-    state = fields.Char(string="State")
     terminate_reason = fields.Char(string="Terminate Reason")
     active = fields.Boolean(string="Active")
     standard_id = fields.Many2one('setu.class',string="Class")
@@ -26,10 +26,12 @@ class SetuStudent(models.Model):
     cast_id =  fields.Many2one('setu.student.cast',string="Cast")
     mother_tongue_id = fields.Many2one('setu.mother.tongue',string="Mother Tongue")
     teacher_id = fields.Many2one('setu.teacher',string="Class Teacher")
-    address = fields.Boolean(string="You want to add Address?")
+    address = fields.Boolean(string="Are You want to add Address?")
     city_id = fields.Many2one('city', string="City Name")
     state_id = fields.Many2one('state', string="State Name")
     country_id = fields.Many2one('country', string="Country Name")
+    select = fields.Selection(selection=[('primary','primary'),('secondary','secondary'),('higher secondary','higher secondary'),('other','other')], string="Level of Student")
+    add = fields.Char(string="Add level of student")
 
     def write(self, vals):
         if not vals.get('teacher_id'):
