@@ -7,7 +7,7 @@ class SetuAdmissionForm(models.Model):
     _description = 'Setu Admission Form'
 
     # Char----------------
-    student_name = fields.Char(string='Student Name')
+    name = fields.Char(string='Student Name')
     email = fields.Char(string='Email')
     phone = fields.Char(string='Phone')
     address = fields.Char(string='Address')

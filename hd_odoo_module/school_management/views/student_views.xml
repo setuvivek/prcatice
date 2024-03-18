@@ -38,13 +38,21 @@
                                 <field name="is_present"/>
                                 <field name="course_id"/>
                                 <field name="dept_id"/>
+                                <field name="is_sport_person"/>
+                                <field name="sport" attrs="{'invisible':[('is_sport_person', '=', False)]}"/>
                             </group>
                             <group>
                                 <field name="sem"/>
                                 <field name="even" attrs="{'invisible':[('sem', '!=', 'even')],
+<<<<<<< HEAD
+                                                           'required':[('sem', '=', 'even')]}"/>
+                                <field name="odd" attrs="{'invisible':[('sem', '!=', 'odd')],
+                                                           'required':[('sem', '=', 'odd')]}"/>
+=======
                                                            'required':[('sem', '!=', 'even')]}"/>
                                 <field name="odd" attrs="{'invisible':[('sem', '!=', 'odd')],
                                                            'required':[('odd', '=', '')]}"/>
+>>>>>>> 2e7ffae992b53b29da788fe18a998d29dbb3c299
                                 <field name="student_dob"/>
                                 <field name="teacher_id" options="{'no_open':True}"
                                        domain="[('city_id', '=', city_id)]"/>

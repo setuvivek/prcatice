@@ -67,7 +67,7 @@
                                 <field name="email"/>
                                 <field name="phone"/>
                                 <field name="active"/>
-                                <field name="school_id"/>
+                                <field name="school_id" options='{"no_open": True}' domain="[('student_ids', '=', school_id)]"/>
                                 <field name="standard_id"/>
                                 <field name="division_id"/>
                                 <field name="medium_id"/>

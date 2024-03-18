@@ -10,6 +10,10 @@ class Student(models.Model):
 
     #Char------------------
     name = fields.Char(string='Name', help='Student Name')
+<<<<<<< HEAD
+    sport = fields.Char(string='Sport')
+=======
+>>>>>>> 2e7ffae992b53b29da788fe18a998d29dbb3c299
 
     #Integer---------------
     roll_no = fields.Integer(string='Roll No', copy=False, help='Student Roll No')
@@ -23,7 +27,12 @@ class Student(models.Model):
     odd = fields.Selection(selection=[('1','1'), ('3','3'), ('5','5'), ('7','7')])
 
     #Boolean----------------
+<<<<<<< HEAD
+    is_present = fields.Boolean(string='Present')
+    is_sport_person = fields.Boolean(string='Sport Person')
+=======
     is_present = fields.Boolean(string='is_present')
+>>>>>>> 2e7ffae992b53b29da788fe18a998d29dbb3c299
 
     #Date-------------------
     student_dob = fields.Date(string="Date of Birth", help='Student Birth Date')

@@ -7,7 +7,7 @@
             <field name="type">tree</field>
             <field name="arch" type="xml">
                 <tree string="admission_form">
-                    <field name="student_name"/>
+                    <field name="name"/>
                     <field name="class_id"/>
                     <field name="address"/>
                     <field name="city_id"/>
@@ -39,7 +39,7 @@
                     <sheet>
                         <group>
                             <group>
-                                <field name="student_name"/>
+                                <field name="name"/>
                                 <field name="class_id"/>
                                 <label for="street" string="Address"/>
                                 <div class="o_address_format">

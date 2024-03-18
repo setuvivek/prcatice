@@ -31,13 +31,13 @@
                                 <field name="contact_partner_ids"/>
                             </page>
                             <page string="City">
-                                <field name="city_ids"/>
+                                <field name="city_ids" domain="[('country_id', '=', 'city_ids'), ('state_id', '=', 'city_ids')]"/>
                             </page>
                             <page string="State">
                                 <field name="state_ids"/>
                             </page>
                             <page string="Territories State">
-                                <field name="territories_state" widget='many2many_tags' />
+                                <field name="territories_state" widget='many2many_tags'/>
                             </page>
                             <page string="Ocean State">
                                 <field name="ocean_state" widget='many2many_tags'/>

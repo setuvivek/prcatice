@@ -45,23 +45,22 @@
                                         <field name="middle_name"/>
                                         <field name="last_name"/>
                                         <field name="gender"/>
-                                        <field name="date_of_birth"/>
-                                        <field name="blood_group"/>
-                                        <field name="weight"/>
-                                        <field name="height"/>
-                                        <field name="state"/>
-                                        <field name="terminate_reason"/>
+                                        <field name="date_of_birth" optional="hide"/>
+                                        <field name="blood_group" optional="hide"/>
+                                        <field name="weight" optional="hide"/>
+                                        <field name="height" optional="hide"/>
+                                        <field name="terminate_reason" optional="hide"/>
                                         <field name="active"/>
-                                        <field name="standard_id"/>
-                                        <field name="division_id"/>
-                                        <field name="medium_id"/>
-                                        <field name="school_id"/>
+                                        <field name="standard_id" optional="hide"/>
+                                        <field name="division_id" optional="hide" />
+                                        <field name="medium_id" optional="hide"/>
+                                        <field name="school_id" optional="hide"/>
                                         <field name="admission_date"/>
                                         <field name="academic_year_id"/>
                                         <field name="roll_no"/>
-                                        <field name="cast_id"/>
-                                        <field name="mother_tongue_id"/>
-                                        <field name="teacher_id"/>
+                                        <field name="cast_id" optional="hide"/>
+                                        <field name="mother_tongue_id" optional="hide"/>
+                                        <field name="teacher_id" optional="hide"/>
 
                                     </tree>
                                 </field>

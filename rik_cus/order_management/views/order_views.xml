@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+
+        <record id="order_view_tree" model="ir.ui.view">
+            <field name="name">order.view.tree</field>
+            <field name="model">order</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Order">
+                    <field name="owner_name"/>
+                    <field name="address"/>
+                    <field name="date"/>
+                    <field name="payment"/>
+                    <field name="order_id"/>
+                    <field name="order_ids"/>
+                    <field name="city_id"/>
+                </tree>
+            </field>
+        </record>
+
+
+
+        <record id="order_view_form" model="ir.ui.view">
+            <field name="name">order.view.form</field>
+            <field name="model">order</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header attrs="{'invisible': [('city_id', '=', False)]}" >
+                        <button name="%(order_action)d" string="Order Done" type="action"/>
+                        <field name="status" widget="statusbar" statusbar_visible="draft,done"/>
+                    </header>
+                    <sheet>
+                        <group string="order_data">
+                            <group>
+                                <field name="owner_name"/>
+                                <field name="address"/>
+                                <field name="city_id"/>
+                            </group>
+                            <group>
+                                <field name="date"/>
+                                <field name="payment"/>
+                                <field name="order_id"/>
+                                <field name="order_ids"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+
+        <record id="order_action" model="ir.actions.act_window">
+            <field name="name">Order</field>
+            <field name="res_model">order</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="root" name="Order"/>
+        <menuitem id ="root1" name="Order" action = "order_action" parent="root"/>
+        <menuitem id ="order_management" name="Order" action="order_action" sequence="1" parent = "root1"/>
+    </data>
+</odoo>

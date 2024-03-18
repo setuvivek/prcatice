@@ -7,9 +7,12 @@
                 <tree string="customer">
                         <field name="name"/>
                         <field name="check"/>
+                        <field name="type"/>
+
                         <field name="country_id"/>
                         <field name="state_id"/>
                         <field name="city_id"/>
+                        <field name="smartcity"/>
 <!--                        <field name="type"/>-->
                 </tree>
             </field>
@@ -23,14 +26,28 @@
                         <group>
                             <field name="name"/>
                             <field name="check"/>
-                            <field name="country_id"/>
+                            <field name="type"/>
+                            <field name="country_id" domain="[('type' ,'=',type)]"/>
                             <field name="state_id"/>
-                            <field name="city_id"/>
-<!--                            <field name="type"/>-->
+                            <field name="smartcity"/>
+                            <field name="city_id" domain="[('smartcity','=',smartcity)]"/>
 
 
 
                         </group>
+                        <notebook>
+                            <page string="customer data">
+                                    <form string="customer data">
+                                        <sheet>
+                                            <group>
+                                                <field name="name"/>
+
+
+                                            </group>
+                                        </sheet>
+                                    </form>
+                            </page>
+                        </notebook>
                     </sheet>
                 </form>
             </field>

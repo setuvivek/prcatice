@@ -20,4 +20,13 @@ class SetuClass(models.Model):
 
     #m2m
     teacher_ids = fields.Many2many('setu.teacher','class_teacher', 'class', 'teacher', string='Teacher')
-    school_ids = fields.Many2many('setu.school','class_school', 'class', 'school' ,string='School')
+
+
+
+
+
+
+
+
+
+
