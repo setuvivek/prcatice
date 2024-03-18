@@ -26,22 +26,25 @@
             <field name="arch" type="xml">
                 <form string="setu_academic_year">
                     <header>
-                        <button name="month_list" string="List Months" class="btn-primary" type="object"/>
+                        <!--                        <button name="month_list" string="List Months" class="btn-primary" type="object" attrs="{'invisible':[('date_start','=','True'),('date_stop','=','False')]}"/>-->
                         <button name="clear_list" string="Clear List" class="btn-primary" type="object"/>
-<!--                        <field name="current" widget="statusbar"/>-->
+                        <!--                        <field name="current" widget="statusbar"/>-->
 
 
                     </header>
                     <sheet>
                         <group>
-                        <group>
-                            <field name="sequence"/>
-                            <field name="name"/>
-                            <field name="code"/>
-                            <field name="date_start" widget="date"/>
-                            <field name="date_stop" widget="date"/>
-<!--                            <field name="month_ids"/>-->
-                        </group>
+                            <group>
+                                <field name="sequence"/>
+                                <field name="name"/>
+                                <field name="code"/>
+                                <field name="date_start" widget="date"/>
+                                <field name="date_stop" widget="date"/>
+<button name="month_list" string="List Months" class="btn-primary" type="object"
+                                    attrs="{'invisible':['|',('date_start','=',False),('date_stop','=',False)]}" colspan="2"/>
+
+                                <!--                            <field name="month_ids"/>-->
+                            </group>
                         </group>
                         <notebook>
                             <page string="Months">
@@ -50,9 +53,10 @@
                                         <field name="name"/>
                                         <field name="date_start" widget="date"/>
                                         <field name="date_stop" widget="date"/>
-<!--                                        <field name="working_days" />-->
-<!--                                        <field name=""/>-->
-<!--                                        <field name=""/>-->
+
+                                        <!--                                        <field name="working_days" />-->
+                                        <!--                                        <field name=""/>-->
+                                        <!--                                        <field name=""/>-->
                                     </tree>
                                 </field>
                             </page>
@@ -69,7 +73,7 @@
         <!--            <field name="view_mode">tree,form</field>-->
         <!--        </record>-->
 
-<!--        <menuitem id="setu_academic_year_menu" name="Academic Year" action="setu_academic_year_action" parent="submenu"/>-->
+        <!--        <menuitem id="setu_academic_year_menu" name="Academic Year" action="setu_academic_year_action" parent="submenu"/>-->
 
 
     </data>

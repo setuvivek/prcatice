@@ -1,5 +1,5 @@
 from odoo import fields, models,api
-from odoo.exceptions import ValidationError,MissingError
+from odoo.exceptions import ValidationError,MissingError,RedirectWarning
 
 
 class SetuTeacher(models.Model):
@@ -33,13 +33,16 @@ class SetuTeacher(models.Model):
     homecountry = fields.Many2one('country',string='Home Country')
     homezip = fields.Char(string='Home Zip')
 
+    show_notebooks=fields.Boolean(string='Show Notebooks')
+    show_students = fields.Boolean(string='Show Students')
 
 
-    @api.constrains('name','code','standard_id','medium_id','division_id')
-    def check_valid(self):
-        for rec in self:
-            if not(rec.name and rec.code and rec.standard_id and rec.medium_id and rec.division_id):
-                raise MissingError("Required Deatils : \n\n Name,Code,Standard,Medium,Division")
+
+    # @api.constrains('name','code','standard_id','medium_id','division_id')
+    # def check_valid(self):
+    #     for rec in self:
+    #         if not(rec.name and rec.code and rec.standard_id and rec.medium_id and rec.division_id):
+    #             raise MissingError("Required Deatils : \n\n Name,Code,Standard,Medium,Division")
 
     @api.constrains('code')
     def code_uniq(self):
@@ -47,3 +50,26 @@ class SetuTeacher(models.Model):
             ext = self.search([('code', '=ilike', rec.code), ('id', '!=', rec.id)])
             if (ext):
                 raise ValidationError("Code Already Exists")
+
+
+    # def write(self,vals):
+    #     ext_code = self.code
+    #     if ext_code:
+    #         vals = {"code": ext_code}
+    #         raise ValidationError("code cant change")
+    #     return super(SetuTeacher, self).write(vals)
+
+        # try:
+        # ext_code=self.code
+        #
+        # except:
+        #     raise ValidationError("code cant change")
+        # finally:
+        #     vals={"code":ext_code}
+        # return super(SetuTeacher,self).write(vals)
+
+# def write(self, vals):
+#     # print(vals)
+#     # vals = {"code":"552"}
+#     res = super(SetuAcademicYear, self).write(vals)
+#     return res
