@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+
+        <record id="grade_view_tree" model="ir.ui.view">
+            <field name="name">grade.view.tree</field>
+            <field name="model">setu.grade</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Grade">
+                    <field name="name"/>
+<!--                    <field name="grade_line_ids"/>-->
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="grade_view_form" model="ir.ui.view">
+            <field name="name">grade.view.form</field>
+            <field name="model">setu.grade</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="grade_data">
+                                <field name="name"/>
+<!--                                <field name="grade_line_ids"/>-->
+                        </group>
+                        <notebook attrs="{'invisible': [('name', '=', False)]}" >
+                            <page string="Grade Line" >
+                                <field name = "grade_line_ids">
+                                    <tree editable="bottom">
+                                    <field name="from_mark" optional="show"/>
+                                    <field name="to_mark" optional="show"/>
+                                    <field name="grade_name" optional="hide"/>
+                                    <field name="fail" optional="hide"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="grade_action" model="ir.actions.act_window">
+            <field name="name">Grade</field>
+            <field name="res_model">setu.grade</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="grade_management" action="grade_action" name="Grade" sequence="1" parent = "root1"/>
+    </data>
+</odoo>
