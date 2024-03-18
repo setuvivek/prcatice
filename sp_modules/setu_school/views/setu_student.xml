@@ -8,17 +8,17 @@
             <field name="arch" type="xml">
                 <tree string="SetuStudent">
                     <field name="first_name"/>
-                    <field name="middle_name"/>
+                    <field name="middle_name" optional="hide"/>
                     <field name="last_name"/>
                     <field name="roll_no"/>
                     <field name="class_teacher_id"/>
-                    <field name="gender"/>
-                    <field name="dob"/>
-                    <field name="city_id"/>
-                    <field name="state_id"/>
-                    <field name="phone"/>
-                    <field name="email"/>
-                    <field name="mobile"/>
+                    <field name="gender" optional="hide"/>
+                    <field name="dob" optional="hide"/>
+                    <field name="city_id" optional="hide"/>
+                    <field name="state_id" optional="hide"/>
+                    <field name="phone" optional="hide"/>
+                    <field name="email" optional="hide"/>
+                    <field name="mobile" optional="hide"/>
                 </tree>
             </field>
         </record>
@@ -29,13 +29,20 @@
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <form string="setu_student">
+
+
                     <header>
+
                         <button name="assign" string="Assign Class Teacher" class="btn-primary" type="object"/>
-<!--                        <button name="clr_rec" string="Clear Rec" class="btn-primary" type="object"/>-->
+                        <!--                        <button name="clr_rec" string="Clear Rec" class="btn-primary" type="object"/>-->
+
                     </header>
 
                     <sheet>
                         <group>
+                            <field name="isEdited"/>
+                        </group>
+                        <group string="Student data">
                             <group>
                                 <!--                                                                <field name="first_name"/>-->
                                 <!--                                <field name="middle_name"/>-->
@@ -59,8 +66,13 @@
                                 <field name="address"/>
                                 <field name="city_id" options="{'no_open':True, 'no_create': True}"/>
                                 <field name="state_id" options="{'no_open':True, 'no_create': True}"/>
+
                             </group>
                             <group>
+                                <field name="sports_person"/>
+                                <field name="game_type" widget="radio" options="{'horizontal': true}" attrs="{'invisible':[('sports_person','=',False)]}"/>
+                                <field name="indoor_games" attrs="{'invisible':[('game_type','!=','indoor')],'required':[('game_type','=','indoor')]}"/>
+                                <field name="outdoor_games" attrs="{'invisible':[('game_type','!=','outdoor')],'required':[('game_type','=','outdoor')]}"/>
                                 <field name="terminate_reason"/>
                                 <field name="active"/>
                                 <field name="standard_id" options="{'no_open':True, 'no_create': True}"/>
@@ -74,7 +86,8 @@
                                 <field name="class_id"
                                        options="{'no_open':True, 'no_create': True}"/>
                                 <field name="class_teacher_id"
-                                       options="{'no_open':True, 'no_create': True}"/>
+                                       options="{'no_open':True, 'no_create': True}"
+                                domain="[('workcity','=',city_id)]"/>
                                 <field name="alternate_id"
                                        options="{'no_open':True, 'no_create': True}"/>
                                 <field name="teacher_ids" widget="many2many_tags"
@@ -83,7 +96,9 @@
                                        options="{'no_create': True}"/>
                             </group>
                         </group>
-
+                        <group>
+<!--                            <field name="isEdited"/>-->
+                        </group>
                     </sheet>
                 </form>
             </field>
