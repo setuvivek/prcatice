@@ -12,7 +12,6 @@
                     <field name="state_id"/>
                     <field name="zip"/>
                     <field name="country_id"/>
-                    <field name="required_age"/>
                     <field name="school_standard_ids"/>
                     <field name="email" />
                     <field name="phone"/>
@@ -31,21 +30,36 @@
                             <group>
                                 <field name="name"/>
                                 <field name="address"/>
-                                <field name="country_id" attrs="{'invisible':[('address','!=',True)],'required': [('address', '=', True)]}"/>
-                                <field name="state_id" attrs="{'invisible':[('address','!=',True)],'required': [('address', '=', True)]}"/>
-                                <field name="city_id" attrs="{'invisible':[('address','!=',True)],'required': [('address', '=', True)]}"/>
-                                <field name="zip" attrs="{'invisible':[('address','!=',True)],'required': [('address', '=', True)]}"/>
                                 <field name="school_standard_ids"/>
                             </group>
                             <group>
                                 <field name="code"/>
-                                <field name="required_age"/>
                                 <field name="email"/>
                                 <field name="phone"/>
                                 <field name="cname"/>
                                 <field name="is_school"/>
                             </group>
                         </group>
+                        <notebook attrs="{'invisible': [('address','!=',True)]}">
+                            <page string="Location Data">
+                                <form string="data">
+                                    <sheet>
+                                        <group>
+                                            <!--                                            <field name="address"/>-->
+                                            <field name="country_id"
+                                                   attrs="{'invisible':[('address','!=',True)],'required': [('address', '=', True)]}"/>
+                                            <field name="state_id"
+                                                   attrs="{'invisible':[('address','!=',True)],'required': [('address', '=', True)]}"/>
+                                            <field name="city_id"
+                                                   attrs="{'invisible':[('address','!=',True)],'required': [('address', '=', True)]}"/>
+                                            <field name="zip"
+                                                   attrs="{'invisible':[('address','!=',True)],'required': [('address', '=', True)]}"/>
+
+                                        </group>
+                                    </sheet>
+                                </form>
+                            </page>
+                        </notebook>
                     </sheet>
                 </form>
             </field>

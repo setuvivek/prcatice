@@ -10,7 +10,7 @@
                     <field name="country_id"/>
                     <field name="city_id"/>
                     <field name="state_id"/>
-                    <field name="email" />
+                    <field name="email"/>
                     <field name="phone"/>
                     <field name="dob"/>
                     <field name="class_id"/>
@@ -19,32 +19,59 @@
 
 
         </record>
-        <record id = "setu_admission_form_view_form" model="ir.ui.view">
+
+        <record id="student_info" model="ir.actions.act_window">
+            <field name="name">Setu Student</field>
+            <field name="res_model">setu.student</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="setu_admission_form_view_form" model="ir.ui.view">
             <field name="name">setu.admission.form.view.form</field>
             <field name="model">setu.admission.form</field>
             <field name="arch" type="xml">
                 <form string="admission_form">
-<!--                    <header>-->
-<!--                        <button name="reset_data" string="reset" type="object"/>-->
-<!--                    </header>-->
+                    <header>
+                        <field name="gender" widget="statusbar"/>
+                        <button name="%(student_info)d" string="Add Student Details" type="action"
+                                attrs="{'invisible':[('sure','!=',True)]}"/>
+                    </header>
                     <sheet>
                         <group>
-                              <group>
-                                  <field name="name"/>
-                                  <field name="address"/>
-                                  <field name="country_id" attrs="{'invisible':[('address','!=',True)],'required': [('address', '=', True)]}"/>
-                                  <field name="city_id" attrs="{'invisible':[('address','!=',True)],'required': [('address', '=', True)]}"/>
-                                  <field name="state_id" attrs="{'invisible':[('address','!=',True)],'required': [('address', '=', True)]}"/>
-                              </group>
                             <group>
-                                <field name="email"/>
+                                <field name="name"/>
+                                <field name="gender" widget="radio"/>
                                 <field name="phone"/>
                                 <field name="dob"/>
+                            </group>
+                            <group>
+                                <field name="email"
+                                       attrs="{'invisible': ['|', ('address','!=',True),('cname','!=','k')]}"/>
                                 <field name="cname"/>
                                 <field name="class_id" options="{'no_create':True}" domain="[('name','=',cname)]"/>
-<!--                                <button name="reset_data" string="reset" type="object"/>-->
+                                <field name="address"/>
+                                <field name="sure"/>
+                                <!--                                <button name="reset_data" string="reset" type="object"/>-->
                             </group>
                         </group>
+                        <notebook attrs="{'invisible': [('address','!=',True)]}">
+                            <page string="Resident data">
+                                <form string="data">
+                                    <sheet>
+                                        <group>
+                                            <!--                                            <field name="address"/>-->
+                                            <field name="country_id"
+                                                   attrs="{'invisible':[('address','!=',True)],'required': [('address', '=', True)]}"/>
+                                            <field name="state_id"
+                                                   attrs="{'invisible':[('address','!=',True)],'required': [('address', '=', True)]}"/>
+                                            <field name="city_id"
+                                                   attrs="{'invisible':[('address','!=',True)],'required': [('address', '=', True)]}"/>
+
+                                        </group>
+                                    </sheet>
+                                </form>
+                            </page>
+                        </notebook>
                     </sheet>
                 </form>
             </field>
