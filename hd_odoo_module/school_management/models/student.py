@@ -10,10 +10,8 @@ class Student(models.Model):
 
     #Char------------------
     name = fields.Char(string='Name', help='Student Name')
-<<<<<<< HEAD
     sport = fields.Char(string='Sport')
-=======
->>>>>>> 2e7ffae992b53b29da788fe18a998d29dbb3c299
+    rank1 = fields.Char(string='Percentage')
 
     #Integer---------------
     roll_no = fields.Integer(string='Roll No', copy=False, help='Student Roll No')
@@ -22,17 +20,18 @@ class Student(models.Model):
     gender = fields.Selection([('male', 'Male'), ('female', 'Female')], string='Gender')
     sem = fields.Selection(
         selection=[('even', 'Even'), ('odd', 'Odd')],
-        string='Semester', default='1')
+        string='Semester')
     even = fields.Selection(selection=[('2','2'), ('4','4'), ('6','6'), ('8','8')])
     odd = fields.Selection(selection=[('1','1'), ('3','3'), ('5','5'), ('7','7')])
+    rank = fields.Selection(selection=[('rank1','1'),('2','2'),('3','3'),('4','4'),('5','5'),('6','6'),('7','7'),('8','8'),('9','9'),('10','10')])
+    status = fields.Selection(selection=[('draft', 'Draft'), ('confirm', 'Confirm'), ('cancel','Cancel')])
 
     #Boolean----------------
-<<<<<<< HEAD
     is_present = fields.Boolean(string='Present')
     is_sport_person = fields.Boolean(string='Sport Person')
-=======
-    is_present = fields.Boolean(string='is_present')
->>>>>>> 2e7ffae992b53b29da788fe18a998d29dbb3c299
+    is_topper = fields.Boolean(string='Topper')
+    in_top_10 = fields.Boolean(string='In Top10')
+    show_notebook = fields.Boolean(string='Show OOP Teacher')
 
     #Date-------------------
     student_dob = fields.Date(string="Date of Birth", help='Student Birth Date')
@@ -73,6 +72,9 @@ class Student(models.Model):
     # def create(self, vals_list):
     #     vals_list = [{}]
     #     return super(Student, self).create(vals_list)
+
+
+
 
 
 

@@ -15,11 +15,15 @@ class SetuAdmissionForm(models.Model):
     street2 = fields.Char(string='Street 2')
     zip = fields.Char(string='Zip')
 
+    #Boolean
+    show_button = fields.Boolean(string='Status')
+    required_true = fields.Boolean(string='Required')
+
     # date----------------
     dob = fields.Date(string='DOB')
 
     #selection------------
-    status = fields.Selection(selection=[('draft', 'Draft'), ('confirm', 'Confirm')], default='draft')
+    status = fields.Selection(selection=[('draft', 'Draft'), ('confirm', 'Confirm'), ('cancel','Cancel')])
 
     # m2o-----------------
     class_id = fields.Many2one('setu.class', string='Class')
@@ -28,9 +32,4 @@ class SetuAdmissionForm(models.Model):
     country_id = fields.Many2one('country', string='Country')
     school_id = fields.Many2one('setu.school', string='School')
 
-
-    def action_clear(self):
-        self.unlink()
-        for rec in self:
-            rec.update({'student_name':''})
 

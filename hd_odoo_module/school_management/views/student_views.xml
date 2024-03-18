@@ -23,6 +23,12 @@
             </field>
         </record>
 
+        <record id="student_action" model="ir.actions.act_window">
+            <field name="name">Student</field>
+            <field name="res_model">student</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
         <record id="student_view_form" model="ir.ui.view">
             <field name="name">student.view.form</field>
             <field name="model">student</field>
@@ -40,33 +46,31 @@
                                 <field name="dept_id"/>
                                 <field name="is_sport_person"/>
                                 <field name="sport" attrs="{'invisible':[('is_sport_person', '=', False)]}"/>
+                                <field name="show_notebook"/>
                             </group>
                             <group>
                                 <field name="sem"/>
                                 <field name="even" attrs="{'invisible':[('sem', '!=', 'even')],
-<<<<<<< HEAD
                                                            'required':[('sem', '=', 'even')]}"/>
                                 <field name="odd" attrs="{'invisible':[('sem', '!=', 'odd')],
                                                            'required':[('sem', '=', 'odd')]}"/>
-=======
-                                                           'required':[('sem', '!=', 'even')]}"/>
-                                <field name="odd" attrs="{'invisible':[('sem', '!=', 'odd')],
-                                                           'required':[('odd', '=', '')]}"/>
->>>>>>> 2e7ffae992b53b29da788fe18a998d29dbb3c299
                                 <field name="student_dob"/>
                                 <field name="teacher_id" options="{'no_open':True}"
                                        domain="[('city_id', '=', city_id)]"/>
                                 <field name="city_id"/>
                                 <field name="state_id"/>
                                 <field name="country_id"/>
+                                <field name="is_topper"/>
+                                <field name="in_top_10" attrs="{'invisible':[('is_topper', '!=', True)]}"/>
+                                <field name="rank" attrs="{'invisible':[('in_top_10', '!=', True)]}"/>
+                                <field name="rank1" attrs="{'invisible':[('rank', '!=', 'rank1')]}"/>
                             </group>
-
                         </group>
                         <notebook>
                             <page string="Teacher">
                                 <field name="teacher_ids"/>
                             </page>
-                            <page string="OOP Teacher">
+                            <page string="OOP Teacher" attrs="{'invisible':[('show_notebook', '=', False)]}">
                                 <field name="oop_teacher"/>
                             </page>
                             <page string="DBMS Teacher">
@@ -127,12 +131,6 @@
         <!--            </field>-->
         <!--        </record>-->
 
-
-        <record id="student_action" model="ir.actions.act_window">
-            <field name="name">Student</field>
-            <field name="res_model">student</field>
-            <field name="view_mode">tree,form</field>
-        </record>
 
         <menuitem id="root" name="School"/>
         <menuitem id="root1" name="School" parent="root"/>
