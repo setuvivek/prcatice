@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="teachers_view_tree" model="ir.ui.view">
+        <field name="name">setu.teacher.view.tree</field>
+        <field name="model">setu.teacher</field>
+        <field name="arch" type="xml">
+            <tree string="teachers">
+                <field name="active"/>
+                <field name="standard_id"/>
+                <field name="subject_ids"/>
+                <field name="school_id"/>
+                <field name="student_ids"/>
+                <field name="work_address"/>
+                <field name="home_address"/>
+<!--                <field name="name"/>-->
+<!--                <field name="school_id"/>-->
+<!--                <field name="subject_id"/>-->
+<!--                <field name="name"/>-->
+<!--                <field name="street"/>-->
+<!--                <field name="city"/>-->
+<!--                <field name="state"/>-->
+<!--                <field name="country"/>-->
+<!--                <field name="zip"/>-->
+<!--                <field name="phone"/>-->
+<!--                <field name="email"/>-->
+<!--                <field name="school_id"/>-->
+<!--                <field name="subject_id"/>-->
+<!--                <field name="student_ids"/>-->
+<!--                <field name="class_ids"/>-->
+            </tree>
+        </field>
+    </record>
+    <record id="setu_teacher_view_form" model="ir.ui.view">
+        <field name="name">setu.teacher.view.form</field>
+        <field name="model">setu.teacher</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="standard_id"/>
+                            <field name="active"/>
+<!--                            <field name="subject_ids"/>-->
+                            <field name="school_id"/>
+<!--                            <field name="student_ids"/>-->
+                            <field name="name"/>
+                            <field name="work_address" placeholder="Street"/>
+                            <span/>
+                            <div>
+                                <field name="city" placeholder="City"/>
+                                <field name="state" placeholder="State"/>
+                                <field name="country" placeholder="Country"/>
+                                <field name="zip" placeholder="Zip"/>
+                                <field name="phone" placeholder="Phone"/>
+                                <field name="email" placeholder="Email"/>
+                            </div>
+<!--                            <field name="s"/>-->
+<!--                            <field name="subject_id"/>-->
+
+<!--                            <field name="class_ids"/>-->
+                        </group>
+                        <group>
+
+<!--                            <field name="work_address" placeholder="Street"/>-->
+<!--                            <span/>-->
+<!--                            <div>-->
+<!--                                <field name="city" placeholder="City"/>-->
+<!--                                <field name="state" placeholder="State"/>-->
+<!--                                <field name="country" placeholder="Country"/>-->
+<!--                                <field name="zip" placeholder="Zip"/>-->
+<!--                                <field name="phone" placeholder="phone"/>-->
+<!--                                <field name="email" placeholder="Email"/>-->
+<!--                            </div>-->
+                            <field name="home_address" placeholder="Street"/>
+                            <span/>
+                            <div>
+                                <field name="city1" placeholder="City"/>
+                                <field name="state1" placeholder="State"/>
+                                <field name="country1" placeholder="Country"/>
+                                <field name="zip1" placeholder="Zip"/>
+                                <field name="phone1" placeholder="Phone"/>
+                                <field name="email1" placeholder="Email"/>
+                            </div>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Subject">
+                            <field name="subject_ids"/>
+                        </page>
+                        <page string="Student">
+                            <field name="student_ids"/>
+                        </page>
+                    </notebook>
+<!--                    <notebook>-->
+<!--                        <page string="Student">-->
+<!--                            <field name="student_ids"/>-->
+<!--                        </page>-->
+<!--                        <page string="Class">-->
+<!--                            <field name="class_ids"/>-->
+<!--                        </page>-->
+<!--                    </notebook>-->
+<!--                    <notebook>-->
+<!--                        <page string="School">-->
+<!--                            <tree string="school"/>-->
+<!--                            <field name="name"/>-->
+<!--                            <field name="address"/>-->
+<!--                            <field name="phone"/>-->
+<!--                            <field name="email"/>-->
+<!--                            <field name="mobile"/>-->
+<!--                        </page>-->
+<!--                    </notebook>-->
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="teacher_action" model="ir.actions.act_window">
+        <field name="name">setu.teacher</field>
+        <field name="res_model">setu.teacher</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

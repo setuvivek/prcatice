@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="school_view_tree" model="ir.ui.view">
+        <field name="name">school.view.tree</field>
+        <field name="model">setu.school</field>
+        <field name="arch" type="xml">
+            <tree string="school">
+                <field name="name"/>
+                <field name="code"/>
+<!--                <field name="work address"/>-->
+<!--                <field name="home address"/>-->
+                <field name="street"/>
+                <field name="city"/>
+                <field name="state_id"/>
+                <field name="zip"/>
+                <field name="country_id"/>
+                <field name="required_age"/>
+                <field name="school_standard_ids"/>
+            </tree>
+        </field>
+    </record>
+    <record id="school_view_form" model="ir.ui.view">
+        <field name="name">setu.school.form</field>
+        <field name="model">setu.school</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="code"/>
+                            <field name="street"/>
+                            <field name="city"/>
+                        </group>
+                        <group>
+<!--                            <field name="work address" placeholder="Street"/>-->
+<!--                            <span/>-->
+<!--                            <div>-->
+<!--                                <field name="City" placeholder="City"/>-->
+<!--                                <field name="State" placeholder="State"/>-->
+<!--                                <field name="Country" placeholder="Country"/>-->
+<!--                                <field name="Zip" placeholder="Zip"/>-->
+<!--                                <field name="Phone" placeholder="Phone"/>-->
+<!--                                <field name="Email" placeholder="Email"/>-->
+<!--                            </div>-->
+<!--                            <field name="home address" placeholder="Street"/>-->
+<!--                            <span/>-->
+<!--                            <div>-->
+<!--                                <field name="City" placeholder="City"/>-->
+<!--                                <field name="State" placeholder="State"/>-->
+<!--                                <field name="Country" placeholder="Country"/>-->
+<!--                                <field name="Zip" placeholder="Zip"/>-->
+<!--                                <field name="Phone" placeholder="Phone"/>-->
+<!--                                <field name="Email" placeholder="Email"/>-->
+<!--                            </div>-->
+
+                            <field name="state_id"/>
+                            <field name="zip"/>
+                            <field name="country_id"/>
+                            <field name="required_age"/>
+<!--                            <field name="school_standard_ids"/>-->
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="School Standard">
+                            <field name="school_standard_ids"/>
+                        </page>
+<!--                            <field name="school_standard_ids"/>-->
+                    </notebook>
+                    <!--                    <notebook>-->
+                    <!--                        <page string="School">-->
+                    <!--                            <tree string="school"/>-->
+                    <!--                            <field name="name"/>-->
+                    <!--                            <field name="address"/>-->
+                    <!--                            <field name="phone"/>-->
+                    <!--                            <field name="email"/>-->
+                    <!--                        </page>-->
+                    <!--                    </notebook>-->
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="setu_school_action" model="ir.actions.act_window">
+        <field name="name">school</field>
+        <field name="res_model">setu.school</field>
+        <field name="view_mode">tree,form,kanban</field>
+    </record>
+</odoo>
+
