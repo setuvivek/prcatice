@@ -5,7 +5,8 @@ class SetuAdmissionForm(models.Model):
     _name = "setu.admission.form"
 
     name = fields.Char(string="Name" )
-    address = fields.Boolean(string="You want to add Address?")
+    gender = fields.Selection(selection=[('male', 'Male'), ('female', 'Female')], string="Gender")
+    address = fields.Boolean(string="Are You want to add Address?")
     city_id = fields.Many2one('city', string="City Name")
     state_id = fields.Many2one('state', string="State Name")
     country_id = fields.Many2one('country', string="Country Name")
@@ -15,6 +16,7 @@ class SetuAdmissionForm(models.Model):
     dob = fields.Date(string="Date of Birth")
     cname = fields.Char(string="Enter Class name")
     class_id = fields.Many2one('setu.class', string="class")
+    sure=fields.Boolean(string="Are you want to add more details of student?")
 
 
     @api.model_create_multi
@@ -23,10 +25,10 @@ class SetuAdmissionForm(models.Model):
             if not vals.get('address'):
                 vals['address'] = 'abc'
                 # vals_list.update({'address':'abc'})
-            if not vals.get('state'):
-                rec = self.env['setu.admission.form'].search([('city', '=', 'rajkot')])
-                if rec:
-                    vals.update({'state': 'Gujarat'})
+            # if not vals.get('state'):
+            #     rec = self.env['setu.admission.form'].search([('city', '=', 'rajkot')])
+            #     if rec:
+            #         vals.update({'state': 'Gujarat'})
         res = super(SetuAdmissionForm, self).create(vals_list)
         return res
 

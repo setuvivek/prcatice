@@ -6,7 +6,7 @@
             <field name="arch" type="xml">
                 <tree string="teacher">
                     <field name="name"/>
-                    <field name="email" />
+                    <field name="email"/>
                     <field name="mobile"/>
                     <field name="phone"/>
                     <field name="standard_id"/>
@@ -18,75 +18,104 @@
 
 
         </record>
-        <record id = "setu_teacher_view_form" model="ir.ui.view">
+        <record id="submit_action" model="ir.actions.act_window">
+            <field name="name">Setu Subject</field>
+            <field name="res_model">setu.subject</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <record id="setu_teacher_view_form" model="ir.ui.view">
             <field name="name">setu.teacher.view.form</field>
             <field name="model">setu.teacher</field>
             <field name="arch" type="xml">
                 <form string="teacher">
+                    <header>
+                        <field name="gender" widget="statusbar"/>
+                        <button name="%(submit_action)d" string="submit" type="action"
+                                attrs="{'invisible':[('postgraduate','!=',True)]}"/>
+                    </header>
                     <sheet>
                         <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="gender" widget="radio"/>
+                                <field name="student_ids"/>
 
-                            <field name="name"/>
-                            <field name="email"/>
-                            <field name="mobile"/>
-                            <field name="phone"/>
-                            <field name="standard_id"/>
-                            <field name="division_id"/>
-                            <field name="medium_id"/>
-                            <field name="school_id"/>
-                            <field name="subject_ids"/>
-                            <field name="student_ids"/>
-                            <field name="is_teacher"/>
-                            <field name="address"/>
-                            <span/>
-                            <div>
-                                <field name="country_id" placeholder="Country"
-                                       attrs="{'invisible':[('address','!=',True)],'required': [('address', '=', True)]}"/>
-                                <field name="city_id" placeholder="City"
-                                       attrs="{'invisible':[('address','!=',True)],'required': [('address', '=', True)]}"/>
-                                <field name="state_id" placeholder="state"
-                                       attrs="{'invisible':[('address','!=',True)],'required': [('address', '=', True)]}"/>
-                                <field name="zip" placeholder="zip"
-                                       attrs="{'invisible':[('address','!=',True)],'required': [('address', '=', True)]}"/>
-                            </div>
-<!--                            <field name="home_address" placeholder="Add Address"/>-->
-<!--                            <span/>-->
-<!--                            <div>-->
-<!--                                <field name="street" placeholder="Street"/>-->
-<!--                                <field name="country" placeholder="Country"/>-->
-<!--                                <field name="city" placeholder="City"/>-->
-<!--                                <field name="state" placeholder="state"/>-->
-<!--                                <field name="zip" placeholder="zip"/>-->
-<!--                            </div>-->
+
+                            </group>
+                            <group>
+                                <field name="is_teacher"/>
+                                <field name="postgraduate" widget="boolean_toggle"/>
+                                <field name="master" widget="radio" attrs="{'invisible':[('postgraduate','!=',True)]}"/>
+                                <field name="add" attrs="{'invisible':[('master','!=','other')]}"/>
+                                <field name="sure"/>
+                                <field name="address"/>
+                                <span/>
+                                <div>
+                                    <field name="country_id" placeholder="Country"
+                                           attrs="{'invisible':[('address','!=',True)],'required': [('address', '=', True)]}"/>
+                                    <field name="city_id" placeholder="City"
+                                           attrs="{'invisible':[('address','!=',True)],'required': [('address', '=', True)]}"/>
+                                    <field name="state_id" placeholder="state"
+                                           attrs="{'invisible':[('address','!=',True)],'required': [('address', '=', True)]}"/>
+                                    <field name="zip" placeholder="zip"
+                                           attrs="{'invisible':[('address','!=',True)],'required': [('address', '=', True)]}"/>
+                                </div>
+
+                            </group>
 
 
                         </group>
                         <notebook>
-                             <page string="Student List">
-                                 <field name="student_ids">
-                                     <tree string="student list">
-                                         <field name="first_name"/>
-                                         <field name="middle_name"/>
-                                         <field name="last_name"/>
-                                         <field name="gender"/>
-                                         <field name="date_of_birth"/>
-                                         <field name="blood_group"/>
-                                         <field name="weight"/>
-                                         <field name="height"/>
-                                         <field name="state"/>
-                                         <field name="terminate_reason"/>
-                                         <field name="active"/>
-                                         <field name="standard_id"/>
-                                         <field name="division_id"/>
-                                         <field name="medium_id"/>
-                                         <field name="school_id"/>
-                                         <field name="admission_date"/>
-                                         <field name="academic_year_id"/>
-                                         <field name="roll_no"/>
-                                         <field name="cast_id"/>
-                                         <field name="mother_tongue_id"/>
-                                     </tree>
-                                 </field>
+                            <page string="Teacher Information">
+                                <form string="teacher information">
+                                    <sheet>
+                                        <group>
+                                            <field name="standard_id"/>
+                                            <field name="division_id"/>
+                                            <field name="medium_id"/>
+                                            <field name="school_id"/>
+                                            <field name="subject_ids"/>
+
+                                        </group>
+                                    </sheet>
+                                </form>
+
+                            </page>
+                            <page string="Student List">
+                                <field name="student_ids">
+                                    <tree string="student list">
+                                        <field name="first_name"/>
+                                        <field name="middle_name"/>
+                                        <field name="last_name"/>
+                                        <field name="gender" optional="hide"/>
+                                        <field name="date_of_birth" optional="hide"/>
+                                        <field name="weight" optional="hide"/>
+                                        <field name="height" optional="hide"/>
+                                        <field name="terminate_reason" optional="hide"/>
+                                        <field name="active"/>
+                                        <field name="standard_id"/>
+                                        <field name="division_id"/>
+                                        <field name="medium_id"/>
+                                        <field name="school_id"/>
+                                        <field name="admission_date" optional="hide"/>
+                                        <field name="academic_year_id" optional="hide"/>
+                                        <field name="roll_no"/>
+                                        <field name="cast_id" optional="hide"/>
+                                        <field name="mother_tongue_id" optional="hide"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Teacher Personal Details" attrs="{'invisible':[('sure','!=',True)]}">
+                                <form string="teacher info">
+                                    <sheet>
+                                        <group>
+                                            <field name="email"/>
+                                            <field name="mobile"/>
+                                            <field name="phone"/>
+
+                                        </group>
+                                    </sheet>
+                                </form>
                             </page>
                         </notebook>
 
