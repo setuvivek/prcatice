@@ -24,6 +24,11 @@ class SetuStudent(models.Model):
     address = fields.Text(string='Address')
     city_id = fields.Many2one('city', string='City')
     state_id = fields.Many2one('city', string='State')
+    sports_person = fields.Boolean(string='Sports Person')
+    game_type = fields.Selection(selection=[('indoor', 'Indoor'), ('outdoor', 'Outdoor')], string='Game Type')
+    indoor_games = fields.Selection(selection=[('chess', 'Chess'), ('carrom', 'Carrom')], string='Indoor')
+    outdoor_games = fields.Selection(selection=[('cricket', 'Cricket'), ('football', 'Football')], string='Outdoor')
+
     terminate_reason = fields.Char(string='Terminate Reason')
     active = fields.Boolean(string='Active', default='True')
     standard_id = fields.Many2one('setu.standard.standard', string='Standard')
@@ -40,7 +45,9 @@ class SetuStudent(models.Model):
     teacher_ids = fields.Many2many('setu.teacher', 'student_teacher_ids', string='Teachers')
     subject_ids = fields.Many2many('setu.subject', 'student_subjects', string='Subjects')
 
-    # ---------------------------------------------------------------------
+    isEdited = fields.Boolean(string='isEdited', readonly=True)
+
+    # ------------------------------------------------
     @api.model
     def create(self, vals):
         rec = self.env['setu.teacher'].search(
@@ -62,11 +69,15 @@ class SetuStudent(models.Model):
     #     return res
     # ------------------------------------------------
 
+    def write(self, vals):
+        vals.update({"isEdited": True})
+        return super(SetuStudent, self).write(vals)
+
     @api.constrains('first_name', 'standard_id', 'division_id', 'medium_id')
     def check_not_null_name(self):
         for rec in self:
             if not (rec.first_name and rec.standard_id and rec.division_id and rec.medium_id):
-                raise ValidationError("Required Deatils : \n\n Name,Code,Standard,Medium,Division")
+                raise ValidationError("Required Deatils : \n\n Name,Standard,Medium,Division")
 
     def assign(self):
         rec = self.env['setu.teacher'].search(
