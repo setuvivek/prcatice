@@ -8,7 +8,7 @@ class City(models.Model):
     name = fields.Char(string="city name")
     pincode = fields.Integer(string="pincode", required=True)
     district = fields.Char(string="district name")
-    city_id = fields.Many2one("state", string="State", domain = "[('direction', '=', 'north')]") # domain = "[('direction', '=', 'city_id')]"
+    city_id = fields.Many2one("state", string="State") # domain = "[('direction', '=', 'city_id')]" domain = "[('direction', '=', 'north')]"
     city_idd = fields.Many2one("country", string="Country")
     c_id = fields.One2many("customer", "city_id", string="customer")
 
@@ -22,5 +22,6 @@ class City(models.Model):
                 vals.update({'name':'surat'})
         res = super(City, self).create(vals_list)
         return res
+
 
         

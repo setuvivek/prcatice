@@ -20,6 +20,7 @@ class ProductData(models.Model):
         res = super(ProductData, self).write(vals)
         return res
 
+
     # @api.constrains('total_quantity')
     # def _check_unique_product_name(self):
     #     for record in self:

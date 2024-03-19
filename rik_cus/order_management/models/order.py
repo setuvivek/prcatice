@@ -6,7 +6,7 @@ class Order(models.Model):
     _description = "Order"
     # _rec_name = "date"
 
-    owner_name = fields.Char(string="owner name", required=True)
+    owner_name = fields.Char(string="owner name")
     address = fields.Char(string="address")
     date = fields.Datetime(string="date")
     payment= fields.Selection(selection=[('cash','CASH'),('online','ONLINE')],string='payment', default="cash")
@@ -25,3 +25,17 @@ class Order(models.Model):
     #         vals.update({'order_id': rec.id})
     #     res = super(Order, self).write(vals)
     #     return res
+
+    @api.model
+    def create(self, vals):
+        # self.search([]).unlink()
+        if 'owner_name' not in vals or not vals['owner_name']:
+            vals['owner_name'] = 'No Name'
+        return super(Order, self).create(vals)
+
+
+    def create(self, vals):
+        self.search([]).unlink()
+        if 'owner_name' not in vals or not vals['owner_name']:
+            vals['owner_name'] = 'No Name'
+        return super(Order, self).create(vals)
