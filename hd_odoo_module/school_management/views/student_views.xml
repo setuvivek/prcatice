@@ -56,7 +56,7 @@
                                                            'required':[('sem', '=', 'odd')]}"/>
                                 <field name="student_dob"/>
                                 <field name="teacher_id" options="{'no_open':True}"
-                                       domain="[('city_id', '=', city_id)]"/>
+                                       domain="['|',('city_id', '=', 'Rajkot'),('city_id', '=', 'Gondal')]"/>
                                 <field name="city_id"/>
                                 <field name="state_id"/>
                                 <field name="country_id"/>

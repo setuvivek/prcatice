@@ -13,6 +13,7 @@ class Student(models.Model):
     sport = fields.Char(string='Sport')
     rank1 = fields.Char(string='Percentage')
 
+
     #Integer---------------
     roll_no = fields.Integer(string='Roll No', copy=False, help='Student Roll No')
 
@@ -45,6 +46,7 @@ class Student(models.Model):
     state_id = fields.Many2one('state', string='State')
     country_id = fields.Many2one('country', string='Country')
 
+
     #M2m----------------------
     teacher_ids = fields.Many2many('teacher', string='DS Teacher', help='Many2many relation')
     dbms_teacher_ids = fields.Many2many('teacher', 'ds_teacher', 'student', 'teacher', string='DBMS Teacher',
@@ -67,8 +69,23 @@ class Student(models.Model):
             if not vals.get('roll_no'):
                 vals['roll_no'] = '2'
 
+        # for vals in vals_list:
+        #     record_id = self.env['teacher'].search(
+        #         [('dept_id', '=', vals.get('dept_id')), ('course_id', '=', vals.get('course_id'))], limit=1)
+        #     if record_id:
+        #         vals.update({"teacher_id": record_id.id})
+
         res = super(Student, self).create(vals_list)
+
+        record = self.env['teacher'].search([('dept_id', '=', res.dept_id.id), ('course_id', '=', res.course_id.id)], limit=1)
+        if not res.teacher_id:
+            res.teacher_id = record.id
+
         return res
+
+
+
+
     # def create(self, vals_list):
     #     vals_list = [{}]
     #     return super(Student, self).create(vals_list)

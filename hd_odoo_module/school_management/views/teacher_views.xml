@@ -38,6 +38,7 @@
                                 <field name="subject"/>
                                 <field name="phone"/>
                                 <field name="datetime"/>
+                                <field name="age"/>
                             </group>
                             <group>
                                 <field name="salary"/>

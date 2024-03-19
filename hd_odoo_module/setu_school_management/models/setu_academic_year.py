@@ -89,17 +89,3 @@ class SetuAcademicYear(models.Model):
     #         existing_code = self.search([('code', '=', rec.code), ('id', '!=', rec.id)])
     #         if existing_code:
     #             raise ValidationError("code ust be uniqueee..................")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
