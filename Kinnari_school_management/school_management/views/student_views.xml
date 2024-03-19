@@ -10,7 +10,6 @@
                     <field name="roll"/>
                     <field name="gender"/>
                     <field name="dobs"/>
-                    <field name="teach_id"/>
                     <field name="teacher1_id"/>
                     <field name="teacher2_id"/>
                     <field name="teacher3_id"/>
@@ -35,21 +34,27 @@
                 <form string="student">
                     <sheet>
                         <group>
-                                <field name="name"/>
-                                <field name="roll"/>
-                                <field name="teach_id" domain="['|',('country_id','=',country_id),('state_id','=',state_id)]"/>
-                                <field name="gender" widget="radio"/>
-                                <field name="dobs"/>
-                                <field name="teacher1_id"/>
-                                <field name="teacher2_id"/>
-                                <field name="teacher3_id"/>
-                                <field name="enter1"/>
-                                <field name="enter2"/>
-                                <field name="enter3"/>
-                                <field name="com"/>
-                                <field name="quantity"/>
-                                <field name="stock"/>
+                            <field name="name"/>
+                            <field name="roll"/>
+                            <field name="teach_id1" domain="[('city','in',['Rajkot','Gondal']),('age','&gt;',25)]"/>
+                            <field name="teach_id2" domain="[('city','=','Rajkot'),('age','&lt;',25)]"/>
+                            <field name="teach_id3" domain="[('age','=',0)]"/>
+                            <field name="teach_id4" domain="[('age','&gt;',25),('age','&lt;',35)]"/>
+                            <field name="teach_id5" domian="[('city','=','Rajkot'),('age','&lt;',25),'|',('city','=','Gondal'),('age','&gt;',30)]"/>
 
+
+                            <field name="gender" widget="radio"/>
+                            <field name="add" attrs="{'invisible' : [('gender','!=','other')]}"/>
+                            <field name="dobs"/>
+                            <field name="teacher1_id"/>
+                            <field name="teacher2_id"/>
+                            <field name="teacher3_id"/>
+                            <field name="enter1"/>
+                            <field name="enter2"/>
+                            <field name="enter3"/>
+                            <field name="com"/>
+                            <field name="quantity"/>
+                            <field name="stock"/>
 
 
                         </group>
@@ -59,9 +64,12 @@
                                     <sheet>
                                         <group>
                                             <field name="address"/>
-                                            <field name="country_id" attrs="{'invisible':[('address','!=',True)],'required': [('address', '=', True)]}"/>
-                                            <field name="state_id" attrs="{'invisible':[('address','!=',True)],'required': [('address', '=', True)]}"/>
-                                            <field name="city_id" attrs="{'invisible':[('address','!=',True)],'required': [('address', '=', True)]}"/>
+                                            <field name="country_id"
+                                                   attrs="{'invisible':[('address','!=',True)],'required': [('address', '=', True)]}"/>
+                                            <field name="state_id"
+                                                   attrs="{'invisible':[('address','!=',True)],'required': [('address', '=', True)]}"/>
+                                            <field name="city_id"
+                                                   attrs="{'invisible':[('address','!=',True)],'required': [('address', '=', True)]}"/>
 
                                         </group>
                                     </sheet>
@@ -81,7 +89,7 @@
                     <field name="roll"/>
                     <field name="gender"/>
                     <field name="dobs"/>
-                    <field name="teach_id"/>
+
 
                     <field name="teacher1_id"/>
                     <field name="teacher2_id"/>
@@ -90,8 +98,8 @@
                     <field name="enter2"/>
                     <field name="enter3"/>
                     <field name="com"/>
-                    <filter string="f1" name="gender" domain="[('gender','=','male')]"/>
-
+                    <filter string="male" name="gender" domain="[('gender','=','male')]"/>
+                    <filter string="female" name="gender" domain="[('gender','=','female')]"/>
                 </search>
             </field>
 

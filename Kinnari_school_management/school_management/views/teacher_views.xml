@@ -5,20 +5,21 @@
             <field name="name">teacher.view.tree</field>
             <field name="model">teacher</field>
             <field name="arch" type="xml">
-                <tree string="teacher"  delete="False" >
+                <tree string="teacher" delete="False">
                     <field name="name"/>
                     <field name="gender"/>
+                    <field name="age"/>
+                    <field name="city"/>
                     <field name="mobile"/>
                     <field name="postgraduate" optional="hide"/>
                     <field name="result" optional="hide"/>
                     <field name="dob" optional="hide"/>
                     <field name="student_id" optional="hide"/>
-
                     <field name="country_id"/>
                     <field name="state_id"/>
                     <field name="city_id"/>
                     <field name="priority" optional="hide"/>
-<!--                    <field name="department_id"/>-->
+                    <!--                    <field name="department_id"/>-->
                 </tree>
             </field>
         </record>
@@ -27,64 +28,78 @@
             <field name="res_model">department</field>
             <field name="view_mode">tree,form</field>
         </record>
-       <record id="teacher_view_form" model="ir.ui.view">
-         <field name="name">teacher.view.form</field>
-         <field name="model">teacher</field>
-         <field name="arch" type="xml">
-             <form string="teacher">
-                 <header>
-                     <field name="priority" widget="statusbar" statusbar_visible="normal,lower,high"/>
-                     <button name="create_data" string="Create" type="object"/>
-                     <button name="create_new_data" string="New" type="object"/>
-                     <button name="%(submit_action)d" string="Submit" type="action"/>
-<!--                     <button name="reload_page" string="reload" type="object"/>-->
-                 </header>
-                 <sheet>
-                     <group>
-                         <field name="name"/>
-                         <field name="gender" widget="radio"/>
-                         <field name="mobile"/>
-                         <field name="postgraduate" widget="boolean_toggle"/>
-                         <field name="result"/>
-                         <field name="dob"/>
-                         <field name="student_id" attrs="{'invisible':[('postgraduate','!=',True)]}"/>
-                         <field name="priority" widget="priority"/>
+        <record id="teacher_view_form" model="ir.ui.view">
+            <field name="name">teacher.view.form</field>
+            <field name="model">teacher</field>
+            <field name="arch" type="xml">
+                <form string="teacher">
+                    <header>
+                        <field name="priority" widget="statusbar" statusbar_visible="clear,normal,lower,high"/>
+                        <button name="create_data" string="Create" type="object"
+                                attrs="{'invisible':[('postgraduate','!=',True)]}"/>
+                        <button name="%(submit_action)d" string="Submit" type="action"/>
 
-                     </group>
-                     <notebook>
-                         <page string="Fields">
-                             <field name="student_id">
-                                <tree string="Fields Description" delete="False" editable="bottom">
-                                    <field name="name"/>
-                                    <field name="roll"/>
-                                    <field name="gender"/>
-                                    <field name="teacher1_id" optional="hide"/>
-                                    <field name="teacher2_id" optional="hide"/>
-                                    <field name="teacher3_id" optional="hide"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="gender" widget="radio"/>
+                                <field name="age"/>
+                                <field name="city"/>
+                                <field name="mobile"/>
+                                <field name="postgraduate" widget="boolean_toggle"/>
+                                <field name="student_id" attrs="{'invisible':[('postgraduate','!=',True)]}"/>
+
+                            </group>
+                            <group>
+                                <separator string="seprate" colspan="4"/>
+                                <field name="result"/>
+                                <field name="dob"/>
+
+                                <field name="priority" widget="priority"/>
+
+                            </group>
 
 
-                                </tree>
-                             </field>
-                         </page>
-                         <page string="Resident data">
-                             <form string="data">
-                                 <sheet>
-                                     <group>
-                                         <field name="address"/>
-                                         <field name="country_id" attrs="{'invisible':[('address','!=',True)],'required': [('address', '=', True)]}"/>
-                                         <field name="state_id" attrs="{'invisible':[('address','!=',True)],'required': [('address', '=', True)]}"/>
-                                         <field name="city_id" attrs="{'invisible':[('address','!=',True)],'required': [('address', '=', True)]}"/>
+                        </group>
+                        <notebook>
+                            <page string="Fields">
+                                <field name="student_id">
+                                    <tree string="Fields Description" delete="False" editable="bottom">
+                                        <field name="name"/>
+                                        <field name="roll"/>
+                                        <field name="gender"/>
+                                        <field name="teacher1_id" optional="hide"/>
+                                        <field name="teacher2_id" optional="hide"/>
+                                        <field name="teacher3_id" optional="hide"/>
 
-                                     </group>
-                                 </sheet>
-                             </form>
-                         </page>
-                     </notebook>
 
-                 </sheet>
-             </form>
-         </field>
-       </record>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Resident data">
+                                <form string="data">
+                                    <sheet>
+                                        <group>
+                                            <field name="address"/>
+                                            <field name="country_id"
+                                                   attrs="{'invisible':[('address','!=',True)],'required': [('address', '=', True)]}"/>
+                                            <field name="state_id"
+                                                   attrs="{'invisible':[('address','!=',True)],'required': [('address', '=', True)]}"/>
+                                            <field name="city_id"
+                                                   attrs="{'invisible':[('address','!=',True)],'required': [('address', '=', True)]}"/>
+
+                                        </group>
+                                    </sheet>
+                                </form>
+                            </page>
+                        </notebook>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
         <record id="teacher_action" model="ir.actions.act_window">
             <field name="name">Teacher</field>
             <field name="res_model">teacher</field>
