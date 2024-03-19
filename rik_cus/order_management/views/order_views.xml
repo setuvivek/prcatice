@@ -37,7 +37,7 @@
                             <group>
                                 <field name="owner_name"/>
                                 <field name="address"/>
-                                <field name="city_id"/>
+                                <field name="city_id" domain="[('name', '!=', 'owner_name')]"/>
                             </group>
                             <group>
                                 <field name="date"/>

@@ -40,7 +40,7 @@
 <!--                                attrs="{'invisible': ['|', ('name', '=', False), ('city_id', '=', True)]}"-->
                             </group>
                             <group>
-<!--                                <field name="student_ids"/>-->
+<!--                                <field name="student_ids" domain="[('gender', '!=', 'male')]"/>-->
                                 <field name="department_ids"/>
                             </group>
                         </group>
@@ -51,7 +51,7 @@
                                         <field name="name"/>
                                         <field name="std"/>
                                         <field name="cls"/>
-                                        <field name="gender" optional="hide"/>
+                                        <field name="gender"/>
                                         <field name="age" optional="hide"/>
                                         <field name="birth_date" optional="hide"/>
                                         <field name="teacher_id" options="{'no_create': False 'no_open': False} "/>
