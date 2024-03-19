@@ -24,17 +24,20 @@
                             <group>
                                 <field name="name"/>
                                 <field name="code"/>
-                                <field name="standard_id" options="{'no_open':True, 'no_create': True}"/>
-                                <field name="medium_id" options="{'no_open':True, 'no_create': True}"/>
-                                <field name="division_id" options="{'no_open':True, 'no_create': True}"/>
-                                <field name="subject_ids" widget="many2many_tags"
-                                       options="{'no_create': True}"/>
                                 <field name="school_id"
                                        options="{'no_open':True, 'no_create': True}"/>
                                 <field name="class_teacher"/>
                                 <field name="alternate_id"/>
                                 <!--                                <field name="student_ids" widget="many2many_tags"/>-->
                                 <!--                                <field name="class_ids"/>-->
+                            </group>
+                            <group>
+                                 <field name="standard_id" options="{'no_open':True, 'no_create': True}"/>
+                                <field name="medium_id" options="{'no_open':True, 'no_create': True}"/>
+                                <field name="division_id" options="{'no_open':True, 'no_create': True}"/>
+                                <field name="subject_ids" widget="many2many_tags"
+                                       options="{'no_create': True}"/>
+
                             </group>
                         </group>
                         <group>
@@ -56,10 +59,14 @@
                                 <field name="homecountry" options="{'no_open':True, 'no_create': True}"/>
                                 <field name="homezip"/>
                             </group>
+                            <group>
+                                <field name="show_notebooks"/>
+                                <field name="show_students"/>
+                            </group>
                         </group>
 
-                        <notebook>
-                            <page string="Students">
+                        <notebook attrs="{'invisible':[('show_notebooks','=',False),('show_students','=',False)]}">
+                            <page string="Students" >
                                 <field name="student_ids">
                                     <tree>
                                         <field name="first_name"/>

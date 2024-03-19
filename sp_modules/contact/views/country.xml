@@ -22,10 +22,11 @@
                             <field name="name"/>
                             <field name="states_ids" widget="one2many_list"/>
 <!--                            <field name="cities_ids" />-->
-
+                            <field name="show_cities"/>
+                            <field name="show_states"/>
                         </group>
                         <notebook>
-                            <page string="Cities">
+                            <page string="Cities" attrs="{'invisible':[('show_cities','=',False)]}">
                                 <field name="cities_ids">
                                     <tree>
                                         <field name="name"/>
@@ -35,7 +36,7 @@
                                     </tree>
                                 </field>
                             </page>
-                            <page string="States">
+                            <page string="States" attrs="{'invisible':[('show_states','=',False)]}">
                                 <field name="states_ids">
                                     <tree>
                                         <field name="name"/>

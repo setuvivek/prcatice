@@ -1,4 +1,4 @@
-from odoo import fields,models
+from odoo import fields,models,api
 
 class City(models.Model):
     _name='city'
@@ -8,3 +8,4 @@ class City(models.Model):
     state_id=fields.Many2one('state',string='State')
     country_city_id=fields.Many2one('country',string='Country')
     capital=fields.Boolean(string='Capital')
+

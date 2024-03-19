@@ -19,7 +19,7 @@ class Student(models.Model):
 
 
     def write(self, vals):
-        rec = self.env['teacher'].search([('city_id', '=', 'rajkot')], limit=1)
+        rec = self.env['teacher'].search([('city_id', '=', 'Chennai')], limit=1)
         if rec:
             vals.update({'teacher_id': rec.id})
         res = super(Student, self).write(vals)

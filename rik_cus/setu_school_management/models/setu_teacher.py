@@ -37,6 +37,7 @@ class SetuTeacher(models.Model):
 
 
 
+
     #
     # def update(self):
     #     rec = self.env['student'].search([('standard', '=', 4)], limit=1)
