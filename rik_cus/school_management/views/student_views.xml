@@ -42,10 +42,11 @@
                             <group>
                                 <field name="gender"/>
                                 <field name="other" attrs="{'invisible':[('gender', '!=' ,'other')], 'required': [('age', '=', 30)]}"/>
-                                <field name="age"/>
                                 <field name="birth_date"/>
                                 <field name="teacher_id" domain="[('city_id', '=', city_id)]"/>
+<!--                                <field name="teacher_id" domain="[('gender', '=', 'female')]"/>-->
                                 <field name="city_id"/>
+<!--                                <field name="city_id" domain="[('city_id','=', 'Rajasthan')]"/>-->
                                 <field name="math_teacher_ids"/>
                             </group>
                         </group>
@@ -66,3 +67,4 @@
         <menuitem id ="riken_personal" name="Student" action="student_action" sequence="1" parent = "root1"/>
     </data>
 </odoo>
+
