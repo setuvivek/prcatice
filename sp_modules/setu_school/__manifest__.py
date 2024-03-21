@@ -1,7 +1,7 @@
 {
     'name': 'setu_school',
     'version': '1.0',
-    'depends':['contact'],
+    'depends':['contact', 'mail'],
     'data': [
         'security/ir.model.access.csv',
         'views/setu_teacher.xml',
