@@ -3,6 +3,7 @@ from odoo import fields, models
 class Staff(models.Model):
     _name = "staff"
     _description = "Staff"
+    _inherit = ['mail.thread', 'mail.activity.mixin']
 
 
     name=fields.Char(string="Staff Name" , required=True)
@@ -16,7 +17,12 @@ class Staff(models.Model):
         ('draft', 'Draft'),
         ('in_progress', 'In Progress'),
         ('cancel', 'Cancelled'),
-        ('done', 'Done'),], string='Status', required=True, readonly=True, copy=False,tracking=True, default='draft')
+        ('done', 'Done'),], string='Status')
     country_id = fields.Many2one('country', string="Country Name")
     state_id = fields.Many2one('state', string="State Name")
     city_id = fields.Many2one('city', string="City Name")
+    # required = True, readonly = True, copy = False, tracking = True, default = 'draft'
+
+
+
+
