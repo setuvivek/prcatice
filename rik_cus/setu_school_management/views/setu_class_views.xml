@@ -28,14 +28,13 @@
                 <form>
                     <sheet>
                         <group string="class_data">
-                            <group>
-                                <field name="name"/>
-                                <field name="class_teacher_id"/>
-                                <field name="teacher_ids"/>
-                                <field name="student_ids"/>
-                                <field name="school_id"/>
-                                <field name="subject_ids"/>
-                            </group>
+                            <field name="name"/>
+                            <field name="class_teacher_id"/>
+                            <field name="teacher_ids"/>
+                            <field name="student_ids"/>
+                            <field name="school_id"/>
+                            <field name="subject_ids"/>
+
 <!--                            <notebook>-->
 <!--                                <page string="Students">-->
 <!--                                    <field name = "student_ids">-->
@@ -56,6 +55,11 @@
 <!--                            </notebook>-->
                         </group>
                     </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
                 </form>
             </field>
         </record>

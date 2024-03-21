@@ -13,6 +13,7 @@
                     <field name="school_id"/>
                     <field name="student_ids"/>
                     <field name="name"/>
+                    <field name="age"/>
                     <field name="phone"/>
                     <field name="email"/>
                     <field name="mobile"/>
@@ -43,6 +44,7 @@
                                 <field name="subject_ids"/>
                                 <field name="school_id"/>
                                 <field name="name"/>
+                                <field name="age"/>
                                 <field name="phone"/>
                                 <field name="email"/>
                                 <field name="mobile"/>
@@ -69,6 +71,11 @@
                             </page>
                         </notebook>
                     </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
                 </form>
             </field>
         </record>
