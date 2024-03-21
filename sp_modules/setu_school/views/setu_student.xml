@@ -70,9 +70,12 @@
                             </group>
                             <group>
                                 <field name="sports_person"/>
-                                <field name="game_type" widget="radio" options="{'horizontal': true}" attrs="{'invisible':[('sports_person','=',False)]}"/>
-                                <field name="indoor_games" attrs="{'invisible':[('game_type','!=','indoor')],'required':[('game_type','=','indoor')]}"/>
-                                <field name="outdoor_games" attrs="{'invisible':[('game_type','!=','outdoor')],'required':[('game_type','=','outdoor')]}"/>
+                                <field name="game_type" widget="radio" options="{'horizontal': true}"
+                                       attrs="{'invisible':[('sports_person','=',False)]}"/>
+                                <field name="indoor_games"
+                                       attrs="{'invisible':[('game_type','!=','indoor')],'required':[('game_type','=','indoor')]}"/>
+                                <field name="outdoor_games"
+                                       attrs="{'invisible':[('game_type','!=','outdoor')],'required':[('game_type','=','outdoor')]}"/>
                                 <field name="terminate_reason"/>
                                 <field name="active"/>
                                 <field name="standard_id" options="{'no_open':True, 'no_create': True}"/>
@@ -87,7 +90,10 @@
                                        options="{'no_open':True, 'no_create': True}"/>
                                 <field name="class_teacher_id"
                                        options="{'no_open':True, 'no_create': True}"
-                                domain="[('workcity','=',city_id)]"/>
+                                       domain="[('age','&gt;=','25'),('age','&lt;=','35')]"
+                                />
+                                <field name="class_teacher_email"/>
+
                                 <field name="alternate_id"
                                        options="{'no_open':True, 'no_create': True}"/>
                                 <field name="teacher_ids" widget="many2many_tags"
@@ -97,9 +103,14 @@
                             </group>
                         </group>
                         <group>
-<!--                            <field name="isEdited"/>-->
+                            <!--                            <field name="isEdited"/>-->
                         </group>
                     </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
                 </form>
             </field>
         </record>
