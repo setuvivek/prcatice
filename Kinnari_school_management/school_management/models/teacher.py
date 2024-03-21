@@ -1,40 +1,47 @@
 from odoo import fields, models,api
 
-
 class Teacher(models.Model):
     _name = "teacher"
     _description = "Teacher_details"
-    # _rec_name = "mobile"
     _order = "result"
-
-    # _date_name = 'date'
 
     name = fields.Char(string="Name")
     gender = fields.Selection(selection=[('male', 'Male'), ('female', 'Female')], string="Gender")
+    age = fields.Integer(string="age")
     mobile = fields.Char(string="Mobileno", help="Enter Mobile Number", size=10)
     postgraduate = fields.Boolean(string="Postgraduate")
     result = fields.Float(string="Result", help="Enter result of Postgraduate", digit=(3,2))
     dob = fields.Date(string="Date of Birth")
-    student_id = fields.One2many('student','teach_id',string="Students")
+    student_id = fields.One2many('student','teach_id1',string="Students")
     address = fields.Boolean(string="You want to add Resident Location")
     country_id = fields.Many2one('country', string="Country Name")
     state_id = fields.Many2one('state', string="State Name")
     city_id = fields.Many2one('city', string="City Name")
     priority = fields.Selection([('clear', 'Clear'), ('urgent', 'Urgent'),('normal', 'Normal'),('lower', 'Lower'),('high', 'High')])
-
-    # department_id = fields.Many2many('department','dept1','name','name1',string="Department")
-
+    city = fields.Char(string="city")
 
     @api.model
     def create(self, vals_list):
         if not vals_list.get('priority'):
             vals_list.update({'priority':'clear'})
         res = super(Teacher,self).create(vals_list)
-        res.gender = 'female'
         return res
 
-    def create_new_data(self):
-        self.student_id = self.env['student'].create({'name':self.name, 'dobs':self.dob})
+
+
+
+
+
+
+
+
+
+
+
+
+
+    # def create_new_data(self):
+    #     self.student_id = self.env['student'].create({'name':self.name, 'dobs':self.dob})
 
     _sql_constraints = [('mobile_length', 'CHECK(LENGTH(mobile) = 10)', "Mobile must have 10 digit"),
                         ('name_compulsory' , 'CHECK(name IS NOT NULL)','name should required'),]
