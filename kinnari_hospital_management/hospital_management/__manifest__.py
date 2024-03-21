@@ -11,7 +11,7 @@
 
 
     ],
-    'depends' : ['contact']
+    'depends' : ['contact','mail']
 
     # 'images': [],
     # "installable": True,
