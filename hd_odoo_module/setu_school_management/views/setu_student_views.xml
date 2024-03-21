@@ -72,6 +72,8 @@
                                 <field name="division_id"/>
                                 <field name="medium_id"/>
                                 <field name="mother_tongue_id"/>
+                                <field name="teacher_phone"/>
+                                <field name="teacher_email"/>
                             </group>
                             <group>
                                 <field name="city_id"/>

@@ -19,6 +19,9 @@ class SetuStudent(models.Model):
     street = fields.Char(string='Street')
     zip = fields.Char(string='Zip')
 
+    teacher_phone = fields.Char(string='Teacher Phone', compute = '_compute_teacher_phone')
+    teacher_email = fields.Char(string = 'Teacher Email', compute = '_compute_teacher_email', store=True)
+
     # Integer-------------
     roll_no = fields.Integer(string='Roll No')
     weight = fields.Integer(string='Weight')
@@ -43,7 +46,7 @@ class SetuStudent(models.Model):
     class_teacher_id = fields.Many2one('setu.teacher', string='Class Teacher')
     school_id = fields.Many2one('setu.school', string='School')
     standard_id = fields.Many2one('setu.class', string='Class')
-    division_id = fields.Many2one('setu.standard.division', string='Division')
+    division_id = fields.Many2one('setu.standard.division', string='Division', tracking=True)
     medium_id = fields.Many2one('setu.standard.medium', string='Medium')
     academic_year_id = fields.Many2one('setu.academic.year', string='Year')
     mother_tongue_id = fields.Many2one('setu.mother.tongue', string='Mother Tongue')
@@ -61,28 +64,30 @@ class SetuStudent(models.Model):
             self.write({'class_teacher_id': record})
 
         # self.env['setu.student'].create({"name":"Hemangi"})
+
     #create method-----------
-    @api.model_create_multi
-    def create(self,vals_list):
-        for vals in vals_list:
-            record_id = self.env['setu.teacher'].search(
-                [('is_teacher', '=', 'True'), ('medium_id', '=', vals.get('medium_id')),
-                 ('division_id', '=', vals.get('division_id')),
-                 ('standard_id', '=', vals.get('standard_id'))], limit=1)
-            if record_id:
-                vals.update({"class_teacher_id": record_id.id})
+    # @api.model_create_multi
+    # def create(self,vals_list):
+    #     for vals in vals_list:
+    #         record_id = self.env['setu.teacher'].search(
+    #             [('is_teacher', '=', 'True'), ('medium_id', '=', vals.get('medium_id')),
+    #              ('division_id', '=', vals.get('division_id')),
+    #              ('standard_id', '=', vals.get('standard_id'))], limit=1)
+    #         if record_id:
+    #             vals.update({"class_teacher_id": record_id.id})
+    #
+    #         if not vals.get('name'):
+    #             vals['middle_name'] = 'student'
+    #
+    #     res = super(SetuStudent, self).create(vals_list)
+    #     # record = self.env['setu.teacher'].search([('is_teacher', '=', 'True'), ('medium_id', '=', res.medium_id.id),
+    #     #                                           ('division_id', '=', res.division_id.id),
+    #     #                                           ('standard_id', '=', res.standard_id.id)], limit=1)
+    #     # if not res.class_teacher_id:
+    #     #     res.class_teacher_id = record.id
+    #
+    #     return res
 
-            if not vals.get('name'):
-                vals['middle_name'] = 'student'
-
-        res = super(SetuStudent, self).create(vals_list)
-        # record = self.env['setu.teacher'].search([('is_teacher', '=', 'True'), ('medium_id', '=', res.medium_id.id),
-        #                                           ('division_id', '=', res.division_id.id),
-        #                                           ('standard_id', '=', res.standard_id.id)], limit=1)
-        # if not res.class_teacher_id:
-        #     res.class_teacher_id = record.id
-
-        return res
 
     #python constrains----------
     @api.constrains('roll_no')
@@ -97,5 +102,22 @@ class SetuStudent(models.Model):
         for name in self:
             if not(name.first_name and name.last_name):
                 raise ValidationError("Please enter first name and last name...")
+
+
+    @api.depends('class_teacher_id')
+    def _compute_teacher_email(self):
+        for rec in self:
+            if rec.class_teacher_id:
+                rec.teacher_email = rec.class_teacher_id.email
+            else:
+                rec.teacher_email = False
+
+    def _compute_teacher_phone(self):
+        for rec in self:
+            if rec.class_teacher_id:
+                rec.teacher_phone = rec.class_teacher_id.phone
+            else:
+                rec.teacher_phone = False
+
 
 

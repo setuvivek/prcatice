@@ -12,6 +12,7 @@ class Teacher(models.Model):
     name = fields.Char(string='Name',copy=False, required=True, help='Teacher Name')
     code = fields.Char(string='Code',copy=False, help='Teacher Code')
     phone = fields.Char(string='Phone No')
+    email = fields.Char(string='Email')
 
     #Integer
     age = fields.Integer(string='Age')

@@ -12,6 +12,7 @@ class Student(models.Model):
     name = fields.Char(string='Name', help='Student Name')
     sport = fields.Char(string='Sport')
     rank1 = fields.Char(string='Percentage')
+    teacher_phone = fields.Char(string='Teacher Phone', _compute='_compute_teacher_phone')
 
 
     #Integer---------------
@@ -65,6 +66,7 @@ class Student(models.Model):
     #create with multiple record-------------------
     @api.model_create_multi
     def create(self, vals_list):
+
         for vals in vals_list:
             if not vals.get('roll_no'):
                 vals['roll_no'] = '2'
@@ -77,11 +79,39 @@ class Student(models.Model):
 
         res = super(Student, self).create(vals_list)
 
-        record = self.env['teacher'].search([('dept_id', '=', res.dept_id.id), ('course_id', '=', res.course_id.id)], limit=1)
-        if not res.teacher_id:
-            res.teacher_id = record.id
+        # if not res.roll_no:
+        #     res.roll_no = 3
+
+        # record = self.env['teacher'].search([('dept_id', '=', res.dept_id.id), ('course_id', '=', res.course_id.id)], limit=1)
+        # if not res.teacher_id:
+        #     res.teacher_id = record.id
 
         return res
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
