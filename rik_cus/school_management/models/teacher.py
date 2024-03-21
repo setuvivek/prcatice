@@ -6,13 +6,14 @@ class Teacher(models.Model):
     _description = "Teacher"
     _rec_name = "name"
     _order = "age desc"
+    _inherit = ['mail.thread', 'mail.activity.mixin']
 
     name = fields.Char(string='Name')
     gender = fields.Selection(selection=[('male', 'MALE'), ('female', 'FEMALE')], string='Gender',default="male")
-    age = fields.Integer(string='Age')
+    age = fields.Integer(string='Age', tracking=True)
     phn_no = fields.Integer(string='Phn_No')
-    city_id = fields.Many2one("city", string='City')
-    joining_date = fields.Datetime(string="joining_date")
+    city_id = fields.Many2one("city", string='City', tracking=True)
+    joining_date = fields.Datetime(string="joining_date", tracking=True)
     student_ids = fields.One2many("student", "teacher_id", string="Student")
     department_ids = fields.One2many("department", "teacher_id", string="department")
 

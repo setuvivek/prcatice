@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="team_view_tree" model="ir.ui.view">
+            <field name="name">team.view.tree</field>
+            <field name="model">team</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="owner">
+                    <field name="name"/>
+                    <field name="owner_id"/>
+                    <field name="players"/>
+                    <field name="city_id"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="team_action" model="ir.actions.act_window">
+            <field name="name">Team</field>
+            <field name="res_model">team</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <record id="team_view_form" model="ir.ui.view">
+            <field name="name">team.view.form</field>
+            <field name="model">team</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="%(team_action)d" string="Team" type="action"/>
+<!--                        <field name="status" widget="statusbar" statusbar_visible="draft,done"/>-->
+                    </header>
+                    <sheet>
+                        <group string="Team data">
+                            <field name="name"/>
+                            <field name="owner_id"/>
+                            <field name="city_id"/>
+                        </group>
+                        <notebook>
+                            <page string="players">
+                                <field name = "players">
+                                    <tree>
+                                        <field name="name" />
+                                        <field name="team_id"/>
+                                        <field name="owner_name" optional = "hide"/>
+                                        <field name="city_id" optional = "hide"/>
+                                        <field name="country_id" optional = "hide"/>
+                                        <field name="state_id" optional = "hide"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+
+        <menuitem id ="team_management" name="Team" action="team_action" sequence="1" parent = "root1"/>
+    </data>
+</odoo>
