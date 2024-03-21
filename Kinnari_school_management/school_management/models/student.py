@@ -7,17 +7,18 @@ class Student(models.Model):
     _description = "Student"
     _rec_name = "gender"
     _order = "roll"
+    _inherit = ['mail.thread', 'mail.activity.mixin']
 
     name = fields.Char(string="Name", )
-    roll = fields.Integer(string="Roll", copy =False)
+    roll = fields.Integer(string="Roll", tracking=True)
     gender = fields.Selection(selection=[('male','Male'),('female','Female'),('other','Other')], string="Gender")
     add = fields.Char(string="add gender")
-    dobs = fields.Date(string='Today Date')
-    teach_id1 = fields.Many2one('teacher',string="Select Teacher")
-    teach_id2 = fields.Many2one('teacher',string="Select Teacher")
-    teach_id3 = fields.Many2one('teacher', string="Select Teacher")
-    teach_id4 = fields.Many2one('teacher', string="Select Teacher")
-    teach_id5 = fields.Many2one('teacher', string="Select Teacher")
+    dobs = fields.Date(string='DOB', tracking=True)
+    teach_id1 = fields.Many2one('teacher',string="Select Teacher domain1")
+    teach_id2 = fields.Many2one('teacher',string="Select Teacher domain2")
+    teach_id3 = fields.Many2one('teacher', string="Select Teacher domain3")
+    teach_id4 = fields.Many2one('teacher', string="Select Teacher domain4")
+    teach_id5 = fields.Many2one('teacher', string="Select Teacher domain5")
     teacher1_id = fields.Many2many('teacher','teacher1',string="Maths Teacher")
     teacher2_id = fields.Many2many('teacher','teacher2', string="Science Teacher")
     teacher3_id = fields.Many2many('teacher', 'teacher3', string="Physics Teacher")

@@ -23,6 +23,7 @@
                     <field name="country_id"/>
                     <field name="state_id"/>
                     <field name="city_id"/>
+
                 </tree>
             </field>
         </record>
@@ -37,11 +38,14 @@
                             <field name="name"/>
                             <field name="roll"/>
                             <field name="teach_id1" domain="[('city','in',['Rajkot','Gondal']),('age','&gt;',25)]"/>
-                            <field name="teach_id2" domain="[('city','=','Rajkot'),('age','&lt;',25)]"/>
+                            <field name="teach_id2"
+                                   domain="['|','&amp;',('city','=','Rajkot'),('age','&lt;',25),('city','!=','Rajkot')]"/>
                             <field name="teach_id3" domain="[('age','=',0)]"/>
                             <field name="teach_id4" domain="[('age','&gt;',25),('age','&lt;',35)]"/>
-                            <field name="teach_id5" domian="[('city','=','Rajkot'),('age','&lt;',25),'|',('city','=','Gondal'),('age','&gt;',30)]"/>
-
+                            <field name="teach_id5" domain="['|','|','&amp;',('city','=','Rajkot'),('age','&lt;',25),
+                                                                 '&amp;',('city','=','Gondal'),('age','&gt;',30),
+                                                                 '&amp;',('city','not in',['Rajkot','Gondal']),
+                                                                 '&amp;',('age','&gt;',25),('age','&lt;',35)]"/>
 
                             <field name="gender" widget="radio"/>
                             <field name="add" attrs="{'invisible' : [('gender','!=','other')]}"/>
@@ -55,6 +59,7 @@
                             <field name="com"/>
                             <field name="quantity"/>
                             <field name="stock"/>
+
 
 
                         </group>
@@ -77,6 +82,11 @@
                             </page>
                         </notebook>
                     </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
                 </form>
             </field>
         </record>
@@ -117,3 +127,4 @@
     </data>
 </odoo>
 
+        <!--                            #options="{'no_create': True, 'no_create_edit':True}"-->
