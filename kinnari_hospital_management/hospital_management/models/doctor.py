@@ -3,6 +3,7 @@ from odoo import fields, models
 class Doctor(models.Model):
     _name = "doctor"
     _description = "Doctor"
+    _inherit = ['mail.thread', 'mail.activity.mixin']
     # _rec_name="Specialize"
 
     name=fields.Char(string="Doctor Name" , required=True)

@@ -35,15 +35,30 @@
                             <group>
                                 <field name="name"/>
                                 <field name="std"/>
-                                <field name="cls" attrs="{'invisible': ['|', ('name', '=', False), ('std', '=', False)]}" />
+                                <field name="cls" attrs="{'invisible': ['|', ('name', '=', False),
+                                                                            ('std', '=', False)]}" />
                                 <field name="teacher_ids"/>
                                 <field name="age"/>
                             </group>
                             <group>
                                 <field name="gender"/>
-                                <field name="other" attrs="{'invisible':[('gender', '!=' ,'other')], 'required': [('age', '=', 30)]}"/>
+                                <field name="other" attrs="{'invisible':[('gender', '!=' ,'other')],
+                                                            'required': [('age', '=', 30)]}"/>
                                 <field name="birth_date"/>
-                                <field name="teacher_id" domain="[('city_id', '=', city_id)]"/>
+                                <field name="teacher_id" domain = "[
+                                '|', '|', '&amp;', ('city_id','=','Rajkot'), ('age','&lt;',25),
+                                '&amp;', ('city_id','=','Gondal'), ('age','&gt;',30),
+                                '&amp;', ('city_id','not in',['Rajkot', 'Gondal']),
+                                '&amp;', ('age','&gt;=',25), ('age','&lt;=',35) ]"
+                                />
+
+<!--                                                                    1&2 | 3&4 | 5&6&7-->
+
+<!--                        domain = "[('age','&gt;=', 25 ), ('age','&lt;=', 35 )]"-->
+<!--                        domain = "[('age','=', False or 0 )]"-->
+<!--                        domain = "[('city_id','=','Rajkot'), ('age','&lt;', 25 )]"-->
+<!--                        domain = "['|', ('city_id','=','Rajkot'), ('city_id','=','Gondal'), ('age','&gt;', 25 )]"-->
+<!--                        domain="[('city_id', '=', 'Rajkot'),('age','&lt;',25)]"-->
 <!--                                <field name="teacher_id" domain="[('gender', '=', 'female')]"/>-->
                                 <field name="city_id"/>
 <!--                                <field name="city_id" domain="[('city_id','=', 'Rajasthan')]"/>-->
@@ -51,6 +66,11 @@
                             </group>
                         </group>
                     </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
                 </form>
             </field>
         </record>

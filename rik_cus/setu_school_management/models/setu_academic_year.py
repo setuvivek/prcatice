@@ -6,14 +6,15 @@ from odoo.exceptions import ValidationError
 class SetuAcademicYear(models.Model):
     _name = "setu.academic.year"
     _description = "SetuAcademicYear"
+    _inherit = ['mail.thread','mail.activity.mixin']
 
     sequence = fields.Char(string="Sequence")
-    name = fields.Char(string="Name")
-    code = fields.Integer(string="Code")
-    date_start = fields.Datetime(string="Start Date")
-    date_stop = fields.Datetime(string="Stop Date")
+    name = fields.Char(string="Name", tracking = True)
+    code = fields.Integer(string="Code", tracking=True)
+    date_start = fields.Datetime(string="Start Date", tracking=True)
+    date_stop = fields.Datetime(string="Stop Date", tracking=True)
     month_ids = fields.One2many("setu.academic.month", "academic_year_id", string="Month")
-    current = fields.Integer(string="Active Academic")
+    current = fields.Integer(string="Active Academic", tracking=True)
 
 
     def action_done(self):
