@@ -5,24 +5,26 @@ class SetuTeacher(models.Model):
     _name = "setu.teacher"
     _description = "SetuTeacher"
     _rec_name = "name"
+    _inherit = ['mail.thread','mail.activity.mixin']
 
-    standard_id = fields.Many2one("setu.standard.standard", string="Responsibility of Academic Class")
+    standard_id = fields.Many2one("setu.standard.standard", string="Responsibility of Academic Class", tracking=True)
     subject_ids = fields.Many2many("setu.subject", string="Subjects")
-    school_id = fields.Many2one("setu.school", string="Campus")
+    school_id = fields.Many2one("setu.school", string="Campus", tracking=True)
     student_ids = fields.One2many("setu.student", "class_teacher_id", string="Student")
-    name = fields.Char(string="Name")
-    phone = fields.Integer(string="Phone")
-    email = fields.Char(string="Email")
-    mobile = fields.Integer(string="Mobile")
-    work_city_id = fields.Many2one("city", string="Work City")
-    work_state_id = fields.Many2one("state", string="Work State")
-    work_country_id = fields.Many2one("country", string="Work Country")
-    home_city_id = fields.Many2one("city", string="Home City")
-    home_state_id = fields.Many2one("state", string="Home State")
-    home_country_id = fields.Many2one("country", string="Home Country")
-    medium_id = fields.Many2one('setu.standard.medium', string="Medium")
-    division_id = fields.Many2one('setu.standard.division', string="Division")
-    class_teacher = fields.Boolean(string="Class Teacher")
+    name = fields.Char(string="Name", tracking=True)
+    age = fields.Integer(string="Age", tracking=True)
+    phone = fields.Integer(string="Phone", tracking=True)
+    email = fields.Char(string="Email", tracking=True)
+    mobile = fields.Integer(string="Mobile", tracking=True)
+    work_city_id = fields.Many2one("city", string="Work City", tracking=True)
+    work_state_id = fields.Many2one("state", string="Work State", tracking=True)
+    work_country_id = fields.Many2one("country", string="Work Country", tracking=True)
+    home_city_id = fields.Many2one("city", string="Home City", tracking=True)
+    home_state_id = fields.Many2one("state", string="Home State", tracking=True)
+    home_country_id = fields.Many2one("country", string="Home Country", tracking=True)
+    medium_id = fields.Many2one('setu.standard.medium', string="Medium", tracking=True)
+    division_id = fields.Many2one('setu.standard.division', string="Division", tracking=True)
+    class_teacher = fields.Boolean(string="Class Teacher", tracking=True    )
 
     @api.constrains('name')
     def _check_unique_teacher_name(self):

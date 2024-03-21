@@ -21,6 +21,12 @@
         </record>
 
 
+        <record id="order_action" model="ir.actions.act_window">
+            <field name="name">Order</field>
+            <field name="res_model">order</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
 
         <record id="order_view_form" model="ir.ui.view">
             <field name="name">order.view.form</field>
@@ -28,7 +34,7 @@
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <form>
-                    <header attrs="{'invisible': [('city_id', '=', False)]}" >
+                    <header>
                         <button name="%(order_action)d" string="Order Done" type="action"/>
                         <field name="status" widget="statusbar" statusbar_visible="draft,done"/>
                     </header>
@@ -49,14 +55,6 @@
                     </sheet>
                 </form>
             </field>
-        </record>
-
-
-
-        <record id="order_action" model="ir.actions.act_window">
-            <field name="name">Order</field>
-            <field name="res_model">order</field>
-            <field name="view_mode">tree,form</field>
         </record>
 
         <menuitem id="root" name="Order"/>

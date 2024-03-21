@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="player_view_tree" model="ir.ui.view">
+            <field name="name">player.view.tree</field>
+            <field name="model">player</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="player">
+                    <field name="name"/>
+                    <field name="team_id"/>
+                    <field name="gender"/>
+                    <field name="nationality"/>
+                    <field name="owner_name"/>
+                    <field name="city_id"/>
+                    <field name="country_id"/>
+                    <field name="state_id"/>
+                    <field name="display_name"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="player_view_form" model="ir.ui.view">
+            <field name="name">player.view.form</field>
+            <field name="model">player</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="player data">
+                            <field name="name"/>
+                            <field name="team_id"/>
+                            <field name="gender"/>
+                            <field name="nationality"/>
+                            <field name="owner_name"/>
+                            <field name="city_id"/>
+                            <field name="country_id"/>
+                            <field name="state_id"/>
+                            <field name="display_name"/>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="player_action" model="ir.actions.act_window">
+            <field name="name">Player</field>
+            <field name="res_model">player</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="root" name="Excercise"/>
+        <menuitem id ="root1" name="Excercise" action = "player_action" parent="root"/>
+        <menuitem id ="player_management" name="Player" action="player_action" sequence="1" parent = "root1"/>
+    </data>
+</odoo>
