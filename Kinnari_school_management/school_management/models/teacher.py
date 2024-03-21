@@ -2,15 +2,17 @@ from odoo import fields, models,api
 
 class Teacher(models.Model):
     _name = "teacher"
-    _description = "Teacher_details"
+    _description = "Teacher"
     _order = "result"
+    _inherit = ['mail.thread', 'mail.activity.mixin']
+    # _inherit = ['mail_thread', 'mail_activity_mixin']
 
     name = fields.Char(string="Name")
     gender = fields.Selection(selection=[('male', 'Male'), ('female', 'Female')], string="Gender")
-    age = fields.Integer(string="age")
+    age = fields.Integer(string="age" , tracking=True)
     mobile = fields.Char(string="Mobileno", help="Enter Mobile Number", size=10)
     postgraduate = fields.Boolean(string="Postgraduate")
-    result = fields.Float(string="Result", help="Enter result of Postgraduate", digit=(3,2))
+    result = fields.Float(string="Result", help="Enter result of Postgraduate")
     dob = fields.Date(string="Date of Birth")
     student_id = fields.One2many('student','teach_id1',string="Students")
     address = fields.Boolean(string="You want to add Resident Location")
@@ -23,7 +25,7 @@ class Teacher(models.Model):
     @api.model
     def create(self, vals_list):
         if not vals_list.get('priority'):
-            vals_list.update({'priority':'clear'})
+            vals_list.update({'priority':'normal'})
         res = super(Teacher,self).create(vals_list)
         return res
 
