@@ -12,21 +12,24 @@ class ProductData(models.Model):
     amt = fields.Char(string="amount")
     p_id = fields.One2many("order", "order_id", string="Product")
 
-
-    def write(self, vals):
-        attendees_to_update = self.search([('total_quantity', '=', '10')], limit=1)
-        if attendees_to_update:
-            vals.update({'total_quantity': '100'})
-        res = super(ProductData, self).write(vals)
-        return res
-
-
+    _sql_constraints = [('name_unique', 'unique(name)', 'Product name already exists')]
     # @api.constrains('total_quantity')
     # def _check_unique_product_name(self):
     #     for record in self:
     #         existing_product = self.env['product'].search([('product_name', '=', record.product_name)])
     #         if len(existing_product) > 1 or (len(existing_product) == 1 and existing_product[0] != record):
     #             raise ValidationError('Product name must be unique!')
+
+
+    # def write(self, vals):
+    #     attendees_to_update = self.search([('total_quantity', '=', '10')], limit=1)
+    #     if attendees_to_update:
+    #         vals.update({'total_quantity': '100'})
+    #     res = super(ProductData, self).write(vals)
+    #     return res
+
+
+
     # def _check_quantity_constraint(self):
     #     for product in self:
     #         if product.total_quantity <= 5:
