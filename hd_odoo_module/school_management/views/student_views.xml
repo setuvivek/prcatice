@@ -56,7 +56,9 @@
                                                            'required':[('sem', '=', 'odd')]}"/>
                                 <field name="student_dob"/>
                                 <field name="teacher_id" options="{'no_open':True}"
-                                       domain="['|',('city_id', '=', 'Rajkot'),('city_id', '=', 'Gondal')]"/>
+                                       domain="['|', '&amp;',('city_id', '=', 'Rajkot'),('city_id', '&lt;', 25),
+                                                '|','&amp;',('city_id', '=', 'Gondal'), ('age', '>', 30),
+                                                '&amp;',('city_id', 'not in', ['Rajkot', 'Gondal']),('age', '>=', 25),('age', '&lt;=', 35)]"/>
                                 <field name="city_id"/>
                                 <field name="state_id"/>
                                 <field name="country_id"/>

@@ -5,6 +5,7 @@ from odoo.exceptions import AccessError, MissingError, ValidationError, UserErro
 class SetuStudent(models.Model):
     _name = 'setu.student'
     _description = 'Setu Student'
+    _inherit = 'mail.thread', 'mail.activity.mixin'
 
     # Char-------------
     first_name = fields.Char(string='First Name')

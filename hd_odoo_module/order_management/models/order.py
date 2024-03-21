@@ -15,7 +15,7 @@ class Order(models.Model):
     quantity = fields.Float(string='Product_Quantity', help='product quantity')
 
     #Date------------------
-    order_date = fields.Date(string='Order_Date', help='order confirmation date')
+    order_date = fields.Datetime(string='Order_Date', help='order confirmation date')
 
     #Float-----------------
     price = fields.Float(string='Product_Price', help='price of product')
@@ -34,11 +34,10 @@ class Order(models.Model):
     mobile_wallet = fields.Selection(selection=[('paytm', 'Paytm'), ('phonepe', 'PhonePe'), ('google_pay','Google Pay')])
 
     #M2o-------------------
-    product_id = fields.Many2one('product', string='product_id', domain=[('discount', '=', '10 to 30%')])
+    product_id = fields.Many2one('product', string='product_id',domain=[('order_date', '<=', '01/02/2024')])
 
     #M2m------------------
     product_ids = fields.Many2many('product', string='Add More Products')
-
 
     #SQL Constrains--------
 

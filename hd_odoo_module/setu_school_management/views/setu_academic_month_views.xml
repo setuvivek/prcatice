@@ -28,7 +28,7 @@
                             <field name="code"/>
                             <field name="date_start"/>
                             <field name="date_stop"/>
-                            <field name="academic_year_id"/>
+                            <field name="academic_year_id" domain="[('date_stop', '=', '31/12/2024')]"/>
                         </group>
                     </sheet>
                 </form>
