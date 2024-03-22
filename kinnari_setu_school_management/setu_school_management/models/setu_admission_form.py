@@ -3,8 +3,10 @@ from odoo import fields, models, api
 
 class SetuAdmissionForm(models.Model):
     _name = "setu.admission.form"
+    _inherit = ['mail.thread', 'mail.activity.mixin']
 
     name = fields.Char(string="Name" )
+    unique_id = fields.Integer(string="Unique Id")
     gender = fields.Selection(selection=[('male', 'Male'), ('female', 'Female')], string="Gender")
     address = fields.Boolean(string="Are You want to add Address?")
     city_id = fields.Many2one('city', string="City Name")
@@ -31,6 +33,21 @@ class SetuAdmissionForm(models.Model):
             #         vals.update({'state': 'Gujarat'})
         res = super(SetuAdmissionForm, self).create(vals_list)
         return res
+
+    def copy(self,default=None):
+        default = dict(default or {})
+        default['unique_id'] = self.unique_id + 1
+        return super(SetuAdmissionForm,self).copy(default=default)
+
+    def default_get(self,fields):
+        res = super(SetuAdmissionForm, self).default_get(fields)
+        res.update({'phone': 91})
+        return res
+
+
+
+
+
 
 
 

@@ -40,6 +40,7 @@
                         <group>
                             <group>
                                 <field name="name"/>
+                                <field name="unique_id"/>
                                 <field name="gender" widget="radio"/>
                                 <field name="phone"/>
                                 <field name="dob"/>
@@ -73,9 +74,16 @@
                             </page>
                         </notebook>
                     </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
                 </form>
             </field>
         </record>
+
+
         <record id="setu_admission_form_action" model="ir.actions.act_window">
             <field name="name">Setu Admission Form</field>
             <field name="res_model">setu.admission.form</field>

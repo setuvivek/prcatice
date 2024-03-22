@@ -2,9 +2,10 @@ from odoo import fields, models , api
 
 class SetuSubject(models.Model):
     _name = "setu.subject"
+    _inherit = ['mail.thread', 'mail.activity.mixin']
 
-    name = fields.Char(string="Name" )
-    code = fields.Char(string="Code")
+    name = fields.Char(string="Name",tracking=True )
+    code = fields.Char(string="Code",tracking=True)
     maximum_marks = fields.Float(string="Maximum Marks")
     minimum_marks = fields.Float(string="Minimum Marks")
     weightage = fields.Float(string="Weightage" , compute="_abc",store=True)

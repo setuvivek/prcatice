@@ -3,14 +3,15 @@ from odoo import fields, models
 
 class SetuStudent(models.Model):
     _name = "setu.student"
+    _inherit = ['mail.thread', 'mail.activity.mixin']
 
 
-    first_name = fields.Char(string="First Name")
-    middle_name = fields.Char(string="Middle Name")
-    last_name = fields.Char(string="Last Name")
+    first_name = fields.Char(string="First Name",tracking=True)
+    middle_name = fields.Char(string="Middle Name",tracking=True)
+    last_name = fields.Char(string="Last Name",tracking=True)
     sure= fields.Boolean(string="Are You Want to add personal details?")
-    gender = fields.Selection(selection=[('male', 'Male'), ('female', 'Female')], string="Gender")
-    date_of_birth = fields.Date(string='DOB')
+    gender = fields.Selection(selection=[('male', 'Male'), ('female', 'Female')], string="Gender",tracking=True)
+    date_of_birth = fields.Date(string='DOB',tracking=True)
     blood_group = fields.Char(string="Blood Group")
     weight = fields.Float(string="Weight")
     height = fields.Float(string="Height")
@@ -44,6 +45,20 @@ class SetuStudent(models.Model):
             vals.update({'teacher_id': record.id})
         rec = super(SetuStudent, self).write(vals)
         return rec
+
+    def copy(self,default=None):
+        default = dict(default or {})
+        default['roll_no'] = self.roll_no +1
+        return super(SetuStudent, self).copy(default=default)
+
+
+        # @api.returns('self', lambda value: value.id)
+        # def copy(self, default=None):
+        #     default = dict(default or {})
+        #     if 'quantity' not in default:
+        #         default['quantity'] = 1123
+        #     return super(Student, self).copy(default=default)
+
 
 
 

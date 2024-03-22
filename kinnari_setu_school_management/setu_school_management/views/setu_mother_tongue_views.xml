@@ -20,6 +20,11 @@
 
                         </group>
                     </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
                 </form>
             </field>
         </record>
@@ -29,6 +34,7 @@
             <field name="view_mode">tree,form</field>
         </record>
 
-        <menuitem id="setu_mother_tongue_menu" name="Setu Mother Tongue" action="setu_mother_tongue_action" parent="sub_menu1"/>
+        <menuitem id="setu_mother_tongue_menu" name="Setu Mother Tongue" action="setu_mother_tongue_action"
+                  parent="sub_menu1"/>
     </data>
 </odoo>

@@ -2,10 +2,11 @@ from odoo import fields,models
 
 class SetuGradeLine(models.Model):
     _name = "setu.grade.line"
+    _inherit = ['mail.thread', 'mail.activity.mixin']
 
     from_mark = fields.Date(string="From Mark")
     to_mark = fields.Date(string="To Mark")
-    name = fields.Char(string="Name")
+    name = fields.Char(string="Name",tracking=True)
     fail = fields.Boolean(string="Fail")
     grade_id = fields.Many2one('setu.grade' , string="Grade")
 

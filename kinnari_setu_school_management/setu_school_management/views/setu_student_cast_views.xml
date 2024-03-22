@@ -20,6 +20,11 @@
 
                         </group>
                     </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
                 </form>
             </field>
         </record>
@@ -28,6 +33,7 @@
             <field name="res_model">setu.student.cast</field>
             <field name="view_mode">tree,form</field>
         </record>
-        <menuitem id="setu_student_cast_menu" name="Setu Student Cast" action="setu_student_cast_action" parent="sub_student_main"/>
+        <menuitem id="setu_student_cast_menu" name="Setu Student Cast" action="setu_student_cast_action"
+                  parent="sub_student_main"/>
     </data>
 </odoo>

@@ -18,10 +18,18 @@
                     <sheet>
                         <group>
                             <field name="name"/>
+                            <field name="result"/>
+                            <field name="marks"/>
+                            <field name="scorer"/>
                             <field name="grade_line_ids" domain="[('name','=',name)]"/>
 
                         </group>
                     </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
                 </form>
             </field>
         </record>
@@ -30,7 +38,7 @@
             <field name="res_model">setu.grade</field>
             <field name="view_mode">tree,form</field>
         </record>
-        <menuitem id="sub_menu1" name="Setu Grade"  parent="main_menu"/>
+        <menuitem id="sub_menu1" name="Setu Grade" parent="main_menu"/>
         <menuitem id="setu_grade_menu" name="Setu Grade" action="setu_grade_action" parent="sub_menu1"/>
     </data>
 </odoo>

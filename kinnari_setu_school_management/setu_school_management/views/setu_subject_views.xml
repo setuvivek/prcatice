@@ -19,7 +19,7 @@
 
 
         </record>
-        <record id = "setu_subject_view_form" model="ir.ui.view">
+        <record id="setu_subject_view_form" model="ir.ui.view">
             <field name="name">setu.subject.view.form</field>
             <field name="model">setu.subject</field>
             <field name="arch" type="xml">
@@ -52,7 +52,7 @@
                                         <field name="terminate_reason" optional="hide"/>
                                         <field name="active"/>
                                         <field name="standard_id" optional="hide"/>
-                                        <field name="division_id" optional="hide" />
+                                        <field name="division_id" optional="hide"/>
                                         <field name="medium_id" optional="hide"/>
                                         <field name="school_id" optional="hide"/>
                                         <field name="admission_date"/>
@@ -67,6 +67,11 @@
                             </page>
                         </notebook>
                     </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
                 </form>
             </field>
         </record>
