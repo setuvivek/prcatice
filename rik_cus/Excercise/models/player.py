@@ -44,6 +44,8 @@ class Player(models.Model):
 
 
 
+
+
     # @api.model_create_multi
     # def write(self, vals):
     #     if 'owner_id' in vals:
