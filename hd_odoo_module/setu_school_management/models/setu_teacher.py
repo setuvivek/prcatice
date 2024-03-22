@@ -32,11 +32,15 @@ class SetuTeacher(models.Model):
     country2_id = fields.Many2one('country', string='Country')
     medium_id = fields.Many2one('setu.standard.medium', string='Medium')
     division_id = fields.Many2one('setu.standard.division', string='Division')
+    subject_id = fields.Many2one('setu.subject', string='Subject')
 
 
 
     #o2m
     student_ids = fields.One2many('setu.student','class_teacher_id', string='Student')
     subject_ids = fields.One2many('setu.subject', 'subject_teacher_id', string='Subject')
+
+    def copy(self, default=None):
+        return super(SetuTeacher, self).copy(default)
 
 

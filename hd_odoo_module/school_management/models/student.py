@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from odoo import models, fields, api
+from odoo import models, fields, api,_
 
 
 class Student(models.Model):
@@ -87,6 +87,14 @@ class Student(models.Model):
         #     res.teacher_id = record.id
 
         return res
+
+    @api.returns('self', lambda value: value.id)
+    def copy(self, default=None):
+        default = dict(default or {})
+        if 'name' not in default:
+            default['name'] = ("%s (Copy)") % self.name
+        return super(Student, self).copy(default=default)
+
 
 
 

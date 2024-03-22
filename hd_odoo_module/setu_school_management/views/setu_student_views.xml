@@ -74,6 +74,8 @@
                                 <field name="mother_tongue_id"/>
                                 <field name="teacher_phone"/>
                                 <field name="teacher_email"/>
+                                <field name="is_above_18"/>
+                                <field name="teacher_subject"/>
                             </group>
                             <group>
                                 <field name="city_id"/>
