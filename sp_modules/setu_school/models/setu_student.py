@@ -1,5 +1,7 @@
 from odoo import fields, models, api
 from odoo.exceptions import ValidationError
+from datetime import date
+from dateutil.relativedelta import relativedelta
 
 
 class SetuStudent(models.Model):
@@ -11,7 +13,9 @@ class SetuStudent(models.Model):
     middle_name = fields.Char(string='Middle Name')
     last_name = fields.Char(string='Last Name')
     gender = fields.Selection(selection=[('male', 'Male'), ('female', 'Female')], string='Gender')
-    dob = fields.Date(string='Birthdate')
+    dob = fields.Datetime(string='Birthdate')
+    age=fields.Integer(string='Age',compute='_compute_age')
+    isEligible=fields.Boolean(string='Eligible',compute='_compute_age')
     phone = fields.Char(string='Phone', tracking=True)
     email = fields.Text(string='Email')
     mobile = fields.Char(string='Mobile')
@@ -24,7 +28,7 @@ class SetuStudent(models.Model):
     mother_tongue = fields.Many2one('setu.mother.tongue', string='Mothertongue')
     address = fields.Text(string='Address')
     city_id = fields.Many2one('city', string='City')
-    state_id = fields.Many2one('city', string='State')
+    state_id = fields.Many2one('state', string='State')
     sports_person = fields.Boolean(string='Sports Person')
     game_type = fields.Selection(selection=[('indoor', 'Indoor'), ('outdoor', 'Outdoor')], string='Game Type')
     indoor_games = fields.Selection(selection=[('chess', 'Chess'), ('carrom', 'Carrom')], string='Indoor')
@@ -40,35 +44,37 @@ class SetuStudent(models.Model):
     academic_year_id = fields.Many2one('setu.academic.year', string='Academic Year')
     roll_no = fields.Integer(string='Roll No.')
     class_id = fields.Many2one('setu.class', string='Class')
-    # class_teacher_id = fields.Many2one('setu.teacher', string='Class Teacher')
     class_teacher_id = fields.Many2one('setu.teacher', string='Class Teacher')
-    class_teacher_email=fields.Char(string='Class Teacher Email',compute='_compute_classteacher')
-    alternate_id = fields.Many2one('setu.teacher', string='Alternate Teacher',compute='_compute_classteacher')
+    class_teacher_email=fields.Char(string='Class Teacher Email',compute='_compute_classteacher_email')
+    # alternate_id = fields.Many2one('setu.teacher', string='Alternate Teacher',compute='_compute_classteacher_alternate')
+    # classteacher_email=fields.Char(related='class_teacher_id.workemail')
+    alternate_teacher_id=fields.Many2one(related='class_teacher_id.alternate_id')
     teacher_ids = fields.Many2many('setu.teacher', 'student_teacher_ids', string='Teachers')
     subject_ids = fields.Many2many('setu.subject', 'student_subjects', string='Subjects')
 
-    isEdited = fields.Boolean(string='isEdited', readonly=True)
+    isEdited = fields.Boolean(string='isEdited')
 
     # ------------------------------------------------
-    # @api.model
-    # def create(self, vals):
-    #     rec = self.env['setu.teacher'].search(
-    #         [('class_teacher', '=', 'True'), ('standard_id', '=', vals.get('standard_id')),
-    #          ('medium_id', '=', vals.get('medium_id')), ('division_id', '=', vals.get('division_id'))], limit=1)
-    #     if rec:
-    #         vals.update({"class_teacher_id": rec.id, "alternate_id": rec.id})
-    #     res = super(SetuStudent, self).create(vals)
-    #     return res
+    @api.model
+    def create(self, vals):
+        # today = date.today()
+        # today.year - born.year - ((today.month, today.day) < (born.month, born.day))
+        rec = self.env['setu.teacher'].search(
+            [('class_teacher', '=', 'True'), ('standard_id', '=', vals.get('standard_id')),
+             ('medium_id', '=', vals.get('medium_id')), ('division_id', '=', vals.get('division_id'))], limit=1)
+        # if rec:
+        #     vals.update({"class_teacher_id": rec.id, "alternate_id": rec.id})
+        return super(SetuStudent, self).create(vals)
 
     # both works same:
 
-    @api.model
-    def create(self, vals):
-        res = super(SetuStudent, self).create(vals)
-        rec = self.env['setu.teacher'].search([('class_teacher', '=', 'True'), ('standard_id', '=', res.standard_id.id),('medium_id', '=', res.medium_id.id),('division_id', '=', res.division_id.id)], limit=1)
-        if not res.class_teacher_id:
-            res.class_teacher_id = rec.id
-        return res
+    # @api.model
+    # def create(self, vals):
+    #     res = super(SetuStudent, self).create(vals)
+    #     rec = self.env['setu.teacher'].search([('class_teacher', '=', 'True'), ('standard_id', '=', res.standard_id.id),('medium_id', '=', res.medium_id.id),('division_id', '=', res.division_id.id)], limit=1)
+    #     if not res.class_teacher_id:
+    #         res.class_teacher_id = rec.id
+    #     return res
     # ------------------------------------------------
 
     def write(self, vals):
@@ -79,7 +85,7 @@ class SetuStudent(models.Model):
     def check_not_null_name(self):
         for rec in self:
             if not (rec.first_name and rec.standard_id and rec.division_id and rec.medium_id):
-                raise ValidationError("Required Deatils : \n\n Name,Standard,Medium,Division")
+                raise ValidationError("Required Details : \n\n Name,Standard,Medium,Division")
 
     def assign(self):
         rec = self.env['setu.teacher'].search(
@@ -87,13 +93,60 @@ class SetuStudent(models.Model):
              ('medium_id', '=', self.medium_id.id), ('division_id', '=', self.division_id.id)], limit=1)
         self.class_teacher_id = rec.id
 
-    def _compute_classteacher(self):
+    @api.depends('class_teacher_id')
+    def _compute_classteacher_email(self):
         for rec in self:
             if rec.class_teacher_id:
                 rec.class_teacher_email = rec.class_teacher_id.workemail
-                rec.alternate_id = rec.class_teacher_id.alternate_id
             else:
                 rec.class_teacher_email = False
 
+# both work same
+    # @api.onchange('class_teacher_id')
+    # def _onchange_teacher_email(self):
+    #     for rec in self:
+    #         if rec.class_teacher_id:
+    #             rec.class_teacher_email = rec.class_teacher_id.workemail
+    #         else:
+    #             rec.class_teacher_email = False
 
 
+    # def _compute_classteacher_alternate(self):
+    #     for rec in self:
+    #         if rec.class_teacher_id:
+    #             rec.alternate_id = rec.class_teacher_id.alternate_id
+    #         else:
+    #             rec.alternate_id = False
+
+    @api.depends('dob')
+    def _compute_age(self):
+        for rec in self:
+            if rec.dob and rec.dob <= fields.Datetime.today():
+                rec.age = relativedelta(
+                    fields.Date.from_string(fields.Date.today()),
+                    fields.Date.from_string(rec.dob)).years
+                if rec.age >= 18:
+                    rec.isEligible=True
+                else:
+                    rec.isEligible = False
+            else:
+                rec.age = False
+                rec.isEligible = False
+#both work same
+    # @api.onchange('dob')
+    # def _onchange_field(self):
+    #     for rec in self:
+    #         if rec.dob and rec.dob <= fields.Datetime.today():
+    #             rec.age = relativedelta(
+    #                 fields.Date.from_string(fields.Date.today()),
+    #                 fields.Date.from_string(rec.dob)).years
+    #             if rec.age >= 18:
+    #                 rec.isEligible=True
+    #             else:
+    #                 rec.isEligible = False
+
+
+    def copy(self, default=None):
+        default = dict(default or {})
+        default.update(first_name= ("%s (copy)") % self.first_name)
+        return super().copy(default)
