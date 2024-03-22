@@ -29,14 +29,55 @@ class SetuStudent(models.Model):
     cast_id = fields.Many2one("setu.student.cast", string="Cast", tracking=True)
     mother_tongue_id = fields.Many2one("setu.mother.tongue", string="Mother Tongue")
     class_teacher_id = fields.Many2one("setu.teacher", string="Class Teacher")
+    class_teacher_phone = fields.Integer(string='Teacher Phone', compute="_compute_teacher_phone", store=True)
+    class_teacher_email = fields.Char(string='Teacher Email', compute="_compute_teacher_information")
+
+    @api.depends('class_teacher_id')
+    def _compute_teacher_phone(self):
+        for rec in self:
+            if rec.class_teacher_id:
+                rec.class_teacher_phone = rec.class_teacher_id.phone
+            else:
+                rec.class_teacher_phone = False
+
+    def _compute_teacher_information(self):
+        for rec in self:
+            if rec.class_teacher_id:
+                rec.class_teacher_email = rec.class_teacher_id.email
+            else:
+                rec.class_teacher_email = False
 
 
-    @api.constrains('first_name')
-    def _check_unique_student_name(self):
-        for record in self:
-            existing_student = self.env['setu.student'].search([('first_name', 'ilike', record.first_name)])
-            if len(existing_student) > 1 or (len(existing_student) == 1 and existing_student[0] != record):
-                raise ValidationError(f'Student name "{record.first_name}" already exists!')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    #
+    # @api.constrains('first_name')
+    # def _check_unique_student_name(self):
+    #     for record in self:
+    #         existing_student = self.env['setu.student'].search([('first_name', 'ilike', record.first_name)])
+    #         if len(existing_student) > 1 or (len(existing_student) == 1 and existing_student[0] != record):
+    #             raise ValidationError(f'Student name "{record.first_name}" already exists!')
 
     # @api.constrains('dob')
     # def check_dob(self):

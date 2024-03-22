@@ -14,11 +14,13 @@ class Student(models.Model):
     gender = fields.Selection(selection=[('male','Male'),('female','Female'),('other','Other')], string="Gender")
     add = fields.Char(string="add gender")
     dobs = fields.Date(string='DOB', tracking=True)
-    teach_id1 = fields.Many2one('teacher',string="Select Teacher domain1")
-    teach_id2 = fields.Many2one('teacher',string="Select Teacher domain2")
-    teach_id3 = fields.Many2one('teacher', string="Select Teacher domain3")
-    teach_id4 = fields.Many2one('teacher', string="Select Teacher domain4")
-    teach_id5 = fields.Many2one('teacher', string="Select Teacher domain5")
+    mobile = fields.Integer(string="Student Mobile")
+    teach_id1 = fields.Many2one('teacher',string="Select Teacher domain1",tracking=True)
+    mob = fields.Char(string="Teacher Mobile",compute="_pqr",store=True)
+    teach_id2 = fields.Many2one('teacher',string="Select Teacher domain2",tracking=True)
+    teach_id3 = fields.Many2one('teacher', string="Select Teacher domain3",tracking=True)
+    teach_id4 = fields.Many2one('teacher', string="Select Teacher domain4",tracking=True)
+    teach_id5 = fields.Many2one('teacher', string="Select Teacher domain5",tracking=True)
     teacher1_id = fields.Many2many('teacher','teacher1',string="Maths Teacher")
     teacher2_id = fields.Many2many('teacher','teacher2', string="Science Teacher")
     teacher3_id = fields.Many2many('teacher', 'teacher3', string="Physics Teacher")
@@ -27,26 +29,102 @@ class Student(models.Model):
     enter3 = fields.Float(string="Physics Mark")
     com = fields.Float(string="Total", compute="_abc",store=True)
     quantity = fields.Float(string="Quantity for order", copy=False)
-    stock = fields.Boolean(string="Stock available or not", default=True)
+    stock = fields.Boolean(string="Stock available or not")
 
     address = fields.Boolean(string="You want to add Resident Location")
     country_id = fields.Many2one('country', string="Country Name")
     state_id = fields.Many2one('state', string="State Name")
     city_id = fields.Many2one('city', string="City Name")
+    religion = fields.Char(string="Religion")
 
     @api.depends('enter1','enter2','enter3')
     def _abc(self):
         for record in self:
             record.com = record.enter1 + record.enter2 + record.enter3
 
-    _sql_constraints = [
-        ('name', 'unique(name)', 'Name Must Be Unique.'),
-        ('name_compulsory', 'CHECK(name IS NOT NULL)', 'Name should required'),
-        ('roll_unique' ,'unique(roll)', 'Roll Must Be Unique.' ),
-        ('roll', 'CHECK(roll > 0)', 'roll no must be greater than 0.'),
-        ('check_mark', 'CHECK(enter1 >= 0 AND enter1 <= 100)','mark should be between 0 and 100'),
+    @api.depends('teach_id1','mob')
+    def _pqr(self):
+        for rec in self:
+            if rec.teach_id1:
+                rec.mob = rec.teach_id1.mobile
+            else:
+                rec.mob = False
 
-    ]
+    @api.onchange('gender','stock')
+    def _onchane(self):
+        if self.gender =="male":
+            self.stock = True
+        else:
+            self.stock = False
+
+
+    def default_get(self, fields):
+        res = super(Student, self).default_get(fields)
+        res.update({'mobile':91})
+        return res
+
+    @api.returns('self', lambda value: value.id)
+    def copy(self, default=None):
+        default = dict(default or {})
+        if 'quantity' not in default:
+            default['quantity'] = 1123
+        return super(Student, self).copy(default=default)
+
+
+
+
+
+    # def browse(self):
+    #     rec = self.browse([7, 18, 12])
+    #     return rec
+
+
+
+
+
+
+
+
+
+
+    # self.browse(ids) // current
+    # table
+    #
+    # self.env['res.company'].browse(company_id) // res_company
+    # table
+
+
+
+
+    # @api.onchange('gender','stock')
+    # def _onchane(self):
+    #     if self.gender =="male":
+    #         self.stock = True
+    #     else:
+    #         self.stock = False
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    # _sql_constraints = [
+    #     ('name', 'unique(name)', 'Name Must Be Unique.'),
+    #     ('name_compulsory', 'CHECK(name IS NOT NULL)', 'Name should required'),
+    #     ('roll_unique' ,'unique(roll)', 'Roll Must Be Unique.' ),
+    #     ('roll', 'CHECK(roll > 0)', 'roll no must be greater than 0.'),
+    #     ('check_mark', 'CHECK(enter1 >= 0 AND enter1 <= 100)','mark should be between 0 and 100'),
+    #
+    # ]
+
 
     def write(self,vals):
         if not vals.get('teach_id'):

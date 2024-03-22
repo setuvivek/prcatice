@@ -26,44 +26,37 @@ class Teacher(models.Model):
     def create(self, vals_list):
         if not vals_list.get('priority'):
             vals_list.update({'priority':'normal'})
+
         res = super(Teacher,self).create(vals_list)
         return res
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    # def create_new_data(self):
-    #     self.student_id = self.env['student'].create({'name':self.name, 'dobs':self.dob})
 
     _sql_constraints = [('mobile_length', 'CHECK(LENGTH(mobile) = 10)', "Mobile must have 10 digit"),
                         ('name_compulsory' , 'CHECK(name IS NOT NULL)','name should required'),]
 
+    def create_data(self):
+        self.priority = 'high'
 
 
 
 
 
 
+        # if 'mobile' not in default_fields:
+        #     default_fields.
+        # #     return super().default_get(default_fields)
+        # # default_name = self._context.get('default_name')
+        # # default_code = self._context.get('default_code')
+        # # if default_name and not default_code:
+        # #     try:
+        # #         default_code = int(default_name)
+        # #     except ValueError:
+        # #         pass
+        # #     if default_code:
+        # #         default_name = False
+        # # contextual_self = self.with_context(default_name=default_name, default_code=default_code)
+        # return super(AccountAccount, contextual_self).default_get(default_fields)
 
-
-
-
-
-
-
-
-
-                # def _check_name(self, mobile, context=None):
+            # def _check_name(self, mobile, context=None):
     #     for val in self.read(mobile, ['mobile'], context=context):
     #         if val['mobile']:
     #             if len(val['mobile']) < 10:
@@ -89,8 +82,7 @@ class Teacher(models.Model):
        
 
 
-    def create_data(self):
-        self.priority = 'high'
+
 
 
 
