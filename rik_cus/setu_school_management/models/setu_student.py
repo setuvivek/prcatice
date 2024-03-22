@@ -48,20 +48,7 @@ class SetuStudent(models.Model):
                 rec.class_teacher_email = False
 
 
-    @api.depends('class_teacher_id')
-    def _compute_teacher_information(self):
-        for rec in self:
-            if rec.class_teacher_id:
-                rec.class_teacher_phone = rec.class_teacher_id.phone
-            else:
-                rec.class_teacher_phone = False
 
-    def _compute_teacher_email(self):
-        for rec in self:
-            if rec.class_teacher_id:
-                rec.class_teacher_email = rec.class_teacher_id.email
-            else:
-                rec.class_teacher_email = False
 
 
 
