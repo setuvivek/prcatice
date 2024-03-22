@@ -8,6 +8,7 @@
             <field name="arch" type="xml">
                 <tree string="setu_teacher">
                     <field name="name"/>
+                    <field name="age"/>
                     <field name="code"/>
                 </tree>
             </field>
@@ -22,21 +23,28 @@
                     <sheet>
                         <group string="teacher details">
                             <group>
+                                <field name="isEdited"/>
+                            </group>
+                            <group></group>
+                            <group>
                                 <field name="name"/>
                                 <field name="code"/>
-                                <field name="school_id"
-                                       options="{'no_open':True, 'no_create': True}"/>
+                                <field name="age"/>
+                                <field name="dob" widget="date"/>
+
                                 <field name="class_teacher"/>
                                 <field name="alternate_id"/>
                                 <!--                                <field name="student_ids" widget="many2many_tags"/>-->
                                 <!--                                <field name="class_ids"/>-->
                             </group>
                             <group>
-                                 <field name="standard_id" options="{'no_open':True, 'no_create': True}"/>
+                                <field name="standard_id" options="{'no_open':True, 'no_create': True}"/>
                                 <field name="medium_id" options="{'no_open':True, 'no_create': True}"/>
                                 <field name="division_id" options="{'no_open':True, 'no_create': True}"/>
                                 <field name="subject_ids" widget="many2many_tags"
                                        options="{'no_create': True}"/>
+                                <field name="school_id"
+                                       options="{'no_open':True, 'no_create': True}"/>
 
                             </group>
                         </group>
@@ -66,7 +74,7 @@
                         </group>
 
                         <notebook attrs="{'invisible':[('show_notebooks','=',False),('show_students','=',False)]}">
-                            <page string="Students" >
+                            <page string="Students">
                                 <field name="student_ids">
                                     <tree>
                                         <field name="first_name"/>
@@ -79,6 +87,12 @@
                         </notebook>
 
                     </sheet>
+
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
                 </form>
             </field>
         </record>
@@ -89,9 +103,9 @@
             <field name="view_mode">tree,form</field>
         </record>
 
-<!--        <menuitem id="root" name="Setu School"/>-->
-<!--        <menuitem id="submenu" name="Forms" parent="root"/>-->
-<!--        <menuitem id="setu_teacher_menu" name="Teacher" action="setu_teacher_action" parent="submenu"/>-->
+        <!--        <menuitem id="root" name="Setu School"/>-->
+        <!--        <menuitem id="submenu" name="Forms" parent="root"/>-->
+        <!--        <menuitem id="setu_teacher_menu" name="Teacher" action="setu_teacher_action" parent="submenu"/>-->
 
 
     </data>

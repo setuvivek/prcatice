@@ -2,9 +2,10 @@ from odoo import fields,models
 
 class SetuStandardDivision(models.Model):
     _name = "setu.standard.division"
+    _inherit = ['mail.thread', 'mail.activity.mixin']
 
-    name = fields.Char(string="Name")
-    code = fields.Char(string="Code")
+    name = fields.Char(string="Name",tracking=True)
+    code = fields.Char(string="Code",tracking=True)
     is_div = fields.Boolean(string="Is Division?")
 
     _sql_constraints = [

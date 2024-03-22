@@ -13,6 +13,13 @@ class ProductData(models.Model):
     p_id = fields.One2many("order", "order_id", string="Product")
 
     _sql_constraints = [('name_unique', 'unique(name)', 'Product name already exists')]
+
+    def default_get(self, fields_list):
+        defaults = super(ProductData, self).default_get(fields_list)
+        defaults['name'] = 'Dhosa'
+        defaults['total_quantity'] = 100
+        return defaults
+
     # @api.constrains('total_quantity')
     # def _check_unique_product_name(self):
     #     for record in self:

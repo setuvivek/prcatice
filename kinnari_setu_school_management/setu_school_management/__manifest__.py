@@ -21,5 +21,5 @@
         'views/setu_mother_tongue_views.xml'
 
     ],
-    'depends': ['contact']
+    'depends': ['contact','mail']
 }

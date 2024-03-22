@@ -2,9 +2,10 @@ from odoo import fields, models,api
 
 class SetuSchool(models.Model):
     _name = "setu.school"
+    _inherit = ['mail.thread', 'mail.activity.mixin']
 
-    name = fields.Char(string="Name")
-    code = fields.Char(string="Code")
+    name = fields.Char(string="Name",tracking=True)
+    code = fields.Char(string="Code",tracking=True)
     address = fields.Boolean(string="Are You want to add address?")
     city_id = fields.Many2one('city', string="City Name")
     state_id = fields.Many2one('state', string="State Name")
@@ -13,7 +14,7 @@ class SetuSchool(models.Model):
     # required_age = fields.Integer(name="Minimum Age")
     school_standard_ids = fields.Many2many('setu.standard.standard' , string="Standards")
     email = fields.Char(string="Email")
-    phone = fields.Char(string="Phone" , help="Enter Mobile Number", size=10)
+    phone = fields.Char(string="Phone" , help="Enter Mobile Number", size=10,tracking=True)
     cname= fields.Char(string="Class name")
     is_school = fields.Boolean(string="Is_school")
 

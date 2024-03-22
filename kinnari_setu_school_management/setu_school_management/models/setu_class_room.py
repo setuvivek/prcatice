@@ -1,18 +1,14 @@
 from odoo import fields,models , api , _
 from odoo.exceptions import ValidationError
 
-
 class SetuClassRoom(models.Model):
     _name = "setu.class.room"
+    _inherit = ['mail.thread', 'mail.activity.mixin']
 
-    name = fields.Char(string="name")
+    name = fields.Char(string="name",tracking=True)
     number = fields.Integer(string="Room Number")
 
-    _sql_constraints = [
-        ('name_compulsory', 'CHECK(name IS NOT NULL)', 'Name should required'),
-        ('name_unique', 'unique(name)', "Name Must Be Unique."),
-        ('size_number', 'CHECK(number>=0)', 'Number field cannot be negative.')
-    ]
+
     @api.model
     def create(self,vals):
         if not vals.get('number'):
@@ -21,6 +17,22 @@ class SetuClassRoom(models.Model):
         return rec
 
 
+
+
+
+
+
+
+
+
+
+
+
+    _sql_constraints = [
+        ('name_compulsory', 'CHECK(name IS NOT NULL)', 'Name should required'),
+        ('name_unique', 'unique(name)', "Name Must Be Unique."),
+        ('size_number', 'CHECK(number>=0)', 'Number field cannot be negative.')
+    ]
 
     # @api.constrains('number')
     # def write(self, vals):

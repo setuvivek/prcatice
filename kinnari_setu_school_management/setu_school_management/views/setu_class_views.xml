@@ -25,6 +25,8 @@
                             <field name="is_teacher"/>
                             <field name="class_teacher_id1" domain="[('is_teacher','=',is_teacher)]"
                                    attrs="{'invisible':[('is_teacher','!=',True)]}"/>
+                            <field name="mobile"/>
+                            <field name="email"/>
                             <field name="teacher_ids"/>
                             <field name="is_stu"/>
                             <field name="student_ids" attrs="{'invisible':[('is_stu','!=',True)]}"/>
@@ -107,6 +109,11 @@
                             </page>
                         </notebook>
                     </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
                 </form>
             </field>
         </record>
@@ -116,9 +123,8 @@
             <field name="view_mode">tree,form</field>
         </record>
 
-        <menuitem id="sub_class_main_menu" name="Setu Class"  parent="main_menu"/>
+        <menuitem id="sub_class_main_menu" name="Setu Class" parent="main_menu"/>
         <menuitem id="setu_class_menu" name="Setu Class" action="setu_class_action" parent="sub_class_main_menu"/>
-
 
 
     </data>

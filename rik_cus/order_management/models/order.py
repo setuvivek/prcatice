@@ -25,6 +25,11 @@ class Order(models.Model):
     #         vals.update({'order_id': rec.id})
     #     res = super(Order, self).write(vals)
     #     return res
+    def default_get(self, fields_list):
+        defaults = super(Order, self).default_get(fields_list)
+        defaults['owner_name'] = 'Tame Kon Heeeee'
+        defaults['payment'] = 'cash'
+        return defaults
 
     @api.model
     def create(self, vals):

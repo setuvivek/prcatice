@@ -10,6 +10,7 @@ from odoo import fields,models
 
 class SetuAcademicYear(models.Model):
     _name = "setu.academic.year"
+    _inherit = ['mail.thread', 'mail.activity.mixin']
 
     sequence = fields.Integer(string="Sequence")
     name = fields.Char(string="Name")

@@ -29,12 +29,19 @@
                             </group>
                             <group>
                                 <field name="fail" widget="boolean_toggle"/>
-                                <field name="grade_id" domain="[('name','=',name)]"
+                                <field name="grade_id" domain="['|','|','&amp;',('result','=',True),('marks','&gt;',25),
+                                '&amp;',('result','=',False),('marks','&lt;',25),
+                                '&amp;',('scorer','=',True),('marks','&gt;',50)]"
                                        attrs="{'invisible':[('fail','!=',True)]}"/>
                             </group>
 
                         </group>
                     </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
                 </form>
             </field>
         </record>

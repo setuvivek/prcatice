@@ -2,6 +2,7 @@ from odoo import fields,models
 
 class SetuStandardMedium(models.Model):
     _name= "setu.standard.medium"
+    _inherit = ['mail.thread', 'mail.activity.mixin']
 
     name = fields.Char(string="Name")
     code = fields.Char(string="Code")

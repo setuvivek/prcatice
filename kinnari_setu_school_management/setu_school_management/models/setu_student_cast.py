@@ -2,6 +2,7 @@ from  odoo import fields,models
 
 class SetuStudentCast(models.Model):
     _name = "setu.student.cast"
+    _inherit = ['mail.thread', 'mail.activity.mixin']
 
     name = fields.Char(string="Name")
 
