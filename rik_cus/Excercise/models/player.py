@@ -7,7 +7,7 @@ class Player(models.Model):
     _rec_name = "name"
     _inherit = ['mail.thread','mail.activity.mixin']
 
-    name = fields.Char(string="Player Name", default="Dhoni", tracking = True)
+    name = fields.Char(string="Player Name", default="Gautam Gambhir", tracking = True)
     team_id = fields.Many2one("team", string="Team Name", tracking = True)
     gender = fields.Selection(selection=[("male","MALE"),("female","FEMALE")], string="Gender")
     nationality = fields.Selection(selection=[("india","INDIA"),("foreigner","FOREIGNER")], string="Nationality")
@@ -15,6 +15,11 @@ class Player(models.Model):
     city_id = fields.Many2one("city", string="city", tracking = True)
     country_id = fields.Many2one("country", string="Country", tracking = True)
     state_id = fields.Many2one("state", string="State", tracking = True)
+    o_mail = fields.Char(related="owner_name.mail", string="Owner Mail")
+    o_phone = fields.Integer(related="owner_name.phone", string="Owner Phone")
+    # o_mail = fields.Char(compute = "_compute_display_mail", string="Owner Mail")
+    # o_phone = fields.Integer(compute = "_compute_display_phone", string="Owner Phone")
+
 
     display_name = fields.Char(string="Display Name", compute="_compute_display_name", store=True)
 
@@ -23,6 +28,19 @@ class Player(models.Model):
         for player in self:
             player.display_name = f"{player.name} ({player.nationality})"
 
+    @api.depends('owner_name')
+    def _compute_display_mail(self):
+        for rec in self:
+            if rec.owner_name:
+                rec.o_mail = rec.owner_name.mail
+            else:
+                rec.o_mail = False
+    def _compute_display_phone(self):
+        for rec in self:
+            if rec.owner_name:
+                rec.o_phone = rec.owner_name.phone
+            else:
+                rec.o_phone = False
 
 
 
@@ -42,6 +60,7 @@ class Player(models.Model):
                 vals['team_id'] = team.id
         return super(Player, self).create(vals)
 
+
     def write(self, vals):
         if 'owner_name' in vals:
             owner = self.env['owner'].browse(vals['owner_name'])
@@ -52,14 +71,13 @@ class Player(models.Model):
 
 
 
-    # @api.onchange('gender')
-    # def _onchange_gender(self):
-    #     for rec in self:
-    #         if rec.gender == "male":
-    #             rec.nationality = 'india'
-    #         else:
-    #             rec.nationality = 'foreigner'
-
+    @api.onchange('gender')
+    def _onchange_gender(self):
+        for rec in self:
+            if rec.gender == "male":
+                rec.nationality = 'india'
+            else:
+                rec.nationality = 'foreigner'
 
 
 

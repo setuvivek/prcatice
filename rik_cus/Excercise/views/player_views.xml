@@ -17,6 +17,8 @@
                     <field name="country_id"/>
                     <field name="state_id"/>
                     <field name="display_name"/>
+                    <field name="o_mail"/>
+                    <field name="o_phone"/>
                 </tree>
             </field>
         </record>
@@ -39,6 +41,8 @@
                             <field name="country_id"/>
                             <field name="state_id"/>
                             <field name="display_name"/>
+                            <field name="o_mail"/>
+                            <field name="o_phone"/>
                         </group>
                     </sheet>
                     <div class="oe_chatter">
