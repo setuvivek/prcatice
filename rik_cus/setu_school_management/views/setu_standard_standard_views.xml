@@ -41,6 +41,7 @@
             <field name="name">Standard Standard</field>
             <field name="res_model">setu.standard.standard</field>
             <field name="view_mode">tree,form</field>
+            <field name="context">{'default_name':'Please enter something'}</field>
         </record>
 
         <menuitem id="standard_standard_management" action="standard_standard_action" name="Standard Standard" sequence="1" parent = "root1"/>
