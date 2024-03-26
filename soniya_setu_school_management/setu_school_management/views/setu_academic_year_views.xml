@@ -22,9 +22,8 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <button name="action_done" string="Done" type="object"/>
+                    <button name="action_done" string="DONE" type="object" attrs="{'invisible':[('date_stop', '=', False)]}"/>
                 </header>
-
                 <sheet>
                     <group>
                         <group>
@@ -62,5 +61,10 @@
         <field name="res_model">setu.academic.year</field>
         <field name="view_mode">tree,form</field>
     </record>
+    <menuitem id="academic" name="Academic" parent="root"/>
+    <menuitem id="setu_academic_year_menu"
+              name="Academic Year"
+              action="setu_academic_year_action"
+              parent="academic"/>
 </odoo>
 

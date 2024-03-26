@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-
     <record id="setu_academic_month_view_tree" model="ir.ui.view">
         <field name="name">setu.academic.month.view.tree</field>
         <field name="model">setu.academic.month</field>
@@ -46,6 +45,11 @@
 <!--                        </page>-->
 <!--                    </notebook>-->
                 </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="message_ids"/>
+                    <field name="activity_ids"/>
+                </div>
             </form>
         </field>
     </record>
@@ -54,4 +58,8 @@
         <field name="res_model">setu.academic.month</field>
         <field name="view_mode">tree,form</field>
     </record>
+    <menuitem id="setu_academic_month_menu"
+              name="Academic month"
+              action="setu_academic_month_action"
+              parent="academic"/>
 </odoo>

@@ -8,3 +8,16 @@ access_setu_teacher,access.setu_teacher,setu_school_management.model_setu_teache
 access_setu_academic_year,access.setu_academic_year,setu_school_management.model_setu_academic_year,,1,1,1,1
 access_setu_academic_month,access.setu_academic_month,setu_school_management.model_setu_academic_month,,1,1,1,1
 access_setu_class_room,accss.setu_class_room,setu_school_management.model_setu_class_room,,1,1,1,1
+access_setu_standard_medium,access.setu_standard_medium,setu_school_management.model_setu_standard_medium,,1,1,1,1
+access_setu_standard_division,access.setu_standard_division,setu_school_management.model_setu_standard_division,,1,1,1,1
+access_setu_standard_standard,access.setu_standard_standard,setu_school_management.model_setu_standard_standard,,1,1,1,1
+access_setu_student_cast,access.setu_student_cast,setu_school_management.model_setu_student_cast,,1,1,1,1
+access_setu_grade,access.setu_grade,setu_school_management.model_setu_grade,,1,1,1,1
+access_setu_grade_line,access.setu_grade_line,setu_school_management.model_setu_grade_line,,1,1,1,1
+access_setu_mother_toungue,access.setu_mother_toungue,setu_school_management.model_setu_mother_toungue,,1,1,1,1
+
+
+
+
+
+
