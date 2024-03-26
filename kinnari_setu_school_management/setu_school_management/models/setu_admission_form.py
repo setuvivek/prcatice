@@ -34,6 +34,7 @@ class SetuAdmissionForm(models.Model):
         res = super(SetuAdmissionForm, self).create(vals_list)
         return res
 
+
     def copy(self,default=None):
         default = dict(default or {})
         default['unique_id'] = self.unique_id + 1
@@ -43,6 +44,7 @@ class SetuAdmissionForm(models.Model):
         res = super(SetuAdmissionForm, self).default_get(fields)
         res.update({'phone': 91})
         return res
+
 
 
 

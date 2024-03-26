@@ -30,6 +30,11 @@ class SetuAcademicMonth(models.Model):
         for rec in self:
             if rec.date_start and rec.date_stop and rec.date_start > rec.date_stop:
                 raise ValidationError(_('The stop date cannot be earlier than the start date. ',))
+
+    def copy(self, default=None):
+        default = dict(default or {})
+        default['code'] = self.code + 1
+        return super(SetuAcademicMonth, self).copy(default=default)
     #
     # @api.constrains('code')
     # def _check_code_(self):

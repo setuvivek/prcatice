@@ -59,3 +59,12 @@ class SetuClass(models.Model):
 
 
 
+
+
+
+
+
+
+
+
+

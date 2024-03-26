@@ -26,6 +26,7 @@
                                 <field name="name"/>
 
 
+
                             </group>
                             <group>
                                 <field name="fail" widget="boolean_toggle"/>
@@ -33,6 +34,10 @@
                                 '&amp;',('result','=',False),('marks','&lt;',25),
                                 '&amp;',('scorer','=',True),('marks','&gt;',50)]"
                                        attrs="{'invisible':[('fail','!=',True)]}"/>
+                                <field name="names"/>
+                                <field name="result"/>
+<!--                                <field name="marks"/>-->
+<!--                                <field name="scorer"/>-->
                             </group>
 
                         </group>

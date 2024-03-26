@@ -46,6 +46,12 @@ class SetuStudent(models.Model):
         rec = super(SetuStudent, self).write(vals)
         return rec
 
+
+    def default_get(self, fields):
+        res = super(SetuStudent, self).default_get(fields)
+        res.update({'roll_no': 1})
+        return res
+
     def copy(self,default=None):
         default = dict(default or {})
         default['roll_no'] = self.roll_no +1

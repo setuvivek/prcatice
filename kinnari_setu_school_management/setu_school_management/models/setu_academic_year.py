@@ -47,10 +47,10 @@ class SetuAcademicYear(models.Model):
             if rec:
                 rec.write({'date_start':'2024-03-03'})
 
-
-
-
-
+    def copy(self, default=None):
+        default = dict(default or {})
+        default['sequence'] = self.sequence + 1
+        return super(SetuAcademicYear, self).copy(default=default)
 
 
 

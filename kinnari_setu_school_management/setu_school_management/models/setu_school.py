@@ -16,7 +16,24 @@ class SetuSchool(models.Model):
     email = fields.Char(string="Email")
     phone = fields.Char(string="Phone" , help="Enter Mobile Number", size=10,tracking=True)
     cname= fields.Char(string="Class name")
-    is_school = fields.Boolean(string="Is_school")
+    is_school = fields.Boolean(string="Is_school", compute ="_abc", store=True)
+
+    @api.depends('cname','is_school')
+    def _abc(self):
+        if self.cname:
+            self.is_school = True
+
+
+    #
+    #
+    # def _abc(self,vals):
+    #     for rec in vals:
+    #         if rec.cname=="abc":
+    #             rec.update({'is_school': True})
+
+        # if self.cname == "abc":
+        #     self.is_school = True
+        #
 
     @api.model
     def create(self, vals_list):
@@ -34,12 +51,19 @@ class SetuSchool(models.Model):
         res = super(SetuSchool, self).create(vals_list)
         return res
 
-    _sql_constraints = [
-        # Partial constraint, complemented by unique index (see below). Still
-        # useful to keep because it provides a proper error message when a
-        # violation occurs, as it shares the same prefix as the unique index.
-        ('name_compulsory', 'CHECK(name IS NOT NULL)', 'Name should required'),
-        ('name_unique', 'unique(name)', "Name Must Be Unique."),
-        ('phone_no_length', 'CHECK(LENGTH(phone) = 10)', "Phone must have 10 digit")
-    ]
+    # _sql_constraints = [
+    #     # Partial constraint, complemented by unique index (see below). Still
+    #     # useful to keep because it provides a proper error message when a
+    #     # violation occurs, as it shares the same prefix as the unique index.
+    #     ('name_compulsory', 'CHECK(name IS NOT NULL)', 'Name should required'),
+    #     ('name_unique', 'unique(name)', "Name Must Be Unique."),
+    #     ('phone_no_length', 'CHECK(LENGTH(phone) = 10)', "Phone must have 10 digit")
+    # ]
+
+    def default_get(self,fields):
+        rec = super(SetuSchool,self).default_get(fields)
+        rec.update({'code':1})
+        return rec
+
+
 
