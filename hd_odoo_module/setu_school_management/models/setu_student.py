@@ -20,8 +20,8 @@ class SetuStudent(models.Model):
     street = fields.Char(string='Street')
     zip = fields.Char(string='Zip')
 
-    teacher_phone = fields.Char(string='Teacher Phone')
-    teacher_email = fields.Char(string = 'Teacher Email')
+    teacher_phone = fields.Char(string='Teacher Phone',compute='_compute_teacher_phone', store=False)
+    teacher_email = fields.Char(string = 'Teacher Email',compute='_compute_teacher_email')
 
     # Integer-------------
     roll_no = fields.Integer(string='Roll No')
@@ -30,7 +30,7 @@ class SetuStudent(models.Model):
 
     # Boolean------------
     active = fields.Boolean(string='Active', default=True)
-    is_above_18 = fields.Boolean(string='Is Above 18', compute='_compute_is_above_18')
+    is_above_18 = fields.Boolean(string='Is Above 18', compute='_compute_is_above_18', search='_search_age')
 
     # Selection-----------
     gender = fields.Selection(selection=[('male', 'Male'), ('female', 'Female')])
@@ -58,7 +58,7 @@ class SetuStudent(models.Model):
     subject_ids = fields.Many2many('setu.subject', 'student_subject', 'student', 'subject', string='Subject')
 
     #related----------------
-    teacher_subject = fields.Many2one(related='class_teacher_id.subject_id', store=True)
+    teacher_subject = fields.Many2one(related='class_teacher_id.subject_id', store=False)
 
 
     #object button----------
@@ -72,28 +72,28 @@ class SetuStudent(models.Model):
 
         # self.env['setu.student'].create({"name":"Hemangi"})
 
-    #create method-----------
-    # @api.model_create_multi
-    # def create(self,vals_list):
-    #     for vals in vals_list:
-    #         record_id = self.env['setu.teacher'].search(
-    #             [('is_teacher', '=', 'True'), ('medium_id', '=', vals.get('medium_id')),
-    #              ('division_id', '=', vals.get('division_id')),
-    #              ('standard_id', '=', vals.get('standard_id'))], limit=1)
-    #         if record_id:
-    #             vals.update({"class_teacher_id": record_id.id})
-    #
-    #         if not vals.get('name'):
-    #             vals['middle_name'] = 'student'
-    #
-    #     res = super(SetuStudent, self).create(vals_list)
+    # create method-----------
+    @api.model_create_multi
+    def create(self,vals_list):
+        for vals in vals_list:
+            record_id = self.env['setu.teacher'].search(
+                [('is_teacher', '=', 'True'), ('medium_id', '=', vals.get('medium_id')),
+                 ('division_id', '=', vals.get('division_id')),
+                 ('standard_id', '=', vals.get('standard_id'))], limit=1)
+            if record_id:
+                vals.update({"class_teacher_id": record_id.id})
+
+            if not vals.get('name'):
+                vals['middle_name'] = 'student'
+
+        res = super(SetuStudent, self).create(vals_list)
     #     # record = self.env['setu.teacher'].search([('is_teacher', '=', 'True'), ('medium_id', '=', res.medium_id.id),
     #     #                                           ('division_id', '=', res.division_id.id),
     #     #                                           ('standard_id', '=', res.standard_id.id)], limit=1)
     #     # if not res.class_teacher_id:
     #     #     res.class_teacher_id = record.id
     #
-    #     return res
+        return res
 
 
     #python constrains----------
@@ -127,7 +127,6 @@ class SetuStudent(models.Model):
             else:
                 rec.teacher_phone = False
 
-    @api.depends()
     def _compute_is_above_18(self):
         today = date.today()
         for student in self:
@@ -137,6 +136,24 @@ class SetuStudent(models.Model):
                 student.is_above_18 = age > 18
             else:
                 student.is_above_18 = False
+
+    def _search_age(self, operator, value):
+        print(value)
+        return [('id', '=', 11)]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     # @api.onchange('date_of_birth')
     # def _onchange_is_above_18(self):

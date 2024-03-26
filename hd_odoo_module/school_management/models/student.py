@@ -12,8 +12,8 @@ class Student(models.Model):
     name = fields.Char(string='Name', help='Student Name')
     sport = fields.Char(string='Sport')
     rank1 = fields.Char(string='Percentage')
-    teacher_phone = fields.Char(string='Teacher Phone', _compute='_compute_teacher_phone')
 
+    teacher_phone = fields.Char(string='Teacher Phone',compute='_compute_teacher_phone')
 
     #Integer---------------
     roll_no = fields.Integer(string='Roll No', copy=False, help='Student Roll No')
@@ -27,6 +27,8 @@ class Student(models.Model):
     odd = fields.Selection(selection=[('1','1'), ('3','3'), ('5','5'), ('7','7')])
     rank = fields.Selection(selection=[('rank1','1'),('2','2'),('3','3'),('4','4'),('5','5'),('6','6'),('7','7'),('8','8'),('9','9'),('10','10')])
     status = fields.Selection(selection=[('draft', 'Draft'), ('confirm', 'Confirm'), ('cancel','Cancel')])
+
+    teacher_subject = fields.Selection(related='teacher_id.subject', string='Teacher Subject')
 
     #Boolean----------------
     is_present = fields.Boolean(string='Present')
@@ -95,32 +97,12 @@ class Student(models.Model):
             default['name'] = ("%s (Copy)") % self.name
         return super(Student, self).copy(default=default)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    def _compute_teacher_phone(self):
+        for rec in self:
+            if rec.teacher_id:
+                rec.teacher_phone = rec.teacher_id.phone
+            else:
+                rec.teacher_phone = False
 
 
 

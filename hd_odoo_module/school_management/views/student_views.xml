@@ -47,6 +47,8 @@
                                 <field name="is_sport_person"/>
                                 <field name="sport" attrs="{'invisible':[('is_sport_person', '=', False)]}"/>
                                 <field name="show_notebook"/>
+                                <field name="teacher_phone"/>
+                                <field name="teacher_subject"/>
                             </group>
                             <group>
                                 <field name="sem"/>
