@@ -6,7 +6,7 @@ class Country(models.Model):
 
     name = fields.Char(string='Name', required=True)
     states_ids=fields.One2many('state','country_id',string='States')
-    cities_ids=fields.Many2many('city','country_city_id',string='Cities')
+    cities_ids=fields.One2many('city','country_city_id',string='Cities')
     capitals_ids=fields.Many2many('city','capitals_ids',string='State Capitals')
 
     show_cities = fields.Boolean(string='Show Cities')

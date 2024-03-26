@@ -95,7 +95,6 @@
                                        options="{'no_open':True, 'no_create': True}"/>
                                 <field name="class_teacher_id"
                                        options="{'no_open':True, 'no_create': True}"
-                                       domain="[('age','&gt;=','25'),('age','&lt;=','35')]"
                                 />
                                 <field name="class_teacher_email"/>
                                 <field name="alternate_teacher_id"/>

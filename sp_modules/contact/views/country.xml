@@ -20,7 +20,7 @@
                     <sheet>
                         <group>
                             <field name="name"/>
-                            <field name="states_ids" widget="one2many_list"/>
+<!--                            <field name="states_ids" widget="one2many_list"/>-->
 <!--                            <field name="cities_ids" />-->
                             <field name="show_cities"/>
                             <field name="show_states"/>
@@ -32,7 +32,7 @@
                                         <field name="name"/>
                                         <field name="state_id"/>
                                         <field name="country_city_id"/>
-                                        <field name="capital"/>
+                                        <field name="isCapital"/>
                                     </tree>
                                 </field>
                             </page>
