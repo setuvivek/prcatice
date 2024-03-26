@@ -57,13 +57,9 @@ class SetuStudent(models.Model):
     # ------------------------------------------------
     @api.model
     def create(self, vals):
-        # today = date.today()
-        # today.year - born.year - ((today.month, today.day) < (born.month, born.day))
         rec = self.env['setu.teacher'].search(
             [('class_teacher', '=', 'True'), ('standard_id', '=', vals.get('standard_id')),
              ('medium_id', '=', vals.get('medium_id')), ('division_id', '=', vals.get('division_id'))], limit=1)
-        # if rec:
-        #     vals.update({"class_teacher_id": rec.id, "alternate_id": rec.id})
         return super(SetuStudent, self).create(vals)
 
     # both works same:
@@ -93,7 +89,8 @@ class SetuStudent(models.Model):
              ('medium_id', '=', self.medium_id.id), ('division_id', '=', self.division_id.id)], limit=1)
         self.class_teacher_id = rec.id
 
-    @api.depends('class_teacher_id')
+    # @api.depends('class_teacher_id')
+    @api.onchange('class_teacher_id')
     def _compute_classteacher_email(self):
         for rec in self:
             if rec.class_teacher_id:
