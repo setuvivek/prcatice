@@ -7,4 +7,4 @@ class City(models.Model):
     name=fields.Char(string='Name',required=True, default='abc', copy=False)
     state_id=fields.Many2one('state',string='State')
     country_city_id=fields.Many2one('country',string='Country')
-    capital=fields.Boolean(string='Capital')
+    isCapital=fields.Boolean(string='Capital')

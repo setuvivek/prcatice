@@ -5,7 +5,6 @@ from odoo.exceptions import ValidationError
 class Product(models.Model):
     _name = 'product'
     _description = 'product data'
-    # _inherit = "hr.employee"
 
     name = fields.Char(string='Name', required=True)
     category = fields.Selection([('electronic', 'electronic'), ('non-electronic', 'non-electronic')], string='Category')
