@@ -1,4 +1,4 @@
-from odoo import fields, models
+from odoo import fields, models,api
 from odoo.exceptions import ValidationError
 
 class Order1(models.Model):
@@ -21,4 +21,19 @@ class Order1(models.Model):
     delivered=fields.Boolean(string='Delivered')
 
     product_ids = fields.Many2many('product',string='Product')
+
+
+    # @api.model
+    # def create(self,vals):
+    #     vals.update({'product_ids':1})
+    #     return super(Order1, self).create(vals)
+
+    # @api.model
+    # def default_get(self,fields):
+    #     res = super(Order1,self).default_get(fields)
+    #     res['product_ids']='bottle'
+    #     return res
+
+    # default = lambda self: self.env['it.recruitment.freelancer.category'].search([('name', '=', 'Freelancer')]).ids)
+# default = lambda self: self.env['product'].search([('name','=','bottle')]).ids
 

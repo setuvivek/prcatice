@@ -1,0 +1,55 @@
+<odoo>
+    <data>
+
+        <record id="repair_requests_requests_view_tree" model="ir.ui.view">
+            <field name="name">repair.requests.requests.view.tree</field>
+            <field name="model">repair.requests.requests</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Repair Requests">
+                    <field name="customer_name_id"/>
+                    <field name="product_id"/>
+                    <field name="purchase_date"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="repair_requests_requests_view_form" model="ir.ui.view">
+            <field name="name">repair.requests.requests.view.form</field>
+            <field name="model">repair.requests.requests</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="repair_requests">
+                    <sheet>
+                        <group>
+                            <group string="Request Data">
+                                <field name="customer_name_id"/>
+                                <field name="customer_email"/>
+                                <field name="customer_phone"/>
+                                <field name="product_id" options="{'no_open':True, 'no_create': True}"/>
+                                <field name="service_type" attrs="{'invisible':[('product_id','=',False)]}"/>
+                                <field name="purchase_date"/>
+                                <field name="warranty_date"/>
+                                <field name="service_ids" widget="many2many_tags"
+                                       options="{'no_open':True, 'no_create': True}"/>
+
+                            </group>
+                        </group>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="repair_requests_requests_action" model="ir.actions.act_window">
+            <field name="name">Repair Request Requests</field>
+            <field name="res_model">repair.requests.requests</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="repair_requests_request" name="Repair Request" parent="root"
+                  action="repair_requests_requests_action"/>
+
+
+    </data>
+</odoo>
