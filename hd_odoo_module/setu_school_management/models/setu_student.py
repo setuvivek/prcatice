@@ -63,18 +63,20 @@ class SetuStudent(models.Model):
 
     #object button----------
     def action_done(self):
+        self.last_name = "last"
         record = self.env['setu.teacher'].search([('is_teacher', '=', 'True'), ('medium_id', '=', self.medium_id.id),
                                                   ('division_id', '=', self.division_id.id), ('standard_id', '=', self.standard_id.id)],limit=1)
         # self.class_teacher_id = record
         if self:
-            self.write({'class_teacher_id': record})
+            self.update({'class_teacher_id': record})
         self.env['setu.teacher'].browse()
 
-        # self.env['setu.student'].create({"name":"Hemangi"})
+        self.env['setu.student'].create({"first_name":"Hemangi"})  #create new record
 
     # create method-----------
     @api.model_create_multi
     def create(self,vals_list):
+
         for vals in vals_list:
             record_id = self.env['setu.teacher'].search(
                 [('is_teacher', '=', 'True'), ('medium_id', '=', vals.get('medium_id')),
@@ -83,8 +85,11 @@ class SetuStudent(models.Model):
             if record_id:
                 vals.update({"class_teacher_id": record_id.id})
 
-            if not vals.get('name'):
+            if not vals.get('middle_name'):
                 vals['middle_name'] = 'student'
+
+            #default value
+            vals['last_name'] = "last1"
 
         res = super(SetuStudent, self).create(vals_list)
     #     # record = self.env['setu.teacher'].search([('is_teacher', '=', 'True'), ('medium_id', '=', res.medium_id.id),
@@ -104,11 +109,11 @@ class SetuStudent(models.Model):
             if existing_roll_no:
                 raise ValidationError("Roll NO {} already exist".format(rec.roll_no))
 
-    @api.constrains('first_name', 'last_name')
-    def check_required(self):
-        for name in self:
-            if not(name.first_name and name.last_name):
-                raise ValidationError("Please enter first name and last name...")
+    # @api.constrains( 'last_name')
+    # def check_required(self):
+    #     for name in self:
+    #         if not(name.last_name):
+    #             raise ValidationError("Please enter first name and last name...")
 
 
     # depends--------------------

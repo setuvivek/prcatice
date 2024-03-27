@@ -1,8 +1,8 @@
  #-*- coding: utf-8 -*
 {
     'name': 'Setu Repair',
-    'version': '1.1',
-    'depends':['contact'],
+    'version': '16.1',
+    'depends':['contact', 'mail'],
     'data':[
         'security/ir.model.access.csv',
         'views/setu_electronic_item_views.xml',

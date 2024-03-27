@@ -4,6 +4,7 @@ from odoo import models, fields,api
 class SetuRepairItem(models.Model):
     _name = 'setu.repair.item'
     _description = 'Setu Repair Item'
+    _inherit = 'mail.thread', 'mail.activity.mixin'
     _rec_name = 'setu_item_id'
 
     # Char-----------------------------

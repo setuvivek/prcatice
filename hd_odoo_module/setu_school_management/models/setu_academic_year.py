@@ -51,6 +51,18 @@ class SetuAcademicYear(models.Model):
 
         self.env['setu.academic.month'].create(list)
 
+    # @api.model_create_multi
+    # def create(self, vals_list):
+    #     for vals in vals_list:
+    #         current_date = vals.get('date_start')
+    #         while current_date < vals.get('date_stop'):
+    #             next_date = current_date + relativedelta(months=1)
+    #             month_name = current_date.strftime('%B')
+    #     res = super(SetuAcademicYear, self).create(vals_list)
+    #     return res
+
+
+
     def action_clear(self):
         self.month_ids.unlink()
 
@@ -67,10 +79,7 @@ class SetuAcademicYear(models.Model):
                 raise ValidationError("Not Delete")
             record.unlink()
 
-    @api.model_create_multi
-    def create(self, vals_list):
-        res = super(SetuAcademicYear, self).create(vals_list)
-        return res
+
 
     def write(self,vals_list):
         record = vals_list.update({'code':self.code})
@@ -89,3 +98,51 @@ class SetuAcademicYear(models.Model):
     #         existing_code = self.search([('code', '=', rec.code), ('id', '!=', rec.id)])
     #         if existing_code:
     #             raise ValidationError("code ust be unique..................")
+
+
+# from odoo import models, fields
+#
+# class ElectronicsItem(models.Model):
+#     _name = 'electronics.item'
+#     _description = 'Pre-defined Electronics Items'
+#
+#     name = fields.Char(string='Name', required=True)
+#     brand = fields.Char(string='Brand')
+#     model = fields.Char(string='Model')
+#     specifications = fields.Text(string='Specifications')
+#
+# class RepairRequest(models.Model):
+#     _name = 'repair.request'
+#     _description = 'Repair Requests'
+#
+#     item_id = fields.Many2one('electronics.item', string='Item', required=True)
+#     description = fields.Text(string='Description')
+#     status = fields.Selection([('new', 'New'), ('in_progress', 'In Progress'), ('completed', 'Completed')],
+#                               string='Status', default='new')
+#     date = fields.Date(string='Date', default=fields.Date.today())
+
+
+
+# from odoo import models, fields, api
+#
+# class AllRequest(models.Model):
+#     _name = 'all.request'
+#     _description = 'All Requests'
+#
+#     repair_request_id = fields.Many2one('repair.request', string='Repair Request')
+
+#
+# class RepairRequest(models.Model):
+#     _name = 'repair.request'
+#     _description = 'Repair Requests'
+#
+#     item_id = fields.Many2one('electronics.item', string='Item', required=True)
+#     description = fields.Text(string='Description')
+#     status = fields.Selection([('new', 'New'), ('in_progress', 'In Progress'), ('completed', 'Completed')],
+#                               string='Status', default='new')
+#     date = fields.Date(string='Date', default=fields.Date.today())
+#
+#     def add_to_all_requests(self):
+#         all_request_obj = self.env['all.request']
+#         for request in self:
+#             all_request_obj.create({'repair_request_id': request.id})

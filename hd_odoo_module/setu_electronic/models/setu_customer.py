@@ -4,6 +4,7 @@ from odoo import models,fields
 class SetuCustomer(models.Model):
     _name = 'setu.customer'
     _description = 'Setu Customer'
+    _inherit = 'mail.thread', 'mail.activity.mixin'
 
     #Char----------------------
     name = fields.Char(string='Name')

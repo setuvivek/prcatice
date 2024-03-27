@@ -6,6 +6,7 @@ from odoo.exceptions import ValidationError
 class SetuElectronicItem(models.Model):
     _name = 'setu.electronic.item'
     _description = 'Setu Electronic Item'
+    # _inherit = 'mail.thread', 'mail.activity.mixin'
 
     #Char-------------------------------
     name = fields.Char(string='Name')

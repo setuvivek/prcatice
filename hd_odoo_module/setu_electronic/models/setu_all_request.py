@@ -6,6 +6,7 @@ class SetuAllRequest(models.Model):
     _name = 'setu.all.request'
     _description = 'Setu All Request'
     _rec_name = 'repair_item_id'
+    _inherit = 'mail.thread', 'mail.activity.mixin'
 
     #Related-----------------
     repair_description = fields.Char(related='repair_item_id.description', string='Repair Description')
