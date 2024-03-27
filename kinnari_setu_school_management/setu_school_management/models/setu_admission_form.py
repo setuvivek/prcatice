@@ -35,6 +35,7 @@ class SetuAdmissionForm(models.Model):
         return res
 
 
+
     def copy(self,default=None):
         default = dict(default or {})
         default['unique_id'] = self.unique_id + 1

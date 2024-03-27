@@ -1,4 +1,4 @@
-from odoo import fields, models
+from odoo import fields, models, api
 
 
 class SetuStudent(models.Model):
@@ -33,6 +33,44 @@ class SetuStudent(models.Model):
     country_id = fields.Many2one('country', string="Country Name")
     select = fields.Selection(selection=[('primary','primary'),('secondary','secondary'),('higher secondary','higher secondary'),('other','other')], string="Level of Student")
     add = fields.Char(string="Add level of student")
+    sel = fields.Boolean(string="Are you want to add Marks details?")
+    group = fields.Selection(selection=[('A','A'),('B','B'),('other','other')], string="Choose Group")
+    defineg = fields.Char(string="Write Name of Group")
+    maths = fields.Float(string="Maths Mark")
+    che = fields.Float(string="Che Marks")
+    Phy = fields.Float(string="Physics Marks")
+    Bio = fields.Float(string="Biology Marks")
+    total = fields.Float(string="Total")
+    t = fields.Float(string = "tot" , compute="_tot" , store=True)
+    s = fields.Float(string="dep")
+    u = fields.Float(string="dep2", compute="_dep", store=True)
+
+    @api.onchange('maths','che','Phy','Bio','total')
+    def _coun(self):
+        for rec in self:
+            rec.total = rec.maths + rec.che + rec.Phy + rec.Bio
+
+    @api.onchange('maths', 'che', 'Phy', 'Bio', 't')
+    def _tot(self):
+        for rec in self:
+            rec.t = rec.maths + rec.che + rec.Phy + rec.Bio
+
+    @api.depends('maths', 'che', 'Phy', 'Bio', 's')
+    def _couna(self):
+        for rec in self:
+            rec.s = rec.maths + rec.che + rec.Phy + rec.Bio
+
+    @api.depends('maths', 'che', 'Phy', 'Bio', 'u')
+    def _dep(self):
+        for rec in self:
+            rec.u = rec.maths + rec.che + rec.Phy + rec.Bio
+
+
+
+
+
+
+
 
     def write(self, vals):
         if not vals.get('teacher_id'):
@@ -55,7 +93,9 @@ class SetuStudent(models.Model):
     def copy(self,default=None):
         default = dict(default or {})
         default['roll_no'] = self.roll_no +1
+        default['first_name'] = ("%s (Copy)") % self.first_name
         return super(SetuStudent, self).copy(default=default)
+
 
 
         # @api.returns('self', lambda value: value.id)
