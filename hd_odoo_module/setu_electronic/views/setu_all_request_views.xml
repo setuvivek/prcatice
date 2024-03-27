@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="setu_all_request_view_tree" model="ir.ui.view">
+            <field name="name">setu.all.request.view.tree</field>
+            <field name="model">setu.all.request</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Repair Request">
+                    <field name="repair_item_id"/>
+                    <field name="repair_description"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="setu_all_request_view_form" model="ir.ui.view">
+            <field name="name">setu.all.request.view.form</field>
+            <field name="model">setu.all.request</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Repair Request">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="repair_item_id" options="{'no_create':True, 'no_open':True}"/>
+                            </group>
+                            <group>
+                                <field name="repair_description"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="setu_all_request_action" model="ir.actions.act_window">
+            <field name="name">All Request</field>
+            <field name="res_model">setu.all.request</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="setu_all_request_menu" action="setu_all_request_action" parent="root1"/>
+    </data>
+</odoo>
