@@ -15,14 +15,12 @@ class Order(models.Model):
     quantity = fields.Float(string='Product_Quantity', help='product quantity')
 
     #Date------------------
-    order_date = fields.Date(string='Order_Date', help='order confirmation date')
+    order_date = fields.Datetime(string='Order_Date', help='order confirmation date')
 
     #Float-----------------
     price = fields.Float(string='Product_Price', help='price of product')
 
     #Boolean---------------
-    discount = fields.Boolean(string='Is_there_discount', default=False,
-                              help='discount is available or not for this order')
     free_delivery = fields.Boolean(string='Free_Delivery', default=True, help='Delivery charges for shipping')
 
     #Datetime--------------
@@ -32,13 +30,14 @@ class Order(models.Model):
     #Selection-------------
     payment = fields.Selection(selection=[('online', 'Online'), ('cod', 'COD')], string='Payment_Mode',
                                help='Payment Mode either online or Cash On Delivery(COD)')
+    online = fields.Selection(selection=[('debit', 'Debit Card'), ('credit', 'Credit Card'), ('net_banking', 'Net Banking'), ('mobile wallet', 'Mobile Wallet')])
+    mobile_wallet = fields.Selection(selection=[('paytm', 'Paytm'), ('phonepe', 'PhonePe'), ('google_pay','Google Pay')])
 
     #M2o-------------------
-    product_id = fields.Many2one('product', string='product_id')
+    product_id = fields.Many2one('product', string='product_id',domain=[('order_date', '<=', '01/02/2024')])
 
-    #M2om------------------
+    #M2m------------------
     product_ids = fields.Many2many('product', string='Add More Products')
-
 
     #SQL Constrains--------
 

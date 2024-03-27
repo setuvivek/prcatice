@@ -10,7 +10,7 @@
                     <field name="category"/>
                     <field name="name"/>
                     <field name="description"/>
-                    <field name="discount"/>
+                    <field name="discount_available"/>
                     <field name="price"/>
                     <field name="available"/>
                     <field name="order_ids"/>
@@ -31,17 +31,19 @@
                                 <field name="name" widget="char_emojis"/>
                                 <field name="code"/>
                                 <field name="description"/>
-                                <field name="discount"/>
+                                <field name="discount_available"/>
+                                <field name="discount" attrs="{'invisible':[('discount_available', '!=', 'yes')]}"/>
                             </group>
                             <group>
                                 <field name="price"/>
                                 <field name="available"/>
                                 <field name="incoming"/>
                                 <field name="outgoing"/>
+                                <field name="order_date"/>
                             </group>
                         </group>
 
-                        <notebook>
+                        <notebook attrs="{'invisible':[('available', '=', False)]}">
                             <page string="Order">
                                 <field name="order_ids">
                                     <tree editable="bottom">
@@ -51,7 +53,6 @@
                                         <field name="quantity"/>
                                         <field name="order_date"/>
                                         <field name="price"/>
-                                        <field name="discount"/>
                                         <field name="free_delivery"/>
                                         <field name="current_Date_Time"/>
                                         <field name="payment"/>

@@ -26,16 +26,24 @@
             <field name="arch" type="xml">
                 <form string="academic year">
                     <header>
-                        <button name="action_done" string="Action Done" type="object"/>
+                        <button name="action_done" string="Action Done" type="object"
+                                attrs="{'invisible':[('is_create', '!=', True)]}"/>
                     </header>
                     <sheet>
                         <group>
-                            <field name="sequence"/>
-                            <field name="name"/>
-                            <field name="code"/>
-                            <field name="date_start"/>
-                            <field name="date_stop"/>
-                            <field name="current"/>
+                            <group>
+                                <field name="sequence"/>
+                                <field name="name"/>
+                                <field name="code"/>
+                                <button name="action_clear" string="Clear" type="object"/>
+                            </group>
+                            <group>
+                                <field name="date_start"/>
+                                <field name="date_stop"/>
+                                <field name="current"/>
+                                <field name="is_create"/>
+
+                            </group>
                         </group>
                         <notebook>
                             <page string="Month">

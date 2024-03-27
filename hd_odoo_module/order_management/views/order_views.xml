@@ -13,7 +13,6 @@
                     <field name="quantity"/>
                     <field name="order_date"/>
                     <field name="price"/>
-                    <field name="discount"/>
                     <field name="payment"/>
                     <field name="current_Date_Time"/>
                 </tree>
@@ -36,10 +35,11 @@
                                 <field name="price"/>
                             </group>
                             <group>
-                                <field name="discount"/>
                                 <field name="free_delivery"/>
                                 <field name="current_Date_Time"/>
                                 <field name="payment"/>
+                                <field name="online" attrs="{'invisible':[('payment', '!=', 'online')]}"/>
+                                <field name="mobile_wallet" attrs="{'invisible':[('online', '!=', 'mobile wallet')]}"/>
                                 <field name="address"/>
                             </group>
                         </group>

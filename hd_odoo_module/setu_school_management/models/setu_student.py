@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 from odoo import models, fields, api
 from odoo.exceptions import AccessError, MissingError, ValidationError, UserError
+from datetime import date
 
 class SetuStudent(models.Model):
     _name = 'setu.student'
     _description = 'Setu Student'
+    _inherit = 'mail.thread', 'mail.activity.mixin'
 
     # Char-------------
     first_name = fields.Char(string='First Name')
@@ -18,6 +20,9 @@ class SetuStudent(models.Model):
     street = fields.Char(string='Street')
     zip = fields.Char(string='Zip')
 
+    teacher_phone = fields.Char(string='Teacher Phone',compute='_compute_teacher_phone', store=False)
+    teacher_email = fields.Char(string = 'Teacher Email',compute='_compute_teacher_email')
+
     # Integer-------------
     roll_no = fields.Integer(string='Roll No')
     weight = fields.Integer(string='Weight')
@@ -25,12 +30,13 @@ class SetuStudent(models.Model):
 
     # Boolean------------
     active = fields.Boolean(string='Active', default=True)
+    is_above_18 = fields.Boolean(string='Is Above 18', compute='_compute_is_above_18', search='_search_age')
 
     # Selection-----------
     gender = fields.Selection(selection=[('male', 'Male'), ('female', 'Female')])
 
     # Date----------------
-    date_of_birth = fields.Date(string='DOB')
+    date_of_birth = fields.Datetime(string='DOB')
 
     # Datetime------------
     admission_date = fields.Datetime(string='Admission Date')
@@ -42,7 +48,7 @@ class SetuStudent(models.Model):
     class_teacher_id = fields.Many2one('setu.teacher', string='Class Teacher')
     school_id = fields.Many2one('setu.school', string='School')
     standard_id = fields.Many2one('setu.class', string='Class')
-    division_id = fields.Many2one('setu.standard.division', string='Division')
+    division_id = fields.Many2one('setu.standard.division', string='Division', tracking=True)
     medium_id = fields.Many2one('setu.standard.medium', string='Medium')
     academic_year_id = fields.Many2one('setu.academic.year', string='Year')
     mother_tongue_id = fields.Many2one('setu.mother.tongue', string='Mother Tongue')
@@ -51,6 +57,10 @@ class SetuStudent(models.Model):
     teacher_ids = fields.Many2many('setu.teacher', 'student_teacher', 'student', 'teacher', string='Teacher')
     subject_ids = fields.Many2many('setu.subject', 'student_subject', 'student', 'subject', string='Subject')
 
+    #related----------------
+    teacher_subject = fields.Many2one(related='class_teacher_id.subject_id', store=False)
+
+
     #object button----------
     def action_done(self):
         record = self.env['setu.teacher'].search([('is_teacher', '=', 'True'), ('medium_id', '=', self.medium_id.id),
@@ -58,9 +68,11 @@ class SetuStudent(models.Model):
         # self.class_teacher_id = record
         if self:
             self.write({'class_teacher_id': record})
+        self.env['setu.teacher'].browse()
 
         # self.env['setu.student'].create({"name":"Hemangi"})
-    #create method-----------
+
+    # create method-----------
     @api.model_create_multi
     def create(self,vals_list):
         for vals in vals_list:
@@ -75,13 +87,14 @@ class SetuStudent(models.Model):
                 vals['middle_name'] = 'student'
 
         res = super(SetuStudent, self).create(vals_list)
-        # record = self.env['setu.teacher'].search([('is_teacher', '=', 'True'), ('medium_id', '=', res.medium_id.id),
-        #                                           ('division_id', '=', res.division_id.id),
-        #                                           ('standard_id', '=', res.standard_id.id)], limit=1)
-        # if not res.class_teacher_id:
-        #     res.class_teacher_id = record.id
-
+    #     # record = self.env['setu.teacher'].search([('is_teacher', '=', 'True'), ('medium_id', '=', res.medium_id.id),
+    #     #                                           ('division_id', '=', res.division_id.id),
+    #     #                                           ('standard_id', '=', res.standard_id.id)], limit=1)
+    #     # if not res.class_teacher_id:
+    #     #     res.class_teacher_id = record.id
+    #
         return res
+
 
     #python constrains----------
     @api.constrains('roll_no')
@@ -96,5 +109,81 @@ class SetuStudent(models.Model):
         for name in self:
             if not(name.first_name and name.last_name):
                 raise ValidationError("Please enter first name and last name...")
+
+
+    # depends--------------------
+    @api.depends('class_teacher_id')
+    def _compute_teacher_email(self):
+        for rec in self:
+            if rec.class_teacher_id:
+                rec.teacher_email = rec.class_teacher_id.email
+            else:
+                rec.teacher_email = False
+
+    def _compute_teacher_phone(self):
+        for rec in self:
+            if rec.class_teacher_id:
+                rec.teacher_phone = rec.class_teacher_id.phone
+            else:
+                rec.teacher_phone = False
+
+    def _compute_is_above_18(self):
+        today = date.today()
+        for student in self:
+            if student.date_of_birth:
+                birthDate = student.date_of_birth
+                age = today.year - birthDate.year - ((today.month, today.day) < (birthDate.month, birthDate.day))
+                student.is_above_18 = age > 18
+            else:
+                student.is_above_18 = False
+
+    def _search_age(self, operator, value):
+        print(value)
+        return [('id', '=', 11)]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    # @api.onchange('date_of_birth')
+    # def _onchange_is_above_18(self):
+    #     today = date.today()
+    #     for student in self:
+    #         if student.date_of_birth:
+    #             birthDate = student.date_of_birth
+    #             age = today.year - birthDate.year - ((today.month, today.day) < (birthDate.month, birthDate.day))
+    #             student.is_above_18 = age > 18
+    #         else:
+    #             student.is_above_18 = False
+
+    # @api.onchange('class_teacher_id')
+    # def _onchange_teacher_phone(self):
+    #     for rec in self:
+    #         if rec.class_teacher_id:
+    #             rec.teacher_phone = rec.class_teacher_id.phone
+    #         else:
+    #             rec.teacher_phone = False
+
+
+
+
+
+
+
+
+
+
+
+
 
 

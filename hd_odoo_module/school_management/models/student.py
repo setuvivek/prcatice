@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from odoo import models, fields, api
+from odoo import models, fields, api,_
 
 
 class Student(models.Model):
@@ -10,10 +10,10 @@ class Student(models.Model):
 
     #Char------------------
     name = fields.Char(string='Name', help='Student Name')
-<<<<<<< HEAD
     sport = fields.Char(string='Sport')
-=======
->>>>>>> 2e7ffae992b53b29da788fe18a998d29dbb3c299
+    rank1 = fields.Char(string='Percentage')
+
+    teacher_phone = fields.Char(string='Teacher Phone',compute='_compute_teacher_phone')
 
     #Integer---------------
     roll_no = fields.Integer(string='Roll No', copy=False, help='Student Roll No')
@@ -22,17 +22,20 @@ class Student(models.Model):
     gender = fields.Selection([('male', 'Male'), ('female', 'Female')], string='Gender')
     sem = fields.Selection(
         selection=[('even', 'Even'), ('odd', 'Odd')],
-        string='Semester', default='1')
+        string='Semester')
     even = fields.Selection(selection=[('2','2'), ('4','4'), ('6','6'), ('8','8')])
     odd = fields.Selection(selection=[('1','1'), ('3','3'), ('5','5'), ('7','7')])
+    rank = fields.Selection(selection=[('rank1','1'),('2','2'),('3','3'),('4','4'),('5','5'),('6','6'),('7','7'),('8','8'),('9','9'),('10','10')])
+    status = fields.Selection(selection=[('draft', 'Draft'), ('confirm', 'Confirm'), ('cancel','Cancel')])
+
+    teacher_subject = fields.Selection(related='teacher_id.subject', string='Teacher Subject')
 
     #Boolean----------------
-<<<<<<< HEAD
     is_present = fields.Boolean(string='Present')
     is_sport_person = fields.Boolean(string='Sport Person')
-=======
-    is_present = fields.Boolean(string='is_present')
->>>>>>> 2e7ffae992b53b29da788fe18a998d29dbb3c299
+    is_topper = fields.Boolean(string='Topper')
+    in_top_10 = fields.Boolean(string='In Top10')
+    show_notebook = fields.Boolean(string='Show OOP Teacher')
 
     #Date-------------------
     student_dob = fields.Date(string="Date of Birth", help='Student Birth Date')
@@ -45,6 +48,7 @@ class Student(models.Model):
     city_id = fields.Many2one('city', string='City')
     state_id = fields.Many2one('state', string='State')
     country_id = fields.Many2one('country', string='Country')
+
 
     #M2m----------------------
     teacher_ids = fields.Many2many('teacher', string='DS Teacher', help='Many2many relation')
@@ -64,15 +68,50 @@ class Student(models.Model):
     #create with multiple record-------------------
     @api.model_create_multi
     def create(self, vals_list):
+
         for vals in vals_list:
             if not vals.get('roll_no'):
                 vals['roll_no'] = '2'
 
+        # for vals in vals_list:
+        #     record_id = self.env['teacher'].search(
+        #         [('dept_id', '=', vals.get('dept_id')), ('course_id', '=', vals.get('course_id'))], limit=1)
+        #     if record_id:
+        #         vals.update({"teacher_id": record_id.id})
+
         res = super(Student, self).create(vals_list)
+
+        # if not res.roll_no:
+        #     res.roll_no = 3
+
+        # record = self.env['teacher'].search([('dept_id', '=', res.dept_id.id), ('course_id', '=', res.course_id.id)], limit=1)
+        # if not res.teacher_id:
+        #     res.teacher_id = record.id
+
         return res
+
+    @api.returns('self', lambda value: value.id)
+    def copy(self, default=None):
+        default = dict(default or {})
+        if 'name' not in default:
+            default['name'] = ("%s (Copy)") % self.name
+        return super(Student, self).copy(default=default)
+
+    def _compute_teacher_phone(self):
+        for rec in self:
+            if rec.teacher_id:
+                rec.teacher_phone = rec.teacher_id.phone
+            else:
+                rec.teacher_phone = False
+
+
+
     # def create(self, vals_list):
     #     vals_list = [{}]
     #     return super(Student, self).create(vals_list)
+
+
+
 
 
 

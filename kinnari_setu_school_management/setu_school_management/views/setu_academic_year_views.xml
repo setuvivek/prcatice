@@ -34,8 +34,8 @@
                         </group>
                         <notebook>
                             <page string="Month Details">
-                                <field name ="month_ids">
-                                    <tree string="month" >
+                                <field name="month_ids">
+                                    <tree string="month">
                                         <field name="name"/>
                                         <field name="code"/>
                                         <field name="date_start"/>
@@ -46,6 +46,11 @@
                             </page>
                         </notebook>
                     </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
                 </form>
             </field>
         </record>
@@ -54,132 +59,116 @@
             <field name="res_model">setu.academic.year</field>
             <field name="view_mode">tree,form</field>
         </record>
-        <menuitem id="sub_menu" name="Setu Academic"  parent="main_menu"/>
-        <menuitem id="setu_academic_year_menu" name="Setu Academic Year" action="setu_academic_year_action" parent="sub_menu"/>
+        <menuitem id="sub_menu" name="Setu Academic" parent="main_menu"/>
+        <menuitem id="setu_academic_year_menu" name="Setu Academic Year" action="setu_academic_year_action"
+                  parent="sub_menu"/>
     </data>
 </odoo>
 
 
+        <!--        <menuitem id="main_menu" name="Hospital Record" action="patient_action" sequence="1" />-->
+        <!--        <menuitem id="patient_menu" name="Hospital Record" action="patient_action" parent="main_menu"/>-->
+        <!--        <menuitem id="patient_menu1" name="Patient" action="patient_action" parent="patient_menu"/>-->
+
+        <!--         <menuitem id="main_menu" name="Setu Record" action="setu_school_action" sequence="1" />-->
+        <!--        <menuitem id="setu_school_menu" name="Setu  Record" action="setu_school_action" parent="main_menu"/>-->
+        <!--        <menuitem id="setu_school_menu1" name="Setu School" action="setu_school_action" parent="setu_school_menu"/>-->
+        <!--Ali Ammar-->
+        <!--1 год назад-->
+        <!--I want to calculate period in months depends on a fields value-->
+
+        <!--I type that :-->
+
+        <!--start_date = fields.Datetime('Start Date')-->
+        <!--end_date = fields.Datetime('End Date', compute='_get_end_date')-->
+        <!--duration = fields.Integer(string='Duration')-->
+        <!--@api.depends('start_date', 'duration')-->
+        <!--def _get_end_date(self):-->
+        <!--    for record in self:-->
+        <!--        record.end_date = False-->
+        <!--        if record.start_date and record.duration:-->
+        <!--            record.end_date = record.start_date + \-->
+        <!--                              timedelta(months=record.duration)-->
+        <!--import datetime-->
+        <!--t_date = datetime.datetime.today()-->
+        <!--num_of_day = 10 # This is different between two date range, you just find difference and use as numb_of_day-->
+        <!--date_list = [base - datetime.timedelta(days=x) for x in range(0, num_of_day)]-->
+        <!--print "Day List in Datetime Format:",date_list-->
+
+        <!--def dates_between_str_dates(self, date1, date2, mode='date'):-->
+        <!--    date_from = fields.Date.from_string(date1)-->
+        <!--    date_to = fields.Date.from_string(date2)-->
+        <!--    -->
+        <!--    delta = date_to - date_from-->
+
+        <!--    if delta.days < 0: -->
+        <!--        return None -->
+        <!--    -->
+        <!--    res = []-->
+        <!--    -->
+        <!--    for n in range(delta.days + 1): -->
+        <!--       if mode == 'date': -->
+        <!--           res.append(date_from + timedelta(days=n)) -->
+        <!--       if mode == 'string':-->
+        <!--           res.append(fields.Date.to_string(date_from + timedelta(days=n))) -->
+        <!--    return res-->
+
+        <!--from datetime import datetime, timedelta-->
+
+        <!--#show dates between two dates-->
+
+        <!--def get_date_list(date1, date2):-->
+
+        <!--    date_list = []-->
+
+        <!--    loop_dt = date1-->
+
+        <!--    print loop_dt-->
+
+        <!--    while loop_dt < date2:-->
+
+        <!--        loop_dt = loop_dt + timedelta(days=1)-->
+
+        <!--        print loop_dt-->
 
 
+        <!--get_date_list( datetime(2016,1,5), datetime(2016,03,5))-->
 
 
+        <!--from datetime import datetime-->
+        <!--date_format = "%m/%d/%Y"-->
+        <!--a = datetime.strptime('8/18/2008', date_format)-->
+        <!--b = datetime.strptime('9/26/2008', date_format)-->
+        <!--delta = b - a-->
+        <!--print delta.days # that's it-->
 
 
-
-
-
-
-
-
-
-
-
-
-<!--        <menuitem id="main_menu" name="Hospital Record" action="patient_action" sequence="1" />-->
-<!--        <menuitem id="patient_menu" name="Hospital Record" action="patient_action" parent="main_menu"/>-->
-<!--        <menuitem id="patient_menu1" name="Patient" action="patient_action" parent="patient_menu"/>-->
-
-<!--         <menuitem id="main_menu" name="Setu Record" action="setu_school_action" sequence="1" />-->
-<!--        <menuitem id="setu_school_menu" name="Setu  Record" action="setu_school_action" parent="main_menu"/>-->
-<!--        <menuitem id="setu_school_menu1" name="Setu School" action="setu_school_action" parent="setu_school_menu"/>-->
-<!--Ali Ammar-->
-<!--1 год назад-->
-<!--I want to calculate period in months depends on a fields value-->
-
-<!--I type that :-->
-
-<!--start_date = fields.Datetime('Start Date')-->
-<!--end_date = fields.Datetime('End Date', compute='_get_end_date')-->
-<!--duration = fields.Integer(string='Duration')-->
-<!--@api.depends('start_date', 'duration')-->
-<!--def _get_end_date(self):-->
-<!--    for record in self:-->
-<!--        record.end_date = False-->
-<!--        if record.start_date and record.duration:-->
-<!--            record.end_date = record.start_date + \-->
-<!--                              timedelta(months=record.duration)-->
-<!--import datetime-->
-<!--t_date = datetime.datetime.today()-->
-<!--num_of_day = 10 # This is different between two date range, you just find difference and use as numb_of_day-->
-<!--date_list = [base - datetime.timedelta(days=x) for x in range(0, num_of_day)]-->
-<!--print "Day List in Datetime Format:",date_list-->
-
-<!--def dates_between_str_dates(self, date1, date2, mode='date'):-->
-<!--    date_from = fields.Date.from_string(date1)-->
-<!--    date_to = fields.Date.from_string(date2)-->
-<!--    -->
-<!--    delta = date_to - date_from-->
-
-<!--    if delta.days < 0: -->
-<!--        return None -->
-<!--    -->
-<!--    res = []-->
-<!--    -->
-<!--    for n in range(delta.days + 1): -->
-<!--       if mode == 'date': -->
-<!--           res.append(date_from + timedelta(days=n)) -->
-<!--       if mode == 'string':-->
-<!--           res.append(fields.Date.to_string(date_from + timedelta(days=n))) -->
-<!--    return res-->
-
-<!--from datetime import datetime, timedelta-->
-
-<!--#show dates between two dates-->
-
-<!--def get_date_list(date1, date2):-->
-
-<!--    date_list = []-->
-
-<!--    loop_dt = date1-->
-
-<!--    print loop_dt-->
-
-<!--    while loop_dt < date2:-->
-
-<!--        loop_dt = loop_dt + timedelta(days=1)-->
-
-<!--        print loop_dt-->
-
-
-
-<!--get_date_list( datetime(2016,1,5), datetime(2016,03,5))-->
-
-
-<!--from datetime import datetime-->
-<!--date_format = "%m/%d/%Y"-->
-<!--a = datetime.strptime('8/18/2008', date_format)-->
-<!--b = datetime.strptime('9/26/2008', date_format)-->
-<!--delta = b - a-->
-<!--print delta.days # that's it-->
-
-
-<!--    #     if end_date.day > day:-->
-<!--    #         # end date is past the reference day, include the reference-->
-<!--    #         # date in the output-->
-<!--    #         end += 1-->
-<!--    #     # generate the months, just a range from start to end-->
-<!--    #     for ordinal in range(start, end):-->
-<!--    #         yield date(ordinal // 12, (ordinal % 12) + 1, day)-->
-<!--    #-->
-<!--    # @api.one-->
-<!--    # def button_click(self):-->
-<!--    #     # converting string date value into python date object-->
-<!--    #     date_start = datetime.strptime(self.date_start, '%Y-%m-%d').date()-->
-<!--    #     date_end = datetime.strptime(self.date_end, '%Y-%m-%d').date()-->
-<!--    #     list_of_date = list(self.calc_first_date_of_month(date_start, date_end))-->
-<!--    #     print('***', list_of_date)-->
-<!--    # def change_date_field(self):-->
-<!--    #     self.your_date_field = datetime.datetime.today().strftime('%Y-%m-%d')-->
-<!--  # @api.model-->
-<!--  #   def create(self, vals_list):-->
-<!--  #       if not vals_list.get('mobile'):-->
-<!--  #           vals_list.update({'mobile':'281'})-->
-<!--  #       res = super(Teacher,self).create(vals_list)-->
-<!--  #       res.gender = 'female'-->
-<!--  #       return res-->
-<!--   #-->
-<!--            # val = [{"name":self.name,"date_start": a + relativedelta(months=-1),-->
-<!--            #         "date_stop":a+ relativedelta(months=0,days=-1),-->
-<!--            #         "academic_year_id": self.id}]-->
-<!--            # self.env['setu.academic.month'].create(val)-->
+        <!--    #     if end_date.day > day:-->
+        <!--    #         # end date is past the reference day, include the reference-->
+        <!--    #         # date in the output-->
+        <!--    #         end += 1-->
+        <!--    #     # generate the months, just a range from start to end-->
+        <!--    #     for ordinal in range(start, end):-->
+        <!--    #         yield date(ordinal // 12, (ordinal % 12) + 1, day)-->
+        <!--    #-->
+        <!--    # @api.one-->
+        <!--    # def button_click(self):-->
+        <!--    #     # converting string date value into python date object-->
+        <!--    #     date_start = datetime.strptime(self.date_start, '%Y-%m-%d').date()-->
+        <!--    #     date_end = datetime.strptime(self.date_end, '%Y-%m-%d').date()-->
+        <!--    #     list_of_date = list(self.calc_first_date_of_month(date_start, date_end))-->
+        <!--    #     print('***', list_of_date)-->
+        <!--    # def change_date_field(self):-->
+        <!--    #     self.your_date_field = datetime.datetime.today().strftime('%Y-%m-%d')-->
+        <!--  # @api.model-->
+        <!--  #   def create(self, vals_list):-->
+        <!--  #       if not vals_list.get('mobile'):-->
+        <!--  #           vals_list.update({'mobile':'281'})-->
+        <!--  #       res = super(Teacher,self).create(vals_list)-->
+        <!--  #       res.gender = 'female'-->
+        <!--  #       return res-->
+        <!--   #-->
+        <!--            # val = [{"name":self.name,"date_start": a + relativedelta(months=-1),-->
+        <!--            #         "date_stop":a+ relativedelta(months=0,days=-1),-->
+        <!--            #         "academic_year_id": self.id}]-->
+        <!--            # self.env['setu.academic.month'].create(val)-->

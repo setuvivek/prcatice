@@ -67,6 +67,7 @@
         </record>
 
         <record id="company_employee_action" model="ir.actions.act_window">
+            <field name="context">{'default_zip':3600}</field>
             <field name="name">Employee</field>
             <field name="res_model">company.employee</field>
             <field name="view_mode">tree,form</field>

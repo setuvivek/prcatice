@@ -30,16 +30,21 @@ class Product(models.Model):
                    ('fitness', 'Fitness'), ('home decore', 'Home Decore'), ('kitchen store', 'Kitchen Store')],
         string='Category', help='product category')
 
-    discount = fields.Selection(
-        selection=[('no discount', 'No Discount'), ('10 to 30%', '10 To 30%'), ('30 to 50%', '30 To 50%'),
-                   ('above 50%', 'Above 50%')], string='Discount', default='no discount', help='About product discount')
+    discount_available = fields.Selection(
+        selection=[('yes', 'Yes'),
+                   ('no', 'No')], string='Discount Available', help='About product discount')
+
+    discount = fields.Selection(selection=[('10 to 30%', '10 To 30%'), ('30 to 50%', '30 To 50%'),
+                   ('above 50%', 'Above 50%')], string='Discount')
+
+    #Date---------------
+    order_date = fields.Datetime(string='Order Date')
 
     #Boolean------------
     available = fields.Boolean(string='product_is_available', help='product is available or not')
 
     #O2m-----------------
     order_ids = fields.One2many('order', 'product_id', string='Order')
-
 
     #SQL_Constaints------
 
@@ -49,24 +54,13 @@ class Product(models.Model):
                         ('code_unique', 'unique(code)',
                          'Different products have different code. \n This code already exists.... \n Please use another code!'),
                         ('check_price', 'CHECK(price > 0)', 'price should not be zero!'),
-                        # ('check_product_type',
-                        #  "CHECK(type IN ('incoming', 'outgoing') AND type IS NOT NULL)",
-                        #  'Please Enter valid customer type...'),
+                        ('check_product_type',
+                         "CHECK(type IN ('incoming', 'outgoing') AND type IS NOT NULL)",
+                         'Please Enter valid customer type...'),
                         ('check_product_quantity', 'CHECK(incoming >= outgoing)',
                          'Outgoing quantity does not greater than incoming quantity! \n outgoing does not exixts stock....'),
                         ]
     
-    #Create and Search-----
-    @api.model_create_multi
-    def create(self, vals_list):
-        for vals in self:
-            record = self.env['stock'].search([('product_id', '=', vals.get('product_id')),
-                                               ('type' '=', vals.get('type')),
-                                               ('incoming', '=', vals.get('incoming'))], limit=1)
-            if record:
-                vals.update({'incoming':record.id})
 
-        res = super(Product,self).create(vals_list)
-        return res
     
 
