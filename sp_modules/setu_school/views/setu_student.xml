@@ -57,7 +57,9 @@
                                 <label for="dob" string="Birthday"/>
                                 <div class="o_address_format">
                                 <field name="dob" widget="date"  class="oe_inline"/>
-                                    <field name="age" class="oe_inline"/>
+                                    <label for="age" string="Age"/>
+                                    <field name="age" class="oe_inline"/><span>&amp;nbsp;</span>
+                                    <label for="isEligible" string="Eligible"/>
                                     <field name="isEligible" class="oe_inline"/>
                                 </div>
                                 <field name="phone" widget="phone"/>
