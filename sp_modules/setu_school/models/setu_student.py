@@ -1,4 +1,4 @@
-from odoo import fields, models, api
+from odoo import fields, models, api,_
 from odoo.exceptions import ValidationError
 from datetime import date
 from dateutil.relativedelta import relativedelta
@@ -7,6 +7,7 @@ from dateutil.relativedelta import relativedelta
 class SetuStudent(models.Model):
     _name = 'setu.student'
     _description = 'Student'
+    _rec_name='first_name'
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
     first_name = fields.Char(string='First Name', require=True)
@@ -89,8 +90,8 @@ class SetuStudent(models.Model):
              ('medium_id', '=', self.medium_id.id), ('division_id', '=', self.division_id.id)], limit=1)
         self.class_teacher_id = rec.id
 
-    # @api.depends('class_teacher_id')
-    @api.onchange('class_teacher_id')
+    @api.depends('class_teacher_id')
+    # @api.onchange('class_teacher_id')
     def _compute_classteacher_email(self):
         for rec in self:
             if rec.class_teacher_id:
@@ -143,7 +144,11 @@ class SetuStudent(models.Model):
     #                 rec.isEligible = False
 
 
+    # def copy(self, default=None):
+    #     default = dict(default or {})
+    #     default.update(first_name= ("%s (copy)") % self.first_name)
+    #     return super().copy(default)
+
     def copy(self, default=None):
-        default = dict(default or {})
-        default.update(first_name= ("%s (copy)") % self.first_name)
-        return super().copy(default)
+        raise ValidationError('You Can\'t')
+
