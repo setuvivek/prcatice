@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="setu_repair_item_view_tree" model="ir.ui.view">
+            <field name="name">setu.repair.item.view.tree</field>
+            <field name="model">setu.repair.item</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Repair Item">
+                    <field name="description"/>
+                    <field name="setu_item_id"/>
+                    <field name="quantity"/>
+                    <field name="warranty_expiration"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="setu_repair_item_view_form" model="ir.ui.view">
+            <field name="name">setu.repair.item.view.form</field>
+            <field name="model">setu.repair.item</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Repair Item">
+                    <header>
+                        <button name="submit_request" string="Submit Request" type="object"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="setu_item_id" options="{'no_open':True}"/>
+                                <field name="description"/>
+                                <field name="show_request"/>
+                            </group>
+                            <group>
+                                <field name="quantity"/>
+                                <field name="warranty_expiration"/>
+                                <field name="customer_id"/>
+                                <field name="customer_email"/>
+                                <field name="customer_phone"/>
+                            </group>
+                        </group>
+                        <notebook attrs="{'invisible':[('show_request', '!=', True)]}">
+                            <page string="Request">
+                                <field name="all_request_ids">
+                                    <tree create="false">
+                                        <field name="repair_item_id"/>
+                                        <field name="repair_description"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Other Information">
+
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="setu_repair_item_action" model="ir.actions.act_window">
+            <field name="name">Repair Item</field>
+            <field name="res_model">setu.repair.item</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="setu_repair_item_menu" action="setu_repair_item_action" parent="root1"/>
+    </data>
+</odoo>
+
+
+
