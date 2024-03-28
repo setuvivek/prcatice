@@ -18,11 +18,20 @@ class Feedback(models.Model):
     replace = fields.Boolean(string="Are You want for replace item?")
     reason = fields.Text(string="Write Valid Reason For Replacement")
     purchase_date = fields.Date(string="Item Purchase Date")
+    msg = fields.Char(string="Msg" , readonly= True)
 
     @api.onchange('validity','purchase_date')
     def _check_dates_(self):
         for rec in self:
             if rec.validity and rec.purchase_date and rec.validity < rec.purchase_date:
                 raise ValidationError(_('You can not replace this item bcz validity became expired', ))
+
+    @api.model
+    def create(self,vals):
+        if vals.get('purchase_date'):
+            vals.update({'msg': 'Your Request Successfully Accepted'})
+        rec = super(Feedback,self).create(vals)
+        return rec
+
 
 

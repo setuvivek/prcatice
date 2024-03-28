@@ -17,10 +17,12 @@ class ElectronicItems(models.Model):
     production_date = fields.Date(string="Production Date")
     validity = fields.Date(string="Product Validity")
 
+
     def write(self, vals):
         vals.update({'updated': True})
         rec = super(ElectronicItems, self).write(vals)
         return rec
+
 
 
     def copy(self, default=None):
