@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from odoo import models, fields,api
+from odoo.exceptions import ValidationError
 
 class SetuRepairItem(models.Model):
     _name = 'setu.repair.item'
@@ -10,11 +11,17 @@ class SetuRepairItem(models.Model):
     # Char-----------------------------
     description = fields.Char(string='Repair Description')
 
+    #Text------------------------------
+    repair_notes = fields.Text(string='Repair Notes')
+
     # Float----------------------------
     quantity = fields.Float(string='Product Quantity')
 
     # Boolean--------------------------
     show_request = fields.Boolean(string='Show Request')
+
+    # Selection------------------------
+    status = fields.Selection(selection=[('in progress', 'In Progress'), ('complete', 'Complete')])
 
     # related--------------------------
     warranty_expiration = fields.Datetime(related='setu_item_id.warranty', string='Warranty Expiration')
@@ -23,10 +30,20 @@ class SetuRepairItem(models.Model):
 
     # M2o------------------------------
     setu_item_id = fields.Many2one('setu.electronic.item', string='Repair Product')
-    customer_id = fields.Many2one('setu.customer', string='Customer')
+    customer_id = fields.Many2one('setu.customer', string='Customer', required=True)
+    item_company = fields.Many2one(related = 'setu_item_id.company_id', string='Company')
 
     # O2m------------------------------
     all_request_ids = fields.One2many('setu.all.request', 'repair_item_id', string='All Request')
+
+    total_request = fields.Integer(string='Total Request', compute='_compute_request', store=True)
+
+    @api.depends('setu_item_id')
+    def _compute_request(self):
+        for request in self:
+            request.total_request = self.env['setu.all.request'].search_count([('repair_item_id', '!=', request.setu_item_id.id)])
+
+
 
     def submit_request(self):
         self.all_request_ids.unlink()
@@ -34,13 +51,26 @@ class SetuRepairItem(models.Model):
         for request in self:
             all_request.create({'repair_item_id': request.id})
 
-    # create----------------------------
-    @api.model_create_multi
-    def create(self, vals_list):
-        for vals in vals_list:
-            record = self.env['setu.customer'].search([('item_id', '=', vals.get('setu_item_id'))], limit=1)
-            if record:
-                vals.update({'setu_item_id':record.id})
+    @api.model
+    def create(self, vals):
+        if 'setu_item_id' in vals:
+            existing_request = self.env['setu.repair.item'].search(
+                [('setu_item_id', '=', vals['setu_item_id']), ('status', '=', 'in progress'), ('customer_id', '=', vals['customer_id'])])
+            if existing_request and existing_request.status != 'complete':
+                raise ValidationError('The product is currently in repair. Cannot create another repair request....')
 
-        res = super(SetuRepairItem, self).create(vals_list)
-        return res
+        return super(SetuRepairItem, self).create(vals)
+
+
+
+
+
+    # @api.model_create_multi
+    # def create(self, vals_list):
+    #     for vals in vals_list:
+    #         record = self.env['setu.customer'].search([('item_id', '=', vals.get('setu_item_id'))], limit=1)
+    #         if record:
+    #             vals.update({'setu_item_id':record.id})
+    #
+    #     res = super(SetuRepairItem, self).create(vals_list)
+    #     return res

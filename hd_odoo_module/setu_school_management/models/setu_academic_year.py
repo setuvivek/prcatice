@@ -100,27 +100,6 @@ class SetuAcademicYear(models.Model):
     #             raise ValidationError("code ust be unique..................")
 
 
-# from odoo import models, fields
-#
-# class ElectronicsItem(models.Model):
-#     _name = 'electronics.item'
-#     _description = 'Pre-defined Electronics Items'
-#
-#     name = fields.Char(string='Name', required=True)
-#     brand = fields.Char(string='Brand')
-#     model = fields.Char(string='Model')
-#     specifications = fields.Text(string='Specifications')
-#
-# class RepairRequest(models.Model):
-#     _name = 'repair.request'
-#     _description = 'Repair Requests'
-#
-#     item_id = fields.Many2one('electronics.item', string='Item', required=True)
-#     description = fields.Text(string='Description')
-#     status = fields.Selection([('new', 'New'), ('in_progress', 'In Progress'), ('completed', 'Completed')],
-#                               string='Status', default='new')
-#     date = fields.Date(string='Date', default=fields.Date.today())
-
 
 
 # from odoo import models, fields, api
@@ -130,7 +109,6 @@ class SetuAcademicYear(models.Model):
 #     _description = 'All Requests'
 #
 #     repair_request_id = fields.Many2one('repair.request', string='Repair Request')
-
 #
 # class RepairRequest(models.Model):
 #     _name = 'repair.request'
@@ -141,8 +119,59 @@ class SetuAcademicYear(models.Model):
 #     status = fields.Selection([('new', 'New'), ('in_progress', 'In Progress'), ('completed', 'Completed')],
 #                               string='Status', default='new')
 #     date = fields.Date(string='Date', default=fields.Date.today())
+#     customer_id = fields.Many2one('res.partner', string='Customer')
+#     technician_id = fields.Many2one('res.partner', string='Technician')
+#     priority = fields.Selection([('low', 'Low'), ('medium', 'Medium'), ('high', 'High')], string='Priority', default='medium')
+#     onhand = fields.Integer(string='Onhand', compute='_compute_onhand', store=True)
+#
+#     @api.depends('item_id')
+#     def _compute_onhand(self):
+#         for request in self:
+#             request.onhand = self.env['repair.request'].search_count([('item_id', '=', request.item_id.id)])
 #
 #     def add_to_all_requests(self):
 #         all_request_obj = self.env['all.request']
 #         for request in self:
 #             all_request_obj.create({'repair_request_id': request.id})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# from odoo import models, fields, api
+# from odoo.exceptions import ValidationError
+#
+# class RepairRequest(models.Model):
+#     _name = 'repair.request'
+#     _description = 'Repair Requests'
+#
+#     item_id = fields.Many2one('electronics.item', string='Item', required=True)
+#     description = fields.Text(string='Description')
+#     status = fields.Selection([('new', 'New'), ('in_progress', 'In Progress'), ('completed', 'Completed')],
+#                               string='Status', default='new')
+#     date = fields.Date(string='Date', default=fields.Date.today())
+#     customer_id = fields.Many2one('res.partner', string='Customer')
+#     technician_id = fields.Many2one('res.partner', string='Technician')
+#     priority = fields.Selection([('low', 'Low'), ('medium', 'Medium'), ('high', 'High')], string='Priority', default='medium')
+#
+    # @api.model
+    # def create(self, vals):
+    #     if 'item_id' in vals:
+    #         existing_request = self.env['repair.request'].search([('item_id', '=', vals['item_id']), ('status', '=', 'in_progress')])
+    #         if existing_request and existing_request.status != 'completed':
+    #             raise ValidationError('The product is currently in repair. Cannot create another repair request.')
+    #     return super(RepairRequest, self).create(vals)
+

@@ -10,7 +10,7 @@
                     <field name="description"/>
                     <field name="setu_item_id"/>
                     <field name="quantity"/>
-                    <field name="warranty_expiration"/>
+                    <field name="warranty_expiration" widget="remaining_days"/>
                 </tree>
             </field>
         </record>
@@ -30,25 +30,31 @@
                                 <field name="setu_item_id" options="{'no_open':True}"/>
                                 <field name="description"/>
                                 <field name="show_request"/>
+                                <field name="total_request"/>
+                                 <field name="quantity"/>
+                                <field name="status"/>
                             </group>
                             <group>
-                                <field name="quantity"/>
-                                <field name="warranty_expiration"/>
+                                <field name="item_company"/>
+                                <field name="warranty_expiration" widget="remaining_days"/>
                                 <field name="customer_id"/>
                                 <field name="customer_email"/>
                                 <field name="customer_phone"/>
                             </group>
                         </group>
-                        <notebook attrs="{'invisible':[('show_request', '!=', True)]}">
-                            <page string="Request">
+                        <notebook>
+                            <page string="Request" attrs="{'invisible':[('show_request', '!=', True)]}">
                                 <field name="all_request_ids">
-                                    <tree create="false">
+                                    <tree editable="bottom">
                                         <field name="repair_item_id"/>
                                         <field name="repair_description"/>
                                     </tree>
                                 </field>
                             </page>
-                            <page string="Other Information">
+                            <page string="Repair Notes">
+                                 <div class="o_notes_format">
+                                    <field name="repair_notes" placeholder="Notes about repair..." class="o_notes_street"/>
+                                </div>
                             </page>
                         </notebook>
                     </sheet>
@@ -63,6 +69,7 @@
 
 
         <record id="setu_repair_item_action" model="ir.actions.act_window">
+            <field name="context">{'default_quantity':1}</field>
             <field name="name">Repair Item</field>
             <field name="res_model">setu.repair.item</field>
             <field name="view_mode">tree,form</field>

@@ -3,3 +3,4 @@ access_setu_repair_item,access.setu.repair.item,setu_electronic.model_setu_repai
 access_setu_electronic_item,access.setu.electronic.item,setu_electronic.model_setu_electronic_item,,1,1,1,1
 access_setu_all_request,access.setu.all.request,setu_electronic.model_setu_all_request,,1,1,1,1
 access_setu_customer,access.setu.customer,setu_electronic.model_setu_customer,,1,1,1,1
+access_setu_company,access.setu.company,setu_electronic.model_setu_company,,1,1,1,1
