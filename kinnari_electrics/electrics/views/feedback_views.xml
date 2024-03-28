@@ -30,7 +30,9 @@
                             <field name="replace"/>
                             <field name="reason" attrs="{'invisible':[('replace','!=',True)]}"/>
                             <field name="purchase_date" attrs="{'invisible':[('replace','!=',True)]}"/>
+
                         </group>
+                            <field name="msg"/>
                     </sheet>
                     <div class="oe_chatter">
                         <field name="message_follower_ids"/>
