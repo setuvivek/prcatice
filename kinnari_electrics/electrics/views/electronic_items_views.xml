@@ -11,6 +11,7 @@
                     <field name="user_ids"/>
                     <field name="ava"/>
                     <field name="stock"/>
+
                 </tree>
             </field>
         </record>
@@ -25,12 +26,13 @@
                                 <field name="name"/>
                                 <field name="code"/>
                                 <field name="Is_item"/>
-                                <field name="quality" widget="radio"/>
                                 <field name="price"/>
+                                 <field name="ava"/>
+                                <field name="stock" attrs="{'invisible':[('ava','!=',True)]}"/>
                             </group>
                             <group>
-                                <field name="ava"/>
-                                <field name="stock" attrs="{'invisible':[('ava','!=',True)]}"/>
+                                <field name="production_date"/>
+                                <field name="validity"/>
                                 <field name="user_ids"/>
                                 <field name="updated"/>
                             </group>
