@@ -1,6 +1,6 @@
-from odoo import fields,models , api , _
-from odoo.exceptions import ValidationError
+from odoo import fields, models
 
+<<<<<<< HEAD
 class SetuClassRoom(models.Model):
     _name = "setu.class.room"
     _inherit = ['mail.thread', 'mail.activity.mixin']
@@ -62,3 +62,11 @@ class SetuClassRoom(models.Model):
     # def _check_number_range(self):
     #     if any(action.number < 0 for action in self):
     #         raise ValidationError(_("The Number value can't be negative."))
+=======
+class Class_room(models.Model):
+    _name = "setu.class.room"
+    _description = "setu_class_room"
+
+    name = fields.Char(string="Name")
+    number = fields.Integer(string="Room Number")
+>>>>>>> 0c53dcac5aa5f8ad5e4668828bd4bbe6b6c4ec57

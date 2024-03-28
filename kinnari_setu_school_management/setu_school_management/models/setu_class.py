@@ -1,11 +1,10 @@
-from odoo import fields, models , api , _
-from odoo.exceptions import ValidationError
+from odoo import fields, models
 
-
-class SetuClass(models.Model):
+class Class(models.Model):
     _name = "setu.class"
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
+<<<<<<< HEAD
     name = fields.Char(string="Name", tracking=True)
     is_teacher = fields.Boolean(string="Are You want to select teacher?")
     class_teacher_id1 = fields.Many2one('setu.teacher', string="Class Teacher")
@@ -64,7 +63,16 @@ class SetuClass(models.Model):
 
 
 
+=======
+    _description = "setu_class"
+>>>>>>> 0c53dcac5aa5f8ad5e4668828bd4bbe6b6c4ec57
 
+    name = fields.Char(string="Class Name" , required=True)
+    class_teacher_id = fields.Many2one("setu.teacher",string="Class Teacher")
+    teacher_ids = fields.Many2many("setu.teacher","class_teacher_table",string="Teacher")
+    student_ids = fields.Many2many("setu.student","class_student_table", string="Student")
+    school_ids = fields.Many2many("setu.school","class_school_table", string="School")
+    subject_ids = fields.Many2many("setu.subject","class_subject_table", string="Subject")
 
 
 

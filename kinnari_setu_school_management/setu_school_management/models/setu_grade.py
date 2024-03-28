@@ -1,8 +1,13 @@
+<<<<<<< HEAD
 from odoo import fields,models,api,_
 from  odoo.exceptions import  ValidationError
+=======
+from odoo import fields, models
+>>>>>>> 0c53dcac5aa5f8ad5e4668828bd4bbe6b6c4ec57
 
-class SetuGrade(models.Model):
+class Grade(models.Model):
     _name = "setu.grade"
+<<<<<<< HEAD
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
     name = fields.Char(string="Name",tracking=True)
@@ -70,3 +75,9 @@ class SetuGrade(models.Model):
     #     rec = super(SetuGrade,self).create(vals)
     #     return rec
 
+=======
+    _description = "setu_grade"
+
+    name = fields.Char(string="Name")
+    grade_lines_ids = fields.One2many("setu.grade.line","grade_id",string="Grade Lines")
+>>>>>>> 0c53dcac5aa5f8ad5e4668828bd4bbe6b6c4ec57

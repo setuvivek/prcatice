@@ -1,8 +1,8 @@
-from odoo import fields, models, api
-
-
-class SetuAdmissionForm(models.Model):
+from odoo import api,fields, models
+from odoo.exceptions import MissingError, ValidationError, AccessError
+class Admisssion_form(models.Model):
     _name = "setu.admission.form"
+<<<<<<< HEAD
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
     name = fields.Char(string="Name" )
@@ -13,27 +13,53 @@ class SetuAdmissionForm(models.Model):
     state_id = fields.Many2one('state', string="State Name")
     country_id = fields.Many2one('country', string="Country Name")
 
+=======
+    _description = "setu_admission_form"
+
+    name = fields.Char(string="Student Name", required=True)
+    class_id = fields.Many2one("setu.class",string='Class')
+    address = fields.Char(string="Address")
+>>>>>>> 0c53dcac5aa5f8ad5e4668828bd4bbe6b6c4ec57
     email = fields.Char(string="Email")
     phone = fields.Char(string="Phone")
-    dob = fields.Date(string="Date of Birth")
-    cname = fields.Char(string="Enter Class name")
-    class_id = fields.Many2one('setu.class', string="class")
-    sure=fields.Boolean(string="Are you want to add more details of student?")
+    dob = fields.Date(string="DOB")
+    state = fields.Char(string="State")
+    # status = fields.Selection(selection=[("female", "Female"), ("male", "Male")])
 
+    # def Object_butt(self):
+    #     self.status = "male"
+    #
+    # def Object_buttt(self):
+    #     self.status = "female"
+
+
+    # @api.model
+    # def create(self, vals_list):
+    #     if not vals_list.get('phone'):
+    #         vals_list.update({'phone':'98512345'})
+    #
+    #     # vals_list.update({'gender': 'female'})
+    #     res = super(Admisssion_form, self).create(vals_list)
+    #     res.address = 'Rajkot'
+    #
+    #     return res
+    def action_but(self):
+        self.phone = "12345"
+    
 
     @api.model_create_multi
     def create(self, vals_list):
         for vals in vals_list:
-            if not vals.get('address'):
-                vals['address'] = 'abc'
-                # vals_list.update({'address':'abc'})
-            # if not vals.get('state'):
-            #     rec = self.env['setu.admission.form'].search([('city', '=', 'rajkot')])
-            #     if rec:
-            #         vals.update({'state': 'Gujarat'})
-        res = super(SetuAdmissionForm, self).create(vals_list)
+            if not vals.get('phone'):
+                vals.update({'phone': '98512345'})
+
+        # vals_list.update({'gender': 'female'})
+        res = super(Admisssion_form, self).create(vals_list)
+        res.address = 'Rajkot'
+
         return res
 
+<<<<<<< HEAD
 
     def copy(self,default=None):
         default = dict(default or {})
@@ -128,3 +154,10 @@ class SetuAdmissionForm(models.Model):
     #     ('name_compulsory', 'CHECK(name IS NOT NULL)', 'Name should required'),
     #     ('name_unique', 'unique(name)', "Name Must Be Unique."),
     # ]
+=======
+    @api.constrains
+    def unique_name(self):
+        for db in self:
+            if len(db.phone) < 4:
+                raise ValidationError("Address length is less then 4")
+>>>>>>> 0c53dcac5aa5f8ad5e4668828bd4bbe6b6c4ec57
