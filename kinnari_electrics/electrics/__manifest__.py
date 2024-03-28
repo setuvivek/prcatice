@@ -4,7 +4,8 @@
     'data': [
         'security/ir.model.access.csv',
         'views/electronic_items_views.xml',
-        'views/users_views.xml'
+        'views/users_views.xml',
+        'views/feedback_views.xml'
 
 
     ],

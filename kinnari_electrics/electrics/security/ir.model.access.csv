@@ -1,3 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_users,access.users,electrics.model_users,,1,1,1,1
 access_electronic.items,access.electronic.items,electrics.model_electronic_items,,1,1,1,1
+access_feedback,access.feedback,electrics.model_feedback,,1,1,1,1
