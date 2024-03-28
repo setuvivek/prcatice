@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="vendor_view_tree" model="ir.ui.view">
+        <field name="name">electronics.vendor.view.tree</field>
+        <field name="model">electronics.vendor</field>
+        <field name="arch" type="xml">
+            <tree string="Customer">
+                <field name="name"/>
+                <field name="phone"/>
+                <field name="email"/>
+                <field name="address"/>
+<!--                <field name="vendor_ids"/>-->
+<!--                <field name="customer_ids"/>-->
+                <field name="item_id"/>
+                <field name="item_price"/>
+<!--                <field name="customer_ids"/>-->
+            </tree>
+        </field>
+    </record>
+    <record id="vendor_view_form" model="ir.ui.view">
+        <field name="name">electronics.vendor.view.form</field>
+        <field name="model">electronics.vendor</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="phone"/>
+                            <field name="email"/>
+                            <field name="address"/>
+                            <field name="item_id"/>
+                            <field name="item_price"/>
+<!--                            <field name="vendor_ids"/>-->
+<!--                            <field name="customer_ids"/>-->
+<!--                            <field name="customer_ids"/>-->
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="electronics_vendor_action" model="ir.actions.act_window">
+        <field name="name">vendor</field>
+        <field name="res_model">electronics.vendor</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="vendor_view_id"
+              name = "Vendor"
+              action = "electronics_vendor_action"
+              parent="root1"/>
+</odoo>
+

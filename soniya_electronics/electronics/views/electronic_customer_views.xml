@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="customer_view_tree" model="ir.ui.view">
+        <field name="name">electronics.customer.view.tree</field>
+        <field name="model">electronics.customer</field>
+        <field name="arch" type="xml">
+            <tree string="Customer">
+                <field name="name"/>
+                <field name="phone"/>
+                <field name="email"/>
+                <field name="address"/>
+                <field name="paid"/>
+                <field name="item_id"/>
+                <field name="fault"/>
+                <field name="city_id"/>
+                <field name="state_id"/>
+                <field name="country_id"/>
+                <field name="item_ids" widget="many2many_tags"/>
+                <field name="pan_no"/>
+                <field name="total"/>
+            </tree>
+        </field>
+    </record>
+    <record id="customer_view_form" model="ir.ui.view">
+        <field name="name">electronics.customer.view.form</field>
+        <field name="model">electronics.customer</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="%(electronics_repair_request_action)d" string="REPAIR REQUEST" type="action"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="phone"/>
+                        <field name="email"/>
+                        <field name="address"/>
+                        <field name="pan_no"/>
+                        <field name="city_id"/>
+                        <field name="state_id"/>
+                        <field name="country_id"/>
+                        <field name="total"/>
+                        <field name="paid"/>
+                        <field name="item_id" domain="[('id', 'in', item_ids)]" attrs="{'invisible':[('paid', '=', False)]}"/>
+                        <field name="fault" attrs="{'invisible':[('paid', '=', False)]}"/>
+<!--                        <field name="item_ids"/>-->
+                    </group>
+                    <notebook>
+                        <page string="Items">
+                            <field name="item_ids"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="electronics_customer_action" model="ir.actions.act_window">
+        <field name="name">customer</field>
+        <field name="res_model">electronics.customer</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="root" name="Electronic"/>
+    <menuitem id="root1"
+              name="Electronic"
+              parent="root"/>
+    <menuitem id="customer_view_id"
+              name = "Customer"
+              action = "electronics_customer_action"
+              parent="root1"/>
+</odoo>
+

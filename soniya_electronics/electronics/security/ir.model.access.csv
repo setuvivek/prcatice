@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_electronics_customer,access.electronics_customer,electronics.model_electronics_customer,,1,1,1,1
+access_electronics_items,access.electronics_items,electronics.model_electronics_items,,1,1,1,1
+access_electronics_vendor,access.electronics_vendor,electronics.model_electronics_vendor,,1,1,1,1
+access_electronics_repair,access.electronics_repair,electronics.model_electronics_repair,,1,1,1,1
+access_electronics_repair_request,access.electronics_repair_request,electronics.model_electronics_repair_request,,1,1,1,1

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="repair_view_tree" model="ir.ui.view">
+        <field name="name">electronics.repair.view.tree</field>
+        <field name="model">electronics.repair</field>
+        <field name="arch" type="xml">
+
+    <record id="seq_rec_id" model="ir.sequence">
+            <field name="repair_id">Electronics Repair</field>
+<!--            <field name="code">electronics.repair</field>-->
+<!--            <field name="prefix">EXP/</field>-->
+<!--            <field name="padding">3</field>-->
+        </record>
+
+            <tree string="Items">
+                <field name="repair_id"/>
+                <field name="customer_id"/>
+                <field name="item_id"/>
+                <field name="fault"/>
+            </tree>
+        </field>
+    </record>
+    <record id="repair_view_form" model="ir.ui.view">
+        <field name="name">electronics.repair.view.form</field>
+        <field name="model">electronics.repair</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="repair_id"/>
+                            <field name="customer_id" domain="[('paid', '=', True)]"/>
+                            <field name="item_id"/>
+                            <field name="fault"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="electronics_repair_action" model="ir.actions.act_window">
+        <field name="name">repair</field>
+        <field name="res_model">electronics.repair</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="repair_view"
+              name = "Repair"
+              action = "electronics_repair_action"
+              parent="root1"/>
+
+</odoo>
+

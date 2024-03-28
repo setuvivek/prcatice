@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="item_view_tree" model="ir.ui.view">
+        <field name="name">electronics.items.view.tree</field>
+        <field name="model">electronics.items</field>
+        <field name="arch" type="xml">
+            <tree string="Items">
+                <field name="name"/>
+                <field name="price"/>
+                <field name="warranty"/>
+                <field name="mfg_date"/>
+<!--                <field name="exp_date"/>-->
+            </tree>
+        </field>
+    </record>
+    <record id="items_view_form" model="ir.ui.view">
+        <field name="name">electronics.items.view.form</field>
+        <field name="model">electronics.items</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="price"/>
+                            <field name="warranty"/>
+                            <field name="mfg_date"/>
+<!--                            <field name="exp_date"/>-->
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="electronics_items_action" model="ir.actions.act_window">
+        <field name="name">items</field>
+        <field name="res_model">electronics.items</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="item_view_id"
+              name = "Item"
+              action = "electronics_items_action"
+              parent="root1"/>
+<!--    <menuitem id="electronic_customer_menu"-->
+<!--              name="Customer"-->
+<!--              action="customer_action"-->
+<!--              parent="root1"/>-->
+<!--    <menuitem id="electronic_items_menu"-->
+<!--              name="Items"-->
+<!--              action="items_action"-->
+<!--              parent="root1"/>-->
+<!--    <menuitem id="electronic_vendor_menu"-->
+<!--              name="Vendor"-->
+<!--              action="vendor_action"-->
+<!--              parent="root1"/>-->
+
+</odoo>
+

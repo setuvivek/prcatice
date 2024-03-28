@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="repair_request_view_tree" model="ir.ui.view">
+        <field name="name">electronics.repair.request.view.tree</field>
+        <field name="model">electronics.repair.request</field>
+        <field name="arch" type="xml">
+            <tree string="Items">
+                <field name="customer_id"/>
+                <field name="item_id"/>
+                <field name="fault"/>
+                <field name="paid"/>
+            </tree>
+        </field>
+    </record>
+    <record id="repair_view_form" model="ir.ui.view">
+        <field name="name">electronics.repair.request.view.form</field>
+        <field name="model">electronics.repair.request</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="customer_id"/>
+                            <field name="item_id"/>
+                            <field name="paid"/>
+                            <field name="fault" attrs="{'invisible':[('paid', '=', False)]}" required="1"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="electronics_repair_request_action" model="ir.actions.act_window">
+        <field name="name">repair</field>
+        <field name="res_model">electronics.repair.request</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="repair_request_view"
+              name = "Request"
+              action = "electronics_repair_request_action"
+              parent="root1"/>
+</odoo>
+
