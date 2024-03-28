@@ -88,7 +88,9 @@
                                 <field name="standard_id" options="{'no_open':True, 'no_create': True}"/>
                                 <field name="division_id" options="{'no_open':True, 'no_create': True}"/>
                                 <field name="medium_id" options="{'no_open':True, 'no_create': True}"/>
-                                <field name="school_id" options="{'no_open':True, 'no_create': True}"/>
+                                <field name="school"/>
+                                <field name="schoolname"/>
+<!--                                <field name="school_id" options="{'no_open':True, 'no_create': True}"/>-->
                                 <field name="admission_date" widget="date"/>
                                 <field name="academic_year_id" options="{'no_open':True, 'no_create': True}"/>
 
