@@ -5,8 +5,6 @@ class Employee(models.Model):
     _name = 'company.employee'
     _description = 'company.employee'
 
-
-
     #Char----------------------
     name = fields.Char(string='Name', required=True)
     address = fields.Char(string='Address')

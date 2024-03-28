@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="electricshop_bill_view_tree" model="ir.ui.view">
+        <field name="name">electricshop.bill.view.tree</field>
+        <field name="model">electricshop.bill</field>
+        <field name="arch" type="xml">
+            <tree string="Electricshop Bill">
+                <field name="name"/>
+                <field name="bill_no"/>
+                <field name="seller_id"/>
+                <field name="warranty_to" widget="remaining_days"/>
+                <field name="warrenty"/>
+                <field name="want_repairing"/>
+                <field name="warraty_end"/>
+                <field name="user_id"/>
+            </tree>
+        </field>
+    </record>
+    <record id="electricshop_bill_view_form" model="ir.ui.view">
+        <field name="name">electricshop.bill.view.form</field>
+        <field name="model">electricshop.bill</field>
+        <field name="arch" type="xml">
+            <form string="Electricshop Bill">
+                <header>
+                    <!--                    <button name='repair_request_object' class="p-0 btn-link" string="Repair Request"-->
+                    <!--                            type="object"/>-->
+
+                    <button name='%(electricshop_repair_action1)d' class="oe_highlight" string="Repair Request"
+                            type="action" attrs="{'invisible': [('want_repairing','=', False)]}"
+                            icon="fa-pencil-square-o"/>
+                    #context="{'default_description': bill_no}"
+
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="bill_no"/>
+                        <field name="seller_id"/>
+                        <field name="warranty_to"/>
+                        <field name="warrenty"/>
+                        <field name="want_repairing"/>
+                        <field name="warraty_end" attrs="{'invisible': [('warrenty','!=', '0 years')]}"/>
+                        <field name="user_id"/>
+                    </group>
+
+                    <notebook>
+                        <page string="Products">
+                            <field name="items_ids">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="price" sum="Total Price"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="electricshop_bill_action" model="ir.actions.act_window">
+        <field name="name">Electricshop Bill</field>
+        <field name="res_model">electricshop.bill</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <!--    <menuitem id="electricshop_bill_main_menu"-->
+    <!--              name="Bill"-->
+    <!--              parent="root"/>-->
+
+    <menuitem id="electricshop_bill_menu"
+              name="Bill"
+              parent="root"
+              action="electricshop_bill_action"
+    />
+</odoo>

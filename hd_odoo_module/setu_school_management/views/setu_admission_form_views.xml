@@ -33,14 +33,15 @@
                 <form string="admission_form">
                     <header>
                         <field name="status" widget="statusbar"/>
-                        <button name="%(setu_admission_form_action)d" string="Create" type="action"/>
-                        <button name="action_clear" string="Clear" type="object"/>
+                        <button name="%(setu_admission_form_action)d" string="Create" type="action"
+                                attrs="{'invisible': [('status','in', ['cancel','confirm','draft'])]}"/>
                     </header>
                     <sheet>
                         <group>
                             <group>
                                 <field name="name"/>
                                 <field name="class_id"/>
+                                <field name="status"/>
                                 <label for="street" string="Address"/>
                                 <div class="o_address_format">
                                     <field name="street" placeholder="Street..." class="o_address_street"/>
@@ -57,8 +58,8 @@
                                 <field name="email"/>
                                 <field name="dob"/>
                                 <field name="phone"/>
+                                <field name="required_true"/>
                             </group>
-
                         </group>
                     </sheet>
                 </form>
