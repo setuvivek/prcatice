@@ -1,7 +1,8 @@
-from odoo import fields, models , api
+from odoo import fields, models
 
-class SetuSubject(models.Model):
+class Subject(models.Model):
     _name = "setu.subject"
+<<<<<<< HEAD
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
     name = fields.Char(string="Name",tracking=True)
@@ -13,12 +14,22 @@ class SetuSubject(models.Model):
     student_ids = fields.Many2many('setu.student','subject_student', string="Students")
     standard_ids = fields.Many2many('setu.standard.standard','setu_subject_standards',string="Standards")
     teacher_ids = fields.Many2many('setu.teacher','setu_subject_teachers',string="Teachers")
+=======
+    _description = "setu_subject"
 
-    @api.depends('maximum_marks', 'minimum_marks')
-    def _abc(self):
-        for record in self:
-            record.weightage = (record.maximum_marks + record.minimum_marks )/2
+    name = fields.Char(string="Subject Name")
+    code = fields.Char(string="Code")
+    minimum_marks = fields.Char(string="Minimum Marks")
+    maximum_marks = fields.Char(string="Maximum Marks")
+    weightage = fields.Char(string="Weightage")
+    teacher_ids = fields.Many2many("setu.teacher","subject_teacher_table", string="Teachers")
+    standard_ids = fields.Many2many("setu.standard.standard","student_standard_table",string="Standards")
+    standard_id = fields.Many2one("setu.standard.standard", string="Class")
+    student_ids = fields.Many2many("setu.student", string="Students")
+>>>>>>> 0c53dcac5aa5f8ad5e4668828bd4bbe6b6c4ec57
 
+
+<<<<<<< HEAD
 
     def default_get(self, fields):
         res = super(SetuSubject, self).default_get(fields)
@@ -37,3 +48,5 @@ class SetuSubject(models.Model):
     #     ('name_compulsory', 'CHECK(name IS NOT NULL)', 'Name should required'),
     #     ('name_unique', 'unique(name)', "Name Must Be Unique."),
     # ]
+=======
+>>>>>>> 0c53dcac5aa5f8ad5e4668828bd4bbe6b6c4ec57

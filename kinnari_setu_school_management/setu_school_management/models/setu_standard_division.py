@@ -1,7 +1,12 @@
+<<<<<<< HEAD
 from odoo import fields,models,api
+=======
+from odoo import fields, models
+>>>>>>> 0c53dcac5aa5f8ad5e4668828bd4bbe6b6c4ec57
 
-class SetuStandardDivision(models.Model):
+class Standard_division(models.Model):
     _name = "setu.standard.division"
+<<<<<<< HEAD
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
     name = fields.Char(string="Name",tracking=True)
@@ -31,3 +36,9 @@ class SetuStandardDivision(models.Model):
 
 
 
+=======
+    _description = "Setu Standard Division"
+
+    name = fields.Char(string="Name")
+    code = fields.Integer(string="Code")
+>>>>>>> 0c53dcac5aa5f8ad5e4668828bd4bbe6b6c4ec57
