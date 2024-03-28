@@ -1,18 +1,11 @@
-from odoo import fields,models
+from odoo import fields, models
 
-class SetuGradeLine(models.Model):
+class Grade_line(models.Model):
     _name = "setu.grade.line"
+    _description = "setu_grade_line"
 
-    from_mark = fields.Date(string="From Mark")
-    to_mark = fields.Date(string="To Mark")
-    name = fields.Char(string="Name")
-    fail = fields.Boolean(string="Fail")
-    grade_id = fields.Many2one('setu.grade' , string="Grade")
-
-    _sql_constraints = [
-        # Partial constraint, complemented by unique index (see below). Still
-        # useful to keep because it provides a proper error message when a
-        # violation occurs, as it shares the same prefix as the unique index.
-        ('name_compulsory', 'CHECK(name IS NOT NULL)', 'Name should required'),
-        ('name_unique', 'unique(name)', "Name Must Be Unique."),
-    ]
+    from_mask = fields.Char(string="From Mask")
+    to_mask = fields.Char(string="To Mask")
+    grade_name = fields.Char(string="Name")
+    fail = fields.Char(string="Fail")
+    grade_id = fields.Many2one("setu.grade",string="Grade")

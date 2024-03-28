@@ -1,44 +1,16 @@
-from odoo import fields, models , api , _
-from odoo.exceptions import ValidationError
+from odoo import fields, models
 
-
-class SetuClass(models.Model):
+class Class(models.Model):
     _name = "setu.class"
 
-    name = fields.Char(string="Name")
-    is_teacher = fields.Boolean(string="You want to select teacher")
-    class_teacher_id1 = fields.Many2one('setu.teacher', string="Class Teacher")
-    teacher_ids = fields.Many2many('setu.teacher', 'class_teacher', string="Teachers")
-    is_stu = fields.Boolean(string="You want to select students")
-    student_ids = fields.Many2many('setu.student', 'class_student', string="Students")
-    is_school = fields.Boolean(string="You want to choose school")
-    school_ids = fields.Many2many('setu.school', 'class_school', string="Schools")
-    is_sub = fields.Boolean("you want to select subjects")
-    subject_ids = fields.One2many('setu.subject', 'standard_id', string="Subjects")
+    _description = "setu_class"
 
-    _sql_constraints = [
-        ('name_unique', 'unique(name)', 'Names must be unique'),
-        ('name_compulsory', 'CHECK(name IS NOT NULL)', 'Name should required'),
-        ("uniq", "UNIQUE(class_teacher_id1)", "Models inherits from another only once"),
-        ('name_nospaces', "CHECK(name NOT LIKE '% %')","Name cannot contain spaces"),
-    ]
-
-    def write(self,vals):
-        if vals.get('name'):
-            vals.update({'name':'Patel'})
-        rec = super(SetuClass, self).write(vals)
-        return rec
-
-
-
-
-
-
-
-
-
-
-
+    name = fields.Char(string="Class Name" , required=True)
+    class_teacher_id = fields.Many2one("setu.teacher",string="Class Teacher")
+    teacher_ids = fields.Many2many("setu.teacher","class_teacher_table",string="Teacher")
+    student_ids = fields.Many2many("setu.student","class_student_table", string="Student")
+    school_ids = fields.Many2many("setu.school","class_school_table", string="School")
+    subject_ids = fields.Many2many("setu.subject","class_subject_table", string="Subject")
 
 
 

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="setu_teacher_view_tree" model="ir.ui.view">
+        <field name="name">setu.teacher.view.tree</field>
+        <field name="model">setu.teacher</field>
+        <field name="arch" type="xml">
+            <tree string="Setu Teacher">
+                <field name="standard_id"/>
+                <field name="school_id"/>
+                <field name="name"/>
+                <field name="age"/>
+                <field name="mini_age_ofschool"/>
+                <field name="active"/>
+                <field name="code_of_school"/>
+                <field name="work_address_street"/>
+                <field name="home_address_street"/>
+            </tree>
+        </field>
+    </record>
+    <record id="setu_teacher_view_form" model="ir.ui.view">
+        <field name="name">setu.teacher.view.form</field>
+        <field name="model">setu.teacher</field>
+        <field name="arch" type="xml">
+            <form string="Setu Teacher">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="standard_id"/>
+                            <field name="school_id"/>
+                            <field name="name"/>
+                            <field name="age"/>
+                            <field name="mini_age_ofschool"/>
+                            <field name="active"/>
+                            <field name="code_of_school"/>
+                        </group>
+                        <group>
+                        </group>
+                        <group>
+                            <field name="work_address_street" placeholder="Street"/>
+                            <span/>
+                            <div>
+                                <div style="display:flex">
+                                    <span>
+                                        <field name="city" placeholder="City" class="o_address_city"/>
+                                    </span>
+                                    <span>
+                                        <field name="state" placeholder="State" class="o_address_state"/>
+                                    </span>
+                                    <span>
+                                        <field name="zip" placeholder="Zip" class="o_address_zip"/>
+                                    </span>
+                                </div>
+                                <field name="country_id" placeholder="Country"/>
+                                <field name="phone" placeholder="Phone"/>
+                                <field name="email" placeholder="Email"/>
+                            </div>
+                        </group>
+                        <group>
+                            <field name="home_address_street" placeholder="Street"/>
+                            <span/>
+                            <div>
+                                <div style="display:flex">
+                                    <span>
+                                        <field name="home_address_city" placeholder="City"/>
+                                    </span>
+                                    <span>
+                                        <field name="home_address_state" placeholder="State"/>
+                                    </span>
+                                    <span>
+                                        <field name="home_address_zip" placeholder="Zip"/>
+                                    </span>
+                                </div>
+                                <field name="home_address_country" placeholder="Country"/>
+                                <field name="home_address_phone" placeholder="Phone"/>
+                                <field name="home_address_email" placeholder="Email"/>
+                            </div>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Subject" attrs="{'invisible': [('home_address_email','!=', False)]}">
+                            <field name="subject_ids">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="code"/>
+                                    <field name="maximum_marks"/>
+                                    <field name="minimum_marks"/>
+                                    <field name="weightage"/>
+                                    <field name="standard_id"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Student">
+                            <field name="student_ids">
+                                <tree>
+                                    <field name="first_name" optional="show"/>
+                                    <field name="address" optional="show"/>
+                                    <field name="gender" optional="show"/>
+                                    <field name="dob" optional="show"/>
+                                    <field name="blood_group" optional="show"/>
+                                    <field name="weight" optional="hide"/>
+                                    <field name="height" optional="hide"/>
+                                    <field name="state" optional="hide"/>
+                                    <field name="terminate_reason" optional="show"/>
+                                    <field name="active" optional="show"/>
+                                    <field name="standard_id" optional="show"/>
+                                    <field name="division_id" optional="show"/>
+                                    <field name="medium_id" optional="show"/>
+                                    <field name="school_id" optional="show"/>
+                                    <field name="admission_date" optional="hide"/>
+                                    <field name="roll_no" optional="show"/>
+                                    <field name="cast_id" optional="hide"/>
+                                    <field name="mother_tongue_id" optional="hide"/>
+                                    <field name="teacher_id" optional="show"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="setu_teacher_action" model="ir.actions.act_window">
+        <field name="name">Teacher</field>
+        <field name="res_model">setu.teacher</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="setu_teacher_menu"
+              name="Teacher"
+              action="setu_teacher_action"
+              parent="root1"
+    />
+</odoo>

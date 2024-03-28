@@ -1,36 +1,23 @@
-from odoo import fields,models, api
-# from odoo.exceptions import ValidationError
+from odoo import api,fields, models
+from datetime import *
+from dateutil.relativedelta import *
+
+import calendar
 
 
-class SetuAcademicMonth(models.Model):
+class Academic_month(models.Model):
     _name = "setu.academic.month"
-
-    name = fields.Char(string="Name")
-    code = fields.Integer(string="Code")
-    date_start = fields.Date(string="Start Date")
-    date_stop = fields.Date(string="Stop Date")
-    academic_year_id = fields.Many2one('setu.academic.year',string="Year")
+    _description = "setu_academic_month"
 
 
+    name = fields.Char(string="Month")
+    code = fields.Char(string='Code')
+    date_start = fields.Date(string="Date Start")
+    date_stop = fields.Date(string="Date Stop")
+    academic_year_id = fields.Many2one("setu.academic.year",string="Year")
 
-
-
-    # _sql_constraints = [
-    #     # Partial constraint, complemented by unique index (see below). Still
-    #     # useful to keep because it provides a proper error message when a
-    #     # violation occurs, as it shares the same prefix as the unique index.
-    #     ('name_compulsory', 'CHECK(name IS NOT NULL)', 'Name should required'),
-    #     ('name_unique', 'unique(name)', "Name Must Be Unique."),
-    #     ('code', 'CHECK(code>0)', 'Code cannot be negative.'),
-    # ]
-
-    # @api.constrains('date_start', 'date_stop')
-    # def _constrains_dates_(self):
-    #     for rec in self:
-    #         if rec.date_start and rec.date_stop and rec.date_start > rec.date_stop:
-    #             raise ValidationError(_('The stop date cannot be earlier than the start date. ',))
-    #
-    # @api.constrains('code')
-    # def _check_code_(self):
-    #     if not self.code:
-    #         raise ValidationError(_('Missing code'))
+    # def unlink(self):
+    #     res = super(Academic_month, self).unlink()
+    #     return res
+    # def search(self):
+    #     self.env['setu.academic.month'].search([('academic_year_id', '=', 1)])
