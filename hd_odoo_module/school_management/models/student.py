@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from odoo import models, fields, api
+from odoo import models, fields, api,_
 
 
 class Student(models.Model):
@@ -13,6 +13,7 @@ class Student(models.Model):
     sport = fields.Char(string='Sport')
     rank1 = fields.Char(string='Percentage')
 
+    teacher_phone = fields.Char(string='Teacher Phone',compute='_compute_teacher_phone')
 
     #Integer---------------
     roll_no = fields.Integer(string='Roll No', copy=False, help='Student Roll No')
@@ -26,6 +27,8 @@ class Student(models.Model):
     odd = fields.Selection(selection=[('1','1'), ('3','3'), ('5','5'), ('7','7')])
     rank = fields.Selection(selection=[('rank1','1'),('2','2'),('3','3'),('4','4'),('5','5'),('6','6'),('7','7'),('8','8'),('9','9'),('10','10')])
     status = fields.Selection(selection=[('draft', 'Draft'), ('confirm', 'Confirm'), ('cancel','Cancel')])
+
+    teacher_subject = fields.Selection(related='teacher_id.subject', string='Teacher Subject')
 
     #Boolean----------------
     is_present = fields.Boolean(string='Present')
@@ -65,6 +68,7 @@ class Student(models.Model):
     #create with multiple record-------------------
     @api.model_create_multi
     def create(self, vals_list):
+
         for vals in vals_list:
             if not vals.get('roll_no'):
                 vals['roll_no'] = '2'
@@ -77,12 +81,28 @@ class Student(models.Model):
 
         res = super(Student, self).create(vals_list)
 
-        record = self.env['teacher'].search([('dept_id', '=', res.dept_id.id), ('course_id', '=', res.course_id.id)], limit=1)
-        if not res.teacher_id:
-            res.teacher_id = record.id
+        # if not res.roll_no:
+        #     res.roll_no = 3
+
+        # record = self.env['teacher'].search([('dept_id', '=', res.dept_id.id), ('course_id', '=', res.course_id.id)], limit=1)
+        # if not res.teacher_id:
+        #     res.teacher_id = record.id
 
         return res
 
+    @api.returns('self', lambda value: value.id)
+    def copy(self, default=None):
+        default = dict(default or {})
+        if 'name' not in default:
+            default['name'] = ("%s (Copy)") % self.name
+        return super(Student, self).copy(default=default)
+
+    def _compute_teacher_phone(self):
+        for rec in self:
+            if rec.teacher_id:
+                rec.teacher_phone = rec.teacher_id.phone
+            else:
+                rec.teacher_phone = False
 
 
 

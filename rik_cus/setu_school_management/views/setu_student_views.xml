@@ -30,6 +30,8 @@
                     <field name="cast_id"/>
                     <field name="mother_tongue_id"/>
                     <field name="class_teacher_id"/>
+                    <field name="class_teacher_email"/>
+                    <field name="class_teacher_phone"/>
                 </tree>
             </field>
         </record>
@@ -71,9 +73,16 @@
                                 <field name="cast_id"/>
                                 <field name="mother_tongue_id"/>
                                 <field name="class_teacher_id" attrs="{'invisible': [('standard_id', '=' , False), ('blood_group', '=' , True)]}"/>
+                                <field name="class_teacher_email"/>
+                                <field name="class_teacher_phone"/>
                             </group>
                         </group>
                     </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
                 </form>
             </field>
         </record>

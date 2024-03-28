@@ -22,6 +22,14 @@ class Student(models.Model):
     classteacher_id = fields.Many2one('teacher', string='Class Teacher')
     mathteacher_ids = fields.Many2many('teacher', 'math_teacher', string='Math Teachers')
 
+    cteacher_phone = fields.Char(
+        string='Teacher Phone', compute="_compute_teacher_phone", store=True,
+        required=False)
+    cteacher_email = fields.Char(
+        string='Teacher Email', compute="_compute_teacher_information")
+
+    teacher_subject = fields.Char(related="classteacher_id.subject")
+
     # @api.model
     # def create(self, vals):
     #     # if not vals.get('phone'):
@@ -32,10 +40,26 @@ class Student(models.Model):
     #     return res
 
 
-    @api.model_create_multi
-    def create(self,vals):
-        for vals in vals:
-            if not vals.get("phone"):
-                vals.update({"phone": "911111"})
-        res = super(Student,self).create(vals)
-        return res
+    @api.onchange('gender')
+    def _onchange_field(self):
+        for rec in self:
+            if rec.gender == 'male':
+                rec.nationality = 'indian'
+            else:
+                rec.nationality = 'foreigner'
+
+    @api.depends('classteacher_id')
+    def _compute_teacher_phone(self):
+        for rec in self:
+            if rec.classteacher_id:
+                rec.cteacher_phone = rec.classteacher_id.phone
+            else:
+                rec.cteacher_phone = False
+
+
+    def _compute_teacher_information(self):
+        for rec in self:
+            if rec.classteacher_id:
+                rec.cteacher_email = rec.classteacher_id.email
+            else:
+                rec.cteacher_email = False

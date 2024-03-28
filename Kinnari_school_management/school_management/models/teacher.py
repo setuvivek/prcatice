@@ -2,15 +2,17 @@ from odoo import fields, models,api
 
 class Teacher(models.Model):
     _name = "teacher"
-    _description = "Teacher_details"
+    _description = "Teacher"
     _order = "result"
+    _inherit = ['mail.thread', 'mail.activity.mixin']
+    # _inherit = ['mail_thread', 'mail_activity_mixin']
 
     name = fields.Char(string="Name")
     gender = fields.Selection(selection=[('male', 'Male'), ('female', 'Female')], string="Gender")
-    age = fields.Integer(string="age")
+    age = fields.Integer(string="age" , tracking=True)
     mobile = fields.Char(string="Mobileno", help="Enter Mobile Number", size=10)
     postgraduate = fields.Boolean(string="Postgraduate")
-    result = fields.Float(string="Result", help="Enter result of Postgraduate", digit=(3,2))
+    result = fields.Float(string="Result", help="Enter result of Postgraduate")
     dob = fields.Date(string="Date of Birth")
     student_id = fields.One2many('student','teach_id1',string="Students")
     address = fields.Boolean(string="You want to add Resident Location")
@@ -23,45 +25,38 @@ class Teacher(models.Model):
     @api.model
     def create(self, vals_list):
         if not vals_list.get('priority'):
-            vals_list.update({'priority':'clear'})
+            vals_list.update({'priority':'normal'})
+
         res = super(Teacher,self).create(vals_list)
         return res
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    # def create_new_data(self):
-    #     self.student_id = self.env['student'].create({'name':self.name, 'dobs':self.dob})
 
     _sql_constraints = [('mobile_length', 'CHECK(LENGTH(mobile) = 10)', "Mobile must have 10 digit"),
                         ('name_compulsory' , 'CHECK(name IS NOT NULL)','name should required'),]
 
+    def create_data(self):
+        self.priority = 'high'
 
 
 
 
 
 
+        # if 'mobile' not in default_fields:
+        #     default_fields.
+        # #     return super().default_get(default_fields)
+        # # default_name = self._context.get('default_name')
+        # # default_code = self._context.get('default_code')
+        # # if default_name and not default_code:
+        # #     try:
+        # #         default_code = int(default_name)
+        # #     except ValueError:
+        # #         pass
+        # #     if default_code:
+        # #         default_name = False
+        # # contextual_self = self.with_context(default_name=default_name, default_code=default_code)
+        # return super(AccountAccount, contextual_self).default_get(default_fields)
 
-
-
-
-
-
-
-
-
-                # def _check_name(self, mobile, context=None):
+            # def _check_name(self, mobile, context=None):
     #     for val in self.read(mobile, ['mobile'], context=context):
     #         if val['mobile']:
     #             if len(val['mobile']) < 10:
@@ -87,8 +82,7 @@ class Teacher(models.Model):
        
 
 
-    def create_data(self):
-        self.priority = 'high'
+
 
 
 

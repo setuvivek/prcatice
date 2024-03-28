@@ -24,6 +24,11 @@
 
                         </group>
                     </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
                 </form>
             </field>
         </record>
@@ -33,7 +38,8 @@
             <field name="view_mode">tree,form</field>
         </record>
 
-        <menuitem id="setu_standard_division_menu" name="Setu Standard Division" action="setu_standard_division_action" parent="sub_menu_standard"/>
+        <menuitem id="setu_standard_division_menu" name="Setu Standard Division" action="setu_standard_division_action"
+                  parent="sub_menu_standard"/>
 
 
     </data>

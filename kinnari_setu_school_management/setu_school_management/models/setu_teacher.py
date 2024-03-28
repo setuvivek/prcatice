@@ -3,9 +3,10 @@ from odoo.exceptions import ValidationError
 
 class SetuTeacher(models.Model):
     _name = "setu.teacher"
+    _inherit = ['mail.thread', 'mail.activity.mixin']
 
     name = fields.Char(string="Name")
-    gender = fields.Selection(selection=[('male', 'Male'), ('female', 'Female')], string="Gender")
+    gender = fields.Selection(selection=[('male', 'Male'), ('female', 'Female')], string="Gender",tracking=True)
     postgraduate = fields.Boolean(string="Have Master Degree?")
     master = fields.Selection(selection=[('maths','maths'),('physics','physics'),('chemistry','chemistry'),('biology','biology'),('other','other')],string="Master In")
     add = fields.Char(string="Write about it")

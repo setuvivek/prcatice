@@ -8,7 +8,7 @@
         'views/department_views.xml'
 
     ],
-    'depends':['order_management', 'contact']
+    'depends':['order_management', 'contact','mail']
 
 
 

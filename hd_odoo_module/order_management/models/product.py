@@ -37,6 +37,9 @@ class Product(models.Model):
     discount = fields.Selection(selection=[('10 to 30%', '10 To 30%'), ('30 to 50%', '30 To 50%'),
                    ('above 50%', 'Above 50%')], string='Discount')
 
+    #Date---------------
+    order_date = fields.Datetime(string='Order Date')
+
     #Boolean------------
     available = fields.Boolean(string='product_is_available', help='product is available or not')
 

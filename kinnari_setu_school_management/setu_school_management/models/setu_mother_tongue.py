@@ -2,8 +2,9 @@ from  odoo import fields,models
 
 class SetuMotherToungue(models.Model):
     _name = "setu.mother.tongue"
+    _inherit = ['mail.thread', 'mail.activity.mixin']
 
-    name = fields.Char(string="Name")
+    name = fields.Char(string="Name",tracking=True)
 
     _sql_constraints = [
         # Partial constraint, complemented by unique index (see below). Still

@@ -27,6 +27,11 @@
                             <field name="academic_year_id"/>
                         </group>
                     </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
                 </form>
             </field>
         </record>
@@ -35,7 +40,8 @@
             <field name="res_model">setu.academic.month</field>
             <field name="view_mode">tree,form</field>
         </record>
-        <menuitem id="setu_academic_month_menu" name="Setu Academic Month" action="setu_academic_month_action" parent="sub_menu"/>
+        <menuitem id="setu_academic_month_menu" name="Setu Academic Month" action="setu_academic_month_action"
+                  parent="sub_menu"/>
 
     </data>
 </odoo>

@@ -4,38 +4,80 @@ class SetuStudent(models.Model):
     _name ="setu.student"
     _description = "SetuStudent"
     _rec_name = "first_name"
+    _inherit = ['mail.thread','mail.activity.mixin']
 
 
-    first_name = fields.Char(string="First Name", help="Student Name")
-    middle_name = fields.Char(string="Middle Name", help="Father Name")
-    last_name = fields.Char(string="Last Name", help="Surname")
-    gender = fields.Selection(selection=[("male","MALE"),("female","FEMALE")], string="Gemder")
-    dob = fields.Date(string="DOB")
+    first_name = fields.Char(string="First Name", help="Student Name", tracking=True)
+    middle_name = fields.Char(string="Middle Name", help="Father Name", tracking=True)
+    last_name = fields.Char(string="Last Name", help="Surname", tracking=True)
+    gender = fields.Selection(selection=[("male","MALE"),("female","FEMALE")], string="Gender")
+    dob = fields.Date(string="DOB", tracking=True)
     blood_group = fields.Char(string="Blood Group",required=True)
     weight = fields.Float(string="Weight")
     height = fields.Float(string="Height")
     state = fields.Char(string="State", default='Saurashtra')
     terminate_reason = fields.Char(string="Terminate Reason")
     active = fields.Boolean(string="Active", default='True')
-    address = fields.Char(string="Address")
+    address = fields.Char(string="Address", tracking=True)
     standard_id = fields.Many2one("setu.standard.standard", string="Class")
     division_id = fields.Many2one("setu.standard.division", string="Division")
     medium_id = fields.Many2one("setu.standard.medium", string="Medium")
     school_id = fields.Many2one("setu.school", string="School")
     admission_date = fields.Date(string="Admission Date")
     academic_year_id = fields.Many2one("setu.academic.year", string="Year")
-    roll_no = fields.Integer(string="Roll_no")
-    cast_id = fields.Many2one("setu.student.cast", string="Cast")
+    roll_no = fields.Integer(string="Roll_no", tracking=True)
+    cast_id = fields.Many2one("setu.student.cast", string="Cast", tracking=True)
     mother_tongue_id = fields.Many2one("setu.mother.tongue", string="Mother Tongue")
     class_teacher_id = fields.Many2one("setu.teacher", string="Class Teacher")
+    class_teacher_phone = fields.Integer(string='Teacher Phone', compute="_compute_teacher_phone", store=True)
+    class_teacher_email = fields.Char(string='Teacher Email', compute="_compute_teacher_information")
+
+    @api.depends('class_teacher_id')
+    def _compute_teacher_phone(self):
+        for rec in self:
+            if rec.class_teacher_id:
+                rec.class_teacher_phone = rec.class_teacher_id.phone
+            else:
+                rec.class_teacher_phone = False
+
+    def _compute_teacher_information(self):
+        for rec in self:
+            if rec.class_teacher_id:
+                rec.class_teacher_email = rec.class_teacher_id.email
+            else:
+                rec.class_teacher_email = False
 
 
-    @api.constrains('first_name')
-    def _check_unique_student_name(self):
-        for record in self:
-            existing_student = self.env['setu.student'].search([('first_name', 'ilike', record.first_name)])
-            if len(existing_student) > 1 or (len(existing_student) == 1 and existing_student[0] != record):
-                raise ValidationError(f'Student name "{record.first_name}" already exists!')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    #
+    # @api.constrains('first_name')
+    # def _check_unique_student_name(self):
+    #     for record in self:
+    #         existing_student = self.env['setu.student'].search([('first_name', 'ilike', record.first_name)])
+    #         if len(existing_student) > 1 or (len(existing_student) == 1 and existing_student[0] != record):
+    #             raise ValidationError(f'Student name "{record.first_name}" already exists!')
 
     # @api.constrains('dob')
     # def check_dob(self):

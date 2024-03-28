@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="electronic_items_view_tree" model="ir.ui.view">
+            <field name="name">electronic.items.view.tree</field>
+            <field name="model">electronic.items</field>
+            <field name="arch" type="xml">
+                <tree string="electronic_items">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="user_ids"/>
+                    <field name="ava"/>
+                    <field name="stock"/>
+
+                </tree>
+            </field>
+        </record>
+        <record id="electronic_items_view_form" model="ir.ui.view">
+            <field name="name">electronic.items.view.form</field>
+            <field name="model">electronic.items</field>
+            <field name="arch" type="xml">
+                <form string="electronic_items">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="code"/>
+                                <field name="Is_item"/>
+                                <field name="price"/>
+                                 <field name="ava"/>
+                                <field name="stock" attrs="{'invisible':[('ava','!=',True)]}"/>
+                            </group>
+                            <group>
+                                <field name="production_date"/>
+                                <field name="validity"/>
+                                <field name="user_ids"/>
+                                <field name="updated"/>
+
+
+                            </group>
+
+                        </group>
+                        <notebook>
+                            <page string="User Details">
+                                <field name="user_ids">
+                                    <tree string="User Details" editable="Bottom" delete="False">
+                                        <field name="name"/>
+                                        <field name="code"/>
+                                        <field name="electronic_item_id"/>
+                                        <field name="codee"/>
+                                        <field name="phone" optional="hide"/>
+                                        <field name="country_id" optional="hide"/>
+                                        <field name="state_id" optional="hide"/>
+                                        <field name="city_id" optional="hide"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+
+        </record>
+        <record id="electronic_items_action" model="ir.actions.act_window">
+            <field name="name">Electronic Items</field>
+            <field name="res_model">electronic.items</field>
+            <field name="view_mode">tree,form</field>
+
+        </record>
+
+        <menuitem id="main_menu" name="Electrics" action="electronic_items_action"/>
+        <menuitem id="electric_menu" name="Electrics" action="electronic_items_action" parent="main_menu"/>
+        <menuitem id="electric_menu1" name="Electric Items" action="electronic_items_action" parent="electric_menu"/>
+
+
+    </data>
+</odoo>
+

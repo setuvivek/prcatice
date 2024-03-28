@@ -39,6 +39,7 @@
                                 <field name="available"/>
                                 <field name="incoming"/>
                                 <field name="outgoing"/>
+                                <field name="order_date"/>
                             </group>
                         </group>
 

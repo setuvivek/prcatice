@@ -16,7 +16,5 @@ class Contactpartner(models.Model):
     mult_city_ids=fields.Many2many('city','mult_city',string='Multiple Cities')
     upload_ids = fields.Many2many('ir.attachment', relation="m2m_ir_attachment_relation", column1="m2m_id",
                                      column2="attachment_id", string="Attachments")
-    # city_id = fields.Many2one('city', string='City')
-    # state_id = fields.Many2one('state', string='State')
-    # country_id=fields.Many2one('country',string='Country')
+
 

@@ -10,6 +10,7 @@ from odoo import fields,models
 
 class SetuAcademicYear(models.Model):
     _name = "setu.academic.year"
+    _inherit = ['mail.thread', 'mail.activity.mixin']
 
     sequence = fields.Integer(string="Sequence")
     name = fields.Char(string="Name")
@@ -46,10 +47,10 @@ class SetuAcademicYear(models.Model):
             if rec:
                 rec.write({'date_start':'2024-03-03'})
 
-
-
-
-
+    def copy(self, default=None):
+        default = dict(default or {})
+        default['sequence'] = self.sequence + 1
+        return super(SetuAcademicYear, self).copy(default=default)
 
 
 

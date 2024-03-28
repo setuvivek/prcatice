@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="setu_customer_view_tree" model="ir.ui.view">
+            <field name="name">setu.customer.view.tree</field>
+            <field name="model">setu.customer</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Customer">
+                    <field name="name"/>
+                    <field name="item_id"/>
+                    <field name="phone"/>
+                    <field name="email"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="setu_customer_view_form" model="ir.ui.view">
+            <field name="name">setu.customer.view.form</field>
+            <field name="model">setu.customer</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Customer">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <label for="street" string="Address"/>
+                                <div class="o_address_format">
+                                    <field name="street" placeholder="Street..." class="o_address_street"/>
+                                    <field name="city_id" placeholder="City" class="o_address_city"/>
+                                    <field name="state_id" class="o_address_state" placeholder="State"
+                                           options='{"no_open": True}'/>
+                                    <field name="zip" placeholder="ZIP" class="o_address_zip"/>
+                                    <field name="country_id" placeholder="Country" class="o_address_country"
+                                           options='{"no_open": True, "no_create": True}'/>
+                                </div>
+                            </group>
+                            <group>
+                                <field name="item_id"/>
+                                <field name="email"/>
+                                <field name="phone"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="setu_customer_action" model="ir.actions.act_window">
+            <field name="name">Customer</field>
+            <field name="res_model">setu.customer</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="setu_customer_menu" action="setu_customer_action" parent="root1"/>
+    </data>
+</odoo>

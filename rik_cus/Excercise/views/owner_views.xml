@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="owner_view_tree" model="ir.ui.view">
+            <field name="name">owner.view.tree</field>
+            <field name="model">owner</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="owner">
+                    <field name="owner_name"/>
+                    <field name="team_name"/>
+                    <field name="phone"/>
+                    <field name="mail"/>
+                    <field name="player_id"/>
+                    <field name="city_id"/>
+                    <field name="state_id"/>
+                    <field name="country_id"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="owner_action" model="ir.actions.act_window">
+            <field name="name">Owner</field>
+            <field name="res_model">owner</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <record id="owner_view_form" model="ir.ui.view">
+            <field name="name">owner.view.form</field>
+            <field name="model">owner</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="%(owner_action)d" string="Owner" type="action"/>
+<!--                        <field name="status" widget="statusbar" statusbar_visible="draft,done"/>-->
+                    </header>
+                    <sheet>
+                        <group string="Owner data">
+                            <field name="owner_name"/>
+                            <field name="team_name"/>
+                            <field name="phone"/>
+                            <field name="mail"/>
+<!--                            widget="many2many_tags"-->
+                            <field name="city_id"/>
+                            <field name="state_id"/>
+                            <field name="country_id" options="{'no_open':True, 'no_create': True, 'no_create_edit': True}"/>
+                        </group>
+                        <notebook>
+                            <page string="players">
+                                <field name = "player_id">
+                                    <tree>
+                                        <field name="name"/>
+                                        <field name="team_id"/>
+                                        <field name="owner_name" optional = "hide"/>
+                                        <field name="city_id" optional = "hide"/>
+                                        <field name="country_id" optional = "hide"/>
+                                        <field name="state_id" optional = "hide"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+
+
+<!--        <record id="excercise2_action" model="ir.actions.act_window">-->
+<!--            <field name="name">Excercise2</field>-->
+<!--            <field name="res_model">excercise2</field>-->
+<!--            <field name="view_mode">tree,form</field>-->
+<!--        </record>-->
+
+        <menuitem id ="owner_management" name="Owner" action="owner_action" sequence="1" parent = "root1"/>
+    </data>
+</odoo>

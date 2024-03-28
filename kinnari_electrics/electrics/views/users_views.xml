@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="users_view_tree" model="ir.ui.view">
+            <field name="name">users.view.tree</field>
+            <field name="model">users</field>
+            <field name="arch" type="xml">
+                <tree string="users">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="phone"/>
+                    <field name="address"/>
+                    <field name="electronic_item_id"/>
+                    <field name="codee"/>
+                    <field name="country_id"/>
+                    <field name="state_id"/>
+                    <field name="city_id"/>
+
+                </tree>
+            </field>
+        </record>
+        <record id="submit_action" model="ir.actions.act_window">
+            <field name="name">Electronic Items</field>
+            <field name="res_model">electronic.items</field>
+            <field name="view_mode">form</field>
+        </record>
+        <record id="move_feedback" model="ir.actions.act_window">
+            <field name="name">Feedback</field>
+            <field name="res_model">feedback</field>
+            <field name="view_mode">form</field>
+        </record>
+        <record id="users_view_form" model="ir.ui.view">
+            <field name="name">users.view.form</field>
+            <field name="model">users</field>
+            <field name="arch" type="xml">
+                <form string="users">
+                    <header>
+                        <field name="gender" widget="statusbar"/>
+                        <button name="%(submit_action)d" string="Add New Product" type="action"/>
+                        <button name="purchased" string="Purchase" type="object"
+                                attrs="{'invisible':[('purchase','!=',True)]}"/>
+                        <button name="%(move_feedback)d" string="Feedback Form" type="action"
+                                attrs="{'invisible':[('feedback','!=',True)]}"/>
+
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="code"/>
+                                <field name="personal_info"/>
+                                <field name="address"/>
+                                <field name="electronic_item_id" domain="[('Is_item','=',True)]"
+                                       options="{'no_create':True,'no_create_edit': True}"/>
+                                <field name="codee"/>
+                                <field name="price"/>
+                                <field name="stock"/>
+                                <field name="production_date"/>
+                                <field name="validity"/>
+                            </group>
+
+                            <group>
+                                <field name="quan"/>
+                                <field name="total"/>
+                                <field name="offer"/>
+                                <field name="after" attrs="{'invisible':[('offer','!=',True)]}"/>
+                                <field name="purchase" attrs="{'invisible':[('offer','!=',True)]}"/>
+                                <field name="msg" attrs="{'invisible':[('offer','!=',True)]}"/>
+                                <field name="feedback"
+                                       attrs="{'invisible':[('msg','!=','Thanks For Purchase!!!!!!')]}"/>
+
+
+                            </group>
+
+
+                        </group>
+
+                        <notebook>
+                            <page string="Personal Information" attrs="{'invisible':[('personal_info','!=',True)]}">
+                                <form string="Personal Information">
+                                    <sheet>
+                                        <group>
+                                            <field name="gender" widget="radio"
+                                                   attrs="{'invisible':[('personal_info','!=',True)]}"/>
+                                            <field name="phone" attrs="{'invisible':[('personal_info','!=',True)]}"/>
+                                            <field name="email" attrs="{'invisible':[('personal_info','!=',True)]}"/>
+                                            <field name="date_of_birth"
+                                                   attrs="{'invisible':[('personal_info','!=',True)]}"/>
+
+                                        </group>
+                                    </sheet>
+                                </form>
+
+                            </page>
+                            <page string="Resident data" attrs="{'invisible':[('address','!=',True)]}">
+                                <form string="data">
+                                    <sheet>
+                                        <group>
+                                            <field name="country_id"
+                                                   attrs="{'invisible':[('address','!=',True)],'required': [('address', '=', True)]}"/>
+                                            <field name="state_id"
+                                                   attrs="{'invisible':[('address','!=',True)],'required': [('address', '=', True)]}"/>
+                                            <field name="city_id"
+                                                   attrs="{'invisible':[('address','!=',True)],'required': [('address', '=', True)]}"/>
+                                            <field name="zip"
+                                                   attrs="{'invisible':[('address','!=',True)],'required': [('address', '=', True)]}"/>
+
+                                        </group>
+                                    </sheet>
+                                </form>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+
+        </record>
+        <record id="users_action" model="ir.actions.act_window">
+            <field name="name">Users</field>
+            <field name="res_model">users</field>
+            <field name="view_mode">tree,form</field>
+
+        </record>
+
+        <menuitem id="users_menu" name="Users" action="users_action" parent="electric_menu"/>
+
+
+    </data>
+</odoo>
+

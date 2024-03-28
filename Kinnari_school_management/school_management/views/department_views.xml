@@ -1,5 +1,6 @@
 <odoo>
     <data>
+
         <record id="department_view_tree" model="ir.ui.view">
             <field name="name">department.view.tree</field>
             <field name="model">department</field>
@@ -37,6 +38,12 @@
                             </page>
                         </notebook>
                     </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+
                 </form>
             </field>
         </record>

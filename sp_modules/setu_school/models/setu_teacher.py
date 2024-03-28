@@ -1,13 +1,15 @@
 from odoo import fields, models,api
-from odoo.exceptions import ValidationError,MissingError,RedirectWarning
-
+from odoo.exceptions import ValidationError,MissingError
 
 class SetuTeacher(models.Model):
     _name = 'setu.teacher'
     _description = 'Teachers'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
 
     name = fields.Char(string='Name')
-    code=fields.Char(string='code')
+    code=fields.Char(string='code',tracking=True)
+    age=fields.Integer(string='age')
+    dob= fields.Date(string='Birthdate')
     standard_id=fields.Many2one('setu.standard.standard',string='Standard',help='Responsibility of Academic Class')
     medium_id=fields.Many2one('setu.standard.medium',string='Medium')
     division_id=fields.Many2one('setu.standard.division',string='Division')
@@ -36,6 +38,7 @@ class SetuTeacher(models.Model):
     show_notebooks=fields.Boolean(string='Show Notebooks')
     show_students = fields.Boolean(string='Show Students')
 
+    isEdited = fields.Boolean(string='isEdited', readonly=True)
 
 
     # @api.constrains('name','code','standard_id','medium_id','division_id')
@@ -51,6 +54,9 @@ class SetuTeacher(models.Model):
             if (ext):
                 raise ValidationError("Code Already Exists")
 
+    def write(self, vals):
+        vals.update({"isEdited": True})
+        return super(SetuTeacher, self).write(vals)
 
     # def write(self,vals):
     #     ext_code = self.code
@@ -67,9 +73,3 @@ class SetuTeacher(models.Model):
         # finally:
         #     vals={"code":ext_code}
         # return super(SetuTeacher,self).write(vals)
-
-# def write(self, vals):
-#     # print(vals)
-#     # vals = {"code":"552"}
-#     res = super(SetuAcademicYear, self).write(vals)
-#     return res
