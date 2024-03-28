@@ -1,6 +1,7 @@
 {
     'name': 'repair_requests',
     'version': '16.1',
+    'depends': ['mail'],
     'data': [
         'security/ir.model.access.csv',
         'views/repair_requests_items_view.xml',
