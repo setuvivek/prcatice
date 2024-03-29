@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="electronic_items_view_tree" model="ir.ui.view">
+            <field name="name">electronic.items.view.tree</field>
+            <field name="model">electronic.items</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Electronic Item">
+                    <field name="name"/>
+                    <field name="cost"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="electronic_items_form" model="ir.ui.view">
+            <field name="name">electronic.items.view.form</field>
+            <field name="model">electronic.items</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="Electronic Item Data">
+                            <group>
+                                <field name="name"/>
+                                <field name="cost"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="electronic_items_action" model="ir.actions.act_window">
+            <field name="name">Electronic Items</field>
+            <field name="res_model">electronic.items</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <menuitem id="root" name="Electronic Items"/>
+        <menuitem id ="root1" name="Electronic Items" action = "electronic_items_action" parent="root"/>
+        <menuitem id ="electronic_items" name="Electronic Items" action="electronic_items_action" sequence="1" parent = "root1"/>
+    </data>
+</odoo>

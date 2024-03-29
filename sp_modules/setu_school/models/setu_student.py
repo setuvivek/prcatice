@@ -40,7 +40,9 @@ class SetuStudent(models.Model):
     standard_id = fields.Many2one('setu.standard.standard', string='Standard')
     division_id = fields.Many2one('setu.standard.division', string='Division')
     medium_id = fields.Many2one('setu.standard.medium', string='Medium')
-    school_id = fields.Many2one('setu.school', string='School ID')
+    # school_id = fields.Many2one('setu.school', string='School ID')
+    school=fields.Integer(string='school')
+    schoolname=fields.Char(string='School Name',compute='_compute_school')
     admission_date = fields.Date(string='Admission Date')
     academic_year_id = fields.Many2one('setu.academic.year', string='Academic Year')
     roll_no = fields.Integer(string='Roll No.')
@@ -56,22 +58,23 @@ class SetuStudent(models.Model):
     isEdited = fields.Boolean(string='isEdited')
 
     # ------------------------------------------------
-    @api.model
-    def create(self, vals):
-        rec = self.env['setu.teacher'].search(
-            [('class_teacher', '=', 'True'), ('standard_id', '=', vals.get('standard_id')),
-             ('medium_id', '=', vals.get('medium_id')), ('division_id', '=', vals.get('division_id'))], limit=1)
-        return super(SetuStudent, self).create(vals)
+    # @api.model
+    # def create(self, vals):
+    #     rec = self.env['setu.teacher'].search(
+    #         [('class_teacher', '=', 'True'), ('standard_id', '=', vals.get('standard_id')),
+    #          ('medium_id', '=', vals.get('medium_id')), ('division_id', '=', vals.get('division_id'))], limit=1)
+    #     vals.update({'class_teacher_id': rec.id})
+    #     return super(SetuStudent, self).create(vals)
 
     # both works same:
 
-    # @api.model
-    # def create(self, vals):
-    #     res = super(SetuStudent, self).create(vals)
-    #     rec = self.env['setu.teacher'].search([('class_teacher', '=', 'True'), ('standard_id', '=', res.standard_id.id),('medium_id', '=', res.medium_id.id),('division_id', '=', res.division_id.id)], limit=1)
-    #     if not res.class_teacher_id:
-    #         res.class_teacher_id = rec.id
-    #     return res
+    @api.model
+    def create(self, vals):
+        res = super(SetuStudent, self).create(vals)
+        rec = self.env['setu.teacher'].search([('class_teacher', '=', 'True'), ('standard_id', '=', res.standard_id.id),('medium_id', '=', res.medium_id.id),('division_id', '=', res.division_id.id)], limit=1)
+
+        res.class_teacher_id = rec.id
+        return res
     # ------------------------------------------------
 
     def write(self, vals):
@@ -152,3 +155,12 @@ class SetuStudent(models.Model):
     def copy(self, default=None):
         raise ValidationError('You Can\'t')
 
+
+    @api.onchange('school')
+    def _compute_school(self):
+        for rec in self:
+            if rec.school:
+                res=self.env['setu.school'].browse(rec.school).name
+                rec.schoolname=res
+            else:
+                rec.schoolname=False
