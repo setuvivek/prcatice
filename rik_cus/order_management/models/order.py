@@ -39,8 +39,3 @@ class Order(models.Model):
         return super(Order, self).create(vals)
 
 
-    def create(self, vals):
-        self.search([]).unlink()
-        if 'owner_name' not in vals or not vals['owner_name']:
-            vals['owner_name'] = 'No Name'
-        return super(Order, self).create(vals)
