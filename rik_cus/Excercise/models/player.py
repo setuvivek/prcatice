@@ -23,6 +23,13 @@ class Player(models.Model):
 
     display_name = fields.Char(string="Display Name", compute="_compute_display_name", store=True)
 
+    def copy(self, default=None):
+        if default is None:
+            default = {}
+        default['name'] = self.name + ' (Copy)'
+        return super(Player, self).copy(default)
+
+
     @api.depends('name', 'nationality')
     def _compute_display_name(self):
         for player in self:

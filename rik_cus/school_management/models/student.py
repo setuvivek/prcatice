@@ -27,3 +27,6 @@ class Student(models.Model):
         return res
 
 
+
+
+

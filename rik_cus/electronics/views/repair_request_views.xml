@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="repair_request_view_tree" model="ir.ui.view">
+            <field name="name">repair.request.view.tree</field>
+            <field name="model">repair.request</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Repair Request">
+                    <field name="name"/>
+                    <field name="age"/>
+                    <field name="item_id"/>
+                    <field name="urgent"/>
+                    <field name="customer_email"/>
+                    <field name="customer_phone"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="repair_request_view_form" model="ir.ui.view">
+            <field name="name">repair.request.view.form</field>
+            <field name="model">repair.request</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="Repair Request Data">
+                            <group>
+                                <field name="name"/>
+                                <field name="age"/>
+                                <field name="item_id"/>
+                                <field name="urgent"/>
+                                <field name="customer_email"/>
+                                <field name="customer_phone"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="repair_request_action" model="ir.actions.act_window">
+            <field name="name">Repair Request</field>
+            <field name="res_model">repair.request</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id ="repair_request" name="Repair Request" action="repair_request_action" sequence="1" parent = "root1"/>
+    </data>
+</odoo>
