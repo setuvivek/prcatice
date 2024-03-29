@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="customer_data_view_tree" model="ir.ui.view">
+            <field name="name">customer.data.view.tree</field>
+            <field name="model">customer.data</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="customer">
+                    <field name="first_name"/>
+                    <field name="last_name"/>
+                    <field name="age"/>
+                    <field name="email"/>
+                    <field name="city_id"/>
+                    <field name="country_id"/>
+                    <field name="state_id"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="customer_data_view_form" model="ir.ui.view">
+            <field name="name">customer.data.view.form</field>
+            <field name="model">customer.data</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="customer data">
+                            <field name="first_name"/>
+                            <field name="last_name" attrs="{'invisible': [('first_name', '=', False)]}"/>
+                            <field name="age"/>
+                            <field name="email"/>
+                            <field name="city_id"/>
+                            <field name="country_id"/>
+                            <field name="state_id"/>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="customer_data_action" model="ir.actions.act_window">
+            <field name="name">Customer Data</field>
+            <field name="res_model">customer.data</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="customer_data" action="customer_data_action" name="Customer Data" sequence="1" parent = "root1"/>
+
+    </data>
+</odoo>

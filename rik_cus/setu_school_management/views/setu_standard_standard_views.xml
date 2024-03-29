@@ -47,3 +47,5 @@
         <menuitem id="standard_standard_management" action="standard_standard_action" name="Standard Standard" sequence="1" parent = "root1"/>
     </data>
 </odoo>
+
+

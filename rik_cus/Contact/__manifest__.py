@@ -7,7 +7,7 @@
         'views/city_views.xml',
         'views/country_views.xml',
         'views/state_views.xml',
-        'views/customer_views.xml'
+        'views/customer_data_views.xml'
     ],
 
 }
