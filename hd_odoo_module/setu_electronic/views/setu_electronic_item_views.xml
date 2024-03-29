@@ -16,8 +16,6 @@
                     <field name="manufacture_date"/>
                     <field name="warranty"/>
                     <field name="is_it_predefined"/>
-
-
                 </tree>
             </field>
         </record>
@@ -29,13 +27,14 @@
             <field name="arch" type="xml">
                 <form string="Electronic Item">
                     <sheet>
-                        <group>
+                        <group string="Product Record">
                             <group>
                                 <field name="name"/>
                                 <field name="company_id"/>
                                 <field name="price"/>
                                 <field name="quantity"/>
                                 <field name="total_price"/>
+                                <field name="priority" widget="priority" class="mr-3"/>
 
                             </group>
                             <group>
