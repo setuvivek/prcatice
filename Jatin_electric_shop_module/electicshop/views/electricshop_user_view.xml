@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="electricshop_user_view_tree" model="ir.ui.view">
+        <field name="name">electricshop.user.view.tree</field>
+        <field name="model">electricshop.user</field>
+        <field name="arch" type="xml">
+            <tree string="Electricshop User">
+                <field name="name"/>
+                <field name="mobile_no"/>
+                <field name="address"/>
+                <field name="items_id"/>
+                <field name="bill_id"/>
+            </tree>
+        </field>
+    </record>
+    <record id="electricshop_user_view_form" model="ir.ui.view">
+        <field name="name">electricshop.user.view.form</field>
+        <field name="model">electricshop.user</field>
+        <field name="arch" type="xml">
+            <form string="Electricshop User">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="mobile_no"/>
+                        </group>
+                        <group>
+                            <field name="address"/>
+                            <field name="items_id"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="electricshop_user_action" model="ir.actions.act_window">
+        <field name="name">Electricshop User</field>
+        <field name="res_model">electricshop.user</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="root"
+              name="Electricshop"
+    />
+    <menuitem id="root1"
+              name="Electricshop"
+              parent="root"
+    />
+    <menuitem id="electricshop_user_menu"
+              name="User(Customer)..."
+              parent="root1"
+              action="electricshop_user_action"
+    />
+</odoo>

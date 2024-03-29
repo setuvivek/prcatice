@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_elecricshop_user,access.elecricshop_user,electicshop.model_electricshop_user,,1,1,1,1
+access_elecricshop_seller,access.elecricshop_seller,electicshop.model_electricshop_seller,,1,1,1,1
+access_elecricshop_items,access.elecricshop_items,electicshop.model_electricshop_items,,1,1,1,1
+access_elecricshop_repair,access.elecricshop_repair,electicshop.model_electricshop_repair,,1,1,1,1
+access_elecricshop_bill,access.elecricshop_bill,electicshop.model_electricshop_bill,,1,1,1,1
+access_electricshop_repair_request_submit,access.electricshop_repair_request_submit,electicshop.model_electricshop_repair_request_submit,,1,1,1,1

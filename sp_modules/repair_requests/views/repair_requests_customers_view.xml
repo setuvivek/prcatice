@@ -50,6 +50,13 @@
                         </notebook>
 
                     </sheet>
+
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+
                 </form>
             </field>
         </record>
@@ -60,7 +67,8 @@
             <field name="view_mode">tree,form</field>
         </record>
 
-        <menuitem id="repair_requests_customer" name="Customers" parent="root" action="repair_requests_customers_action"/>
+        <menuitem id="repair_requests_customer" name="Customers" parent="root"
+                  action="repair_requests_customers_action"/>
 
 
     </data>

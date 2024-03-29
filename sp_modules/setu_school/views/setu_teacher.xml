@@ -79,7 +79,7 @@
                                     <tree>
                                         <field name="first_name"/>
                                         <field name="roll_no"/>
-                                        <field name="school_id"/>
+<!--                                        <field name="school_id"/>-->
                                         <field name="class_teacher_id"/>
                                     </tree>
                                 </field>
