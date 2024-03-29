@@ -32,6 +32,17 @@ class SetuStudent(models.Model):
     class_teacher_phone = fields.Integer(string='Teacher Phone', compute="_compute_teacher_phone", store=True)
     class_teacher_email = fields.Char(string='Teacher Email', compute="_compute_teacher_information")
 
+
+    def copy(self, default=None):
+        if default is None:
+            default = {}
+        default['first_name'] = self.first_name + ' (Copy)'
+        default['middle_name'] = self.middle_name
+        default['last_name'] = self.last_name
+        return super(SetuStudent, self).copy(default)
+
+
+
     @api.depends('class_teacher_id')
     def _compute_teacher_phone(self):
         for rec in self:
@@ -46,26 +57,6 @@ class SetuStudent(models.Model):
                 rec.class_teacher_email = rec.class_teacher_id.email
             else:
                 rec.class_teacher_email = False
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
