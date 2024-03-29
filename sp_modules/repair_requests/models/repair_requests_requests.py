@@ -10,7 +10,7 @@ class RepairRequestsRequests(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
 
-    customer_name_id = fields.Many2one('repair.requests.customers',string='Customer Name', help='Customer Name', required=True)#many2one
+    customer_name_id = fields.Many2one('repair.requests.customers',string='Customer Name', help='Customer Name', required=True)
     customer_email = fields.Char(related='customer_name_id.email',string='Customer Email')
     customer_phone = fields.Char(related='customer_name_id.phone', string='Customer Phone')
     product_id = fields.Many2one('repair.requests.items', string='Product', domain=[('repairable', '=', True)])
@@ -20,6 +20,12 @@ class RepairRequestsRequests(models.Model):
     service_type=fields.Selection(selection=[('free', 'Free'),('paid', 'Paid')], string='Service Type',default='free',compute='_compute_service_type',tracking=True)
     service_ids = fields.Many2many('repair.requests.services', string='Additional Service')
                                    #,default=lambda self: self.env['repair.requests.services'].search([('name', '=', 'repair')]).ids)
+    status=fields.Selection(selection=[('pending', 'Pending'),('complete', 'Complete')], string='Status',default='pending',tracking=True,readonly=True)
+
+
+    @api.model
+    def create(self,vals):
+        self.env['repair.requests.status'].create({'customer_name_id': vals.get('customer_name_id')})
 
 
     @api.model
