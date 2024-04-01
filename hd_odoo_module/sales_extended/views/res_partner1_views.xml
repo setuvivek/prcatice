@@ -8,7 +8,12 @@
             <field name="arch" type="xml">
                  <xpath expr="//field[@name='vat']" position="after">
                      <field name="setu_credit_limit"/>
+                     <field name="setu_reward_points"/>
                 </xpath>
+                <xpath expr="//notebook/page[@name='internal_notes']" position="after">
+                    <page string="Extra Information"/>
+                </xpath>
+
             </field>
         </record>
     </data>

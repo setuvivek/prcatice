@@ -6,6 +6,7 @@ class ResPartner1(models.Model):
     _inherit = 'res.partner'
 
     setu_credit_limit = fields.Float(string='Credit Limit')
+    setu_reward_points = fields.Float(string='Reward Points')
 
 
     # @api.constrains('order_line')
