@@ -12,8 +12,8 @@
                     <field name="age"/>
                     <field name="item_id"/>
                     <field name="urgent"/>
-                    <field name="customer_email"/>
-                    <field name="customer_phone"/>
+<!--                    <field name="customer_email"/>-->
+<!--                    <field name="customer_phone"/>-->
                 </tree>
             </field>
         </record>
@@ -32,8 +32,8 @@
                                 <field name="age"/>
                                 <field name="item_id"/>
                                 <field name="urgent"/>
-                                <field name="customer_email"/>
-                                <field name="customer_phone"/>
+<!--                                <field name="customer_email"/>-->
+<!--                                <field name="customer_phone"/>-->
                             </group>
                         </group>
                     </sheet>
