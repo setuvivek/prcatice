@@ -12,6 +12,7 @@
                     <field name="last_name"/>
                     <field name="age"/>
                     <field name="email"/>
+                    <field name="phone"/>
                     <field name="city_id"/>
                     <field name="country_id"/>
                     <field name="state_id"/>
@@ -32,6 +33,7 @@
                             <field name="last_name" attrs="{'invisible': [('first_name', '=', False)]}"/>
                             <field name="age"/>
                             <field name="email"/>
+                            <field name="phone"/>
                             <field name="city_id"/>
                             <field name="country_id"/>
                             <field name="state_id"/>
