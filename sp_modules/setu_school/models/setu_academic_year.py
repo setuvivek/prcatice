@@ -37,7 +37,6 @@ class SetuAcademicYear(models.Model):
             record_m_ids = self.env['setu.academic.month'].search([('academic_year_id', '=', self.id)])
             if record_m_ids:
                 record_m_ids.write({"date_start": "2026-05-01"})
-
         else:
             raise ValidationError(_("Select Start and End Dates"))
 
