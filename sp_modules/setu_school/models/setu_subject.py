@@ -4,7 +4,7 @@ class SetuSubject(models.Model):
     _name ='setu.subject'
     _description='Subject'
 
-    name=fields.Char(string='Name',require=True)
+    name=fields.Char(string='Name',required=True)
     code = fields.Char(string='code')
     maximum_marks=fields.Integer(string='Maximum Marks')
     minimum_marks=fields.Integer(string='Minimum Marks')

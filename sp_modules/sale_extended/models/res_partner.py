@@ -1,10 +1,11 @@
 from odoo import fields, models, api
 
+
 class ResPartner(models.Model):
-    _inherit='res.partner'
+    _inherit = 'res.partner'
 
-    setu_credit_limit=fields.Integer(string='Credit Limit')
+    setu_credit_limit = fields.Integer(string='Credit Limit',tracking=True)
+    reward_points = fields.Float(string='Reward Points',tracking=True)
 
-    def _action_confirm(self):
-        if self.price_total > self.partner_id.setu_credit_limit:
-            raise ValidationError("out")
+
+
