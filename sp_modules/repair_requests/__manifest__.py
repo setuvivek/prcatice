@@ -8,5 +8,6 @@
         'views/repair_requests_requests_view.xml',
         'views/repair_requests_services_view.xml',
         'views/repair_requests_customers_view.xml',
+        'views/repair_requests_status_view.xml',
     ]
 }

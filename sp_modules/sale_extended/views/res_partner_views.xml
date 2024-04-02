@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
         <record id="sale_extended_inherited_view_partner_form" model="ir.ui.view">
@@ -6,10 +5,13 @@
             <field name="inherit_id" ref="base.view_partner_form"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='vat']" position="after">
-                    <field name="credit_limit"/>
-                    <field name="setu_reward_point"/>
+                    <field name="setu_credit_limit"/>
+                    <field name="reward_points"/>
                 </xpath>
             </field>
         </record>
     </data>
 </odoo>
+
+
+
