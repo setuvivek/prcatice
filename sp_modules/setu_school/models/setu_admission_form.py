@@ -6,7 +6,7 @@ class SetuAdmissionForm(models.Model):
     _description = 'Admission Form model'
     _rec_name = 'student_name'
 
-    student_name = fields.Char(string='Student Name', require=True)
+    student_name = fields.Char(string='Student Name', required=True)
     class_id = fields.Many2one('setu.class', string='Class')
     address = fields.Text(string='Address')
     email = fields.Text(string='Email')

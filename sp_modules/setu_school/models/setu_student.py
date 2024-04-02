@@ -10,7 +10,7 @@ class SetuStudent(models.Model):
     _rec_name='first_name'
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
-    first_name = fields.Char(string='First Name', require=True)
+    first_name = fields.Char(string='First Name', required=True)
     middle_name = fields.Char(string='Middle Name')
     last_name = fields.Char(string='Last Name')
     gender = fields.Selection(selection=[('male', 'Male'), ('female', 'Female')], string='Gender')

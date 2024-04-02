@@ -6,6 +6,7 @@
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='vat']" position="after">
                     <field name="setu_credit_limit"/>
+                    <field name="reward_points"/>
                 </xpath>
             </field>
         </record>
