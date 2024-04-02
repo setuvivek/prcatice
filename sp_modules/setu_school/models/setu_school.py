@@ -5,7 +5,7 @@ class SetuSchool(models.Model):
     _name = 'setu.school'
     _description = 'School model'
 
-    name = fields.Char(string='Name', require=True)
+    name = fields.Char(string='Name', required=True)
     code=fields.Char(string='Code')
     street = fields.Text(string='Street')
     city_id = fields.Many2one('city',string='City')
