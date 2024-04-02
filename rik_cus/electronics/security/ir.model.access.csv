@@ -1,4 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_electronic.items,access.electronic.items,model_electronic_items,,1,1,1,1
+access_electronic.items,access.electronic.items,model_electronic_items,Manager,1,1,1,1
 access_repair.request,access.repair.request,model_repair_request,,1,1,1,1
 access_customer_data,access.customer.data,model_customer_data,,1,1,1,1
