@@ -10,7 +10,17 @@
                     <field name="use_reward_point"/>
                     <field name="reward_points" attrs="{'invisible': [('use_reward_point', '=', False)],
                                                         'required': [('use_reward_point', '!=', False)]}"/>
+                    <field name="discount_available"/>
                 </xpath>
+
+                <xpath expr="//field[@name='payment_term_id']" position="after">
+                    <field name="discount" attrs="{'invisible':[('discount_available', '=', False)],
+                                                   'required':[('discount_available','=',True)]}"/>
+                </xpath>
+
+<!--                <xpath expr="//notebook//page//field//tree//field[@name='price_unit']" position="after">-->
+<!--                    <field name="extra_price"/>-->
+<!--                </xpath>-->
             </field>
         </record>
     </data>
