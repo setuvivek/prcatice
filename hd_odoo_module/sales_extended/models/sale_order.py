@@ -12,9 +12,6 @@ class SaleOrder(models.Model):
     discount_available = fields.Boolean(string='Discount Available')
     discount = fields.Selection(selection=[('30', '30%'), ('50', '50%'), ('80', '80%')])
 
- 
-
-
 
     def action_confirm(self):
         # for order in self:
@@ -55,6 +52,7 @@ class SaleOrder(models.Model):
                 if self.reward_points > self.partner_id.setu_reward_points:
                     raise ValidationError("exceeds reward points")
                 else:
+                    product_name = self.order_line.filtered(lambda line:line.name == 'reward point' and line.order_id.id == self.id)
                     self.order_line = [
                         (0, 0, {'product_id': 42, 'product_uom_qty': 1, 'price_unit': -self.reward_points})]
                     self.partner_id.setu_reward_points -= self.reward_points

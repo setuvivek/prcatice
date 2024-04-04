@@ -18,9 +18,10 @@
                                                    'required':[('discount_available','=',True)]}"/>
                 </xpath>
 
-<!--                <xpath expr="//notebook//page//field//tree//field[@name='price_unit']" position="after">-->
-<!--                    <field name="extra_price"/>-->
-<!--                </xpath>-->
+
+                <xpath expr="//notebook//page//field//tree//field[@name='price_unit']" position="after">
+                    <field name="extra_price"/>
+                </xpath>
             </field>
         </record>
     </data>
