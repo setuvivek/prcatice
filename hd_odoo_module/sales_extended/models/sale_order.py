@@ -12,10 +12,16 @@ class SaleOrder(models.Model):
     discount_available = fields.Boolean(string='Discount Available')
     discount = fields.Selection(selection=[('30', '30%'), ('50', '50%'), ('80', '80%')])
 
+    extra_price = fields.Float(string='Extra Price', compute='_compute_amounts')
+    
+    buyer_id = fields.Many2one('res.partner', string='Buyer', domain=[('is_buyer', '=', True)])
+
+
+
 
     def action_confirm(self):
         # for order in self:
-        ##order.partner_id.filtered(lambda cus:cus.id == order.partner_id.id)
+        # #order.partner_id.filtered(lambda cus:cus.id == order.partner_id.id)
         #     same_customer = self.search([('partner_id', '=', order.partner_id.id)])
         #     total_price_subtotal = sum(orders.order_line.price_subtotal for orders in same_customer)
         #     if total_price_subtotal > order.partner_id.setu_credit_limit:
@@ -84,33 +90,31 @@ class SaleOrder(models.Model):
 
         return res
 
+    @api.depends('order_line.price_subtotal', 'order_line.price_tax', 'order_line.price_total', 'extra_price')
+    def _compute_amounts(self):
+        """Compute the total amounts of the SO."""
+        for order in self:
+            order_lines = order.order_line.filtered(lambda x: not x.display_type)
+
+            if order.company_id.tax_calculation_rounding_method == 'round_globally':
+                tax_results = self.env['account.tax']._compute_taxes([
+                    line._convert_to_tax_base_line_dict()
+                    for line in order_lines
+                ])
+                totals = tax_results['totals']
+                amount_untaxed = totals.get(order.currency_id, {}).get('amount_untaxed', 0.0)
+                amount_tax = totals.get(order.currency_id, {}).get('amount_tax', 0.0)
+                extra_price = totals.get(order.currency_id,{}).get('extra_price', 0.0)
+
+            else:
+                amount_untaxed = sum(order_lines.mapped('price_subtotal'))
+                amount_tax = sum(order_lines.mapped('price_tax'))
+                extra_price = sum(order_lines.mapped('extra_price'))
+
+            order.amount_untaxed = amount_untaxed
+            order.amount_tax = amount_tax
+            order.extra_price = extra_price
+            order.amount_total = order.amount_untaxed + order.amount_tax + order.extra_price
 
 
-
-
-    #
-    # @api.onchange('reward_points', 'use_reward_point')
-    # def _onchange_reward_Points(self):
-    #     if self.use_reward_point == True:
-    #         if self.reward_points > self.partner_id.setu_reward_points:
-    #             raise ValidationError("exceeds reward points")
-    #         else:
-    #             self.order_line = [
-    #                 (0, 0, {'product_id': 42, 'product_uom_qty': 1, 'price_unit': -self.reward_points})]
-    #             self.partner_id.setu_reward_points -= self.reward_points
-    #
-    #     else:
-    #         i = self.env['sale.order.line'].search([('id', '=', self.id),('product_id', '=', 42)])
-    #         i.unlink()
-    #         # self.order_line.unlink()
-
-
-
-    # @api.onchange('reward_points')
-    # def _onchange_reward_points(self):
-    #     if self.reward_points > self.partner_id.setu_reward_points:
-    #         raise ValidationError("exceeds reward points")
-    #     else:
-    #         self.order_line = [(0,0,{'product_id':42, 'product_uom_qty':1, 'price_unit': -self.reward_points})]
-    #         self.partner_id.setu_reward_points -= self.reward_points
 

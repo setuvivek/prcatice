@@ -8,6 +8,8 @@ class ResPartner1(models.Model):
     setu_credit_limit = fields.Float(string='Credit Limit')
     setu_reward_points = fields.Float(string='Reward Points', tracking=True)
 
+    is_buyer = fields.Boolean(string='Is Buyer')
+
 
     # @api.constrains('order_line')
     # def check_credit_line(self):

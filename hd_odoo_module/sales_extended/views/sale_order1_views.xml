@@ -16,12 +16,23 @@
                 <xpath expr="//field[@name='payment_term_id']" position="after">
                     <field name="discount" attrs="{'invisible':[('discount_available', '=', False)],
                                                    'required':[('discount_available','=',True)]}"/>
+                    <field name="buyer_id"/>
                 </xpath>
 
 
                 <xpath expr="//notebook//page//field//tree//field[@name='price_unit']" position="after">
+                    <field name="previous_price"/>
+
+                </xpath>
+
+                 <xpath expr="//notebook//page//field//tree//field[@name='price_unit']" position="before">
+                    <field name="previous_price"/>
+                </xpath>
+
+                <xpath expr="//notebook//page//group//group//field[@name='tax_totals']" position="before" colspan="2">
                     <field name="extra_price"/>
                 </xpath>
+
             </field>
         </record>
     </data>

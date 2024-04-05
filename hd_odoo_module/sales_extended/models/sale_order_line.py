@@ -5,6 +5,7 @@ class SaleOrderLine(models.Model):
     _inherit = 'sale.order.line'
 
     extra_price = fields.Float(string='Extra Price')
+    previous_price = fields.Float(string='Previous Price')
 
 
     @api.depends('product_uom_qty', 'discount', 'price_unit', 'tax_id', 'extra_price')
@@ -17,7 +18,6 @@ class SaleOrderLine(models.Model):
             totals = list(tax_results['totals'].values())[0]
             amount_untaxed = totals['amount_untaxed']
             amount_tax = totals['amount_tax']
-
 
             line.update({
                 'price_subtotal': amount_untaxed,
@@ -44,6 +44,15 @@ class SaleOrderLine(models.Model):
             discount=self.discount,
             price_subtotal=self.price_subtotal,
         )
+
+    @api.onchange('product_id', 'order_id.partner_id')
+    def onchange_previous_price(self):
+        for line in self:
+            if line.product_id and line.order_id.partner_id:
+                previous_price = self.search([('order_id.partner_id', '=', line.order_id.partner_id.id),
+                                              ('product_id', '=', line.product_id.id)], limit=1).id
+                line.previous_price = previous_price
+
 
 
 
