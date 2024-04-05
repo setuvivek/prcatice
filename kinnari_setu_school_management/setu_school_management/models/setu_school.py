@@ -1,7 +1,8 @@
-from odoo import fields, models,api
+from odoo import fields, models
 
-class SetuSchool(models.Model):
+class School(models.Model):
     _name = "setu.school"
+<<<<<<< HEAD
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
     name = fields.Char(string="Name",tracking=True)
@@ -34,14 +35,22 @@ class SetuSchool(models.Model):
         # if self.cname == "abc":
         #     self.is_school = True
         #
+=======
+    _description = "setu_school"
 
-    @api.model
-    def create(self, vals_list):
-        if not vals_list.get('zip'):
-            vals_list.update({'zip':360005})
-        res = super(SetuSchool,self).create(vals_list)
-        return res
+    name = fields.Char(string="School Name" , required=True)
+    code = fields.Char(string="Code")
+    street = fields.Char(string="Address")
+    city = fields.Char(string="City")
+    state_id = fields.Many2one("state",string="State")
+    zip = fields.Char(string="Zip")
+    country_id = fields.Many2one("country", string="Country")
+    required_age = fields.Integer(string="Minimum Age")
+    school_standard_ids = fields.Many2many("setu.standard.standard",string="Standards")
+>>>>>>> 0c53dcac5aa5f8ad5e4668828bd4bbe6b6c4ec57
 
+
+<<<<<<< HEAD
     @api.model_create_multi
     def create(self, vals_list):
         for vals in vals_list:
@@ -66,4 +75,6 @@ class SetuSchool(models.Model):
         return rec
 
 
+=======
+>>>>>>> 0c53dcac5aa5f8ad5e4668828bd4bbe6b6c4ec57
 

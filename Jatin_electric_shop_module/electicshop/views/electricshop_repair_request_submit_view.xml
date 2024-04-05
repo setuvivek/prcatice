@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="electricshop_repair_request_submit_view_tree" model="ir.ui.view">
+        <field name="name">electricshop.repair.request.submit.view.tree</field>
+        <field name="model">electricshop.repair.request.submit</field>
+        <field name="arch" type="xml">
+            <tree string="Electricshop Repair_request_submit">
+
+                <field name="bill_id"/>
+                <field name="user_id"/>
+                <field name="seller_id"/>
+                <field name="items_id"/>
+                <field name="description"/>
+                <field name="items_ids"/>
+                <field name="repair_id"/>
+
+            </tree>
+        </field>
+    </record>
+    <record id="electricshop_repair_request_submit_view_form" model="ir.ui.view">
+        <field name="name">electricshop.repair.request.submit.view.form</field>
+        <field name="model">electricshop.repair.request.submit</field>
+        <field name="arch" type="xml">
+            <form string="Electricshop Repair Request Submit">
+
+                <sheet>
+                    <group>
+
+                        <field name="bill_id"/>
+                        <field name="user_id"/>
+                    </group>
+                    <group>
+                        <field name="seller_id"/>
+                        <field name="description"/>
+                        <field name="repair_id" optional="hide"/>
+
+                        <!--                        <field name="items_ids"/>-->
+                    </group>
+                    <notebook>
+                        <page string="Purchase Items">
+                            <field name="items_ids">
+                                <tree>
+                                    <field name="name" optional="show"/>
+                                    <field name="price" optional="hide"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="electricshop_repair_request_submit_action" model="ir.actions.act_window">
+        <field name="name">Submitted Requests</field>
+        <field name="res_model">electricshop.repair.request.submit</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record id="electricshop_repair_request_submit_action1" model="ir.actions.act_window">
+        <field name="name">Electricshop Repair1</field>
+        <field name="res_model">electricshop.repair.request.submit</field>
+        <field name="view_mode">form</field>
+        <field name="context">{'default_repair_id': active_id}</field>
+    </record>
+
+    <menuitem id="electricshop_repair_request_submit_menu"
+              name="Repair Request Submit"
+              parent="electricshop_repair_main_menu"
+              action="electricshop_repair_request_submit_action"
+    />
+</odoo>

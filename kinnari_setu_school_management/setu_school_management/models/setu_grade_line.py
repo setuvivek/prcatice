@@ -1,7 +1,12 @@
+<<<<<<< HEAD
 from odoo import fields,models,api
+=======
+from odoo import fields, models
+>>>>>>> 0c53dcac5aa5f8ad5e4668828bd4bbe6b6c4ec57
 
-class SetuGradeLine(models.Model):
+class Grade_line(models.Model):
     _name = "setu.grade.line"
+<<<<<<< HEAD
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
     from_mark = fields.Date(string="From Mark")
@@ -44,3 +49,12 @@ class SetuGradeLine(models.Model):
     #     return self.env['setu.grade'].browse([id])
 
 
+=======
+    _description = "setu_grade_line"
+
+    from_mask = fields.Char(string="From Mask")
+    to_mask = fields.Char(string="To Mask")
+    grade_name = fields.Char(string="Name")
+    fail = fields.Char(string="Fail")
+    grade_id = fields.Many2one("setu.grade",string="Grade")
+>>>>>>> 0c53dcac5aa5f8ad5e4668828bd4bbe6b6c4ec57

@@ -1,5 +1,6 @@
-from odoo import fields,models
+from odoo import fields, models
 
+<<<<<<< HEAD
 class SetuStandardStandard(models.Model):
     _name ="setu.standard.standard"
     _inherit = ['mail.thread', 'mail.activity.mixin']
@@ -24,3 +25,11 @@ class SetuStandardStandard(models.Model):
         default = dict(default or {})
         default['code'] = self.code + "copy"
         return super(SetuStandardStandard, self).copy(default=default)
+=======
+class Standard_standard(models.Model):
+    _name = "setu.standard.standard"
+    _description = "Setu Standard Standard"
+
+    name = fields.Char(string="Name")
+    code = fields.Integer(string="Code")
+>>>>>>> 0c53dcac5aa5f8ad5e4668828bd4bbe6b6c4ec57
