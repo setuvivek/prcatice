@@ -7,6 +7,7 @@
             <field name="type">tree</field>
             <field name="arch" type="xml">
                 <tree string="Repair Requests">
+                    <field name="status"/>
                     <field name="customer_name_id"/>
                     <field name="product_id"/>
                     <field name="purchase_date"/>
@@ -27,16 +28,24 @@
                                 <field name="customer_email"/>
                                 <field name="customer_phone"/>
                                 <field name="product_id" options="{'no_open':True, 'no_create': True}"/>
-                                <field name="service_type" attrs="{'invisible':[('product_id','=',False)]}"/>
+                                <field name="remarks"/>
                                 <field name="purchase_date"/>
                                 <field name="warranty_date"/>
+                                <field name="service_type" widget="radio" options="{'horizontal': true}"/>
                                 <field name="service_ids" widget="many2many_tags"
                                        options="{'no_open':True, 'no_create': True}"/>
-
+                                <field name="status"/>
                             </group>
                         </group>
 
                     </sheet>
+
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+
                 </form>
             </field>
         </record>

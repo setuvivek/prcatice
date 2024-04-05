@@ -1,4 +1,5 @@
 from odoo import fields, models, api
+from datetime import date
 from dateutil.relativedelta import relativedelta
 
 
@@ -6,17 +7,26 @@ class RepairRequestsRequests(models.Model):
     _name = 'repair.requests.requests'
     _description = 'Repair Request'
     _rec_name = 'customer_name_id'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
 
-    customer_name_id = fields.Many2one('repair.requests.customers',string='Customer Name', help='Customer Name', required=True)#many2one
+
+    customer_name_id = fields.Many2one('repair.requests.customers',string='Customer Name', help='Customer Name', required=True)
     customer_email = fields.Char(related='customer_name_id.email',string='Customer Email')
     customer_phone = fields.Char(related='customer_name_id.phone', string='Customer Phone')
     product_id = fields.Many2one('repair.requests.items', string='Product', domain=[('repairable', '=', True)])
-    purchase_date = fields.Date(string='Purchase Date')
-    warranty_date=fields.Date(string='Warranty Date')#,compute='_compute_warranty_date')
+    remarks=fields.Text(string='Remarks')
+    purchase_date = fields.Date(string='Purchase Date',tracking=True)
+    warranty_date=fields.Date(string='Warranty Date',compute='_compute_service_type')
+    service_type=fields.Selection(selection=[('free', 'Free'),('paid', 'Paid')], string='Service Type',default='free',compute='_compute_service_type',tracking=True)
     service_ids = fields.Many2many('repair.requests.services', string='Additional Service')
                                    #,default=lambda self: self.env['repair.requests.services'].search([('name', '=', 'repair')]).ids)
+    status=fields.Selection(selection=[('pending', 'Pending'),('complete', 'Complete')], string='Status',default='pending',tracking=True,readonly=True)
 
-    service_type=fields.Selection(related='product_id.service_type')
+
+    @api.model
+    def create(self,vals):
+        self.env['repair.requests.status'].create({'customer_name_id': vals.get('customer_name_id')})
+
 
     @api.model
     def default_get(self,fields):
@@ -25,7 +35,16 @@ class RepairRequestsRequests(models.Model):
         return res
 
 
-    @api.depends('purchase_date')
-    def _compute_warranty_date(self):
+    @api.depends('purchase_date','warranty_date')
+    def _compute_service_type(self):
         for rec in self:
-            rec.warranty_date = rec.purchase_date + relativedelta(months=+1)
+            if rec.purchase_date:
+                rec.warranty_date = rec.purchase_date + relativedelta(months=+self.product_id.warranty_period)
+                if rec.warranty_date > date.today() and (self.product_id.warranty == 'yes'):
+                    rec.service_type = 'free'
+                else:
+                    rec.service_type = 'paid'
+            else:
+                rec.warranty_date = False
+                rec.service_type = False
+

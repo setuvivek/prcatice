@@ -6,7 +6,8 @@
             <field name="model">setu.teacher</field>
             <field name="type">tree</field>
             <field name="arch" type="xml">
-                <tree string="setu_teacher">
+                <tree string="setu_teacher" decoration-success="class_teacher == True">
+                    <field name="class_teacher"/>
                     <field name="name"/>
                     <field name="age"/>
                     <field name="code"/>
@@ -79,7 +80,7 @@
                                     <tree>
                                         <field name="first_name"/>
                                         <field name="roll_no"/>
-                                        <field name="school_id"/>
+<!--                                        <field name="school_id"/>-->
                                         <field name="class_teacher_id"/>
                                     </tree>
                                 </field>
