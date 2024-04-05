@@ -61,6 +61,7 @@ class Admisssion_form(models.Model):
 
 <<<<<<< HEAD
 
+
     def copy(self,default=None):
         default = dict(default or {})
         default['unique_id'] = self.unique_id + 1

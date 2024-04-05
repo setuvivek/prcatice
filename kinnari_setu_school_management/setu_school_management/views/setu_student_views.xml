@@ -61,6 +61,7 @@
                                 <field name="academic_year_id"/>
                                 <field name="address"/>
                                 <field name="sure"/>
+                                <field name="sel"/>
                             </group>
                         </group>
 
@@ -104,6 +105,25 @@
                                             <field name="medium_id" domain="[('is_mid','=',True)]"/>
                                             <field name="school_id"/>
                                             <field name="teacher_id"/>
+
+                                        </group>
+                                    </sheet>
+                                </form>
+                            </page>
+                            <page string="Marks Information" attrs="{'invisible': [('sel','!=',True)]}">
+                                <form string="Marks Information">
+                                    <sheet>
+                                        <group>
+                                            <field name ="group" widget="radio"/>
+                                            <field name="defineg" attrs="{'invisible':[('group','!=','other')],'required':[('group','=','other')]}"/>
+                                            <field name="maths"/>
+                                            <field name="che"/>
+                                            <field name="Phy" attrs="{'invisible':[('group','!=','A')]}"/>
+                                            <field name="Bio" attrs="{'invisible':[('group','!=','B')]}"/>
+                                            <field name="total"/>
+                                            <field name="t"/>
+                                            <field name="s"/>
+                                            <field name="u"/>
 
                                         </group>
                                     </sheet>
