@@ -1,9 +1,18 @@
+<<<<<<< HEAD
 from odoo import fields,models, api,_
 from odoo.exceptions import ValidationError
+=======
+from odoo import api,fields, models
+from datetime import *
+from dateutil.relativedelta import *
+
+import calendar
+>>>>>>> 0c53dcac5aa5f8ad5e4668828bd4bbe6b6c4ec57
 
 
-class SetuAcademicMonth(models.Model):
+class Academic_month(models.Model):
     _name = "setu.academic.month"
+<<<<<<< HEAD
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
     name = fields.Char(string="Name")
@@ -11,9 +20,18 @@ class SetuAcademicMonth(models.Model):
     date_start = fields.Date(string="Start Date")
     date_stop = fields.Date(string="Stop Date")
     academic_year_id = fields.Many2one('setu.academic.year',string="Year")
+=======
+    _description = "setu_academic_month"
+>>>>>>> 0c53dcac5aa5f8ad5e4668828bd4bbe6b6c4ec57
 
 
+    name = fields.Char(string="Month")
+    code = fields.Char(string='Code')
+    date_start = fields.Date(string="Date Start")
+    date_stop = fields.Date(string="Date Stop")
+    academic_year_id = fields.Many2one("setu.academic.year",string="Year")
 
+<<<<<<< HEAD
 
 
     # _sql_constraints = [
@@ -40,3 +58,10 @@ class SetuAcademicMonth(models.Model):
     # def _check_code_(self):
     #     if not self.code:
     #         raise ValidationError(_('Missing code'))
+=======
+    # def unlink(self):
+    #     res = super(Academic_month, self).unlink()
+    #     return res
+    # def search(self):
+    #     self.env['setu.academic.month'].search([('academic_year_id', '=', 1)])
+>>>>>>> 0c53dcac5aa5f8ad5e4668828bd4bbe6b6c4ec57

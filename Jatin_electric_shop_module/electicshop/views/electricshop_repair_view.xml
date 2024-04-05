@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="electricshop_repair_view_tree" model="ir.ui.view">
+        <field name="name">electricshop.repair.view.tree</field>
+        <field name="model">electricshop.repair</field>
+        <field name="arch" type="xml">
+            <tree string="Electricshop Repair">
+                <field name="name"/>
+                <field name="bill_id"/>
+                <field name="user_id"/>
+                <field name="seller_id"/>
+                <field name="description"/>
+                <field name="items_ids"/>
+<!--                <field name="test"/>-->
+            </tree>
+        </field>
+    </record>
+    <record id="electricshop_repair_view_form" model="ir.ui.view">
+        <field name="name">electricshop.repair.view.form</field>
+        <field name="model">electricshop.repair</field>
+        <field name="arch" type="xml">
+            <form string="Electricshop Repair">
+
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="bill_id"/>
+                        <field name="user_id"/>
+                    </group>
+                    <group>
+                        <field name="seller_id"/>
+                        <field name="description"/>
+<!--                        <field name="test"/>-->
+                        <!--                        <field name="items_ids"/>-->
+                    </group>
+                    <notebook>
+                        <page string="Purchase Items">
+                            <field name="items_ids">
+                                <tree>
+                                    <field name="name" optional="show"/>
+                                    <field name="price" optional="hide"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+<!--                    <notebook attrs="{'invisible': [('test', '=', False)]}">-->
+<!--                        <page string="Request Details">-->
+
+<!--                            <tree>-->
+<!--                                <field name="name" string = "name repairing"/>-->
+
+<!--                                <field name="bill_id"/>-->
+<!--                                <field name="user_id"/>-->
+<!--                                <field name="seller_id"/>-->
+<!--                                <field name="items_id"/>-->
+<!--                                <field name="description"/>-->
+
+<!--                                <field name="test"/>-->
+<!--                            </tree>-->
+
+<!--                        </page>-->
+<!--                    </notebook>-->
+                    <!--                    <button name="click_buttton" string="submit request" type="object"/>-->
+                    <!--                    <notebook >-->
+                    <!--                        <page>-->
+                    <!--                            <field name="request_from"/>-->
+                    <!--                            <field name="bill_idd"/>-->
+                    <!--                        </page>-->
+                    <!--                    </notebook>-->
+
+<!--                    <button name="button_action" string="Submit" type="object"/>-->
+                    <button name="%(electricshop_repair_request_submit_action1)d" class="oe_highlight" string="Submit" type="action"/>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="electricshop_repair_action" model="ir.actions.act_window">
+        <field name="name">Electricshop Repair</field>
+        <field name="res_model">electricshop.repair</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record id="electricshop_repair_action1" model="ir.actions.act_window">
+        <field name="name">Electricshop Repair1</field>
+        <field name="res_model">electricshop.repair</field>
+        <field name="view_mode">form</field>
+        <field name="context">{'default_bill_id': active_id,'default_description': active_id}</field>
+    </record>
+    <menuitem id="electricshop_repair_main_menu"
+              name="Repairing"
+              parent="root"
+    />
+    <menuitem id="electricshop_repair_menu"
+              name=" Repair Request"
+              parent="electricshop_repair_main_menu"
+              action="electricshop_repair_action"
+    />
+</odoo>
