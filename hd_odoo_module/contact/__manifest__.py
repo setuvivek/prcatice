@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*
 {
     'name': 'Contact',
-    'version':'1.1',
+    'version':'16.1',
     'data':[
         'security/ir.model.access.csv',
         'views/city_views.xml',

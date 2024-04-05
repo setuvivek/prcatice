@@ -1,32 +1,33 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
     <data>
-        <record id="setu_customer_view_tree" model="ir.ui.view">
-            <field name="name">setu.customer.view.tree</field>
-            <field name="model">setu.customer</field>
+        <record id="setu_company_view_tree" model="ir.ui.view">
+            <field name="name">setu.company.view.tree</field>
+            <field name="model">setu.company</field>
             <field name="type">tree</field>
             <field name="arch" type="xml">
-                <tree string="Customer">
+                <tree string="Setu Company">
                     <field name="name"/>
-                    <field name="item_id"/>
-                    <field name="phone"/>
+                    <field name="code"/>
                     <field name="email"/>
+                    <field name="phone"/>
+                    <field name="website"/>
                 </tree>
             </field>
         </record>
 
-        <record id="setu_customer_view_form" model="ir.ui.view">
-            <field name="name">setu.customer.view.form</field>
-            <field name="model">setu.customer</field>
+        <record id="setu_company_view_form" model="ir.ui.view">
+            <field name="name">setu.company.view.form</field>
+            <field name="model">setu.company</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
-                <form string="Customer">
+                <form string="Setu Company">
                     <sheet>
                         <group>
                             <group>
                                 <field name="name"/>
-                                <label for="street" string="Address"/>
-                                <div class="o_address_format">
+                                 <label for="street" string="Address"/>
+                                 <div class="o_address_format">
                                     <field name="street" placeholder="Street..." class="o_address_street"/>
                                     <field name="city_id" placeholder="City" class="o_address_city"/>
                                     <field name="state_id" class="o_address_state" placeholder="State"
@@ -37,9 +38,10 @@
                                 </div>
                             </group>
                             <group>
-                                <field name="item_id"/>
+                                <field name="code"/>
                                 <field name="email" widget="email"/>
                                 <field name="phone" widget="phone"/>
+                                <field name="website" widget="url" text_field="name" placeholder="e.g. www.odoo.com"/>
                             </group>
                         </group>
                     </sheet>
@@ -47,12 +49,13 @@
             </field>
         </record>
 
-        <record id="setu_customer_action" model="ir.actions.act_window">
-            <field name="name">Customer</field>
-            <field name="res_model">setu.customer</field>
+
+        <record id="setu_company_action" model="ir.actions.act_window">
+            <field name="name">Company</field>
+            <field name="res_model">setu.company</field>
             <field name="view_mode">tree,form</field>
         </record>
 
-        <menuitem id="setu_customer_menu" action="setu_customer_action" parent="root1"/>
+        <menuitem id="setu_company_menu" action="setu_company_action" parent="root1"/>
     </data>
 </odoo>

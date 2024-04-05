@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*
 {
     'name': 'School Management',
-    'version': '1.1',
+    'version': '16.1',
     'depends':['contact'],
     'data': [
         'security/ir.model.access.csv',

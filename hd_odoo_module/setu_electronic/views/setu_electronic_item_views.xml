@@ -10,11 +10,14 @@
                     <field name="name"/>
                     <field name="code"/>
                     <field name="description"/>
-                    <field name="brand"/>
                     <field name="price"/>
+                    <field name="quantity"/>
+                    <field name="total_price"/>
                     <field name="manufacture_date"/>
                     <field name="warranty"/>
                     <field name="is_it_predefined"/>
+
+
                 </tree>
             </field>
         </record>
@@ -27,14 +30,21 @@
                 <form string="Electronic Item">
                     <sheet>
                         <group>
-                            <field name="name"/>
-                            <field name="code"/>
-                            <field name="description"/>
-                            <field name="brand"/>
-                            <field name="price"/>
-                            <field name="manufacture_date"/>
-                            <field name="warranty"/>
-                            <field name="is_it_predefined"/>
+                            <group>
+                                <field name="name"/>
+                                <field name="company_id"/>
+                                <field name="price"/>
+                                <field name="quantity"/>
+                                <field name="total_price"/>
+
+                            </group>
+                            <group>
+                                <field name="code"/>
+                                <field name="description"/>
+                                <field name="is_it_predefined"/>
+                                <field name="manufacture_date"/>
+                                <field name="warranty"/>
+                            </group>
                         </group>
                     </sheet>
                 </form>
