@@ -6,9 +6,16 @@ class SaleOrderLine(models.Model):
 
     extra_price = fields.Integer(string='Extra Price')
 
+
+    @api.model
+    def create(self,vals):
+        res = super(SaleOrderLine,self).create(vals)
+        res.price_unit+=res.extra_price
+        return res
+
     # @api.model
     # def write(self,vals):
-    #     # vals.update({"price_unit": vals.get('price_unit')+=vals.get('extra_price')})
+    #     vals.update({"price_unit": vals.get('price_unit')+vals.get('extra_price')})
     #     # self.price_unit+=self.extra_price
     #     return super(SaleOrderLine,self).write(vals)
 
