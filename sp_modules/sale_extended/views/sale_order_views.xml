@@ -7,7 +7,9 @@
                 <xpath expr="//field[@name='sale_order_template_id']" position="after">
                     <field name="rewards_use"/>
                     <field name="reward_point_use" attrs="{'invisible':[('rewards_use','!=',True)]}"/>
-<!--                    <button name="add" string="Use points" class="btn-primary" type="object"/>-->
+                </xpath>
+                <xpath expr="//tree//field[@name='price_unit']" position="after">
+                    <field name="extra_price"/>
                 </xpath>
             </field>
         </record>
