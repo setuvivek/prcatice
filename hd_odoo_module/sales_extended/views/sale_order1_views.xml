@@ -21,7 +21,7 @@
 
 
                 <xpath expr="//notebook//page//field//tree//field[@name='price_unit']" position="after">
-                    <field name="previous_price"/>
+                    <field name="extra_price"/>
 
                 </xpath>
 
