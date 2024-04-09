@@ -7,9 +7,11 @@
             <field name="inherit_id" ref="sale.view_order_form"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='sale_order_template_id']" position="after">
-<!--                    <field name="is_international_customer"/>-->
                     <field name="reedem_code"/>
                     <field name="number_of_reward_points" attrs="{'invisible': [('reedem_code', '=', False)]}"/>
+                </xpath>
+                <xpath expr="//tree//field[@name='price_unit']" position="after">
+                    <field name="extra_unit_price"/>
                 </xpath>
             </field>
         </record>
