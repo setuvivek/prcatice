@@ -8,12 +8,12 @@ class SaleOrder(models.Model):
     rewards_use = fields.Boolean(string='Add Reward points')
     reward_point_use = fields.Float(string='Points', tracking=True)
 
-    @api.model
-    def write(self,vals):
-        # vals.update({"price_unit": vals.get('price_unit')+vals.get('extra_price')})
-        vals.update({'amount_untaxed':vals.get('amount_untaxed')+vals.parner_id.extra_price})
-        # self.price_unit+=self.extra_price
-        return super(SaleOrder,self).write(vals)
+    # @api.model
+    # def write(self,vals):
+    #     # vals.update({"price_unit": vals.get('price_unit')+vals.get('extra_price')})
+    #     vals.update({'amount_untaxed':vals.get('amount_untaxed')+vals.parner_id.extra_price})
+    #     # self.price_unit+=self.extra_price
+    #     return super(SaleOrder,self).write(vals)
 
     # @api.onchange('rewards_use')
     # def _onchange_rewards_use(self):
