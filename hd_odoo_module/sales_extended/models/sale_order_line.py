@@ -8,7 +8,7 @@ class SaleOrderLine(models.Model):
     previous_price = fields.Float(string='Previous Price', readonly=True)
 
 
-    @api.depends('product_uom_qty', 'discount', 'price_unit', 'tax_id')
+    @api.depends('product_uom_qty', 'discount', 'price_unit', 'tax_id', 'extra_price')
     def _compute_amount(self):
         """
         Compute the amounts of the SO line.
@@ -18,7 +18,6 @@ class SaleOrderLine(models.Model):
             totals = list(tax_results['totals'].values())[0]
             amount_untaxed = totals['amount_untaxed']
             amount_tax = totals['amount_tax']
-
 
 
             line.update({
@@ -52,7 +51,7 @@ class SaleOrderLine(models.Model):
         for line in self:
             if line.product_id and line.order_id.partner_id:
                 previous_price = self.search([('order_id.partner_id', '=', line.order_id.partner_id.id),
-                                              ('product_id', '=', line.product_id.id)], limit=1).price_unit
+                                              ('product_id', '=', line.product_id.id)],limit=1).price_unit
                 line.previous_price = previous_price
 
 

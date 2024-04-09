@@ -9,20 +9,20 @@ class mypage(http.Controller):
         channel = request.env['res.partner'].search([], order='id asc')
         return request.render('module_controller.page', {'name': 'Hemangi', 'channel': channel})
 
+    @http.route('/submit_registration', type='http', auth='public', methods=['POST'], csrf=False)
+    def submit_registration(self, **post):
+        name = post.get('name')
+        email = post.get('email')
+        phone = post.get('phone')
+        company_type = post.get('company_type')
 
-@http.route('/submit_registration', type='http', auth='public', methods=['POST'], csrf=False)
-def submit_registration(self, **post):
-    name = post.get('name')
-    email = post.get('email')
-    phone = post.get('phone')
-    company_type = post.get('company_type')
+        partner = request.env['res.partner'].create({
+            'name': name,
+            'email': email,
+            'phone': phone,
+            'company_type': company_type,
 
-    partner = request.env['res.partner'].create({
-        'name': name,
-        'email': email,
-        'phone': phone,
-        'company_type': company_type,
+        })
 
-    })
+        return request.redirect("/contactlist")
 
-    return request.redirect("/contactlist")

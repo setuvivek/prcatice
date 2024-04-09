@@ -39,20 +39,6 @@ class SaleOrder(models.Model):
                     else:
                         point.partner_id.setu_reward_points += order.price_subtotal * 0.01
 
-            # add reward point to total price_subtotal--------------------------------------------------
-            # for product in self:
-            #     list = []
-            #     for p1 in product.order_line:
-            #         if product.reward_points:
-            #             list.append({
-            #                 'product_id': 42,
-            #                 'product_uom_qty': 1,
-            #                 'price_unit': -self.reward_points,
-            #                 'order_id': self.id
-            #
-            #             })
-            # self.env['sale.order.line'].create(list)
-
 
             if self.use_reward_point == True:
                 if self.reward_points > self.partner_id.setu_reward_points:

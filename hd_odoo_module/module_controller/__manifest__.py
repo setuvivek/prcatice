@@ -5,5 +5,10 @@
     'depends': ['contacts'],
     'data': [
         'templates/templates.xml'
-    ]
+    ],
+    'assets':{
+        'web.assets_frontend':[
+            'module_controller/static/src/js/script.js',
+        ],
+    },
 }

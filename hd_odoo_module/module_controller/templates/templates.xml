@@ -2,7 +2,7 @@
     <template id="page">
         hello,
         <t t-esc="name"/>
-        <table class="table partner">
+        <table class="table partner" border="0">
 
             <tr>
                 <th>No</th>
@@ -47,7 +47,7 @@
 
         <form action="/submit_registration" method="post">
             <label for="name">Name:</label>
-            <input type="text" id="name" name="name"/>
+            <input type="text" id="name" name="name" class="name"/>
 
             <label for="email">Email:</label>
             <input type="email" id="email" name="email"/>
@@ -61,7 +61,23 @@
                 <option value="company">Company</option>
             </select>
 
-            <input type="submit" value="Submit"/>
+<!--            <input type="text" class="txt"/>-->
+<!--            <button class="required">Submit</button>-->
+
+
+
+
+
+<!--            <script>-->
+<!--                document.getElementById("name").setAttribute('required', '')-->
+<!--                document.getElementById("email").setAttribute('required', '')-->
+<!--                document.getElementById("phone").setAttribute('required', '')-->
+<!--            </script>-->
+
+            <input type="submit" value="Submit" class="required"/>
+
+
+
         </form>
     </template>
 </odoo>
