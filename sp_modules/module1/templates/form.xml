@@ -1,0 +1,9 @@
+<odoo>
+
+    <template id="form">
+        <form>
+            <input type="name"/>
+        </form>
+    </template>
+
+</odoo>
