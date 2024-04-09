@@ -1,4 +1,7 @@
 from odoo import fields, models, api
+import logging
+
+_logger = logging.getLogger(__name__)
 
 
 class SaleOrderLine(models.Model):
@@ -6,37 +9,25 @@ class SaleOrderLine(models.Model):
 
     extra_price = fields.Integer(string='Extra Price')
 
-
-    @api.model
-    def create(self,vals):
-        res = super(SaleOrderLine,self).create(vals)
-        res.price_unit+=res.extra_price
-        return res
-
-    # @api.model
-    # def write(self,vals):
-    #     vals.update({"price_unit": vals.get('price_unit')+vals.get('extra_price')})
-    #     # self.price_unit+=self.extra_price
-    #     return super(SaleOrderLine,self).write(vals)
+    @api.depends('product_uom_qty', 'discount', 'price_unit', 'tax_id', 'extra_price')
+    def _compute_amount(self):
+        for rec in self:
+            res = super(SaleOrderLine, self)._compute_amount()
+            rec.price_subtotal += rec.extra_price * rec.product_uom_qty
+            rec.price_total = rec.price_subtotal * rec.product_uom_qty
+            rec.order_id.amount_untaxed+=rec.extra_price * rec.product_uom_qty
+            rec.order_id.amount_total+=rec.price_total
+            rec.update({
+                'price_subtotal': rec.price_subtotal,
+                'price_total': rec.price_total,
+            })
+            return res
 
     # def _convert_to_tax_base_line_dict(self):
-    #     self.env['account.tax']._convert_to_tax_base_line_dict(
-    #         self,
-    #         partner=self.order_id.partner_id,
-    #         currency=self.order_id.currency_id,
-    #         product=self.product_id,
-    #         taxes=self.tax_id,
-    #         price_unit=self.price_unit + self.extra_price,
-    #         quantity=self.product_uom_qty,
-    #         discount=self.discount,
-    #         price_subtotal=self.price_subtotal,
-    #     )
-    #     return super(SaleOrderLine,self)._convert_to_tax_base_line_dict()
-
-
-        # for order in self:
-        #     order.amount_untaxed += order.extra_price
-        # 
-        # return super(SaleOrderLine, self)._compute_amounts()
-
-
+    #     res = super(SaleOrderLine, self)._convert_to_tax_base_line_dict()
+    #     for rec in self:
+    #         self.env['account.tax']._convert_to_tax_base_line_dict(
+    #             self,
+    #             price_unit=rec.price_unit + rec.extra_price,
+    #             )
+    #     return res
