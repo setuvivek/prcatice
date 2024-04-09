@@ -1,0 +1,91 @@
+
+<!--<odoo>-->
+<!--    <template id="page">-->
+<!--        <t t-call="web.layout">-->
+<!--            <div>-->
+<!--                <table>-->
+<!--                    <thead>-->
+<!--                        <tr>-->
+<!--                            <th>Serial Number</th>-->
+<!--                            <th>Name</th>-->
+<!--                            <th>Phone Number</th>-->
+<!--                            <th>Email</th>-->
+<!--                            <th>Company Type</th>-->
+<!--                        </tr>-->
+<!--                    </thead>-->
+<!--                    <tbody>-->
+<!--                        <t t-set="counter" t-value="1"/>-->
+<!--                        <t t-foreach="partners" t-as="partner">-->
+<!--                            <tr>-->
+<!--                                <td><t t-out="counter"/></td>-->
+<!--                                <td><t t-out="partner.name"/></td>-->
+<!--                                <td><t t-out="partner.phone"/></td>-->
+<!--                                <td><t t-out="partner.email"/></td>-->
+<!--                                <td>-->
+<!--                                    <t t-if="partner.is_company">-->
+<!--                                        Company-->
+<!--                                    </t>-->
+<!--                                    <t t-else="">-->
+<!--                                        Person-->
+<!--                                    </t>-->
+<!--                                </td>-->
+<!--                            </tr>-->
+<!--                            <t t-set="counter" t-value="counter + 1"/>-->
+<!--                        </t>-->
+<!--                    </tbody>-->
+<!--                </table>-->
+<!--            </div>-->
+<!--        </t>-->
+<!--    </template>-->
+<!--</odoo>-->
+
+
+
+<!--    <template id="child">-->
+
+<!--        <t t-set = "users" t-value="request.env['res.users'].sudo().search([])"/>-->
+
+<!--        <t t-foreach="users" t-as="user">-->
+<!--            <br/>-->
+<!--            <t t-out="user.name"></t>-->
+
+<!--            <t t-if="user.login == 'r@m.com'">-->
+<!--                not valid-->
+
+<!--            </t>-->
+
+<!--            <br/>-->
+<!--        </t>-->
+
+<!--    </template>-->
+
+
+
+<!--<odoo>-->
+<!--    <template id ="page">-->
+<!--        <t t-csall="web.layout">-->
+<!--            Hellow World Good Day,-->
+
+<!--            <t t-esc="name"/>-->
+<!--            <t t-call="module1.child"/>-->
+<!--        </t>-->
+<!--    </template>-->
+
+<!--    <template id="child">-->
+<!--        <t t-set = "users" t-value="request.env['res.users'].sudo().search([])"/>-->
+
+<!--        <t t-foreach="users" t-as="user">-->
+<!--            <br/>-->
+<!--            <t t-out="user.name"></t>-->
+
+<!--            <t t-if="user.login == 'r@m.com'">-->
+<!--                not valid-->
+
+<!--            </t>-->
+
+<!--            <br/>-->
+<!--        </t>-->
+<!--    </template>-->
+
+
+<!--</odoo>-->
