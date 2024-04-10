@@ -1,11 +1,13 @@
 # -*- coding: utf-8 -*-
-from odoo import models,fields,api
+from odoo import models, fields, api
+
 
 class SaleOrderLine(models.Model):
     _inherit = 'sale.order.line'
 
     extra_price = fields.Float(string='Extra Price')
     previous_price = fields.Float(string='Previous Price', readonly=True)
+    buyer_id = fields.Many2one('res.partner', string='Buyer', domain=[('is_buyer', '=', True)])
 
 
     @api.depends('product_uom_qty', 'discount', 'price_unit', 'tax_id', 'extra_price')
@@ -18,7 +20,6 @@ class SaleOrderLine(models.Model):
             totals = list(tax_results['totals'].values())[0]
             amount_untaxed = totals['amount_untaxed']
             amount_tax = totals['amount_tax']
-
 
             line.update({
                 'price_subtotal': amount_untaxed,
@@ -51,14 +52,16 @@ class SaleOrderLine(models.Model):
         for line in self:
             if line.product_id and line.order_id.partner_id:
                 previous_price = self.search([('order_id.partner_id', '=', line.order_id.partner_id.id),
-                                              ('product_id', '=', line.product_id.id)],limit=1).price_unit
+                                              ('product_id', '=', line.product_id.id)], limit=1).price_unit
                 line.previous_price = previous_price
 
-
-
-
-
-
-
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            more_products = self.env['product.product'].search([('add_more_product', '=', True)])
+            if vals.product_id.name == vals.product_id.name:
+                self.env.create({
+                    'product_id':more_products
+                })
 
 

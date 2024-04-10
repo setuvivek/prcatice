@@ -11,7 +11,9 @@
                      <field name="setu_reward_points"/>
                 </xpath>
                 <xpath expr="//notebook/page[@name='internal_notes']" position="after">
-                    <page string="Extra Information"/>
+                    <page string="Extra Information">
+                         <field name="setu_credit_limit"/>
+                    </page>
                 </xpath>
                 <xpath expr="//sheet//group//group//field[@name='category_id']" position="after">
                     <field name="is_buyer"/>

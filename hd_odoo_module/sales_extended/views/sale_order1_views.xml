@@ -16,7 +16,7 @@
                 <xpath expr="//field[@name='payment_term_id']" position="after">
                     <field name="discount" attrs="{'invisible':[('discount_available', '=', False)],
                                                    'required':[('discount_available','=',True)]}"/>
-                    <field name="buyer_id"/>
+                    <field name="buyer_id" options="{'no_create':True}"/>
                 </xpath>
 
 
@@ -26,6 +26,7 @@
                 </xpath>
 
                  <xpath expr="//notebook//page//field//tree//field[@name='price_unit']" position="before">
+                     <field name="buyer_id" options="{'no_create':True}"/>
                     <field name="previous_price"/>
                 </xpath>
 

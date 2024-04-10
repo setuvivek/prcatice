@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="sales_extended_inherited_product_normal_form_view" model="ir.ui.view">
+            <field name="name">sales.extended.inherited.product.normal.form.view</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook/page[@name='invoicing']" position="after">
+                    <page string="More Products">
+
+                        <field name="add_more_product">More</field>
+                        <field name="more_product_ids" attrs="{'invisible':[('add_more_product','=',False)],
+                                                               'required':[('add_more_product','=',True)]}"/>
+
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

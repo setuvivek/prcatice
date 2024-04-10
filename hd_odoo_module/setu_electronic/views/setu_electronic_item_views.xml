@@ -50,11 +50,24 @@
             </field>
         </record>
 
+        <record id="setu_electronic_item_view_search" model="ir.ui.view">
+            <field name="name">setu.electronic.item.view.search</field>
+            <field name="model">setu.electronic.item</field>
+            <field name="arch" type="xml">
+                <search string="Filters">
+                    <field name="name" string="Filter Name"/>
+                    <filter string="Unit Price" domain="[('price','>',100)]" name="unit_price"/>
+                </search>
+
+            </field>
+        </record>
+
 
         <record id="setu_electronic_item_action" model="ir.actions.act_window">
             <field name="name">Electronic Item</field>
             <field name="res_model">setu.electronic.item</field>
             <field name="view_mode">tree,form</field>
+            <field name="context">{"search_default_unit_price":1}</field>
         </record>
 
         <menuitem id="root" name="Setu Electronic"/>

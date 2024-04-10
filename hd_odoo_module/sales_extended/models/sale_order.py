@@ -102,5 +102,10 @@ class SaleOrder(models.Model):
             order.extra_price = extra_price
             order.amount_total = order.amount_untaxed + order.amount_tax + order.extra_price
 
+    @api.onchange('buyer_id')
+    def _onchange_buyer(self):
+        if self.buyer_id:
+            self.order_line.buyer_id = self.buyer_id
+
 
 

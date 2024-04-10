@@ -6,6 +6,7 @@
     'data':[
         'views/res_partner1_views.xml',
         'views/sale_order1_views.xml',
+        'views/product_views.xml',
     ]
 }
 
