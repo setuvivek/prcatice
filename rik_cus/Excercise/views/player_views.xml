@@ -22,8 +22,24 @@
                 </tree>
             </field>
         </record>
-
-
+        <record id="player_search" model="ir.ui.view">
+            <field name="name">player.search</field>
+            <field name="model">player</field>
+            <field name="arch" type="xml">
+                <search string="Search modules">
+                    <filter name="state" string="State" domain="[('state_id', '=', 'Saurashtra')]"/>
+                    <separator/>
+                    <filter name="city" string="City" domain="[('city_id', '=', 'Mumbai')]"/>
+                    <separator/>
+                    <filter name="team" string="Team" domain="[('team_id', '=', 'KKR')]"/>
+                    <group expand="0" string="Group By">
+                        <filter string="Team" name="team_id" domain="[]" context="{'group_by':'team_id'}"/>
+                        <filter string="Owner" name="owner_name" domain="[]" context="{'group_by':'owner_name'}"/>
+                        <filter string="State" name="state_id" domain="[]" context="{'group_by':'state_id'}"/>
+                    </group>
+               </search>
+            </field>
+        </record>
         <record id="player_view_form" model="ir.ui.view">
             <field name="name">player.view.form</field>
             <field name="model">player</field>
