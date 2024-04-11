@@ -3,6 +3,6 @@
     'version': '1.0',
     'data': [
         'templates/template.xml',
-        # 'templates/form.xml',
+        'templates/form.xml',
     ]
 }
