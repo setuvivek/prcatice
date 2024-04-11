@@ -15,7 +15,6 @@
                     <field name="result"/>
                     <field name="city_id" />
                     <field name="nationality"/>
-                    xzfbf
                 </tree>
             </field>
         </record>

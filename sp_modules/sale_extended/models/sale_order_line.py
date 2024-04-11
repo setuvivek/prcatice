@@ -9,25 +9,38 @@ class SaleOrderLine(models.Model):
 
     extra_price = fields.Integer(string='Extra Price')
 
-    @api.depends('product_uom_qty', 'discount', 'price_unit', 'tax_id', 'extra_price')
-    def _compute_amount(self):
-        for rec in self:
-            res = super(SaleOrderLine, self)._compute_amount()
-            rec.price_subtotal += rec.extra_price * rec.product_uom_qty
-            rec.price_total = rec.price_subtotal * rec.product_uom_qty
-            rec.order_id.amount_untaxed+=rec.extra_price * rec.product_uom_qty
-            rec.order_id.amount_total+=rec.price_total
-            rec.update({
-                'price_subtotal': rec.price_subtotal,
-                'price_total': rec.price_total,
-            })
-            return res
+    @api.model
+    def create(self,vals):
 
-    # def _convert_to_tax_base_line_dict(self):
-    #     res = super(SaleOrderLine, self)._convert_to_tax_base_line_dict()
-    #     for rec in self:
-    #         self.env['account.tax']._convert_to_tax_base_line_dict(
-    #             self,
-    #             price_unit=rec.price_unit + rec.extra_price,
-    #             )
-    #     return res
+        search_laptop_id = self.env['product.product']
+        for rec in self:
+            # if rec.product_id.name==laptop_product_id':
+            _logger.info(">>>>>>>>>>>>>laptop")
+                # self.env['sale.order.line'].create({'product_id': self.env['product.product'].search([('name','=','mouse')]).id,'order_id':rec.order_id})
+        return super(SaleOrderLine,self).create(vals)
+                
+
+
+
+    def _convert_to_tax_base_line_dict(self):
+        """ Convert the current record to a dictionary in order to use the generic taxes computation method
+        defined on account.tax.
+
+        :return: A python dictionary.
+        """
+        self.ensure_one()
+        return self.env['account.tax']._convert_to_tax_base_line_dict(
+            self,
+            partner=self.order_id.partner_id,
+            currency=self.order_id.currency_id,
+            product=self.product_id,
+            taxes=self.tax_id,
+            price_unit=self.price_unit+self.extra_price,
+            quantity=self.product_uom_qty,
+            discount=self.discount,
+            price_subtotal=self.price_subtotal,
+        )
+
+
+
+
