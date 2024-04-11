@@ -6,13 +6,13 @@
             <field name="model">product.product</field>
             <field name="inherit_id" ref="product.product_normal_form_view"/>
             <field name="arch" type="xml">
-                <xpath expr="//notebook/page[@name='invoicing']" position="after">
+                <xpath expr="//sheet/notebook/page[@name='invoicing']" position="after">
                     <page string="More Products">
-
-                        <field name="add_more_product">More</field>
-                        <field name="more_product_ids" attrs="{'invisible':[('add_more_product','=',False)],
-                                                               'required':[('add_more_product','=',True)]}"/>
-
+                        <group>
+                            <field name="add_more_product"/>
+                            <field name="more_product_ids" attrs="{'invisible':[('add_more_product','=',False)],
+                                                               'required':[('add_more_product','!=',False)]}" widget="many2many_tags"/>
+                        </group>
                     </page>
                 </xpath>
             </field>

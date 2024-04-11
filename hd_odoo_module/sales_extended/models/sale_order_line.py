@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
 from odoo import models, fields, api
+import logging
+
+_logger = logging.getLogger(__name__)
 
 
 class SaleOrderLine(models.Model):
@@ -55,13 +58,24 @@ class SaleOrderLine(models.Model):
                                               ('product_id', '=', line.product_id.id)], limit=1).price_unit
                 line.previous_price = previous_price
 
-    @api.model_create_multi
-    def create(self, vals_list):
-        for vals in vals_list:
-            more_products = self.env['product.product'].search([('add_more_product', '=', True)])
-            if vals.product_id.name == vals.product_id.name:
-                self.env.create({
-                    'product_id':more_products
+
+    @api.model
+    def create(self,vals):
+        res = super(SaleOrderLine,self).create(vals)
+
+        product = res.product_id
+        if product and product.add_more_product:
+            for more_product in product.more_product_ids:
+                self.env['sale.order.line'].create({
+                    'order_id':res.order_id.id,
+                    'product_id':more_product.id,
+                    'product_uom_qty':res.product_uom_qty,
+                    'price_unit':res.price_unit
                 })
+                _logger.warning('----------------->>>>')
+
+        return res
+
+
 
 

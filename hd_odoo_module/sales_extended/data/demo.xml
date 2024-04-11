@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <record id="product_product_practice" model="product.product">
+            <field name="name">Laptop1</field>
+            <field name="categ_id" ref="product.product_category_5"/>
+            <field name="standard_price">70000</field>
+            <field name="list_price">50000</field>
+            <field name="detailed_type">product</field>
+            <field name="weight">0.01</field>
+            <field name="uom_id" ref="uom.product_uom_unit"/>
+            <field name="uom_po_id" ref="uom.product_uom_unit"/>
+            <field name="description">18″ x 2½″ Square Leg</field>
+            <field name="default_code">FURN_2333</field>
+            <field name="tracking">lot</field>
+            <field name="add_more_product">True</field>
+            <field name="more_product_ids" ref="sale.product_product_4e"/>
+        </record>
+    </data>
+</odoo>
