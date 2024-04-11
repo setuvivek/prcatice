@@ -8,6 +8,7 @@ class SaleOrder(models.Model):
     rewards_use = fields.Boolean(string='Add Reward points')
     reward_point_use = fields.Float(string='Points', tracking=True)
 
+
     # @api.model
     # def write(self,vals):
     #     # vals.update({"price_unit": vals.get('price_unit')+vals.get('extra_price')})
