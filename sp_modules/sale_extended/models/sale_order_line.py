@@ -6,17 +6,17 @@ _logger = logging.getLogger(__name__)
 
 class SaleOrderLine(models.Model):
     _inherit = 'sale.order.line'
-
     extra_price = fields.Integer(string='Extra Price')
 
     @api.model
     def create(self,vals):
 
         search_laptop_id = self.env['product.product']
+        laptop_product_id = self.env.ref('sale_extended.product_product_computer_desk')
         for rec in self:
             # if rec.product_id.name==laptop_product_id':
             _logger.info(">>>>>>>>>>>>>laptop")
-                # self.env['sale.order.line'].create({'product_id': self.env['product.product'].search([('name','=','mouse')]).id,'order_id':rec.order_id})
+            # self.env['sale.order.line'].create({'product_id': self.env['product.product'].search([('name','=','mouse')]).id,'order_id':rec.order_id})
         return super(SaleOrderLine,self).create(vals)
                 
 

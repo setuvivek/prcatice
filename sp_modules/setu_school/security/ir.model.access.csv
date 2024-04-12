@@ -4,7 +4,10 @@ access_setu_class,access.setu.class,setu_school.model_setu_class,,1,1,1,1
 access_setu_subject,access.setu.subject,setu_school.model_setu_subject,,1,1,1,1
 access_setu_student,access.setu.student,setu_school.model_setu_student,,1,1,1,1
 access_setu_admission_form,access.setu.admission.form,setu_school.model_setu_admission_form,,1,1,1,1
-access_setu_school,access.setu.school,setu_school.model_setu_school,,1,1,1,1
+
+access_setu_school_user,access.setu.school,setu_school.model_setu_school,setu_school.group_school_user,1,1,0,0
+access_setu_school_manager,access.setu.school,setu_school.model_setu_school,setu_school.group_school_manager,1,1,1,1
+
 access_setu_academic_year,access.setu.academic.year,setu_school.model_setu_academic_year,,1,1,1,1
 access_setu_academic_month,access.setu.academic.month,setu_school.model_setu_academic_month,,1,1,1,1
 access_setu_class_room,access.setu.class.room,setu_school.model_setu_class_room,,1,1,1,1
