@@ -3,6 +3,7 @@
     'version': '1.0',
     'depends':['contact', 'mail'],
     'data': [
+        'security/res_groups.xml',
         'security/ir.model.access.csv',
         'views/setu_teacher.xml',
         'views/setu_class.xml',
