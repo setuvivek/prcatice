@@ -44,7 +44,7 @@
         </record>
 
 
-        <menuitem id="setu_standard_standard_menu" action="setu_standard_standard_action" parent="root3"/>
+        <menuitem id="setu_standard_standard_menu" action="setu_standard_standard_action" parent="root1"/>
 
     </data>
 </odoo>

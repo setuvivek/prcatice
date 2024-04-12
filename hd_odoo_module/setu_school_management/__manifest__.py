@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*
 {
-    'name': 'Setu School Management',
+    'name': 'setu_school_management',
     'version': '16.1',
     'depends': ['contact', 'mail'],
     'data':[
+        'security/school_groups.xml',
         'security/ir.model.access.csv',
         'views/setu_school_views.xml',
         'views/setu_teacher_views.xml',

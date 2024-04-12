@@ -9,7 +9,7 @@ class SaleOrderLine(models.Model):
     _inherit = 'sale.order.line'
 
     extra_price = fields.Float(string='Extra Price')
-    previous_price = fields.Float(string='Previous Price', readonly=True)
+    previous_price = fields.Float(string='Previous Price', readonly=True, compute="_compute_previous_price", store=True)
     buyer_id = fields.Many2one('res.partner', string='Buyer', domain=[('is_buyer', '=', True)])
 
 
@@ -50,8 +50,8 @@ class SaleOrderLine(models.Model):
             price_subtotal=self.price_subtotal,
         )
 
-    @api.onchange('product_id', 'order_id.partner_id')
-    def onchange_previous_price(self):
+    @api.depends('product_id', 'order_id.partner_id')
+    def _compute_previous_price(self):
         for line in self:
             if line.product_id and line.order_id.partner_id:
                 previous_price = self.search([('order_id.partner_id', '=', line.order_id.partner_id.id),
@@ -66,13 +66,14 @@ class SaleOrderLine(models.Model):
         product = res.product_id
         if product and product.add_more_product:
             for more_product in product.more_product_ids:
+                _logger.warning('----------------->>>>')
                 self.env['sale.order.line'].create({
                     'order_id':res.order_id.id,
                     'product_id':more_product.id,
                     'product_uom_qty':res.product_uom_qty,
                     'price_unit':res.price_unit
                 })
-                _logger.warning('----------------->>>>')
+
 
         return res
 

@@ -9,11 +9,11 @@ class ProductProduct(models.Model):
     
     
     
-class ProductTemplate(models.Model):
-    _inherit = 'product.template'
-
-    detailed_type = fields.Selection(selection_add=[
-        ('practice', 'Practice Product')
-    ], tracking=True, ondelete={'practice': 'set consu'})
-
+# class ProductTemplate(models.Model):
+#     _inherit = 'product.template'
+#
+#     detailed_type = fields.Selection(selection_add=[
+#         ('practice', 'Practice Product')
+#     ], tracking=True, ondelete={'practice': 'set consu'})
+#
 

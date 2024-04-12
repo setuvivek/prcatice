@@ -1,9 +1,14 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_setu_teacher,access.setu.teacher,setu_school_management.model_setu_teacher,,1,1,1,1
-access_setu_school,access.setu.school,setu_school_management.model_setu_school,,1,1,1,1
+
+access_setu_teacher,access.setu.teacher,setu_school_management.model_setu_teacher,setu_school_management.group_teacher,1,0,0,0
+
+access_setu_school,access.setu.school,setu_school_management.model_setu_school,setu_school_management.group_school,1,0,0,0
+
 access_setu_class,access.setu.class,setu_school_management.model_setu_class,,1,1,1,1
 access_setu_subject,access.setu.subject,setu_school_management.model_setu_subject,,1,1,1,1
-access_setu_student,access.setu.student,setu_school_management.model_setu_student,,1,1,1,1
+
+access_setu_student,access.setu.student,setu_school_management.model_setu_student,setu_school_management.group_student,1,0,0,0
+
 access_setu_admission_form,access.setu.admission.form,setu_school_management.model_setu_admission_form,,1,1,1,1
 access_setu_academic_year,access.setu.academic.year,setu_school_management.model_setu_academic_year,,1,1,1,1
 access_setu_academic_month,access.setu.academic.month,setu_school_management.model_setu_academic_month,,1,1,1,1

@@ -45,8 +45,8 @@
             <field name="view_mode">tree,form</field>
         </record>
 
-        <menuitem id="root3" name="Standards" parent="root"/>
-        <menuitem id="setu_standard_division_menu" action="setu_standard_division_action" parent="root3"/>
+
+        <menuitem id="setu_standard_division_menu" action="setu_standard_division_action" parent="root1"/>
 
     </data>
 </odoo>

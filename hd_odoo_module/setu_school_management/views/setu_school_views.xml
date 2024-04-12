@@ -70,7 +70,7 @@
         </record>
 
         <menuitem id="root" name=" SetuSchool"/>
-        <menuitem id="root1" name="Setu School" parent="root"/>
+        <menuitem id="root1" name="Setu School" parent="root" groups="setu_school_management.group_school"/>
         <menuitem id="setu_school__menu" action="setu_school__action" parent="root1"/>
 
     </data>

@@ -116,7 +116,7 @@
             <field name="view_mode">tree,form</field>
         </record>
 
-        <menuitem id="root2" name="Student" parent="root"/>
+        <menuitem id="root2" name="Student" parent="root" groups="setu_school_management.group_student"/>
         <menuitem id="setu_student_menu" action="setu_student_action" parent="root2"/>
 
     </data>

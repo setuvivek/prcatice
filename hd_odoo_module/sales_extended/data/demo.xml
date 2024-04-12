@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <odoo>
     <data>
-        <record id="product_product_practice" model="product.product">
+        <record id="product_product_1" model="product.product">
             <field name="name">Laptop1</field>
             <field name="categ_id" ref="product.product_category_5"/>
             <field name="standard_price">70000</field>
@@ -13,8 +13,19 @@
             <field name="description">18″ x 2½″ Square Leg</field>
             <field name="default_code">FURN_2333</field>
             <field name="tracking">lot</field>
-            <field name="add_more_product">True</field>
-            <field name="more_product_ids" ref="sale.product_product_4e"/>
+            <field name="add_more_product" eval="True"/>
+
         </record>
+
+        <record id="product_product_2" model="product.product">
+            <field name="name">Laptop3</field>
+        </record>
+
+        <record id="product_product_3" model="product.product">
+            <field name="name">Laptop2</field>
+            <field name="add_more_product">True</field>
+            <field name="more_product_ids" eval="[(0,0,{'name':'keyboard'}),(0,0,{'name':'CPU'})]"/>
+        </record>
+
     </data>
 </odoo>
