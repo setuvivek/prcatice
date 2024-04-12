@@ -1,0 +1,13 @@
+<odoo>
+    <data>
+        <record id="product_product_computer_desk" model="product.product">
+            <field name="name">Stumps</field>
+            <field name="categ_id" ref="product.product_category_5"/>
+            <field name="standard_price">100</field>
+            <field name="list_price">10000</field>
+            <field name="detailed_type">product</field>
+            <field name="uom_id" ref="uom.product_uom_unit"/>
+            <field name="uom_po_id" ref="uom.product_uom_unit"/>
+        </record>
+    </data>
+</odoo>
