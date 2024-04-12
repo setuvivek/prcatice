@@ -32,14 +32,30 @@ class SaleOrderLine(models.Model):
         )
 
 
+    # @api.model
+    # def create(self, values):
+    #     line = super(SaleOrderLine, self).create(values)
+    #     price_subtotal = (line.price_unit + line.extra_unit_price) * line.product_uom_qty
+    #     line.write({'price_subtotal': price_subtotal})
+    #     return line
+
+
+
     @api.model
-    def create(self, values):
-        line = super(SaleOrderLine, self).create(values)
-        price_subtotal = (line.price_unit + line.extra_unit_price) * line.product_uom_qty
-        line.write({'price_subtotal': price_subtotal})
-        return line
+    def create(self, vals):
+        if 'product_id' in vals:
+            # If product_id is provided, use it directly
+            return super(SaleOrderLine, self).create(vals)
 
+        # Fetch the default product based on the sale_order_id field of the product.product model
+        product_id = False
+        product_product = self.env['product.product'].search([('id', '=', vals.get('sale_order_id'))])
+        if product_product:
+            product_id = product_product.default_product_id.id
 
+        # Create sale order line with the default product
+        vals['product_id'] = product_id
+        return super(SaleOrderLine, self).create(vals)
 
 # price_unit
 # extra_unit_price

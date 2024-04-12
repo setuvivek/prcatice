@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="sale_extended_inherited_product_normal_form_view" model="ir.ui.view">
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[5]" position="after">
+                    <page string="New Page" name="new_page">
+                        <group>
+                            <field name="add_product"/>
+                            <field name="sale_product_id" attrs="{'invisible': [('add_product', '=', False)]}"/>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
+<!--        <record id="sale_extended_inherited_product_normal_form_view" model="ir.ui.view">-->
+<!--            <field name="model">product.product</field>-->
+<!--            <field name="inherit_id" ref="product.product_normal_form_view"/>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <xpath expr="//page[@name='accounting']" position="after">-->
+<!--                    <page string="New Page" name="new_page">-->
+<!--                        <form>-->
+<!--                            <field name="add_product"/>-->
+<!--                            <field name="sale_product_id"/>-->
+<!--                        </form>-->
+<!--                    </page>-->
+<!--                </xpath>-->
+<!--            </field>-->
+<!--        </record>-->
+
