@@ -1,5 +1,6 @@
 <odoo>
-    <menuitem id="root" name="Setu School"  groups="setu_school.group_school_user"/>
+    <menuitem id="root" name="Setu School"  />
+<!--    groups="setu_school.group_school_user"-->
 
     <menuitem id="school" name="School" parent="root"/>
     <menuitem id="setu_school_menu" name="School" action="setu_school_action" parent="school"/>

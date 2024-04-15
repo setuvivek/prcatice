@@ -16,4 +16,5 @@ class SetuSchool(models.Model):
     email = fields.Char(string='Email')
     required_age=fields.Integer(string='Required Age')
     school_standard_ids=fields.Many2many('setu.standard.standard','school_standard_ids',string='School Standards')
+    student_ids = fields.One2many("setu.student", 'school_id', string="Students")
 
