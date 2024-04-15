@@ -67,7 +67,8 @@
                                 <field name="email"/>
                                 <field name="phone"/>
                                 <field name="active"/>
-                                <field name="school_id" options='{"no_open": True}' domain="[('student_ids', '=', school_id)]"/>
+                                <field name="school_id" options='{"no_open": True}'
+                                       domain="[('student_ids', '=', school_id)]"/>
                                 <field name="standard_id"/>
                                 <field name="division_id"/>
                                 <field name="medium_id"/>
@@ -89,7 +90,9 @@
                                 <field name="date_of_birth"/>
                                 <field name="admission_date"/>
                                 <field name="academic_year_id"/>
-                                <field name="class_teacher_id" domain="['|',('city_id', '=', city_id), ('city2_id', '=', city_id)]"/>
+                                <field name="class_teacher_id"
+                                       domain="['|',('city_id', '=', city_id), ('city2_id', '=', city_id)]"/>
+                                <field name="user_id"/>
                             </group>
                         </group>
                         <notebook>

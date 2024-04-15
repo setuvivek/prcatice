@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <odoo>
-    <data>
+    <data noupdate="1">
         <record id="product_product_1" model="product.product">
             <field name="name">Laptop1</field>
             <field name="categ_id" ref="product.product_category_5"/>
@@ -14,7 +14,6 @@
             <field name="default_code">FURN_2333</field>
             <field name="tracking">lot</field>
             <field name="add_more_product" eval="True"/>
-
         </record>
 
         <record id="product_product_2" model="product.product">
@@ -24,7 +23,7 @@
         <record id="product_product_3" model="product.product">
             <field name="name">Laptop2</field>
             <field name="add_more_product">True</field>
-            <field name="more_product_ids" eval="[(0,0,{'name':'keyboard'}),(0,0,{'name':'CPU'})]"/>
+            <field name="more_product_ids" eval="[(0,0,{'name':'keyboard'}),(0,0,{'name':'CPU'}),(4, ref('sales_extended.product_product_2'))]"/>
         </record>
 
     </data>

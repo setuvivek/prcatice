@@ -47,6 +47,6 @@
             <field name="view_mode">tree,form</field>
         </record>
 
-        <menuitem id="setu_grade_line_menu" action="setu_grade_line_action" parent="root2"/>
+        <menuitem id="setu_grade_line_menu" action="setu_grade_line_action" parent="root_grade"/>
     </data>
 </odoo>

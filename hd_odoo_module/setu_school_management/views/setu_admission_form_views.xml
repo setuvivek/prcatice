@@ -73,7 +73,7 @@
         <!--        </record>-->
 
 
-        <menuitem id="setu_admission_form_menu" action="setu_admission_form_action" parent="root1" sequence="1"/>
+        <menuitem id="setu_admission_form_menu" action="setu_admission_form_action" parent="root" sequence="1" groups="setu_school_management.group_form"/>
 
     </data>
 </odoo>
