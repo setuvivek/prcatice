@@ -40,7 +40,7 @@ class SetuStudent(models.Model):
     standard_id = fields.Many2one('setu.standard.standard', string='Standard')
     division_id = fields.Many2one('setu.standard.division', string='Division')
     medium_id = fields.Many2one('setu.standard.medium', string='Medium')
-    # school_id = fields.Many2one('setu.school', string='School ID')
+    school_id = fields.Many2one('setu.school', string='School ID')
     school=fields.Integer(string='school')
     schoolname=fields.Char(string='School Name',compute='_compute_school')
     admission_date = fields.Date(string='Admission Date')
@@ -56,6 +56,7 @@ class SetuStudent(models.Model):
     subject_ids = fields.Many2many('setu.subject', 'student_subjects', string='Subjects')
 
     isEdited = fields.Boolean(string='isEdited')
+    user_id = fields.Many2one("res.users", string="School User")
 
     # ------------------------------------------------
     # @api.model
