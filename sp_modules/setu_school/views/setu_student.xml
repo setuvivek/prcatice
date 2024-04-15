@@ -19,6 +19,7 @@
                     <field name="phone" optional="hide"/>
                     <field name="email" optional="hide"/>
                     <field name="mobile" optional="hide"/>
+                    <field name="school_id"/>
                 </tree>
             </field>
         </record>
@@ -88,7 +89,8 @@
                                 <field name="standard_id" options="{'no_open':True, 'no_create': True}"/>
                                 <field name="division_id" options="{'no_open':True, 'no_create': True}"/>
                                 <field name="medium_id" options="{'no_open':True, 'no_create': True}"/>
-                                <field name="school"/>
+                                <field name="school_id"/>
+                                <field name="user_id"/>
                                 <field name="schoolname"/>
 <!--                                <field name="school_id" options="{'no_open':True, 'no_create': True}"/>-->
                                 <field name="admission_date" widget="date"/>
