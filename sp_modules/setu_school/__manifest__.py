@@ -5,6 +5,7 @@
     'data': [
         'security/res_groups.xml',
         'security/ir.model.access.csv',
+        'views/res_users.xml',
         'views/setu_teacher.xml',
         'views/setu_class.xml',
         'views/setu_subject.xml',
