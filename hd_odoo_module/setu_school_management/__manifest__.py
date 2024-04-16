@@ -22,6 +22,6 @@
         'views/setu_grade_views.xml',
         'views/setu_grade_line_views.xml',
         'views/setu_mother_toungue_views.xml',
-        'views/setu_res_users_views.xml',
+        'views/res_users_views.xml',
     ],
 }

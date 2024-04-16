@@ -17,6 +17,7 @@ class SetuSubject(models.Model):
     #m2o
     subject_teacher_id = fields.Many2one('setu.teacher', string='Subject Teacher')
     standard_id = fields.Many2one('setu.class', string='Class')
+    user_id = fields.Many2one('res.users', string='Users')
 
     #o2m
 

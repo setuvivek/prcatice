@@ -21,6 +21,7 @@ class SetuSchool(models.Model):
     city_id = fields.Many2one('city', string='City')
     state_id = fields.Many2one('state', string='State')
     country_id = fields.Many2one('country', string='Country')
+    user_id = fields.Many2one('res.users', string='User')
 
     #o2m
     student_ids = fields.One2many('setu.student', 'school_id', string='Student')

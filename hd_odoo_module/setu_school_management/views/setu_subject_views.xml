@@ -32,6 +32,7 @@
                                 <field name="name"/>
                                 <field name="code"/>
                                 <field name="weightage"/>
+                                <field name="user_id"/>
                             </group>
                             <group>
                                 <field name="maximum_marks"/>

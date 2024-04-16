@@ -14,7 +14,8 @@ from . import setu_student_cast
 from . import setu_grade
 from . import setu_grade_line
 from . import setu_mother_toungue
-from . import setu_res_users
+from . import res_users
+
 
 
 
