@@ -2,7 +2,7 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
 student_access_setu_school,access.setu.school,setu_school.model_setu_school,group_setu_school_student,1,0,0,0
 student_access_setu_subject,access.setu.subject,setu_school.model_setu_subject,group_setu_school_student,1,0,0,0
-student_access_setu_teacher,access.setu.teacher,setu_school.model_setu_teacher,group_setu_school_student,0,0,0,0
+student_access_setu_teacher,access.setu.teacher,setu_school.model_setu_teacher,group_setu_school_student,1,0,0,0
 student_access_setu_grade,access.setu.grade,setu_school.model_setu_grade,group_setu_school_student,1,0,0,0
 student_access_setu_grade_line,access.setu.grade.line,setu_school.model_setu_grade_line,group_setu_school_student,1,0,0,0
 student_access_setu_student,access.setu.student,setu_school.model_setu_student,group_setu_school_student,1,0,0,0

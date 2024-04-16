@@ -13,5 +13,5 @@ from . import setu_student_caste
 from . import setu_mother_tongue
 from . import setu_grade
 from . import setu_grade_line
-from . import res_users
+# from . import res_users
 
