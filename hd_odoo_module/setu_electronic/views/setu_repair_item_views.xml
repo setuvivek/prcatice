@@ -23,23 +23,24 @@
                 <form string="Repair Item">
                     <header>
                         <button name="submit_request" string="Submit Request" type="object"/>
+
                     </header>
                     <sheet>
-                        <group>
-                            <group>
-                                <field name="setu_item_id" options="{'no_open':True}"/>
-                                <field name="description"/>
+                        <group string="Repair Request">
+                            <field name="setu_item_id" options="{'no_open':True}" placeholder="Repair Product"/><br></br><br></br>
+                            <field name="description" placeholder="Product Description"/>
+                            <group string="Product Details">
                                 <field name="show_request"/>
-                                <field name="total_request"/>
+                                 <field name="customer_id"/>
                                  <field name="quantity"/>
                                 <field name="status"/>
                             </group>
-                            <group>
+                            <group string="Additional Information">
                                 <field name="item_company"/>
                                 <field name="warranty_expiration" widget="remaining_days"/>
-                                <field name="customer_id"/>
                                 <field name="customer_email"/>
                                 <field name="customer_phone"/>
+                                <field name="total_request"/>
                             </group>
                         </group>
                         <notebook>

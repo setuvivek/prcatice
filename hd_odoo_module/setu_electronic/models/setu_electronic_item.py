@@ -30,6 +30,14 @@ class SetuElectronicItem(models.Model):
     #M2o---------------------------------
     company_id = fields.Many2one('setu.company',string='Company')
 
+    #Selection---------------------------
+    priority = fields.Selection([
+        ('0', 'normal'),
+        ('1', 'law'),
+        ('2', 'high'),
+        ('3', 'very high')],
+        string='Priority')
+
 
     #api_onchange--------------------------
     @api.onchange('manufacture_date')
