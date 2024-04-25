@@ -1,5 +1,7 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
+access_setu_school_wizard,access.setu.school.wizard,setu_school_management.model_setu_school_wizard,,1,1,1,1
+
 access_setu_teacher,access.setu.teacher,setu_school_management.model_setu_teacher,setu_school_management.group_teacher,1,0,0,0
 access_setu_teacher_school,access.setu.teacher,setu_school_management.model_setu_teacher,setu_school_management.group_school,1,1,1,1
 
@@ -29,3 +31,4 @@ access_setu_grade,access.setu.grade,setu_school_management.model_setu_grade,,1,1
 access_setu_grade_line,access.setu.grade.line,setu_school_management.model_setu_grade_line,,1,1,1,1
 
 access_setu_mother_tongue,access.setu.mother.tongue,setu_school_management.model_setu_mother_tongue,,1,1,1,1
+

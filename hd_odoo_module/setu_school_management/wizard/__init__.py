@@ -1,0 +1,1 @@
+from . import setu_school_wizard

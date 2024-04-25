@@ -6,6 +6,7 @@
     'data':[
         'security/school_groups.xml',
         'security/ir.model.access.csv',
+        'wizard/setu_school_wizard_views.xml',
         'views/setu_school_views.xml',
         'views/setu_teacher_views.xml',
         'views/setu_class_views.xml',

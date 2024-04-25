@@ -22,6 +22,7 @@ class SetuSchool(models.Model):
     state_id = fields.Many2one('state', string='State')
     country_id = fields.Many2one('country', string='Country')
     user_id = fields.Many2one('res.users', string='User')
+    teacher_id = fields.Many2one('setu.teacher', string='Principle')
 
     #o2m
     student_ids = fields.One2many('setu.student', 'school_id', string='Student')
@@ -36,3 +37,16 @@ class SetuSchool(models.Model):
                 vals['name'] = 'School'
         res = super(SetuSchool, self).create(vals_list)
         return res
+
+
+
+    def action_assign_principle(self):
+        return
+
+
+
+
+
+
+
+
