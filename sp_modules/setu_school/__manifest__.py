@@ -1,7 +1,7 @@
 {
     'name': 'setu_school',
     'version': '1.0',
-    'depends':['contact', 'mail'],
+    'depends': ['contact', 'mail'],
     'data': [
         'security/res_groups.xml',
         'security/ir.model.access.csv',
@@ -21,6 +21,7 @@
         'views/setu_mother_tongue.xml',
         'views/setu_grade.xml',
         'views/setu_grade_line.xml',
+        'wizard/setu_principal_views.xml',
         'views/menus.xml'
     ]
 }
