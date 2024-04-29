@@ -57,9 +57,10 @@
                                 <field name="gender" widget="radio" options="{'horizontal': true}"/>
                                 <label for="dob" string="Birthday"/>
                                 <div class="o_address_format">
-                                <field name="dob" widget="date"  class="oe_inline"/>
+                                    <field name="dob" widget="date" class="oe_inline"/>
                                     <label for="age" string="Age"/>
-                                    <field name="age" class="oe_inline"/><span>&amp;nbsp;</span>
+                                    <field name="age" class="oe_inline"/>
+                                    <span>&amp;nbsp;</span>
                                     <label for="isEligible" string="Eligible"/>
                                     <field name="isEligible" class="oe_inline"/>
                                 </div>
@@ -73,7 +74,8 @@
                                 <field name="mother_tongue"/>
                                 <field name="address"/>
                                 <field name="state_id" options="{'no_open':True, 'no_create': True}"/>
-                                <field name="city_id" options="{'no_open':True, 'no_create': True}" domain="[('state_id','=',state_id)]"/>
+                                <field name="city_id" options="{'no_open':True, 'no_create': True}"
+                                       domain="[('state_id','=',state_id)]"/>
 
                             </group>
                             <group>
@@ -90,9 +92,7 @@
                                 <field name="division_id" options="{'no_open':True, 'no_create': True}"/>
                                 <field name="medium_id" options="{'no_open':True, 'no_create': True}"/>
                                 <field name="school_id"/>
-                                <field name="user_id"/>
-                                <field name="schoolname"/>
-<!--                                <field name="school_id" options="{'no_open':True, 'no_create': True}"/>-->
+                                <!--                                <field name="school_id" options="{'no_open':True, 'no_create': True}"/>-->
                                 <field name="admission_date" widget="date"/>
                                 <field name="academic_year_id" options="{'no_open':True, 'no_create': True}"/>
 
@@ -114,6 +114,8 @@
                                        options="{'no_create': True}"/>
                                 <field name="subject_ids" widget="many2many_tags"
                                        options="{'no_create': True}"/>
+                                <field name="principal_id"/>
+
                             </group>
                         </group>
                         <group>
