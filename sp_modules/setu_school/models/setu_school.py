@@ -17,4 +17,10 @@ class SetuSchool(models.Model):
     required_age=fields.Integer(string='Required Age')
     school_standard_ids=fields.Many2many('setu.standard.standard','school_standard_ids',string='School Standards')
     student_ids = fields.One2many("setu.student", 'school_id', string="Students")
+    principal_id = fields.Many2one('setu.teacher',string='Principal',readonly=True)
 
+
+    def assign_principal(self):
+        action = self.env['ir.actions.act_window']._for_xml_id('setu_school.action_assign_principal')
+        return action
+    
