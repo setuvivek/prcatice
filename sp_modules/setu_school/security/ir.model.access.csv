@@ -25,6 +25,7 @@ teacher_access_setu_grade,access.setu.grade,setu_school.model_setu_grade,group_s
 teacher_access_setu_grade_line,access.setu.grade.line,setu_school.model_setu_grade_line,group_setu_school_teacher,1,1,1,0
 
 
+admin_access_setu_principal,access.setu.principal,setu_school.model_setu_principal,group_setu_school_admin,1,1,1,1
 admin_access_setu_school,access.setu.school,setu_school.model_setu_school,group_setu_school_admin,1,1,1,0
 admin_access_setu_admission_form,access.setu.admission.form,setu_school.model_setu_admission_form,group_setu_school_admin,1,1,1,0
 admin_access_setu_academic_year,access.setu.academic.year,setu_school.model_setu_academic_year,group_setu_school_admin,1,1,1,0
