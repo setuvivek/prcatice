@@ -40,8 +40,9 @@
                                 <field name="code"/>
                                 <field name="date_start" widget="date"/>
                                 <field name="date_stop" widget="date"/>
-<button name="month_list" string="List Months" class="btn-primary" type="object"
-                                    attrs="{'invisible':['|',('date_start','=',False),('date_stop','=',False)]}" colspan="2"/>
+                                <button name="month_list" string="List Months" class="btn-primary" type="object"
+                                        attrs="{'invisible':['|',('date_start','=',False),('date_stop','=',False)]}"
+                                        colspan="2"/>
 
                                 <!--                            <field name="month_ids"/>-->
                             </group>
@@ -57,8 +58,11 @@
                                         <!--                                        <field name="working_days" />-->
                                         <!--                                        <field name=""/>-->
                                         <!--                                        <field name=""/>-->
+
                                     </tree>
+
                                 </field>
+
                             </page>
                         </notebook>
                     </sheet>

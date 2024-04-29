@@ -40,9 +40,8 @@ class SetuStudent(models.Model):
     standard_id = fields.Many2one('setu.standard.standard', string='Standard')
     division_id = fields.Many2one('setu.standard.division', string='Division')
     medium_id = fields.Many2one('setu.standard.medium', string='Medium')
-    school_id = fields.Many2one('setu.school', string='School ID')
-    school=fields.Integer(string='school')
-    schoolname=fields.Char(string='School Name',compute='_compute_school')
+    school_id = fields.Many2one('setu.school', string='School')
+
     admission_date = fields.Date(string='Admission Date')
     academic_year_id = fields.Many2one('setu.academic.year', string='Academic Year')
     roll_no = fields.Integer(string='Roll No.')
@@ -54,6 +53,8 @@ class SetuStudent(models.Model):
     alternate_teacher_id=fields.Many2one(related='class_teacher_id.alternate_id')
     teacher_ids = fields.Many2many('setu.teacher', 'student_teacher_ids', string='Teachers')
     subject_ids = fields.Many2many('setu.subject', 'student_subjects', string='Subjects')
+    principal_id = fields.Many2one('setu.teacher',string='Principal')
+
 
     isEdited = fields.Boolean(string='isEdited')
     user_id = fields.Many2one("res.users", string="School User")
@@ -82,17 +83,23 @@ class SetuStudent(models.Model):
         vals.update({"isEdited": True})
         return super(SetuStudent, self).write(vals)
 
-    @api.constrains('first_name', 'standard_id', 'division_id', 'medium_id')
-    def check_not_null_name(self):
-        for rec in self:
-            if not (rec.first_name and rec.standard_id and rec.division_id and rec.medium_id):
-                raise ValidationError("Required Details : \n\n Name,Standard,Medium,Division")
+    # @api.constrains('first_name', 'standard_id', 'division_id', 'medium_id')
+    # def check_not_null_name(self):
+    #     for rec in self:
+    #         if not (rec.first_name and rec.standard_id and rec.division_id and rec.medium_id):
+    #             raise ValidationError("Required Details : \n\n Name,Standard,Medium,Division")
 
     def assign(self):
-        rec = self.env['setu.teacher'].search(
-            [('class_teacher', '=', 'True'), ('standard_id', '=', self.standard_id.id),
-             ('medium_id', '=', self.medium_id.id), ('division_id', '=', self.division_id.id)], limit=1)
-        self.class_teacher_id = rec.id
+        try :
+            rec = self.env['setu.teacher'].search(
+                [('class_teacher', '=', 'True'), ('standard_id', '=', self.standard_id.id),
+                 ('medium_id', '=', self.medium_id.id), ('division_id', '=', self.division_id.id)], limit=1)
+            self.class_teacher_id = rec.id
+        except:
+            pass
+        finally:
+            self.principal_id = self.school_id.principal_id
+
 
     @api.depends('class_teacher_id')
     # @api.onchange('class_teacher_id')
@@ -156,7 +163,17 @@ class SetuStudent(models.Model):
     def copy(self, default=None):
         raise ValidationError('You Can\'t')
 
+    @api.onchange('school_id')
+    def _onchange_school_id(self):
+        for rec in self:
+            if rec.school_id:
+                self.principal_id = self.school_id.principal_id
+            else:
+                rec.school_id = False
 
+'''
+    school = fields.Integer(string='school')
+    schoolname = fields.Char(string='School Name', compute='_compute_school')
     @api.onchange('school')
     def _compute_school(self):
         for rec in self:
@@ -165,3 +182,6 @@ class SetuStudent(models.Model):
                 rec.schoolname=res
             else:
                 rec.schoolname=False
+'''
+
+
