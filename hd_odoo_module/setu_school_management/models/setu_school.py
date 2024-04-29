@@ -48,5 +48,3 @@ class SetuSchool(models.Model):
 
 
 
-
-

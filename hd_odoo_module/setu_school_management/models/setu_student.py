@@ -54,6 +54,7 @@ class SetuStudent(models.Model):
     mother_tongue_id = fields.Many2one('setu.mother.tongue', string='Mother Tongue')
     user_id = fields.Many2one('res.users', string='Users')
 
+
     # m2m------------------
     teacher_ids = fields.Many2many('setu.teacher', 'student_teacher', 'student', 'teacher', string='Teacher')
     subject_ids = fields.Many2many('setu.subject', 'student_subject', 'student', 'subject', string='Subject')

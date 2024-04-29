@@ -33,6 +33,7 @@ class SetuTeacher(models.Model):
     medium_id = fields.Many2one('setu.standard.medium', string='Medium')
     division_id = fields.Many2one('setu.standard.division', string='Division')
     subject_id = fields.Many2one('setu.subject', string='Subject')
+    teacher_id = fields.Many2one('setu.teacher', string='Principle')
 
 
 

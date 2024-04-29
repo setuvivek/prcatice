@@ -46,6 +46,7 @@
                                 <field name="is_teacher"/>
                                 <field name="division_id"/>
                                 <field name="subject_id"/>
+                                <field name="teacher_id"/>
                             </group>
 
                             <group>

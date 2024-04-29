@@ -11,6 +11,7 @@ class SaleOrderLine(models.Model):
     extra_price = fields.Float(string='Extra Price')
     previous_price = fields.Float(string='Previous Price', readonly=True, compute="_compute_previous_price", store=True)
     buyer_id = fields.Many2one('res.partner', string='Buyer', domain=[('is_buyer', '=', True)])
+    weight = fields.Float(string='Weight', compute="_compute_weight", store=True)
 
 
     @api.depends('product_uom_qty', 'discount', 'price_unit', 'tax_id', 'extra_price')
@@ -73,9 +74,13 @@ class SaleOrderLine(models.Model):
                     'product_uom_qty':res.product_uom_qty,
                     'price_unit':res.price_unit
                 })
-
-
         return res
+
+
+    @api.depends('product_id.weight')
+    def _compute_weight(self):
+        if self.product_id.weight:
+            self.weight = self.product_id.weight
 
 
 

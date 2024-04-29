@@ -28,8 +28,10 @@
             <field name="arch" type="xml">
                 <form string="School">
                     <header>
-                        <button string="Assign Principle" name="%(setu_school_management.setu_school_wizard_action)d" type="action" class="oe_highlight"/>
+                        <button string="Assign Principle" name="%(setu_school_management.setu_school_wizard_action)d"
+                                type="action" class="oe_highlight"/>
                     </header>
+
                     <sheet>
                         <group>
                             <group>

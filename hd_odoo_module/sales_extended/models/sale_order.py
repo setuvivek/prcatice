@@ -16,6 +16,8 @@ class SaleOrder(models.Model):
     
     buyer_id = fields.Many2one('res.partner', string='Buyer', domain=[('is_buyer', '=', True)])
 
+    weight = fields.Float(string='Total Weight', compute='_compute_amounts')
+
 
 
 
@@ -76,7 +78,7 @@ class SaleOrder(models.Model):
 
         return res
 
-    @api.depends('order_line.price_subtotal', 'order_line.price_tax', 'order_line.price_total', 'extra_price')
+    @api.depends('order_line.price_subtotal', 'order_line.price_tax', 'order_line.price_total', 'extra_price', 'weight')
     def _compute_amounts(self):
         """Compute the total amounts of the SO."""
         for order in self:
@@ -91,16 +93,20 @@ class SaleOrder(models.Model):
                 amount_untaxed = totals.get(order.currency_id, {}).get('amount_untaxed', 0.0)
                 amount_tax = totals.get(order.currency_id, {}).get('amount_tax', 0.0)
                 extra_price = totals.get(order.currency_id,{}).get('extra_price', 0.0)
+                weight = totals.get(order.currency_id,{}).get('weight', 0.0)
+                
 
             else:
                 amount_untaxed = sum(order_lines.mapped('price_subtotal'))
                 amount_tax = sum(order_lines.mapped('price_tax'))
                 extra_price = sum(order_lines.mapped('extra_price'))
+                weight = sum(order_lines.mapped('weight'))
 
             order.amount_untaxed = amount_untaxed
             order.amount_tax = amount_tax
             order.extra_price = extra_price
             order.amount_total = order.amount_untaxed + order.amount_tax + order.extra_price
+            order.weight = weight * order.order_line.product_uom_qty
 
     @api.onchange('buyer_id')
     def _onchange_buyer(self):

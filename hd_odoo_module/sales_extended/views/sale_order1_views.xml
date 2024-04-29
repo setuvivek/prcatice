@@ -32,6 +32,12 @@
 
                 <xpath expr="//notebook//page//group//group//field[@name='tax_totals']" position="before" colspan="2">
                     <field name="extra_price"/>
+                    <field name="weight"/>
+                </xpath>
+
+                  <xpath expr="//notebook//page//field//tree//field[@name='price_unit']" position="before">
+                    <field name="weight"/>
+
                 </xpath>
 
             </field>
