@@ -3,13 +3,15 @@
     <record id="setu_principal_form" model="ir.ui.view">
         <field name="name">form</field>
         <field name="model">setu.principal</field>
-<!--        <field name="mode">primary</field>-->
-<!--        <field name="priority">25</field>-->
+        <!--        <field name="mode">primary</field>-->
+        <!--        <field name="priority">25</field>-->
         <field name="arch" type="xml">
             <form>
-                <group><group>
-                    <field name="principal_id"/>
-                </group></group>
+                <group>
+                    <group>
+                        <field name="principal_id"/>
+                    </group>
+                </group>
                 <footer>
                     <button name="assign_principal" string="Submit" type="object" class="btn-primary"/>
                 </footer>
@@ -18,7 +20,7 @@
     </record>
 
 
-        <record id="action_assign_principal" model="ir.actions.act_window">
+    <record id="action_assign_principal" model="ir.actions.act_window">
         <field name="name">Assign Principal</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">setu.principal</field>
