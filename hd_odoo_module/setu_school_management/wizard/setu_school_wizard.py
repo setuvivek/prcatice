@@ -32,4 +32,15 @@ class SetuSchoolWizard(models.TransientModel):
         return res
 
 
+    #
+    # @api.depends('product_id', 'product_uom_qty', 'product_uom')
+    # def _compute_product_weight(self):
+    #     for line in self:
+    #         product = line.product_id
+    #         if product:
+    #             uom_factor = line.product_uom.factor_inv or 1.0
+    #             line.product_weight = product.product_weight * line.product_uom_qty * uom_factor
+    #         else:
+    #             line.product_weight = 0.0
+
 

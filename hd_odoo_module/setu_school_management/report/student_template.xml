@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="web_header_footer">
+        <div class="header">
+            <div class="raw_header">
+                <div class="he1">
+                    <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M')"/>
+                </div>
+                <div class="he1 text-center" style="border-bottom: 1px solid black">
+                    <h3>Student Report</h3>
+                </div>
+            </div>
+
+        </div>
+        <div class="article">
+            <t t-out="0"/>
+        </div>
+
+        <div class="footer">
+            <div class="text-center" style="border-top: 1px solid black">
+                <div class="row">
+                    <div class="col-xs-2 pull-left">
+                        <small>
+                            <span>Page</span>
+                            <span class="page"/>
+                            of
+                            <span class="topage"/>
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="report_student">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="setu_school_management.web_header_footer">
+                    <!--                    <t t-call="web.external_layout">-->
+                    <div class="page">
+                        <p>
+                            <b>Admission Date:</b>
+                            <br/>
+                            <span t-field="o.admission_date"/>
+                        </p>
+                        <br/>
+
+                        <p>
+                            <b>Student:</b>
+                            <br></br>
+                            <span t-field="o.first_name"/>
+                            <span t-field="o.middle_name"/>
+                            <span t-field="o.last_name"/>
+                        </p>
+                        <br/>
+
+                        <b>Address:</b>
+                        <div class="row mt32 mb32">
+                            <div class="col-3">
+                                <strong>Street:</strong>
+                                <br/>
+                                <span t-field="o.street"/>
+                            </div>
+                            <div class="col-3">
+                                <strong>Zip:</strong>
+                                <br/>
+                                <span t-field="o.zip"/>
+                            </div>
+                            <div class="col-3">
+                                <strong>City:</strong>
+                                <br/>
+                                <span t-field="o.city_id"/>
+                            </div>
+                            <div class="col-3">
+                                <strong>State</strong>
+                                <br/>
+                                <span t-field="o.state_id"/>
+                            </div>
+                        </div>
+
+
+                        <div class="row mt32 mb32">
+                            <div class="col-3">
+                                <strong>Class:</strong>
+                                <br/>
+                                <span t-field="o.standard_id"/>
+                            </div>
+                            <div class="col-3">
+                                <strong>Medium:</strong>
+                                <br/>
+                                <span t-field="o.medium_id"/>
+                            </div>
+                            <div class="col-3">
+                                <strong>Division</strong>
+                                <br/>
+                                <span t-field="o.division_id"/>
+                            </div>
+                        </div>
+
+                        <p>
+                            <b>Teacher:</b>
+                            <br/>
+                        </p>
+                        <table class="table table-teacher" border="0">
+                            <tr>
+                                <th>
+                                    <strong>Name</strong>
+                                </th>
+                                <th>
+                                    <strong>Phone</strong>
+                                </th>
+                                <th>
+                                    <strong>Email</strong>
+                                </th>
+                            </tr>
+                            <tr t-foreach="o.teacher_ids" t-as="line2">
+                                <td>
+                                    <span t-field="line2.name"/>
+                                </td>
+                                <td>
+                                    <span t-field="line2.phone"/>
+                                </td>
+                                <td>
+                                    <span t-field="line2.email"/>
+                                </td>
+                            </tr>
+                        </table>
+
+
+                    </div>
+                </t>
+            </t>
+        </t>
+
+    </template>
+</odoo>
