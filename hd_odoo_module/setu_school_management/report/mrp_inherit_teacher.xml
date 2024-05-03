@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="inherit_mrp_report" inherit_id="mrp.report_mrporder">
+        <xpath expr="//div[hasclass('page')]" position="replace">
+            <div class="page">
+                <h1>hello!!!</h1>
+            </div>
+        </xpath>
+    </template>
+</odoo>
+
+
+<!--<templates id="inherit_mrp_report" xml:space="preserve">-->
+<!--    <t t-inherit="mrp.report_mrporder" owl="1">-->
+<!--        <t t-set="model" t-value="window.location.href.split('model=') and window.location.href.split('model=').length > 0-->
+<!--                and window.location.href.split('model=')[1].split('&amp;') and window.location.href.split('model=')[1].split('&amp;')[0]"/>-->
+<!--        <t t-if="model == 'setu.teacher'">-->
+<!--            <xpath expr="//div[hasclass('page')]" position="replace">-->
+<!--                <div class="page">-->
+<!--                    <h1>hello!!!</h1>-->
+<!--                </div>-->
+<!--            </xpath>-->
+<!--        </t>-->
+<!--    </t>-->
+<!--</templates>-->
+
+
+
+
+        <!--                    <template id="inherit_mrp_report" inherit_id="mrp.report_mrporder">-->
+        <!--                            <xpath expr="//div[hasclass('page')]" position="replace">-->
+        <!--                                <div class="page">-->
+        <!--                                    <h1>hello!!!</h1>-->
+        <!--                                </div>-->
+        <!--                            </xpath>-->
+        <!--                    </template>-->
+
+

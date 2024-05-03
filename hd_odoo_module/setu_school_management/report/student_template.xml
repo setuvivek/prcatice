@@ -57,9 +57,10 @@
                         <b>Address:</b>
                         <div class="row mt32 mb32">
                             <div class="col-3">
-                                <strong>Street:</strong>
-                                <br/>
-                                <span t-field="o.street"/>
+<!--                                <strong>Street:</strong>-->
+<!--                                <br/>-->
+                                <span t-if="o.street"><b>Street:</b> <br></br><span t-field="o.street"/></span>
+                                <span t-else="">Enter Street in from</span>
                             </div>
                             <div class="col-3">
                                 <strong>Zip:</strong>

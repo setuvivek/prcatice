@@ -16,15 +16,19 @@
                         <button string="Assign Principle" name="action_assign_principle" type="object"
                                 class="btn-primary" data-hotkey="q"/>
                         <button string="Cancel" class="btn-secondary" special="cancel" data-hotkey="z"/>
+                        <button string="Print" class="btn-primary" type="object" name="action_print_report"/>
                     </footer>
                 </form>
             </field>
         </record>
 
+
         <record id="setu_school_wizard_action" model="ir.actions.act_window">
             <field name="name">School Wizard</field>
+            <field name="type">ir.actions.act_window</field>
             <field name="res_model">setu.school.wizard</field>
             <field name="view_mode">form</field>
+<!--            <field name="view_id" ref="view_report"/>-->
             <field name="target">new</field>
         </record>
 

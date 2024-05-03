@@ -1,5 +1,5 @@
 <odoo>
-    <record id="school_report" model="ir.actions.report">
+    <record id="school_report_student" model="ir.actions.report">
         <field name="name">Setu School Student</field>
         <field name="model">setu.student</field>
         <field name="report_type">qweb-pdf</field>
@@ -8,4 +8,27 @@
         <field name="binding_model_id" ref="model_setu_student"/>
         <field name="binding_type">report</field>
     </record>
+
+    <record id="school_report_from_wizard" model="ir.actions.report">
+        <field name="name">Setu School Report</field>
+        <field name="model">setu.school</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">setu_school_management.report_school</field>
+        <field name="report_file">setu_school_management.report_school</field>
+        <field name="binding_model_id" ref="model_setu_school"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="school_report_teacher" model="ir.actions.report">
+        <field name="name">Setu School Teacher</field>
+        <field name="model">setu.teacher</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">setu_school_management.inherit_mrp_report</field>
+        <field name="report_file">setu_school_management.inherit_mrp_report</field>
+        <field name="binding_model_id" ref="model_setu_teacher"/>
+        <field name="binding_type">report</field>
+    </record>
+
+
+
 </odoo>

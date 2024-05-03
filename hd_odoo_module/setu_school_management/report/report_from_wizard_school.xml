@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="report_school">
+        <t t-call="web.html_container">
+
+            <div class="header" style="border-bottom: 1px solid black">
+                <t t-foreach="docs" t-as="o">
+                    <div class="row mt32 mb32">
+                        <div class="col-3">
+                            <h4>
+                                <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M')"/>
+                            </h4>
+                        </div>
+                        <div class="col-3">
+                        </div>
+                        <div class="col-3">
+                            <strong>
+                                <h4>School Report</h4>
+                            </strong>
+                        </div>
+                        <div class="col-3">
+                        </div>
+                        <div class="col-3">
+                            <h4>
+                                <small>
+                                    <span class="topage"/>
+                                </small>
+                            </h4>
+                        </div>
+                    </div>
+                </t>
+            </div>
+
+<!--            <div class="footer">-->
+<!--            <div class="text-center" style="border-top: 1px solid black">-->
+<!--                <div class="row">-->
+<!--                    <div class="col-xs-2 pull-left">-->
+<!--                        <span t-field="o.phone"/>-->
+<!--                        <span t-field="o.email"/>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+
+
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <div class="oe_structure"/>
+                    <div class="text-center">
+                        <span t-field="o.name"/>
+                    </div>
+                </div>
+            </t>
+        </t>
+
+    </template>
+</odoo>

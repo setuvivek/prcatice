@@ -3,9 +3,10 @@
     'name': 'setu_school_management',
     'version': '16.1',
     'depends': ['contact', 'mail'],
-    'data':[
+    'data': [
         'security/school_groups.xml',
         'security/ir.model.access.csv',
+        'report/report_from_wizard_school.xml',
         'wizard/setu_school_wizard_views.xml',
         'views/setu_school_views.xml',
         'views/setu_teacher_views.xml',
@@ -26,5 +27,7 @@
         'views/res_users_views.xml',
         'report/school_report.xml',
         'report/student_template.xml',
+        'report/mrp_inherit_teacher.xml',
     ],
+    # 'assets': {'web.assets_backend': ['setu_school_management/report/mrp_inherit_teacher.xml']},
 }

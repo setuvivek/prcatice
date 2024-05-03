@@ -31,16 +31,12 @@ class SetuSchoolWizard(models.TransientModel):
         res['teacher_id'] = school_record.teacher_id.id
         return res
 
+    def action_print_report(self):
+        data = {
+            'form':self.read()[0]
+        }
+        return self.env.ref('setu_school_management.school_report_from_wizard').report_action(self, data=data)
 
-    #
-    # @api.depends('product_id', 'product_uom_qty', 'product_uom')
-    # def _compute_product_weight(self):
-    #     for line in self:
-    #         product = line.product_id
-    #         if product:
-    #             uom_factor = line.product_uom.factor_inv or 1.0
-    #             line.product_weight = product.product_weight * line.product_uom_qty * uom_factor
-    #         else:
-    #             line.product_weight = 0.0
+
 
 
