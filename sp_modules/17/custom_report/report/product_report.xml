@@ -16,6 +16,7 @@
                             Price
                             <span t-field="o.list_price"/>
                             <br/>
+                            <img t-att-src="image_data_uri(o.image_1920)"  width="300" />
                         </p>
                     </div>
                 </t>
