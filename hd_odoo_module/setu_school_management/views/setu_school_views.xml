@@ -7,6 +7,7 @@
             <field name="type">tree</field>
             <field name="arch" type="xml">
                 <tree string="School_">
+<!--                    <field name="image"/>-->
                     <field name="name"/>
                     <field name="address"/>
                     <field name="city_id"/>
@@ -33,6 +34,7 @@
                     </header>
 
                     <sheet>
+                        <field name="image" widget="image" class="oe_avatar"/>
                         <group>
                             <group>
                                 <field name="name"/>

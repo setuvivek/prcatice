@@ -1,57 +1,119 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
-    <template id="report_school">
-        <t t-call="web.html_container">
-
-            <div class="header" style="border-bottom: 1px solid black">
-                <t t-foreach="docs" t-as="o">
-                    <div class="row mt32 mb32">
-                        <div class="col-3">
-                            <h4>
-                                <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M')"/>
-                            </h4>
-                        </div>
-                        <div class="col-3">
-                        </div>
-                        <div class="col-3">
-                            <strong>
-                                <h4>School Report</h4>
-                            </strong>
-                        </div>
-                        <div class="col-3">
-                        </div>
-                        <div class="col-3">
-                            <h4>
-                                <small>
-                                    <span class="topage"/>
-                                </small>
-                            </h4>
-                        </div>
+    <template id="header_footer">
+        <t t-foreach="docs" t-as="o">
+            <div class="header">
+                <div class="row mt32 mb32">
+                    <div class="col-6">
+                        <h4>
+                            <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M')"/>
+                        </h4>
                     </div>
-                </t>
-            </div>
-
-<!--            <div class="footer">-->
-<!--            <div class="text-center" style="border-top: 1px solid black">-->
-<!--                <div class="row">-->
-<!--                    <div class="col-xs-2 pull-left">-->
-<!--                        <span t-field="o.phone"/>-->
-<!--                        <span t-field="o.email"/>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-
-
-            <t t-call="web.external_layout">
-                <div class="page">
-                    <div class="oe_structure"/>
-                    <div class="text-center">
-                        <span t-field="o.name"/>
+                    <div class="col-6">
+                        <h4>
+                            (School Report)
+                        </h4>
+                    </div>
+                    <div class="col-6">
+                        <h4>
+                            <span class="page"/>
+                        </h4>
                     </div>
                 </div>
+            </div>
+            <div class="article">
+                <t t-out="0"/>
+            </div>
+
+            <div class="footer">
+                <div class="text-center" style="border-top: 1px solid black">
+                    <div class="raw">
+                        <span t-field="o.phone"/>
+                        <span t-field="o.email"/><br/>
+                        <span t-field="o.city_id"/>-
+                        <span t-field="o.zip"/>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="report_school">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="setu_school_management.header_footer">
+                    <div class="page">
+                        <!--                        Static Image-->
+                        <!--                        <img src="/setu_school_management/static/description/src/img/download.jpeg"/>-->
+                        <div class="image">
+                            <img t-attf-src="data:image/jpeg;base64,{{ o.image }}" align="right"/>
+                        </div>
+                        <br/><br/><br/><br/>
+                        <h1><span t-field="o.name"/></h1>
+                        <br/><br/><br/><br/><br/>
+                        <b>Address:</b>
+                        <div class="row mt32 mb32">
+
+                            <div class="col-4">
+                                <span t-if="o.street">
+                                    <b>Street:</b>
+                                    <br></br>
+                                    <span t-field="o.street"/>
+                                </span>
+                                <span t-else="">Enter Street in from</span>
+                            </div>
+                            <div class="col-3">
+                                <strong>Zip:</strong>
+                                <br/>
+                                <span t-field="o.zip"/>
+                            </div>
+                            <div class="col-3">
+                                <strong>City:</strong>
+                                <br/>
+                                <span t-field="o.city_id"/>
+                            </div>
+                            <div class="col-3">
+                                <strong>State</strong>
+                                <br/>
+                                <span t-field="o.state_id"/>
+                            </div>
+                        </div>
+
+                        <div t-if="o.teacher_ids">
+                            <p>
+                                <b>Teacher Profile</b>
+                            </p>
+                            <br/>
+                            <table class="table table-sm">
+                            <tr>
+                                <th><strong>Name:</strong></th>
+                                <th><strong>Phone:</strong></th>
+                                <th><strong>Email:</strong></th>
+                                <th><strong>Subject:</strong></th>
+                            </tr>
+                            <tr t-foreach="o.teacher_ids" t-as="line2">
+                                <td><span t-field="line2.name"/></td>
+                                <td><span t-field="line2.phone"/></td>
+                                <td><span t-field="line2.email"/></td>
+                                <td><span t-field="line2.subject_ids"/>
+<!--                                    <table class="table table-borderless m-0">-->
+<!--                                        <tr><th>Name:</th>-->
+<!--                                        <th>Code:</th></tr>-->
+<!--                                        <tr>-->
+<!--                                            <td><span t-field="line2.subject_ids.name"/></td>-->
+<!--                                            <td><span t-field="line2.subject_ids.coe"/></td>-->
+<!--                                        </tr>-->
+<!--                                    </table>-->
+                                </td>
+                            </tr>
+                        </table>
+                        </div>
+
+
+                    </div>
+
+                </t>
             </t>
         </t>
-
     </template>
 </odoo>

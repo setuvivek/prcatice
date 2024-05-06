@@ -38,6 +38,7 @@
                 <t t-call="setu_school_management.web_header_footer">
                     <!--                    <t t-call="web.external_layout">-->
                     <div class="page">
+                        <div class="oe_structure"/>
                         <p>
                             <b>Admission Date:</b>
                             <br/>
@@ -56,11 +57,16 @@
 
                         <b>Address:</b>
                         <div class="row mt32 mb32">
-                            <div class="col-3">
-<!--                                <strong>Street:</strong>-->
-<!--                                <br/>-->
-                                <span t-if="o.street"><b>Street:</b> <br></br><span t-field="o.street"/></span>
-                                <span t-else="">Enter Street in from</span>
+
+                            <div class="col-4">
+                                <!--                                <strong>Street:</strong>-->
+                                <!--                                <br/>-->
+                                <span t-if="o.street">
+                                    <b>Street:</b>
+                                    <br></br>
+                                    <span t-field="o.street"/>
+                                </span>
+                                <span t-else="">Enter Street in from...</span>
                             </div>
                             <div class="col-3">
                                 <strong>Zip:</strong>
@@ -79,19 +85,19 @@
                             </div>
                         </div>
 
-
+                        <b>Standard:</b>
                         <div class="row mt32 mb32">
-                            <div class="col-3">
-                                <strong>Class:</strong>
+                            <div class="col-4">
+                                <strong>Class</strong>
                                 <br/>
                                 <span t-field="o.standard_id"/>
                             </div>
-                            <div class="col-3">
-                                <strong>Medium:</strong>
+                            <div class="col-4">
+                                <strong>Medium</strong>
                                 <br/>
                                 <span t-field="o.medium_id"/>
                             </div>
-                            <div class="col-3">
+                            <div class="col-4">
                                 <strong>Division</strong>
                                 <br/>
                                 <span t-field="o.division_id"/>
@@ -129,6 +135,8 @@
 
 
                     </div>
+
+                    <!--                    </t>-->
                 </t>
             </t>
         </t>

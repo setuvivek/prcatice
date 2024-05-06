@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+
     <template id="inherit_mrp_report" inherit_id="mrp.report_mrporder">
         <xpath expr="//div[hasclass('page')]" position="replace">
             <div class="page">
@@ -8,6 +9,11 @@
         </xpath>
     </template>
 </odoo>
+
+
+
+
+
 
 
 <!--<templates id="inherit_mrp_report" xml:space="preserve">-->
@@ -23,16 +29,3 @@
 <!--        </t>-->
 <!--    </t>-->
 <!--</templates>-->
-
-
-
-
-        <!--                    <template id="inherit_mrp_report" inherit_id="mrp.report_mrporder">-->
-        <!--                            <xpath expr="//div[hasclass('page')]" position="replace">-->
-        <!--                                <div class="page">-->
-        <!--                                    <h1>hello!!!</h1>-->
-        <!--                                </div>-->
-        <!--                            </xpath>-->
-        <!--                    </template>-->
-
-

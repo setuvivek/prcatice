@@ -5,6 +5,9 @@ class SetuSchool(models.Model):
     _name = 'setu.school'
     _description = 'Setu School'
 
+    #Image
+    image = fields.Image()
+
     #Char
     name = fields.Char(string='Name')
     address = fields.Char(string='Address')
