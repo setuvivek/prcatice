@@ -34,6 +34,7 @@ class SetuSchoolWizard(models.TransientModel):
     def action_print_report(self):
         data = {
             'form':self.read()[0]
+
         }
         return self.env.ref('setu_school_management.school_report_from_wizard').report_action(self, data=data)
 

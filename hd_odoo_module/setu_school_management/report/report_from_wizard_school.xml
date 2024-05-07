@@ -85,33 +85,27 @@
                             </p>
                             <br/>
                             <table class="table table-sm">
-                            <tr>
+                                <tr>
                                 <th><strong>Name:</strong></th>
                                 <th><strong>Phone:</strong></th>
                                 <th><strong>Email:</strong></th>
                                 <th><strong>Subject:</strong></th>
-                            </tr>
-                            <tr t-foreach="o.teacher_ids" t-as="line2">
-                                <td><span t-field="line2.name"/></td>
-                                <td><span t-field="line2.phone"/></td>
-                                <td><span t-field="line2.email"/></td>
-                                <td><span t-field="line2.subject_ids"/>
-<!--                                    <table class="table table-borderless m-0">-->
-<!--                                        <tr><th>Name:</th>-->
-<!--                                        <th>Code:</th></tr>-->
-<!--                                        <tr>-->
-<!--                                            <td><span t-field="line2.subject_ids.name"/></td>-->
-<!--                                            <td><span t-field="line2.subject_ids.coe"/></td>-->
-<!--                                        </tr>-->
-<!--                                    </table>-->
-                                </td>
-                            </tr>
-                        </table>
+                                </tr>
+                                <tr t-foreach="o.teacher_ids" t-as="line2">
+                                    <td><span t-field="line2.name"/></td>
+                                    <td><span t-field="line2.phone"/></td>
+                                    <td><span t-field="line2.email"/></td>
+                                    <td>
+                                        <table class="table table-borderless m-0" t-if="line2.subject_ids">
+                                            <tr t-foreach="line2.subject_ids" t-as="line">
+                                                <td><span t-field="line.name"/></td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
                         </div>
-
-
                     </div>
-
                 </t>
             </t>
         </t>

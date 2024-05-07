@@ -27,7 +27,7 @@
         'views/res_users_views.xml',
         'report/school_report.xml',
         'report/student_template.xml',
-        'report/mrp_inherit_teacher.xml',
+        # 'report/mrp_inherit_teacher.xml',
     ],
     # 'assets': {'web.assets_backend': ['setu_school_management/report/mrp_inherit_teacher.xml']},
 }
