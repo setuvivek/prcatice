@@ -7,7 +7,7 @@
             <field name="type">tree</field>
             <field name="arch" type="xml">
                 <tree string="School_">
-<!--                    <field name="image"/>-->
+                    <!--                    <field name="image"/>-->
                     <field name="name"/>
                     <field name="address"/>
                     <field name="city_id"/>
@@ -19,6 +19,57 @@
                     <field name="teacher_ids"/>
                     <field name="school_standard_ids"/>
                 </tree>
+            </field>
+        </record>
+
+        <record id="setu_school_view_kanban" model="ir.ui.view">
+            <field name="name">setu.school.view.kanban</field>
+            <field name="model">setu.school</field>
+            <field name="type">kanban</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <field name="image"/>
+                    <field name="name"/>
+                    <field name="address"/>
+                    <field name="city_id"/>
+                    <field name="state_id"/>
+                    <field name="country_id"/>
+                    <field name="phone"/>
+                    <field name="email"/>
+                    <field name="student_ids"/>
+                    <field name="teacher_ids"/>
+                    <field name="school_standard_ids"/>
+
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_global_click">
+                            <div t-attf-class="oe_kanban_global_click o_kanban_record_has_image_fill o_setu_student_view_kanban">
+                                <t t-if="record.image.raw_value">
+                                    <div class="o_kanban_image_fill_left d-done d-md-block" t-attf-style="background-image:url('#{kanban_image('setu.school', 'image', record.image.raw_value)}')"/>
+                                </t>
+                                <t t-else="">
+                                    <img class='o_kanban_image" alt="Avtar" t-att-src="_s + "/setu_school_management/contact.png"'/>
+                                </t>
+                            </div>
+
+                                <div class="o_kanban_image">
+                                    <img alt="Avatar"
+                                         t-att-src="kanban_image('setu.school', 'image', record.image.raw_value)"/>
+                                </div>
+                                <div class="oe_kanban_details">
+                                    <field name="name"/>
+                                    <field name="email"/>
+                                    <field name="phone"/>
+                                    <field name="address"/>
+                                    <field name="state_id"/>
+                                    <field name="country_id"/>
+                                    <field name="city_id"/>
+                                    <field name="teacher_ids"/>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
             </field>
         </record>
 
@@ -75,7 +126,7 @@
         <record id="setu_school__action" model="ir.actions.act_window">
             <field name="name">School</field>
             <field name="res_model">setu.school</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">tree,kanban,form</field>
         </record>
 
         <menuitem id="root" name=" SetuSchool"/>

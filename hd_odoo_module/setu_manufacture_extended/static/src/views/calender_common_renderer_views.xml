@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<templates id="template" xml:space="preserve">
+
+    <t t-name="web.CalendarCommonRenderer.event" owl="1">
+        <t t-debug="pdb"/>
+        <t t-set="model" t-value="window.location.href.split('model=') and window.location.href.split('model=').length > 0
+        and window.location.href.split('model=')[1].split('&amp;') and window.location.href.split('model=')[1].split('&amp;')[0]"/>
+        <t t-if="model == 'mrp.production'">
+            <t t-set="default_code" t-value="rawRecord.product_id and rawRecord.product_id.length > 0 and rawRecord.product_id[1].split(' ')
+            and rawRecord.product_id[1].split(' ')[0].replace('[','').replace(']','')"/>
+            <t t-if="default_code and default_code.toLowerCase().includes('baked')">
+                <div class="fc-content org-back">
+                    <t t-if="!isTimeHidden">
+                        <span class="fc-time" t-esc="startTime"/>
+                        <t> </t>
+                    </t>
+                    <div class="o_event_title">
+                         <t t-esc="rawRecord.product_id[1].split(' ')[0]"/>
+                             -
+                             <t t-esc="rawRecord.product_qty"/>
+                     </div>
+                </div>
+            </t>
+            <t t-elif="default_code and default_code.toLowerCase().includes('topped')">
+                         <div class="fc-content green-back">
+                            <t t-if="!isTimeHidden">
+                                <span class="fc-time" t-esc="startTime"/>
+                                <t> </t>
+                            </t>
+                            <div class="o_event_title">
+                             <t t-esc="rawRecord.product_id[1].split(' ')[0]"/>
+                                 -
+                                 <t t-esc="rawRecord.product_qty"/>
+                         </div>
+                        </div>
+                 </t>
+            <t t-else="">
+                         <div class="fc-content blue-other">
+                            <t t-if="!isTimeHidden">
+                                <span class="fc-time" t-esc="startTime"/>
+                                <t> </t>
+                            </t>
+                            <div class="o_event_title">
+                             <t t-esc="rawRecord.product_id[1].split(' ')[0]"/>
+                                 -
+                                 <t t-esc="rawRecord.product_qty"/>
+                         </div>
+                        </div>
+                 </t>
+        </t>
+        <t t-else="">
+            <div class="fc-content">
+                <t t-if="!isTimeHidden">
+                    <span class="fc-time" t-esc="startTime"/>
+                    <t> </t>
+                </t>
+                <div class="o_event_title" t-esc="title"/>
+        </div>
+        </t>
+
+    </t>
+</templates>
+
+

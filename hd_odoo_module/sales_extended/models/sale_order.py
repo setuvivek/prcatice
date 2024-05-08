@@ -106,7 +106,7 @@ class SaleOrder(models.Model):
             order.amount_tax = amount_tax
             order.extra_price = extra_price
             order.amount_total = order.amount_untaxed + order.amount_tax + order.extra_price
-            order.weight = weight * order.order_line.product_uom_qty
+            order.weight = weight
 
     @api.onchange('buyer_id')
     def _onchange_buyer(self):
