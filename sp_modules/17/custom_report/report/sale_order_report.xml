@@ -71,18 +71,20 @@
                                 </div>
                             </div>
                             <t t-set="lines_to_report" t-value="o._get_order_lines_to_report()"/>
-                            <table class="table table-borderless mt-4 text-start">
+
+                            <!--                            <t t-set="raw_total" t-value="0"/>-->
+                            <table class="table table-border mt-4 text-start">
                                 <th>Product</th>
                                 <th>Quantity</th>
                                 <th>Unit Price</th>
                                 <th>Taxes</th>
                                 <th>Subtotal</th>
-<!--                                <t t-set="counter" t-value="0"/>-->
+                                <t t-set="counter" t-value="0"/>
+
+
+                                <t t-set="raw_total" t-value="0"/>
                                 <t t-foreach="lines_to_report" t-as="line">
-<!--                                    <t t-if="counter == 2">-->
-<!--                                        <p style="page-break-before:always;"/>-->
-<!--                                        <t t-set="counter" t-value="0"/>-->
-<!--                                    </t>-->
+
                                     <tr>
                                         <td>
                                             <span t-field="line.product_template_id"/>
@@ -101,8 +103,22 @@
                                         <td>
                                             <span t-field="line.price_subtotal"/>
                                         </td>
+                                        <t t-set="raw_total" t-value="raw_total+line.price_subtotal"/>
+                                        <t t-set="counter" t-value="counter+1"/>
                                     </tr>
-<!--                                    <t t-set="counter" t-value="counter + 1" />-->
+                                    <t t-if="counter%2 == 0">
+                                        <tr>
+                                            <td/>
+                                            <td/>
+                                            <td/>
+                                            <td class="text-end ">raw</td>
+                                            <td>
+                                                <!--<t t-set="raw_total" t-value="raw_total+line.price_subtotal"/>-->
+                                                <span t-out="raw_total"/>
+                                                <div style="page-break-after:always;"/>
+                                            </td>
+                                        </tr>
+                                    </t>
                                 </t>
                             </table>
                             <br/>
@@ -130,3 +146,11 @@
         </t>
     </template>
 </odoo>
+
+        <!--<t t-set="counter" t-value="0"/>-->
+        <!--<t t-set="counter" t-value="0"/>-->
+        <!--<t t-if="counter%2 == 0">-->
+        <!--<p style="page-break-after:always;"/>-->
+        <!--<t t-set="counter" t-value="0"/>-->
+        <!--</t>-->
+        <!--<t t-set="counter" t-value="counter + 1"/>-->
