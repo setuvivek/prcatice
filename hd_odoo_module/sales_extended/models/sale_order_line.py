@@ -55,9 +55,23 @@ class SaleOrderLine(models.Model):
     def _compute_previous_price(self):
         for line in self:
             if line.product_id and line.order_id.partner_id:
-                previous_price = self.search([('order_id.partner_id', '=', line.order_id.partner_id.id),
-                                              ('product_id', '=', line.product_id.id)], limit=1).price_unit
-                line.previous_price = previous_price
+                set_previous_price = self.env['sale.order.line'].search([('order_id.partner_id', '=', line.order_id.partner_id.id),
+                                                                         ('product_id', '=', line.product_id.id)], limit=1).price_unit
+                line.previous_price = set_previous_price
+
+
+
+
+
+
+
+
+        # for line in self:
+            # if line.product_id and line.order_id.partner_id:
+            #     previous_price = self.with_context(active_test=False).search([('order_id.partner_id', '=', line.order_id.partner_id.id),
+            #                                   ('product_id', '=', line.product_id.id)], limit=1)
+            #     price = previous_price.price_unit
+            #     line.previous_price = price
 
 
     @api.model
@@ -78,8 +92,8 @@ class SaleOrderLine(models.Model):
 
     @api.depends('product_id.weight', 'product_id', 'product_uom_qty', 'product_uom')
     def _compute_weight(self):
-        if self.product_id.weight:
-            self.product_id.uom_id = '12'
+        # if self.product_id.weight:
+        #     self.product_id.uom_id = '12'
         # if self.product_id.weight:
         #     self.weight = self.product_id.weight
 
