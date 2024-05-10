@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Tree View -->
+        <record id="sales_commission_report_view_tree" model="ir.ui.view">
+            <field name="name">sales_commission_report_view_tree</field>
+            <field name="model">sale.order.line</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree create="false" edit="false" delete="false">
+                    <field name="order_id"/>
+                    <field name="company_id" optional="hide"/>
+                    <field name="order_partner_id"/>
+                    <field name="product_id"/>
+                    <field name="invoice_reference"/>
+                    <field name="sale_commission_customer_reference" string="Customer Ref"/>
+                    <field name="sale_commission_invoice_date" string="Invoice Date"/>
+                    <field name="brand_id" optional="hide"/>
+                    <field name="product_uom_qty"/>
+                    <field name="purchase_price"/>
+                    <field name="purchase_total" optional="hide" sum="Total Purchase" />
+                    <field name="price_unit"/>
+                    <field name="extra_unit_price"/>
+                    <field name="discount_amount" optional="hide"/>
+                    <field name="price_subtotal" sum="Total Sales" />
+                    <field name="gross_profit" string="GP"/>
+                    <field name="gross_profit_percent" widget="percentage" optional="hide"/>
+
+                    <field name="buyer_partner_id"/>
+                    <field name="buyer_commission_reference" invisible="1"/>
+                    <field name="buyer_commission_value" decoration-success="buyer_commission_reference" sum="Total Sale Commission Value"/>
+                    <field name="buyer_commission_date"/>
+                    <field name="transport_expense" sum="Total Transport Expense" optional="hide"/>
+
+                    <field name="sponsor_fee_date" optional="hide"/>
+                    <field name="sponsor_fee_reference" invisible="1"/>
+                    <field name="sponsor_fee" optional="hide" decoration-success="sponsor_fee_reference"/>
+
+                    <field name="zakat_date" optional="hide"/>
+                    <field name="zakat_reference" invisible="1"/>
+                    <field name="zakat" optional="hide" decoration-success="zakat_reference" sum="Total zakat amount"/>
+
+                    <field name="net_profit_amount" string="Profit" sum="Profit" />
+                    <field name="net_profit_percent" string="Profit (%)" widget="percentage" optional="hide"/>
+
+                    <field name="sale_partner_id"/>
+                    <field name="sale_commission_date"/>
+                    <field name="sale_commission_reference" invisible="1"/>
+                    <field name="sale_commission_amount" decoration-success="sale_commission_reference" sum="Total Sale Commission Value"/>
+
+                    <field name="actual_profit" string="Net profit" optional="hide" sum="Net Profit" />
+                </tree>
+            </field>
+        </record>
+
+        <!-- Search view -->
+        <record id="sales_commission_report_search_view" model="ir.ui.view">
+            <field name="name">sales_commission_report_search_view</field>
+            <field name="model">sale.order.line</field>
+            <field name="inherit_id" ref="sale.view_sales_order_line_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//search" position="inside">
+                    <filter name="zakat_journal_entry_pending" string="Zakat Entry Pending"
+                            domain="[('zakat_reference', '=', False)]"/>
+                    <separator/>
+                    <filter name="zakat_journal_entry_done" string="Zakat Entry Done"
+                            domain="[('zakat_reference', '!=', False)]"/>
+                    <separator/>
+                    <filter name="sponsor_fee_journal_entry_pending" string="Sponsor Fee Entry Pending"
+                            domain="[('sponsor_fee_reference', '=', False)]"/>
+                    <separator/>
+                    <filter name="sponsor_fee_journal_entry_done" string="Sponsor Fee Entry Done"
+                            domain="[('sponsor_fee_reference', '!=', False)]"/>
+                    <separator/>
+                    <filter name="buyer_commission_journal_entry_pending" string="Buyer Commission Entry Pending"
+                            domain="[('buyer_commission_reference', '=', False)]"/>
+                    <separator/>
+                    <filter name="buyer_commission_journal_entry_done" string="Buyer Commission Entry Done"
+                            domain="[('buyer_commission_reference', '!=', False)]"/>
+                    <separator/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="sales_commission_report_action" model="ir.actions.act_window">
+            <field name="name">Sales Commission Report</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order.line</field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="sales_commission_report_view_tree"/>
+            <field name="domain">[('product_id', '!=', False), ('report_sale_line_invoice_status', 'not in', [False, 'draft'])]</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    No Data found.
+                </p>
+            </field>
+        </record>
+
+
+        <menuitem id="sales_commission_report_menu" name="Sales Commission Report"
+                  parent="sale.menu_sale_report" action="sales_commission_report_action"/>
+    </data>
+</odoo>
