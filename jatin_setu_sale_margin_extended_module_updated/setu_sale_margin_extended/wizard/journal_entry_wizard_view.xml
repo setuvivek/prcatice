@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Wizard Form View -->
+    <record id="journal_entry_wizard_form_view" model="ir.ui.view">
+        <field name="name">journal_entry_wizard_form_view</field>
+        <field name="model">journal.entry.wizard</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Journal Entry">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="company_id" invisible="1"/>
+                            <field name="date" required="1"/>
+                            <field name="journal_id" required="1" domain="[('company_id', '=', company_id)]"/>
+                            <field name="partner_id" domain="[('company_id','in',[False,company_id])]"/>
+                            <field name="credit_account_id" required="1"
+                                   domain="[('id', 'not in', [debit_account_id]),
+                                   ('internal_group', 'in', ['asset', 'liability', 'expense']),
+                                   ('company_id', '=', company_id)]" options="{'no_create_edit': True, 'no_create': True}"/>
+                            <field name="debit_account_id" required="1"
+                                   domain="[('id', 'not in', [credit_account_id]),
+                                   ('internal_group', 'in', ['asset', 'liability', 'expense']),
+                                   ('company_id', '=', company_id)]" options="{'no_create_edit': True, 'no_create': True}"/>
+                            <field name="amount"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button string="Create Journal Entry" name="create_journal_entry" type="object"
+                                class="btn-primary"/>
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="journal_entry_wizard_action_zakat" model="ir.actions.server">
+        <field name="name">Create Journal Entry for Zakat</field>
+        <field name="model_id" ref="model_sale_order_line"/>
+        <field name="binding_model_id" ref="model_sale_order_line"/>
+        <field name="state">code</field>
+        <field name="code">
+            if records:
+                action = records.action_journal_entry_zakat()
+        </field>
+    </record>
+
+    <record id="journal_entry_wizard_action_sponsor_fee" model="ir.actions.server">
+        <field name="name">Create Journal Entry for Sponsor Fee</field>
+        <field name="model_id" ref="model_sale_order_line"/>
+        <field name="binding_model_id" ref="model_sale_order_line"/>
+        <field name="state">code</field>
+        <field name="code">
+            if records:
+                action = records.action_journal_entry_sponsor_fee()
+        </field>
+    </record>
+
+    <record id="journal_entry_wizard_action_buyer_commission" model="ir.actions.server">
+        <field name="name">Create Journal Entry for Buyer Commission</field>
+        <field name="model_id" ref="model_sale_order_line"/>
+        <field name="binding_model_id" ref="model_sale_order_line"/>
+        <field name="state">code</field>
+        <field name="code">
+            if records:
+                action = records.action_journal_entry_buyer_commission()
+        </field>
+    </record>
+
+    <record id="journal_entry_wizard_action_sales_commission" model="ir.actions.server">
+        <field name="name">Create Journal Entry for Sales Commission</field>
+        <field name="model_id" ref="model_sale_order_line"/>
+        <field name="binding_model_id" ref="model_sale_order_line"/>
+        <field name="state">code</field>
+        <field name="code">
+            if records:
+                action = records.action_journal_entry_sales_commission()
+        </field>
+    </record>
+
+    <record id="journal_entry_wizard_action_transport_expense" model="ir.actions.server">
+        <field name="name">Create Journal Entry for Transport Expense</field>
+        <field name="model_id" ref="model_sale_order_line"/>
+        <field name="binding_model_id" ref="model_sale_order_line"/>
+        <field name="state">code</field>
+        <field name="code">
+            if records:
+            action = records.action_journal_entry_transport_expense()
+        </field>
+    </record>
+</odoo>

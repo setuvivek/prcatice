@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Wizard Form View -->
+    <record id="sale_commission_wizard_form_view" model="ir.ui.view">
+        <field name="name">sale_commission_wizard_form_view</field>
+        <field name="model">sale.commission.wizard</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Sales Commission">
+                <sheet>
+                    <group>
+                        <group string="Buyer Commission Details">
+                            <field name="sale_line_id" invisible="1"/>
+                            <field name="buyer_commission_date"/>
+                            <field name="buyer_partner_id" domain="[('is_buyer', '=', True)]"
+                                   options="{'no_open':True,'no_create':True}"/>
+                            <field name="buyer_commission_type"/>
+                            <field name="buyer_commission_percent"
+                                       invisible="buyer_commission_type in [False,'fixed']"/>
+                            <field name="buyer_commission_value"
+                                   invisible="buyer_commission_type in [False,'percent']"/>/>
+                        </group>
+                        <group string="Sales Commission Details">
+                            <field name="sale_commission_date"/>
+                            <field name="sale_partner_id" domain="[('is_sale_person', '=', True)]"
+                                   options="{'no_open':True,'no_create':True}"/>
+                            <field name="sale_commission_type"/>
+                            <field name="sale_commission_percent"
+                                   invisible="sale_commission_type in [False,'fixed']"/>/>
+                            <field name="sale_commission_amount"
+                                   invisible="sale_commission_type in [False,'percent']"/>/>
+                        </group>
+                    </group>
+                    <group>
+                        <group string="General Information">
+                            <field name="transport_expense"/>
+                            <field name="sponsor_fee_date"/>
+                            <field name="zakat_date"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button string="Update" name="update_sale_commission" type="object"
+                                class="btn-primary"/>
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

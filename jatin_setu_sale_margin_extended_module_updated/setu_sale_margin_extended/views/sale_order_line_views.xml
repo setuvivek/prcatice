@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="setu_sale_margin_extended_inherited_sale_view_order_form" model="ir.ui.view">
+        <field name="name">setu_sale_margin_extended_inherited_sale_view_order_form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <field name="payment_term_id" position="after">
+                <field name="buyer_partner_id" string="Default Buyer"
+                       domain="[('is_buyer', '=', True)]"/>
+                <field name="buyer_commission_type" invisible="not buyer_partner_id"/>
+                <field name="buyer_commission_percent"
+                       invisible = "buyer_commission_type in [False, 'fixed'] or not buyer_partner_id"/>
+                <field name="buyer_commission_value"
+                       invisible="buyer_commission_type in [False, 'percent'] or not buyer_partner_id"/>
+
+                <field name="sale_partner_id" string="Default Salesperson"
+                       domain="[('is_sale_person', '=', True)]"/>
+                <field name="sale_commission_type" invisible="not sale_partner_id"/>
+                <field name="sale_commission_percent"
+                       invisible = "buyer_commission_type in [False, 'fixed'] or not sale_partner_id"/>
+                <field name="sale_commission_amount"
+                       invisible="buyer_commission_type in [False, 'percent'] or not sale_partner_id"/>
+            </field>
+
+            <xpath expr="//field[@name='order_line']/tree//field[@name='discount']" position="after">
+                <field name="discount_amount" readonly="True" optional="hide"/>
+            </xpath>
+
+            <xpath expr="//field[@name='order_line']/tree//field[@name='margin']" position="before">
+                <field name="gross_profit" optional="hide"/>
+                <field name="gross_profit_percent" widget="percentage" optional="hide"/>
+            </xpath>
+
+            <xpath expr="//field[@name='order_line']/tree//field[@name='margin_percent']" position="after">
+                <!--                <field name="transport_expense" optional="hide"/>-->
+
+                <!--                <field name="sponsor_fee_date" optional="hide"/>-->
+                <!--                <field name="sponsor_fee" optional="hide"/>-->
+
+                <!--                <field name="zakat_date" optional="hide"/>-->
+                <!--                <field name="zakat" optional="hide"/>-->
+
+                <field name="net_profit_amount" optional="hide"/>
+                <field name="net_profit_percent" optional="hide"/>
+
+                <!--                <field name="buyer_partner_id" domain="[('is_buyer', '=', True)]"-->
+                <!--                       options="{'no_open':True,'no_create':True}" optional="hide"/>-->
+                <!--                <field name="buyer_commission_type" optional="hide"/>-->
+                <!--                <field name="buyer_commission_percent" optional="hide"/>-->
+                <!--                <field name="buyer_commission_date" optional="hide"/>-->
+                <!--                <field name="buyer_commission_value" optional="hide"/>-->
+
+                <!--                <field name="sale_partner_id" domain="[('is_sale_person', '=', True)]"-->
+                <!--                       options="{'no_open':True,'no_create':True}" optional="hide"/>-->
+                <!--                <field name="sale_commission_type" optional="hide"/>-->
+                <!--                <field name="sale_commission_percent" optional="hide"/>-->
+                <!--                <field name="sale_commission_date" optional="hide"/>-->
+                <!--                <field name="sale_commission_amount" readonly="1"/>-->
+                <button name="open_sale_commission_wizard" type="object" string="SC"/>
+
+                <field name="purchase_total" optional="hide"/>
+            </xpath>
+
+            <xpath expr="//tree/field[@name='price_unit']" position="after">
+                <field name="extra_unit_price"/>
+            </xpath>
+        </field>
+    </record>
+
+
+
+</odoo>
