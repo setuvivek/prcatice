@@ -59,6 +59,7 @@
                         </t>
                     </t>
 
+
                     <div class="page p-2" style="background-color:#e4f5f7">
                         <div class="oe_structure"/>
                         <h2 class="mt-4">Quotation #
@@ -136,7 +137,6 @@
                                             <td/>
                                             <td class="text-end ">raw</td>
                                             <td>
-                                                <!--<t t-set="raw_total" t-value="raw_total+line.price_subtotal"/>-->
                                                 <span t-out="raw_total"/>
                                                 <div style="page-break-after:always;"/>
                                             </td>
@@ -149,7 +149,7 @@
                                 <table class="table table-sm table-borderless">
                                     <!-- Tax totals -->
                                     <t t-set="tax_totals" t-value="o.tax_totals"/>
-                                    <t t-call="sale.document_tax_totals"/>
+                                    <!--                                    <t t-call="sale.document_tax_totals"/>-->
                                 </table>
                             </div>
                             <table style="display: table-row-group" class="table table-borderless mt-2">

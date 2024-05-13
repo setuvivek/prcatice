@@ -12,7 +12,7 @@ class SaleOrder(models.Model):
     # @api.model
     # def write(self,vals):
     #     # vals.update({"price_unit": vals.get('price_unit')+vals.get('extra_price')})
-    #     vals.update({'amount_untaxed':vals.get('amount_untaxed')+vals.parner_id.extra_price})
+    #     vals.update({'amount_untaxed':vals.get('amount_untaxed')+vals.partner_id.extra_price})
     #     # self.price_unit+=self.extra_price
     #     return super(SaleOrder,self).write(vals)
 
