@@ -6,7 +6,7 @@ class RepairRequestsCustomers(models.Model):
     _description='Customers'
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
-    name=fields.Char(string='Name',Required=True)
+    name=fields.Char(string='Name',required=True)
 
     gender = fields.Selection(selection=[('male', 'Male'), ('female', 'Female')], string='Gender')
     dob = fields.Datetime(string='Birthdate')
