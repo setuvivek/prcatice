@@ -90,15 +90,17 @@ class SetuStudent(models.Model):
     #             raise ValidationError("Required Details : \n\n Name,Standard,Medium,Division")
 
     def assign(self):
-        try :
-            rec = self.env['setu.teacher'].search(
-                [('class_teacher', '=', 'True'), ('standard_id', '=', self.standard_id.id),
-                 ('medium_id', '=', self.medium_id.id), ('division_id', '=', self.division_id.id)], limit=1)
-            self.class_teacher_id = rec.id
-        except:
-            pass
-        finally:
-            self.principal_id = self.school_id.principal_id
+        # try :
+            if(self.division_id,self.medium_id,self.standard_id == True):
+                rec = self.env['setu.teacher'].search(
+                    [('class_teacher', '=', 'True'), ('standard_id', '=', self.standard_id.id),
+                    ('medium_id', '=', self.medium_id.id), ('division_id', '=', self.division_id.id)], limit=1)
+                self.class_teacher_id = rec.id
+        # except:
+            else:
+                raise ValidationError("Code Already Exists")
+        # finally:
+        #     self.principal_id = self.school_id.principal_id
 
 
     @api.depends('class_teacher_id')
