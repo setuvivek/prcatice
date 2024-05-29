@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <template id="stock">
+        <div class="table-responsive border-0 " style="width:2000px">
+
+
+            <t t-set="users" t-value="recordset"/>
+            <!--            <input type="text"-->
+            <!--                               class="product_id"-->
+            <!--                               name="product_id"-->
+            <!--                               required=""-->
+            <!--                               t-att-value="product_id.id"/>-->
+            <p t-att-a="product.id"/>
+            <!--            <p t-att-pv="request.env['product.product'].search([('product_tmpl_id', '=', product.id)])"/>-->
+            <!--            <p t-set="info" t-value="request.env['stock.quant'].search([('id', '=', product.id)])"/>-->
+            <p t-set="info"
+               t-value="request.env['stock.quant'].search([('product_id.name', '=', product.name)],limit=1)"/>
+            <!--            <p t-set="info" t-value="request.env['stock.quant'].search([('product_id.name', '=', product.name)])"/>-->
+
+            <br/>
+            <table class="table-sm o_main_table">
+                <t t-foreach="info" t-as="info">
+                    <tr>
+                        <th style="width:100px;border-bottom:1px solid black;border-right:1px solid black;border-top:1px solid black;border-left:1px solid black">
+                            Location
+                        </th>
+                        <th style="width:100px;border-bottom:1px solid black;border-right:1px solid black;border-top:1px solid black">
+                            Stock(qty)
+                        </th>
+                    </tr>
+                    <tr>
+
+
+                        <td class="stock_loc" style="padding-left:10px;border-bottom:1px solid black;border-right:1px solid black;border-left:1px solid black">
+                            <t t-if="info.location_id.name">
+                                <p t-esc="info.location_id.name + '/' + info.location_id.location_id.name"/>
+                                <!--                                <p t-esc="info.product_id.name"/>-->
+                                <!--                                <p t-esc="product.name"/>-->
+                                <!--                                <div name="tvaluesetu" t-set="valueofstock" >-->
+                                <!--                                <p t-foreach="valueofstock" t-as="gg">-->
+                                <!--                                <p t-out="gg"/>-->
+                                <!--                                </p>-->
+                                <!--                                <p name='test' t-set="some_class" class="some_class" on_change="get_func(test,'string')"/>-->
+                                <!--                                <p name='some_class' />-->
+                                <!--                                <p class="some_class1" t-set="some1" t-value="some_class1"/>-->
+                                <div class="some_class1" t-set="valss" t-value="product_variant">
+
+                                </div>
+
+
+
+                                <t class="some_class1" t-esc="valss.free_qty"/>
+
+                                <!--                                    <input type="text" class="some_class" name="some_class" />-->
+
+                                <!--                                    <p t-set="valueofst"-->
+                                <!--                                       t-value="request.env['stock.quant'].search([('product_id', '=', tvaluesetu)])"/>-->
+                                <!--                                    <span t-esc="tvaluesetu"/>-->
+                                <!--                                    <div t-esc="tvaluesetu"/>-->
+                                <!--                                <p t-esc="valueofstock"/>-->
+                                <!--                                </div>-->
+                                <!--                                <div class="some_class1" t-value="s" t-set="t" t-att-value="name">-->
+                                <!--                                        <p t-out="s"/>-->
+                                <!--                                    <p t-out="s"/>-->
+                                <!--                                    <p t-out="s"/>-->
+                                <!--                                    <p t-out="name"/>-->
+
+                                <!--                                </div>-->
+
+
+                            </t>
+                            <t t-else="">
+                                <p t-out="'no location'"/>
+                            </t>
+
+                        </td>
+                        <td class="stock_val" style="padding-left:10px;border-bottom:1px solid black;border-right:1px solid black ">
+
+                            <t t-out="info.inventory_quantity_auto_apply"/>
+
+                            <!--                            <t t-out="info.product_id"/>-->
+
+                            <p id='stocklocationsetu'/>
+                        </td>
+
+                    </tr>
+
+                </t>
+
+                <!--                <t t-foreach="users" t-as="user">-->
+                <!--                    <tr>-->
+                <!--                        <t t-set="line_no" t-value="line_no + 1"/>-->
+                <!--                        <td name="td_name"-->
+                <!--                            style="padding-left:10px;border-left:1px solid black;border-right:1px solid black;border-bottom:1px solid black">-->
+                <!--                            <span t-esc="line_no"/>-->
+
+                <!--                        </td>-->
+
+                <!--                        <td style="padding-left:60px;border-bottom:1px solid black;border-right:1px solid black ">-->
+                <!--                            <t t-esc="user.location_id"></t>-->
+
+                <!--                        </td>-->
+                <!--                        <td style="padding-left:60px;border-bottom:1px solid black;border-right:1px solid black ">-->
+                <!--                            <t t-out="user.inventory_quantity_auto_apply"></t>-->
+
+                <!--                        </td>-->
+                <!--                        <td style="padding-left:60px;border-bottom:1px solid black;border-right:1px solid black ">-->
+                <!--                            <t t-out="user.product_id.id"></t>-->
+
+
+                <!--                        </td>-->
+
+                <!--                    </tr>-->
+
+
+                <!--                </t>-->
+
+            </table>
+
+            <br/>
+        </div>
+    </template>
+
+
+</odoo>
