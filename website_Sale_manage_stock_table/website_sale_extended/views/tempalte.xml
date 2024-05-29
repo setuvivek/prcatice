@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="product_quantit">
+        <h3 class="css_editable_mode_hidden">
+            <span class="qty qty_done"
+                  style="white-space: nowrap;"
+                  t-out="combination_info['free_qty']"
+            />
+            <span itemprop="free_qty" style="display:none;" t-out="combination_info['free_qty']"/>
+        </h3>
+    </template>
+    <template id="setu_product_add_to_cart_inherit_id" inherit_id="website_sale.product">
+
+        <xpath expr="//div[@id='add_to_cart_wrap']" position='replace'>
+            <t t-if="product.is_quatation">
+                <t t-set="head">
+                    <!--                        <style rel="stylesheet">-->
+                    <!--                            .thisbtn{-->
+                    <!--                            display;flex;-->
+                    <!--                            margin-top:-120px;-->
+                    <!--                            margin-left:230px;-->
+                    <!--                            #o_wsale_cta_wrapper{-->
+                    <!--                            display:flex;-->
+                    <!--                            }-->
+
+                    <!--                        </style>-->
+                    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+                          rel="stylesheet"
+                          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+                          crossorigin="anonymous"/>
+                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+                            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+                            crossorigin="anonymous">
+                    </script>
+                </t>
+                <t t-if="request.env.user.name != 'Public user'">
+                    <div id="add_to_cart_wra"
+                         t-attf-class="{{'d-none' if combination_info['prevent_zero_price_sale'] else 'd-inline-flex'}} align-items-center mb-2 me-auto">
+                        <!--                    To redirect on Contact  us page -->
+                        <a data-animation-selector=".o_wsale_product_images" role="button"
+                           t-attf-class="btn btn-primary js_check_product a-submit flex-grow-1" href="#"
+                           data-bs-toggle="modal"
+                           data-bs-target="#exampleModal">
+                            Quotation
+                        </a>
+
+                        <!-- Modal -->
+
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                             aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Lead Form</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close">-
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+
+                                        <p t-call="website_sale_extended.contact_us_form"/>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
+                                        </button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+                <t t-else="">
+                    <div id="add_to_cart_wra"
+                         t-attf-class="{{'d-none' if combination_info['prevent_zero_price_sale'] else 'd-inline-flex'}} align-items-center mb-2 me-auto">
+                        <a data-animation-selector=".o_wsale_product_images" role="button"
+                           t-attf-class="btn btn-primary flex-grow-1 quabuton" href="/web/login">
+                            Quotation
+                        </a>
+                    </div>
+                    <!--                    <p t-call="website_sale_extended.stock"/>-->
+
+                </t>
+
+
+            </t>
+            <t t-else="">
+                <div id="add_to_cart_wrap"
+                     t-attf-class="{{'d-none' if combination_info['prevent_zero_price_sale'] else 'd-inline-flex'}} align-items-center mb-2 me-auto">
+                    <a data-animation-selector=".o_wsale_product_images" role="button" id="add_to_cart"
+                       t-attf-class="btn btn-primary js_check_product a-submit flex-grow-1" href="#">
+                        <i class="fa fa-shopping-cart me-2"/>
+                        Add to cart
+                    </a>
+                </div>
+            </t>
+        </xpath>
+
+        <xpath expr="//div[@id='add_to_cart_wra']" position='after'>
+            <div id="table_of_stock_setu">
+                <div class="table-responsive border-0 " style="width:2000px">
+                    <p t-call="website_sale_extended.stock"/>
+                    <!--                    <table class="table-bordered mb64">-->
+                    <!--                        <tr>-->
+                    <!--                            <th name="th_line" class="text-left"-->
+                    <!--                                style="width:100px;border-bottom:1px solid black;border-right:1px solid black;border-top:1px solid black;border-left:1px solid black">-->
+                    <!--                                Line nr.-->
+                    <!--                            </th>-->
+                    <!--                            <t t-set="line_no" t-value="0"/>-->
+                    <!--                            <th style="width:100px;border-bottom:1px solid black;border-right:1px solid black;border-top:1px solid black">-->
+                    <!--                                pro name-->
+                    <!--                            </th>-->
+                    <!--                            <th style="width:100px;border-bottom:1px solid black;border-right:1px solid black;border-top:1px solid black">-->
+                    <!--                                attribute-->
+                    <!--                            </th>-->
+                    <!--                            <th style="width:100px;border-bottom:1px solid black;border-right:1px solid black;border-top:1px solid black">-->
+                    <!--                                id-->
+                    <!--                            </th>-->
+                    <!--                            <th style="width:100px;border-bottom:1px solid black;border-right:1px solid black;border-top:1px solid black">-->
+                    <!--                                value-->
+                    <!--                            </th>-->
+                    <!--                            <th style="width:100px;border-bottom:1px solid black;border-right:1px solid black;border-top:1px solid black">-->
+                    <!--                                attribute-->
+                    <!--                            </th>-->
+                    <!--                            <th style="width:100px;border-bottom:1px solid black;border-right:1px solid black;border-top:1px solid black">-->
+                    <!--                                qty-->
+                    <!--                            </th>-->
+                    <!--                            &lt;!&ndash;                            <th style="width:600px;border-bottom:1px solid black;border-right:1px solid black;border-top:1px solid black">&ndash;&gt;-->
+                    <!--                            &lt;!&ndash;                                attr&ndash;&gt;-->
+                    <!--                            &lt;!&ndash;                            </th>&ndash;&gt;-->
+                    <!--                        </tr>-->
+                    <!--                        <t t-foreach="product.valid_product_template_attribute_line_ids" t-as="pro">-->
+                    <!--                            <t t-foreach="pro.product_template_value_ids._only_active()" t-as="ptav">-->
+                    <!--                                &lt;!&ndash;                                <t t-if="pro.attribute_id.id == ptav.id">&ndash;&gt;-->
+                    <!--                                &lt;!&ndash;                                <option t-att-value="ptav.id"&ndash;&gt;-->
+                    <!--                                &lt;!&ndash;                                    t-att-data-value_id="ptav.id"&ndash;&gt;-->
+                    <!--                                &lt;!&ndash;                                    t-att-data-value_name="ptav.name"&ndash;&gt;-->
+                    <!--                                &lt;!&ndash;                                    t-att-data-attribute_name="ptav.attribute_id.name"&ndash;&gt;-->
+                    <!--                                &lt;!&ndash;                                    t-att-data-is_custom="ptav.is_custom"&ndash;&gt;-->
+                    <!--                                &lt;!&ndash;                                    t-att-selected="ptav in combination"&ndash;&gt;-->
+                    <!--                                &lt;!&ndash;                                    t-att-data-is_single="single"&ndash;&gt;-->
+                    <!--                                &lt;!&ndash;                                    t-att-data-is_single_and_custom="single_and_custom">&ndash;&gt;-->
+                    <!--                                &lt;!&ndash;                                    <span t-field="ptav.name"/>&ndash;&gt;-->
+                    <!--                                &lt;!&ndash;                                    <t t-call="website_sale.badge_extra_price"/>&ndash;&gt;-->
+                    <!--                                &lt;!&ndash;                                </option>&ndash;&gt;-->
+
+
+                    <!--                                <tr>-->
+                    <!--                                    <t t-set="line_no" t-value="line_no + 1"/>-->
+                    <!--                                    <td name="td_name"-->
+                    <!--                                        style="padding-left:10px;border-left:1px solid black;border-right:1px solid black;border-bottom:1px solid black">-->
+                    <!--                                        <span t-esc="line_no"/>-->
+                    <!--                                    </td>-->
+                    <!--                                    <td style="padding-left:10px;border-bottom:1px solid black;border-right:1px solid black ">-->
+                    <!--                                        <t t-esc="product.name"></t>-->
+                    <!--                                    </td>-->
+                    <!--                                    <td style="padding-left:10px;border-bottom:1px solid black;border-right:1px solid black ">-->
+                    <!--                                        <t t-esc="pro.attribute_id.name"></t>-->
+                    <!--                                    </td>-->
+                    <!--                                    <td style="padding-left:10px;border-bottom:1px solid black;border-right:1px solid black ">-->
+                    <!--                                        <t t-esc="pro.attribute_id.id"></t>-->
+                    <!--                                    </td>-->
+                    <!--                                    <td style="padding-left:10px;border-bottom:1px solid black;border-right:1px solid black ">-->
+                    <!--                                        <t t-esc="ptav.name"></t>-->
+                    <!--                                    </td>-->
+                    <!--                                    <td style="padding-left:10px;border-bottom:1px solid black;border-right:1px solid black ">-->
+                    <!--                                        <t t-esc="ptav.id"></t>-->
+                    <!--                                    </td>-->
+                    <!--                                    <td style="padding-left:10px;border-bottom:1px solid black;border-right:1px solid black ">-->
+                    <!--                                        <t t-out="product_variant.product_template_variant_value_ids"></t>-->
+                    <!--                                    </td>-->
+                    <!--                                    &lt;!&ndash;                                    <td style="padding-left:10px;border-bottom:1px solid black;border-right:1px solid black ">&ndash;&gt;-->
+                    <!--                                    &lt;!&ndash;                                        <t t-esc="pro.product_template_variant_value_ids.name"></t>&ndash;&gt;-->
+                    <!--                                    &lt;!&ndash;                                    </td>&ndash;&gt;-->
+                    <!--                                    &lt;!&ndash;                                    <td style="padding-left:10px;border-bottom:1px solid black;border-right:1px solid black ">&ndash;&gt;-->
+                    <!--                                    &lt;!&ndash;                                        <t t-esc="ptav.attribute_id.name"></t>&ndash;&gt;-->
+
+                    <!--                                    &lt;!&ndash;                                    </td>&ndash;&gt;-->
+                    <!--                                    &lt;!&ndash;                            <td style="padding-left:60px;border-bottom:1px solid black;border-right:1px solid black ">&ndash;&gt;-->
+                    <!--                                    &lt;!&ndash;                                <t t-out="product.attribute.attribute_id"></t>&ndash;&gt;-->
+                    <!--                                    &lt;!&ndash;                            </td>&ndash;&gt;-->
+                    <!--                                </tr>-->
+                    <!--                                &lt;!&ndash;                                </t>&ndash;&gt;-->
+
+
+                    <!--                            </t>-->
+                    <!--                        </t>-->
+                    <!--                    </table>-->
+                    <br/>
+                </div>
+            </div>
+        </xpath>
+    </template>
+</odoo>
