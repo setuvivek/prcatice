@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="setu_delivery_tracking_inherited_view_picking_form" model="ir.ui.view">
+        <field name="name">setu.delivery.tracking.inherited.view.picking.form</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='origin']" position="before">
+                    <field name="truck_number"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

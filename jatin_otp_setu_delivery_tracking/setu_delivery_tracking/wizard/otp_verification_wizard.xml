@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="otp_verification_wizard_form">
+        <field name="name">otp.verification.wizard.form</field>
+        <field name="model">otp.verification.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="random_otp"/>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="update_info_verify_otp" string="Verify" type="object" class="btn btn-primary"/>
+                    <button string="Close" class="btn btn-primary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>
